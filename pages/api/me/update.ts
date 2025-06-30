@@ -3,7 +3,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { getServerSession } from "next-auth/next";
-import bcrypt from "bcryptjs";
 
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
@@ -48,7 +47,7 @@ export default async function handler(
 
     // Actualiza password (opcional, si cumple longitud)
     if (typeof password === "string" && password.length >= 6) {
-      user.password = await bcrypt.hash(password, 12);
+      user.password = password;
     }
 
     // Actualiza avatar (solo si es emoji/string muy corto)
