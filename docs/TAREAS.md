@@ -48,7 +48,7 @@ Configurar instancia de Stripe (lib/stripe.ts) y STRIPE_SECRET_KEY
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
 [x] Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
-Persistencia real de perfil y proyectos en MongoDB (API REST)
+[x] Persistencia real de perfil y proyectos en MongoDB (API REST)
 
 Validación avanzada de formularios (login, registro, perfil) en frontend y backend
 
@@ -56,11 +56,11 @@ Validación avanzada de formularios (login, registro, perfil) en frontend y back
 
 Avatar real (upload y persistencia)
 
-Edición de perfil persistente: nombre, contraseña, avatar
+[x] Edición de perfil persistente: nombre, contraseña, avatar
 
-Render público de sitio generado (/[slug], modo demo)
+[x] Render público de sitio generado (/[slug], modo demo)
 
-Limitación y aviso real al crear más de 1 sitio en FREE
+[x] Limitación y aviso real al crear más de 1 sitio en FREE
 
 Página de error amigable para rutas privadas sin sesión
 
