@@ -1,6 +1,8 @@
 // lib/models/site.ts
 
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose from "mongoose";
+import type { Document } from "mongoose";
+const { Schema, model, models } = mongoose;
 
 /**
  * Interfaz TypeScript para el modelo de Sitio Web.
@@ -30,4 +32,4 @@ const SiteSchema = new Schema<ISite>(
 );
 
 // Exporta el modelo, reutilizándolo si ya existe (evita errores en hot-reload)
-export default mongoose.models.Site || model<ISite>("Site", SiteSchema);
+export default models.Site || model<ISite>("Site", SiteSchema);

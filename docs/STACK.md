@@ -77,6 +77,9 @@ Tipado estricto y seguridad en todo el código.
 ESLint
 Linter con Flat Config (@eslint/js, @eslint/compat y @eslint/eslintrc).
 
+tsx
+Ejecución directa de scripts TypeScript (seed, utilidades).
+
 🟨 CONVENCIÓN Y ESTRUCTURA
 Componentes HeroUI se extienden/usan desde /components/ o /components/ui/.
 

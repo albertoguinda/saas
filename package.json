@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint --fix",
     "format": "prettier --write .",
-    "seed": "ts-node --loader ts-node/esm scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@heroui/alert": "^2.2.22",

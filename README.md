@@ -13,7 +13,11 @@ npm install
 ```
 2. Configura el entorno
 Copia `.env.example` a `.env.local` y rellena tus claves.
-3. Lanza en local
+3. Ejecuta el seed para crear el usuario demo
+```bash
+npm run seed
+```
+4. Lanza en local
 ```bash
 npm run dev
 ```
