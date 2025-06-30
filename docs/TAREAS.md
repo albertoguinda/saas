@@ -43,6 +43,9 @@ TAREAS.md
 
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
+ Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
+ Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
+ Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
  Persistencia real de perfil y proyectos en MongoDB (API REST)
 
  Validación avanzada de formularios (login, registro, perfil) en frontend y backend
