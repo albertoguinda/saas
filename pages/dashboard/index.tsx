@@ -55,15 +55,15 @@ export default function DashboardHome() {
       {/* Aviso de límite */}
       {projectsCount >= projectLimit && (
         <div className="mt-8">
-          <Alert variant="warning" className="inline-block">
+          <Alert color="warning" className="inline-block">
             Has alcanzado el máximo de proyectos en el plan Free.
             <Button
               size="sm"
               color="warning"
-              variant="link"
+              variant="light"
               className="ml-2"
               onClick={() => router.push("/pricing")}
-              startIcon={<Zap />}
+              startContent={<Zap />}
             >
               Mejorar plan
             </Button>

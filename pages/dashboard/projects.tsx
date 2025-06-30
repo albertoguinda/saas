@@ -141,14 +141,14 @@ export default function ProjectsPage() {
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-bold">Mis proyectos</h2>
         {projects.length < FREE_PROJECT_LIMIT ? (
-          <Button startIcon={<Plus />} onClick={() => setCreating(true)}>
+          <Button startContent={<Plus />} onClick={() => setCreating(true)}>
             Nuevo proyecto
           </Button>
         ) : (
           <Button
             color="warning"
-            variant="outline"
-            startIcon={<Lock />}
+            variant="bordered"
+            startContent={<Lock />}
             onClick={() => router.push("/pricing")}
           >
             Mejorar plan
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
 
       {/* Errores generales */}
       {apiError && (
-        <Alert variant="destructive" className="mb-4">
+        <Alert color="danger" className="mb-4">
           {apiError}
         </Alert>
       )}
@@ -174,7 +174,7 @@ export default function ProjectsPage() {
       {!loading && projects.length === 0 && (
         <Card className="flex flex-col items-center gap-6 py-12">
           <span className="text-default-500">Todavía no tienes proyectos.</span>
-          <Button startIcon={<Plus />} onClick={() => setCreating(true)}>
+          <Button startContent={<Plus />} onClick={() => setCreating(true)}>
             Crear mi primer proyecto
           </Button>
         </Card>
@@ -194,15 +194,15 @@ export default function ProjectsPage() {
               <Badge color="success">activo</Badge>
               <Button
                 size="sm"
-                startIcon={<Eye />}
+                startContent={<Eye />}
                 onClick={() => router.push(`/${project.slug}`)}
               >
                 Ver
               </Button>
               <Button
                 size="sm"
-                variant="secondary"
-                startIcon={<Pencil />}
+                color="secondary"
+                startContent={<Pencil />}
                 onClick={() => openEdit(project)}
               >
                 Editar
@@ -211,7 +211,7 @@ export default function ProjectsPage() {
                 size="sm"
                 color="danger"
                 variant="light"
-                startIcon={<Trash />}
+                startContent={<Trash />}
                 disabled={deleting === project._id}
                 onClick={() => handleDelete(project._id)}
               >
@@ -227,7 +227,7 @@ export default function ProjectsPage() {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
-            {error && <Alert variant="destructive">{error}</Alert>}
+            {error && <Alert color="danger">{error}</Alert>}
               <Input
                 label="Nombre del proyecto"
                 value={newName}
@@ -259,7 +259,7 @@ export default function ProjectsPage() {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Editar proyecto</h3>
-            {editError && <Alert variant="destructive">{editError}</Alert>}
+            {editError && <Alert color="danger">{editError}</Alert>}
               <Input
                 label="Título del proyecto"
                 value={editTitle}
@@ -267,7 +267,7 @@ export default function ProjectsPage() {
                 ref={editInputRef}
               />
             <div className="flex gap-2">
-              <Button onClick={handleEdit} loading={updating}>
+              <Button onClick={handleEdit} isLoading={updating}>
                 Guardar
               </Button>
               <Button
@@ -285,12 +285,12 @@ export default function ProjectsPage() {
       {/* Aviso de límite para plan FREE */}
       {projects.length >= FREE_PROJECT_LIMIT && (
         <div className="mt-8 text-center">
-          <Alert variant="warning" className="inline-block">
+          <Alert color="warning" className="inline-block">
             Has alcanzado el máximo de proyectos en el plan Free.
             <Button
               size="sm"
               color="warning"
-              variant="link"
+              variant="light"
               onClick={() => router.push("/pricing")}
               className="ml-2"
             >

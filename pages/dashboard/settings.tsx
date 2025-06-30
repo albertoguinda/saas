@@ -12,9 +12,9 @@ export default function SettingsPage() {
       <Card className="flex flex-col gap-6 p-8">
         <div className="flex items-center justify-between">
           <span>Modo oscuro</span>
-          <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+          <Switch isSelected={darkMode} onValueChange={setDarkMode} />
         </div>
-        <Button color="warning" variant="outline" className="mt-4">
+        <Button color="warning" variant="bordered" className="mt-4">
           Eliminar cuenta (no implementado)
         </Button>
       </Card>

@@ -51,12 +51,12 @@ export default function RegisterPage() {
       <Card className="w-full max-w-md mx-auto shadow-2xl flex flex-col gap-6 p-8">
         <h1 className="text-xl font-semibold text-center">Crear cuenta gratuita</h1>
         {error && (
-          <Alert variant="destructive" className="mb-2">
+          <Alert color="danger" className="mb-2">
             {error}
           </Alert>
         )}
         {success && (
-          <Alert variant="success" className="mb-2">
+          <Alert color="success" className="mb-2">
             Usuario creado correctamente. Redirigiendo...
           </Alert>
         )}
@@ -92,7 +92,7 @@ export default function RegisterPage() {
             required
             minLength={6}
           />
-          <Button type="submit" loading={loading} className="w-full">
+          <Button type="submit" isLoading={loading} className="w-full">
             Registrarse gratis
           </Button>
         </form>

@@ -10,7 +10,7 @@ export default function PublicSite({ site, error }: any) {
   if (error) {
     return (
       <div className="max-w-xl mx-auto py-20">
-        <Alert variant="destructive">{error}</Alert>
+        <Alert color="danger">{error}</Alert>
       </div>
     );
   }
