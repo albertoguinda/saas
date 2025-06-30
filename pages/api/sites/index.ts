@@ -1,12 +1,17 @@
 // pages/api/sites/index.ts
 import type { NextApiRequest, NextApiResponse } from "next";
+
+import { getServerSession } from "next-auth";
+
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
-import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
 // Solo autenticados pueden acceder a sus proyectos
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   await dbConnect();
   const session = await getServerSession(req, res, authOptions);
 
@@ -17,10 +22,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // GET: Listar proyectos del usuario
   if (req.method === "GET") {
     try {
-      const sites = await Site.find({ userId: session.user.id }).sort({ createdAt: -1 });
+      const sites = await Site.find({ userId: session.user.id }).sort({
+        createdAt: -1,
+      });
+
       return res.status(200).json({ sites });
     } catch (err) {
-      console.error(err);
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.error(err);
+      }
+
       return res.status(500).json({ error: "Error al cargar los proyectos" });
     }
   }
@@ -29,25 +41,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "POST") {
     try {
       const { title } = req.body as { title?: string };
+
       if (!title || typeof title !== "string" || !title.trim()) {
         return res.status(400).json({ error: "Título obligatorio" });
       }
 
       // Límite de 1 proyecto en plan FREE (ajusta según plan del usuario)
       const count = await Site.countDocuments({ userId: session.user.id });
+
       if (count >= 1) {
-        return res.status(403).json({ error: "Límite de proyectos alcanzado para tu plan" });
+        return res
+          .status(403)
+          .json({ error: "Límite de proyectos alcanzado para tu plan" });
       }
 
       // Genera un slug único básico (ajusta si quieres evitar colisiones)
-      const slug = (
+      const slug =
         title
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/(^-|-$)+/g, "") +
         "-" +
-        Math.random().toString(36).substring(2, 6)
-      );
+        Math.random().toString(36).substring(2, 6);
 
       // Crea el proyecto
       const site = await Site.create({
@@ -59,13 +74,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       return res.status(201).json({ site });
     } catch (err) {
-      console.error(err);
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.error(err);
+      }
+
       return res.status(500).json({ error: "Error al crear el proyecto" });
     }
   }
 
   // Métodos no soportados
   res.setHeader("Allow", ["GET", "POST"]);
+
   return res.status(405).json({ error: "Método no soportado" });
 }
 

@@ -24,6 +24,9 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Error en seed:", err);
+  if (process.env.NODE_ENV !== "production") {
+    // eslint-disable-next-line no-console
+    console.error("Error en seed:", err);
+  }
   mongoose.connection.close();
 });
