@@ -1,5 +1,5 @@
 // pages/dashboard/projects.tsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Badge } from "@heroui/badge";
@@ -21,6 +21,7 @@ export default function ProjectsPage() {
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState("");
+  const createInputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
   const [apiError, setApiError] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
@@ -30,6 +31,7 @@ export default function ProjectsPage() {
   const [editTitle, setEditTitle] = useState("");
   const [editError, setEditError] = useState("");
   const [updating, setUpdating] = useState(false);
+  const editInputRef = useRef<HTMLInputElement>(null);
 
   // Carga los proyectos del backend al montar
   useEffect(() => {
@@ -121,6 +123,18 @@ export default function ProjectsPage() {
     setProjects(projects.map(p => p._id === data.site._id ? data.site : p));
     setEditing(null);
   };
+
+  useEffect(() => {
+    if (creating) {
+      createInputRef.current?.focus();
+    }
+  }, [creating]);
+
+  useEffect(() => {
+    if (editing) {
+      editInputRef.current?.focus();
+    }
+  }, [editing]);
 
   return (
     <div className="max-w-3xl mx-auto py-12">
@@ -214,12 +228,12 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
             {error && <Alert variant="destructive">{error}</Alert>}
-            <Input
-              label="Nombre del proyecto"
-              value={newName}
-              onChange={e => setNewName(e.target.value)}
-              autoFocus
-            />
+              <Input
+                label="Nombre del proyecto"
+                value={newName}
+                onChange={e => setNewName(e.target.value)}
+                ref={createInputRef}
+              />
             <div className="flex gap-2">
               <Button onClick={handleCreate}>Crear</Button>
               <Button
@@ -246,12 +260,12 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Editar proyecto</h3>
             {editError && <Alert variant="destructive">{editError}</Alert>}
-            <Input
-              label="Título del proyecto"
-              value={editTitle}
-              onChange={e => setEditTitle(e.target.value)}
-              autoFocus
-            />
+              <Input
+                label="Título del proyecto"
+                value={editTitle}
+                onChange={e => setEditTitle(e.target.value)}
+                ref={editInputRef}
+              />
             <div className="flex gap-2">
               <Button onClick={handleEdit} loading={updating}>
                 Guardar

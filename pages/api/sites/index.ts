@@ -20,6 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sites = await Site.find({ userId: session.user.id }).sort({ createdAt: -1 });
       return res.status(200).json({ sites });
     } catch (err) {
+      console.error(err);
       return res.status(500).json({ error: "Error al cargar los proyectos" });
     }
   }
@@ -58,7 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       return res.status(201).json({ site });
     } catch (err) {
-      // Opcional: console.error(err)
+      console.error(err);
       return res.status(500).json({ error: "Error al crear el proyecto" });
     }
   }
