@@ -37,7 +37,6 @@ Editar
 
 /lib/
   ├─ dbConnect.ts        // Conexión MongoDB Atlas
-  ├─ db.ts               // (helpers conexión, legacy)
   ├─ models/
   │    ├─ user.ts        // User model (mongoose)
   │    └─ site.ts        // Site model (pendiente)
@@ -83,7 +82,7 @@ Site (próximo): userId, slug, config...
 
 Conexión centralizada vía dbConnect.ts (persistente y eficiente)
 
-Helpers opcionales en db.ts (si usas legacy)
+Helpers opcionales en dbConnect.ts
 
 🔵 UI & Diseño
 TailwindCSS + HeroUI (2.x)
