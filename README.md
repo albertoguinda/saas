@@ -13,6 +13,7 @@ npm install
 ```
 2. Configura el entorno
 Copia `.env.example` a `.env.local` y rellena tus claves.
+Si vas a activar pagos añade `STRIPE_SECRET_KEY` y `STRIPE_WEBHOOK_SECRET`.
 3. Ejecuta el seed para crear el usuario demo
 ```bash
 npm run seed
