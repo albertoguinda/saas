@@ -33,8 +33,10 @@ TAREAS.md
  Mock de creación/edición de proyectos y perfil (faltan APIs reales)
 
  Feedback visual: alertas y mensajes en login/registro/perfil
+ Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
+ Configurar eslint-config-next (core-web-vitals)
 
- Modelo de sitio (site.ts) — estructura básica y relación con usuario
+Modelo de sitio (site.ts) — estructura básica y relación con usuario
 
  API /api/sites (GET/POST: CRUD de sitios generados)
 
@@ -43,7 +45,6 @@ TAREAS.md
 
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
- Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
  Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
  Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
  Persistencia real de perfil y proyectos en MongoDB (API REST)

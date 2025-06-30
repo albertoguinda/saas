@@ -44,9 +44,8 @@ export default defineConfig([globalIgnores([
     "!**/tsup.config.ts",
 ]), {
     extends: fixupConfigRules(compat.extends(
-        "plugin:react/recommended",
+        "next/core-web-vitals",
         "plugin:prettier/recommended",
-        "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
     )),
 
@@ -86,9 +85,7 @@ export default defineConfig([globalIgnores([
 
     rules: {
         "no-console": "warn",
-        "react/prop-types": "off",
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
+        // rules from react handled by eslint-config-next
         "react-hooks/exhaustive-deps": "off",
         "jsx-a11y/click-events-have-key-events": "warn",
         "jsx-a11y/interactive-supports-focus": "warn",
