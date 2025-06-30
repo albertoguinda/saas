@@ -6,18 +6,12 @@ import { getServerSession } from "next-auth/next";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
+import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
 
 // Solo autenticados pueden acceder a sus proyectos
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
   const session = await getServerSession(req, res, authOptions);
-
-  if (!session?.user?.id) {
-    return res.status(401).json({ error: "No autenticado" });
-  }
 
   // GET: Listar proyectos del usuario
   if (req.method === "GET") {
@@ -43,10 +37,10 @@ export default async function handler(
         return res.status(400).json({ error: "Título obligatorio" });
       }
 
-      // Límite de 1 proyecto en plan FREE (ajusta según plan del usuario)
+      // Límite de 1 proyecto solo para plan FREE
       const count = await Site.countDocuments({ userId: session.user.id });
 
-      if (count >= 1) {
+      if (session.user.plan === "free" && count >= 1) {
         return res
           .status(403)
           .json({ error: "Límite de proyectos alcanzado para tu plan" });
@@ -90,3 +84,5 @@ export default async function handler(
   - Slug único sencillo, mejora si necesitas SEO.
   - Protegido por sesión NextAuth.
 */
+
+export default withAuthPlan(handler, "FREE");
