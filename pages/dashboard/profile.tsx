@@ -86,8 +86,8 @@ export default function ProfilePage() {
           <span className="text-4xl">{form.avatar}</span>
           <span className="font-semibold">{session?.user?.email}</span>
         </div>
-        {msg && <Alert variant="success">{msg}</Alert>}
-        {error && <Alert variant="destructive">{error}</Alert>}
+        {msg && <Alert color="success">{msg}</Alert>}
+        {error && <Alert color="danger">{error}</Alert>}
         <form onSubmit={handleSave} className="flex flex-col gap-4 mt-2">
           <Input
             label="Nombre"
@@ -136,7 +136,7 @@ export default function ProfilePage() {
             minLength={6}
             autoComplete="new-password"
           />
-          <Button type="submit" className="w-full" color="primary" loading={loading}>
+          <Button type="submit" className="w-full" color="primary" isLoading={loading}>
             Guardar cambios
           </Button>
         </form>

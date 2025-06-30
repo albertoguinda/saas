@@ -46,7 +46,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md mx-auto shadow-2xl flex flex-col gap-6 p-8">
         <h1 className="text-xl font-semibold text-center">Iniciar sesión</h1>
         {error && (
-          <Alert variant="destructive" className="mb-2">
+          <Alert color="danger" className="mb-2">
             {error}
           </Alert>
         )}
@@ -71,7 +71,7 @@ export default function LoginPage() {
             onChange={handleChange}
             required
           />
-          <Button type="submit" loading={loading} className="w-full">
+          <Button type="submit" isLoading={loading} className="w-full">
             Entrar
           </Button>
         </form>

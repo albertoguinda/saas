@@ -25,11 +25,11 @@ export default function WelcomeDashboard() {
           <Button color="primary" size="lg" onClick={() => router.push("/dashboard/projects")}>
             Crear mi primer proyecto
           </Button>
-          <Button variant="outline" onClick={() => router.push("/dashboard/profile")}>
+          <Button variant="bordered" onClick={() => router.push("/dashboard/profile")}>
             Ver mi perfil
           </Button>
         </div>
-        <Alert variant="info" className="mt-6">
+        <Alert color="primary" className="mt-6">
           Puedes mejorar tu plan en cualquier momento para desbloquear más proyectos y ventajas.
         </Alert>
       </Card>
