@@ -66,7 +66,7 @@ export default function LoginPage() {
             name="password"
             type="password"
             autoComplete="current-password"
-            placeholder="123456" // PASS PRUEBA
+            placeholder="••••••••" // EJEMPLO GENERICO
             value={form.password}
             onChange={handleChange}
             required

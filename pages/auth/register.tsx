@@ -86,7 +86,7 @@ export default function RegisterPage() {
             name="password"
             type="password"
             autoComplete="new-password"
-            placeholder="123456" // PASS DEMO
+            placeholder="••••••••" // EJEMPLO GENERICO
             value={form.password}
             onChange={handleChange}
             required
