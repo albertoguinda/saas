@@ -17,6 +17,7 @@ npm install
 2. Configura el entorno
    Copia `.env.example` a `.env.local` y rellena tus claves.
    Para futuras pruebas de pago incluye `STRIPE_SECRET_KEY`.
+   Define `SEED_USER_PASSWORD` para fijar la contraseña del usuario demo.
 3. Ejecuta el seed para crear el usuario demo
 
 ```bash
