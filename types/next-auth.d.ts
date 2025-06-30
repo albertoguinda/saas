@@ -6,7 +6,7 @@ declare module 'next-auth' {
       id: string;
       name: string;
       email: string;
-      plan: 'free' | 'premium';
+      plan: 'free' | 'pro' | 'premium';
     };
   }
 
@@ -14,6 +14,6 @@ declare module 'next-auth' {
     id: string;
     name: string;
     email: string;
-    plan: 'free' | 'premium';
+    plan: 'free' | 'pro' | 'premium';
   }
 }
