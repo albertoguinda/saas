@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint --fix",
     "format": "prettier --write .",
-    "seed": "ts-node --loader ts-node/esm scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@heroui/alert": "^2.2.22",
@@ -73,6 +73,7 @@
     "tailwindcss": "3.4.16",
     "ts-node": "^10.9.2",
     "typescript": "5.6.3",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "tsx": "^4.20.3"
   }
 }

@@ -1,5 +1,5 @@
 // pages/dashboard/profile.tsx
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
@@ -8,9 +8,36 @@ import { Alert } from "@heroui/alert";
 
 // Array de emojis/avatar (simple, para ejemplo)
 const AVATAR_EMOJIS = [
-  "😀", "😎", "👩‍💻", "🧑‍🚀", "🦸‍♂️", "🐶", "🐱", "🦊", "🐼", "🐸",
-  "🦄", "🐵", "🐧", "🐲", "🦁", "🐷", "🐰", "🐻", "🐨", "🐤",
-  "💡", "🚀", "🌈", "🎸", "🎨", "🕹️", "🥑", "🍕", "🍣", "⚡️"
+  "😀",
+  "😎",
+  "👩‍💻",
+  "🧑‍🚀",
+  "🦸‍♂️",
+  "🐶",
+  "🐱",
+  "🦊",
+  "🐼",
+  "🐸",
+  "🦄",
+  "🐵",
+  "🐧",
+  "🐲",
+  "🦁",
+  "🐷",
+  "🐰",
+  "🐻",
+  "🐨",
+  "🐤",
+  "💡",
+  "🚀",
+  "🌈",
+  "🎸",
+  "🎨",
+  "🕹️",
+  "🥑",
+  "🍕",
+  "🍣",
+  "⚡️",
 ];
 
 export default function ProfilePage() {
@@ -19,7 +46,7 @@ export default function ProfilePage() {
   // Inicializa el form con datos de la sesión
   const [form, setForm] = useState({
     name: session?.user?.name || "",
-    avatar: session?.user?.avatar || AVATAR_EMOJIS[0],
+    avatar: (session?.user as any)?.avatar || AVATAR_EMOJIS[0],
     password: "",
     password2: "",
   });
@@ -45,10 +72,12 @@ export default function ProfilePage() {
 
     if (form.password && form.password.length < 6) {
       setError("La contraseña debe tener al menos 6 caracteres.");
+
       return;
     }
     if (form.password && form.password !== form.password2) {
       setError("Las contraseñas no coinciden.");
+
       return;
     }
 
@@ -64,6 +93,7 @@ export default function ProfilePage() {
         }),
       });
       const data = await res.json();
+
       if (!res.ok) {
         setError(data.error || "Error actualizando el perfil.");
       } else {
@@ -88,14 +118,14 @@ export default function ProfilePage() {
         </div>
         {msg && <Alert color="success">{msg}</Alert>}
         {error && <Alert color="danger">{error}</Alert>}
-        <form onSubmit={handleSave} className="flex flex-col gap-4 mt-2">
+        <form className="flex flex-col gap-4 mt-2" onSubmit={handleSave}>
           <Input
+            required
             label="Nombre"
             name="name"
+            placeholder="Nombre"
             value={form.name}
             onChange={handleChange}
-            placeholder="Nombre"
-            required
           />
           {/* Selector de emoji avatar */}
           <div>
@@ -103,13 +133,13 @@ export default function ProfilePage() {
             <div className="flex flex-wrap gap-2">
               {AVATAR_EMOJIS.map((emoji) => (
                 <button
-                  type="button"
                   key={emoji}
+                  aria-label={`Elegir avatar ${emoji}`}
                   className={`text-2xl rounded-lg p-1 border transition
                     ${form.avatar === emoji ? "bg-violet-100 border-violet-400 scale-110" : "border-transparent hover:bg-violet-50"}
                   `}
+                  type="button"
                   onClick={() => handleSelectAvatar(emoji)}
-                  aria-label={`Elegir avatar ${emoji}`}
                 >
                   {emoji}
                 </button>
@@ -117,26 +147,31 @@ export default function ProfilePage() {
             </div>
           </div>
           <Input
+            autoComplete="new-password"
             label="Nueva contraseña"
+            minLength={6}
             name="password"
+            placeholder="••••••••"
             type="password"
             value={form.password}
             onChange={handleChange}
-            placeholder="••••••••"
-            minLength={6}
-            autoComplete="new-password"
           />
           <Input
+            autoComplete="new-password"
             label="Repetir nueva contraseña"
+            minLength={6}
             name="password2"
+            placeholder="••••••••"
             type="password"
             value={form.password2}
             onChange={handleChange}
-            placeholder="••••••••"
-            minLength={6}
-            autoComplete="new-password"
           />
-          <Button type="submit" className="w-full" color="primary" isLoading={loading}>
+          <Button
+            className="w-full"
+            color="primary"
+            isLoading={loading}
+            type="submit"
+          >
             Guardar cambios
           </Button>
         </form>

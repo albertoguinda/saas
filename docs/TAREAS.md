@@ -42,6 +42,7 @@ API /api/me (GET: sesión extendida, PATCH: edición de perfil)
 
  Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
  Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
+ Configurar seed con tsx
 
 
 🚧 Tareas Pendientes por Fase

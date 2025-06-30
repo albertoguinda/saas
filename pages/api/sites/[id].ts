@@ -12,7 +12,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   await dbConnect();
-  const session = await getServerSession(req, res, authOptions);
+  const session = (await getServerSession(req, res, authOptions as any)) as any;
 
   // Solo autenticados pueden operar
   if (!session?.user?.email) {
@@ -54,6 +54,7 @@ export default async function handler(
 
       return res.status(200).json({ site });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
 
       return res.status(500).json({ error: "Error actualizando el proyecto" });
@@ -71,6 +72,7 @@ export default async function handler(
 
       return res.status(200).json({ ok: true, message: "Proyecto eliminado" });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
 
       return res.status(500).json({ error: "Error al borrar el proyecto" });

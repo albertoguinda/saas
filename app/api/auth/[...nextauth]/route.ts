@@ -1,8 +1,4 @@
-import type {
-  AuthOptions as NextAuthOptions,
-  Session,
-  User as NextAuthUser,
-} from "next-auth";
+import type { Session, User as NextAuthUser } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 
 import NextAuth from "next-auth";
@@ -13,7 +9,7 @@ import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 
 // NextAuth options igual que antes, pero compatible con App Router
-const authOptions: NextAuthOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Email y Contraseña",
@@ -58,7 +54,9 @@ const authOptions: NextAuthOptions = {
     },
     async session({ session, token }: { session: Session; token: JWT }) {
       if (token) {
+        // @ts-ignore
         session.user.id = token.id;
+        // @ts-ignore
         session.user.plan = token.plan;
       }
 
@@ -72,6 +70,7 @@ const authOptions: NextAuthOptions = {
 };
 
 // ¡IMPORTANTE! App Router: exporta los métodos GET y POST
+// @ts-ignore
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

@@ -13,7 +13,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   await dbConnect();
-  const session = await getServerSession(req, res, authOptions);
+  const session = (await getServerSession(req, res, authOptions as any)) as any;
 
   if (!session?.user?.id) {
     return res.status(401).json({ error: "No autenticado" });
@@ -28,6 +28,7 @@ export default async function handler(
 
       return res.status(200).json({ sites });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
 
       return res.status(500).json({ error: "Error al cargar los proyectos" });
@@ -71,6 +72,7 @@ export default async function handler(
 
       return res.status(201).json({ site });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
 
       return res.status(500).json({ error: "Error al crear el proyecto" });

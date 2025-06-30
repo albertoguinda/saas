@@ -25,7 +25,7 @@ export default async function handler(
   await dbConnect();
 
   // Protege con sesión
-  const session = await getServerSession(req, res, authOptions);
+  const session = (await getServerSession(req, res, authOptions as any)) as any;
 
   if (!session?.user?.email) {
     return res.status(401).json({ error: "No autenticado" });

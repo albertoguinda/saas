@@ -13,7 +13,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   await dbConnect();
-  const session = await getServerSession(req, res, authOptions);
+  const session = (await getServerSession(req, res, authOptions as any)) as any;
 
   if (!session?.user?.id) {
     return res.status(401).json({ error: "No autenticado" });

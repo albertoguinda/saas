@@ -1,9 +1,5 @@
 // lib/auth.ts
-import type {
-  AuthOptions as NextAuthOptions,
-  Session,
-  User as NextAuthUser,
-} from "next-auth";
+import type { Session, User as NextAuthUser } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -13,7 +9,7 @@ import dbConnect from "./dbConnect";
 import User from "./models/user";
 
 // Opciones de NextAuth para credenciales (ajusta según tus necesidades)
-export const authOptions: NextAuthOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",

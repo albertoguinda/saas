@@ -9,11 +9,15 @@ monetizar la plataforma a través de planes FREE, PRO y PREMIUM.
 📦 Instalación
 1. Instala dependencias
 ```bash
-npm install
+ npm install
 ```
 2. Configura el entorno
 Copia `.env.example` a `.env.local` y rellena tus claves.
-3. Lanza en local
+3. Carga datos de prueba
+```bash
+npm run seed
+```
+4. Lanza en local
 ```bash
 npm run dev
 ```

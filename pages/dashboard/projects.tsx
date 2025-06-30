@@ -6,14 +6,12 @@ import { Badge } from "@heroui/badge";
 import { Input } from "@heroui/input";
 import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 // Límite de proyectos para el plan FREE
 const FREE_PROJECT_LIMIT = 1;
 
 export default function ProjectsPage() {
-  const { data: session } = useSession();
   const router = useRouter();
 
   // Estados principales del componente
@@ -27,7 +25,9 @@ export default function ProjectsPage() {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   // --- Edición inline ---
-  const [editing, setEditing] = useState<{ id: string; title: string } | null>(null);
+  const [editing, setEditing] = useState<{ id: string; title: string } | null>(
+    null,
+  );
   const [editTitle, setEditTitle] = useState("");
   const [editError, setEditError] = useState("");
   const [updating, setUpdating] = useState(false);
@@ -36,7 +36,6 @@ export default function ProjectsPage() {
   // Carga los proyectos del backend al montar
   useEffect(() => {
     fetchProjects();
-    // eslint-disable-next-line
   }, []);
 
   // Refresca la lista de proyectos
@@ -46,6 +45,7 @@ export default function ProjectsPage() {
     try {
       const res = await fetch("/api/sites");
       const data = await res.json();
+
       setProjects(data.sites || []);
     } catch {
       setApiError("No se pudieron cargar los proyectos.");
@@ -59,6 +59,7 @@ export default function ProjectsPage() {
     if (projects.length >= FREE_PROJECT_LIMIT) return;
     if (!newName.trim()) {
       setError("El nombre es obligatorio");
+
       return;
     }
     const res = await fetch("/api/sites", {
@@ -67,8 +68,10 @@ export default function ProjectsPage() {
       body: JSON.stringify({ title: newName }),
     });
     const data = await res.json();
+
     if (!res.ok) {
       setError(data.error || "No se pudo crear el proyecto");
+
       return;
     }
     setProjects([data.site, ...projects]);
@@ -82,6 +85,7 @@ export default function ProjectsPage() {
     setDeleting(id);
     try {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
+
       if (res.ok) {
         setProjects(projects.filter((p) => p._id !== id));
       } else {
@@ -105,6 +109,7 @@ export default function ProjectsPage() {
     setEditError("");
     if (!editTitle.trim()) {
       setEditError("El título es obligatorio");
+
       return;
     }
     setUpdating(true);
@@ -114,13 +119,15 @@ export default function ProjectsPage() {
       body: JSON.stringify({ title: editTitle }),
     });
     const data = await res.json();
+
     setUpdating(false);
     if (!res.ok) {
       setEditError(data.error || "No se pudo actualizar");
+
       return;
     }
     // Actualiza en la lista
-    setProjects(projects.map(p => p._id === data.site._id ? data.site : p));
+    setProjects(projects.map((p) => (p._id === data.site._id ? data.site : p)));
     setEditing(null);
   };
 
@@ -147,8 +154,8 @@ export default function ProjectsPage() {
         ) : (
           <Button
             color="warning"
-            variant="bordered"
             startContent={<Lock />}
+            variant="bordered"
             onClick={() => router.push("/pricing")}
           >
             Mejorar plan
@@ -158,7 +165,7 @@ export default function ProjectsPage() {
 
       {/* Errores generales */}
       {apiError && (
-        <Alert color="danger" className="mb-4">
+        <Alert className="mb-4" color="danger">
           {apiError}
         </Alert>
       )}
@@ -183,7 +190,10 @@ export default function ProjectsPage() {
       {/* Listado de proyectos */}
       <div className="grid gap-6">
         {projects.map((project) => (
-          <Card key={project._id} className="flex items-center justify-between px-6 py-4">
+          <Card
+            key={project._id}
+            className="flex items-center justify-between px-6 py-4"
+          >
             <div>
               <div className="font-medium">{project.title}</div>
               <div className="text-xs text-default-400">
@@ -200,19 +210,19 @@ export default function ProjectsPage() {
                 Ver
               </Button>
               <Button
-                size="sm"
                 color="secondary"
+                size="sm"
                 startContent={<Pencil />}
                 onClick={() => openEdit(project)}
               >
                 Editar
               </Button>
               <Button
-                size="sm"
                 color="danger"
-                variant="light"
-                startContent={<Trash />}
                 disabled={deleting === project._id}
+                size="sm"
+                startContent={<Trash />}
+                variant="light"
                 onClick={() => handleDelete(project._id)}
               >
                 {deleting === project._id ? "Borrando..." : "Borrar"}
@@ -228,12 +238,12 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
             {error && <Alert color="danger">{error}</Alert>}
-              <Input
-                label="Nombre del proyecto"
-                value={newName}
-                onChange={e => setNewName(e.target.value)}
-                ref={createInputRef}
-              />
+            <Input
+              ref={createInputRef}
+              label="Nombre del proyecto"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+            />
             <div className="flex gap-2">
               <Button onClick={handleCreate}>Crear</Button>
               <Button
@@ -260,20 +270,20 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Editar proyecto</h3>
             {editError && <Alert color="danger">{editError}</Alert>}
-              <Input
-                label="Título del proyecto"
-                value={editTitle}
-                onChange={e => setEditTitle(e.target.value)}
-                ref={editInputRef}
-              />
+            <Input
+              ref={editInputRef}
+              label="Título del proyecto"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+            />
             <div className="flex gap-2">
-              <Button onClick={handleEdit} isLoading={updating}>
+              <Button isLoading={updating} onClick={handleEdit}>
                 Guardar
               </Button>
               <Button
+                disabled={updating}
                 variant="ghost"
                 onClick={() => setEditing(null)}
-                disabled={updating}
               >
                 Cancelar
               </Button>
@@ -285,14 +295,14 @@ export default function ProjectsPage() {
       {/* Aviso de límite para plan FREE */}
       {projects.length >= FREE_PROJECT_LIMIT && (
         <div className="mt-8 text-center">
-          <Alert color="warning" className="inline-block">
+          <Alert className="inline-block" color="warning">
             Has alcanzado el máximo de proyectos en el plan Free.
             <Button
-              size="sm"
+              className="ml-2"
               color="warning"
+              size="sm"
               variant="light"
               onClick={() => router.push("/pricing")}
-              className="ml-2"
             >
               Mejorar plan
             </Button>
