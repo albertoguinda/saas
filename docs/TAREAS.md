@@ -47,12 +47,12 @@ Configurar instancia de Stripe (lib/stripe.ts) y STRIPE_SECRET_KEY
 
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
-Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
+[x] Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
 Persistencia real de perfil y proyectos en MongoDB (API REST)
 
 Validación avanzada de formularios (login, registro, perfil) en frontend y backend
 
-Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
+[x] Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
 
 Avatar real (upload y persistencia)
 
