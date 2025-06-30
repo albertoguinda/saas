@@ -39,13 +39,28 @@ TAREAS.md
  API /api/sites (GET/POST: CRUD de sitios generados)
 
  API /api/me (GET: sesión extendida, PATCH: edición de perfil)
+ Paquetes de tipos (@types/node, @types/react...) instalados y verificados
+
+ Archivo .env.example y .gitignore actualizados
+
+ Eliminada ruta API duplicada que rompía dev
+
+ Middleware withAuthPlan corregido (path y case)
+
+ Actualizados tipos de plan en NextAuth
+
+ Script seed revisado (importes sin .js)
+
+ Guía de despliegue rápido añadida
+
+ Instalados paquetes @eslint/compat, @eslint/js y @eslint/eslintrc
+
 
 
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
- Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
+ Instalar cross-env
  Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
- Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
  Persistencia real de perfil y proyectos en MongoDB (API REST)
 
  Validación avanzada de formularios (login, registro, perfil) en frontend y backend
