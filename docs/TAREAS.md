@@ -34,17 +34,19 @@ TAREAS.md
 
  Feedback visual: alertas y mensajes en login/registro/perfil
 
+ Modelo de sitio (site.ts) — estructura básica y relación con usuario
+
+ API /api/sites (GET/POST: CRUD de sitios generados)
+
+ API /api/me (GET: sesión extendida, PATCH: edición de perfil)
+
+
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
  Persistencia real de perfil y proyectos en MongoDB (API REST)
 
  Validación avanzada de formularios (login, registro, perfil) en frontend y backend
 
- Modelo de sitio (site.ts) — estructura básica y relación con usuario
-
- API /api/sites (GET/POST: CRUD de sitios generados)
-
- API /api/me (GET: sesión extendida, PATCH: edición de perfil)
 
  Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
 
