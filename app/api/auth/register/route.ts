@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
-import bcrypt from "bcryptjs";
 
 // POST /api/auth/register
 export async function POST(request: NextRequest) {
@@ -19,11 +18,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "El email ya está registrado" }, { status: 409 });
     }
 
-    // Hashea la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Crea y guarda el usuario
-    const user = new User({ email, password: hashedPassword, name, plan: "FREE" });
+    // Crea y guarda el usuario (hash por middleware)
+    const user = new User({ email, password, name, plan: "free" });
     await user.save();
 
     return NextResponse.json({ ok: true });

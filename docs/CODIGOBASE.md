@@ -107,7 +107,7 @@ Validación backend (añadir Zod opcional para robustez)
 
 📡 API y rutas core
 Ruta	Método	Protección	Descripción
-/api/auth/register	POST	Pública	Registro manual con bcrypt
+/api/auth/register      POST    Pública Registro manual (hash pre-save)
 /api/auth/login	POST	Pública	Login credentials
 /api/me	GET	🔐	Info del usuario logueado
 /api/me/update	PATCH	🔐	Actualizar nombre o pass
