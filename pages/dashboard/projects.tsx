@@ -6,14 +6,12 @@ import { Badge } from "@heroui/badge";
 import { Input } from "@heroui/input";
 import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 // Límite de proyectos para el plan FREE
 const FREE_PROJECT_LIMIT = 1;
 
 export default function ProjectsPage() {
-  const { data: session } = useSession();
   const router = useRouter();
 
   // Estados principales del componente
