@@ -8,8 +8,8 @@ Desarrollar un SaaS de generación de sitios web con escalabilidad real, onboard
  TailwindCSS + HeroUI instalados (UI moderna y mantenible)
 
  Entorno de desarrollo con ESLint, Prettier y TypeScript estricto
- Instalar @eslint/compat, @eslint/js y @eslint/eslintrc
- Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
+ Paquetes @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env instalados
+ Script dev usa cross-env NODE_OPTIONS=--trace-warnings
  Revisar paquetes de tipos (@types/node, @types/react, etc.)
 
 2️⃣ Fase 2 — Autenticación & DB
