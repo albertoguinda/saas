@@ -7,22 +7,30 @@ Crear un servicio escalable que permita generar sitios web de forma sencilla y
 monetizar la plataforma a través de planes FREE, PRO y PREMIUM.
 
 📦 Instalación
+
 1. Instala dependencias
+
 ```bash
 npm install
 ```
+
 2. Configura el entorno
-Copia `.env.example` a `.env.local` y rellena tus claves.
+   Copia `.env.example` a `.env.local` y rellena tus claves.
+   Para futuras pruebas de pago incluye `STRIPE_SECRET_KEY`.
 3. Ejecuta el seed para crear el usuario demo
+
 ```bash
 npm run seed
 ```
+
 4. Lanza en local
+
 ```bash
 npm run dev
 ```
 
 ▶️ Uso (plan FREE)
+
 - Regístrate e inicia sesión para acceder al dashboard.
 - Crea tu primer proyecto (limitado a uno en el plan FREE).
 - Personaliza tu perfil y prueba el generador de sitios.
@@ -31,6 +39,7 @@ npm run dev
 📅 Roadmap
 🚧 Tareas Pendientes por Fase
 🔓 FREE – Core público y experiencia base
+
 - Persistencia real de perfil y proyectos en MongoDB (API REST)
 - Validación avanzada de formularios (login, registro, perfil) en frontend y backend
 - Modelo de sitio (site.ts) — estructura básica y relación con usuario
@@ -48,6 +57,7 @@ npm run dev
 - Tracking básico: uso de wizard, nº de registros, nº de proyectos por usuario
 
 💼 PRO – Funcionalidades avanzadas
+
 - Guardado real de sitios generados (estructura completa, branding, assets)
 - Branding extendido: selector de color, logo, fuentes, favicon
 - Emails transaccionales: integración Resend (registro, cambios, notificaciones)
@@ -57,6 +67,7 @@ npm run dev
 - Exportación de sitios como HTML estático
 
 🚀 PREMIUM – IA, multimedia, retención y soporte
+
 - Integrar DataFast IA (API: generación de contenido, tono/estilo editable)
 - Caching de sitios generados (Upstash Redis, TTL)
 - Soporte multimedia: upload vídeo a MUX, reproductor embebido, selector en wizard
@@ -68,6 +79,7 @@ npm run dev
 - Banners visuales de upsell (desde dashboard)
 
 📊 ADMIN & Retención
+
 - Panel básico de métricas de uso y actividad (admin only)
 - Tracking avanzado: eventos wizard, upgrades, feedback usuarios
 - Feedback capture tras creación de sitios o upgrade
