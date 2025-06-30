@@ -1,12 +1,19 @@
 // lib/auth.ts
+import type {
+  AuthOptions as NextAuthOptions,
+  Session,
+  User as NextAuthUser,
+} from "next-auth";
+import type { JWT } from "next-auth/jwt";
+
 import CredentialsProvider from "next-auth/providers/credentials";
-import { AuthOptions } from "next-auth";
-import dbConnect from "./dbConnect";
-import User from "./models/user";
 import bcrypt from "bcryptjs";
 
+import dbConnect from "./dbConnect";
+import User from "./models/user";
+
 // Opciones de NextAuth para credenciales (ajusta según tus necesidades)
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -17,15 +24,21 @@ export const authOptions: AuthOptions = {
       async authorize(credentials) {
         await dbConnect();
         const user = await User.findOne({ email: credentials?.email });
+
         if (!user) return null;
-        const isValid = await bcrypt.compare(credentials!.password, user.password);
+        const isValid = await bcrypt.compare(
+          credentials!.password,
+          user.password,
+        );
+
         if (!isValid) return null;
+
         return {
           id: user._id,
           name: user.name,
           email: user.email,
           avatar: user.avatar || "",
-          plan: user.plan || "free"
+          plan: user.plan || "free",
         };
       },
     }),
@@ -34,7 +47,7 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT; user?: NextAuthUser }) {
       // Añade datos custom al token si logea
       if (user) {
         token.id = user.id;
@@ -43,15 +56,17 @@ export const authOptions: AuthOptions = {
         token.avatar = user.avatar;
         token.plan = user.plan;
       }
+
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       // Añade datos custom a la session para el frontend
       if (token) {
-        session.user.id = token.id as string;
-        session.user.avatar = token.avatar as string;
-        session.user.plan = token.plan as string;
+        session.user.id = token.id ?? "";
+        session.user.avatar = token.avatar;
+        session.user.plan = token.plan as "free" | "pro" | "premium";
       }
+
       return session;
     },
   },
