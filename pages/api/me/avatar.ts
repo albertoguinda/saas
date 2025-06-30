@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json({ ok: true, avatar: user.avatar });
   } catch (err) {
+    console.error(err);
     return res.status(500).json({ error: "Error actualizando avatar" });
   }
 }

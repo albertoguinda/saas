@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       await site.save();
       return res.status(200).json({ site });
     } catch (err) {
-      // Opcional: console.error(err)
+      console.error(err);
       return res.status(500).json({ error: "Error actualizando el proyecto" });
     }
   }
@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       await site.deleteOne();
       return res.status(200).json({ ok: true, message: "Proyecto eliminado" });
     } catch (err) {
-      // Opcional: console.error(err)
+      console.error(err);
       return res.status(500).json({ error: "Error al borrar el proyecto" });
     }
   }
