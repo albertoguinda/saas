@@ -56,6 +56,9 @@ Editar
 npm run dev
 Abre http://localhost:3000
 
+🌐 Redes corporativas
+Algunas empresas bloquean dominios como github.com o fonts.gstatic.com. Si no puedes instalar dependencias o cargar las fuentes, usa un proxy/VPN o instala las fuentes de forma local.
+
 📁 Estructura principal
 bash
 Copiar
