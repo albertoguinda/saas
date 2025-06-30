@@ -1,5 +1,5 @@
 // pages/dashboard/profile.tsx
-import { useSession, signOut, update } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
@@ -14,7 +14,7 @@ const AVATAR_EMOJIS = [
 ];
 
 export default function ProfilePage() {
-  const { data: session, update: updateSession } = useSession();
+  const { data: session, update } = useSession();
 
   // Inicializa el form con datos de la sesión
   const [form, setForm] = useState({
@@ -69,7 +69,7 @@ export default function ProfilePage() {
       } else {
         setMsg("¡Perfil actualizado correctamente!");
         // Refresca sesión para mostrar los cambios
-        updateSession?.();
+        update?.();
         setForm((prev) => ({ ...prev, password: "", password2: "" }));
       }
     } catch {
@@ -148,6 +148,6 @@ export default function ProfilePage() {
 /*
   - Permite cambiar nombre, avatar emoji y contraseña del usuario autenticado.
   - Valida contraseñas.
-  - Actualiza la sesión tras guardar (updateSession).
+  - Actualiza la sesión tras guardar (useSession().update).
   - Diseño HeroUI y UX amigable.
 */
