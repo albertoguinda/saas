@@ -74,6 +74,9 @@ Gestión segura de .env y secrets.
 TypeScript
 Tipado estricto y seguridad en todo el código.
 
+ESLint
+Linter con Flat Config (@eslint/js, @eslint/compat y @eslint/eslintrc).
+
 🟨 CONVENCIÓN Y ESTRUCTURA
 Componentes HeroUI se extienden/usan desde /components/ o /components/ui/.
 
