@@ -9,7 +9,8 @@ async function main() {
   await dbConnect();
 
   const email = "alberto@gmail.com";
-  const password = "123456"; // mínimo 6 caracteres
+  // Utiliza una contraseña segura, por ejemplo desde una variable de entorno
+  const password = process.env.SEED_USER_PASSWORD || "example123"; // mínimo 6 caracteres
   const name = "alberto";
   const plan = "pro";
 

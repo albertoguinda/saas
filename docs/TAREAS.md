@@ -12,7 +12,7 @@ TAREAS.md
 
  API de registro (/api/auth/register)
 
- Formularios de login y registro (HeroUI, feedback visual, placeholders de prueba)
+ Formularios de login y registro (HeroUI, feedback visual, placeholders genéricos)
 
  Login funcional con credentials
 
