@@ -1,114 +1,77 @@
 🧱 SaaS Web Builder – Next.js & HeroUI
 Base sólida para un SaaS moderno de generación de sitios web y portfolios.
-Stack: Next.js 15, HeroUI, MongoDB, Auth.js, Stripe, Tailwind, TypeScript.
+Toda la pila está escrita en TypeScript.
 
-🚀 Stack y Tecnologías
-🧩 Frontend / UI
-Next.js 15 · App Router (preparado para migrar desde Pages)
+🚦 Visión
+Crear un servicio escalable que permita generar sitios web de forma sencilla y
+monetizar la plataforma a través de planes FREE, PRO y PREMIUM.
 
-React 18
-
-HeroUI 2.x · Componentes premium accesibles y personalizables
-
-Tailwind CSS · Estilo rápido y eficiente
-
-Framer Motion · Animaciones fluidas
-
-next-themes · Modo oscuro/claro
-
-TypeScript · Tipado estático, zero sorpresas
-
-🔐 Backend / Servicios
-Auth.js (NextAuth) · Autenticación universal (Credentials, Google…)
-
-MongoDB + Mongoose · Base de datos cloud escalable
-
-Stripe · Suscripciones, pagos y upgrade de planes
-
-Upstash Redis · Cache global serverless (listo para escalar)
-
-Resend · Emails transaccionales (bienvenida, avisos, etc.)
-
-🌐 Integraciones Futuras
-DataFast (IA) · Generación automática de contenido
-
-MUX · Vídeo hosting
-
-CurrencyAPI · Precios internacionales
-
-Namecheap API · Registro de dominios
-
-Capacitor · App móvil (exploratorio)
-
-⚙️ Puesta en marcha
+📦 Instalación
 1. Instala dependencias
-bash
-Copiar
-Editar
+```bash
 npm install
-2. Crea tu archivo de entorno
-Copia .env.example a .env.local y rellena tus claves de MongoDB, Auth, Stripe...
-
+```
+2. Configura el entorno
+Copia `.env.example` a `.env.local` y rellena tus claves.
 3. Lanza en local
-bash
-Copiar
-Editar
+```bash
 npm run dev
-Abre http://localhost:3000
+```
 
-📁 Estructura principal
-bash
-Copiar
-Editar
-/app         → Sistema de rutas principal (App/Pages Router)
-/pages       → Páginas y rutas legacy (en migración)
-/components  → UI reutilizable (HeroUI y custom)
-/layouts     → Layouts públicos y privados
-/lib         → Conexión DB, Auth, lógica de negocio
-/models      → Modelos de datos Mongoose
-/styles      → Tailwind global y custom
-/scripts     → Seeds, utilidades CLI
-/docs        → Documentación interna (roadmap, stack, tareas)
-📚 Documentación y Productividad
-Stack Tecnológico: /docs/STACK.md
+▶️ Uso (plan FREE)
+- Regístrate e inicia sesión para acceder al dashboard.
+- Crea tu primer proyecto (limitado a uno en el plan FREE).
+- Personaliza tu perfil y prueba el generador de sitios.
+- Si necesitas más funcionalidades puedes pasar a un plan superior.
 
-Roadmap y lanzamientos: /docs/ROADMAP.md
+📅 Roadmap
+🚧 Tareas Pendientes por Fase
+🔓 FREE – Core público y experiencia base
+- Persistencia real de perfil y proyectos en MongoDB (API REST)
+- Validación avanzada de formularios (login, registro, perfil) en frontend y backend
+- Modelo de sitio (site.ts) — estructura básica y relación con usuario
+- API /api/sites (GET/POST: CRUD de sitios generados)
+- API /api/me (GET: sesión extendida, PATCH: edición de perfil)
+- Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
+- Avatar real (upload y persistencia)
+- Edición de perfil persistente: nombre, contraseña, avatar
+- Render público de sitio generado (/[slug], modo demo)
+- Limitación y aviso real al crear más de 1 sitio en FREE
+- Página de error amigable para rutas privadas sin sesión
+- Wizard/Generador de sitios (mínimo viable, 1 sitio por usuario FREE)
+- Badge visual de plan en dashboard y navbar
+- Avisos visuales de upgrade por límite de uso
+- Tracking básico: uso de wizard, nº de registros, nº de proyectos por usuario
 
-Funcionalidades de cada plan: /docs/PLAN_FREE.md, /docs/PLAN_PRO.md, /docs/PLAN_PREMIUM.md
+💼 PRO – Funcionalidades avanzadas
+- Guardado real de sitios generados (estructura completa, branding, assets)
+- Branding extendido: selector de color, logo, fuentes, favicon
+- Emails transaccionales: integración Resend (registro, cambios, notificaciones)
+- Confirmación de cuenta por email (opcional)
+- Panel de analítica simple: nº visitas, actividad, fetch via Upstash opcional
+- Conexión de dominio propio (Namecheap: docs/manual + campo en modelo)
+- Exportación de sitios como HTML estático
 
-Tareas y backlog: /docs/TAREAS.md
+🚀 PREMIUM – IA, multimedia, retención y soporte
+- Integrar DataFast IA (API: generación de contenido, tono/estilo editable)
+- Caching de sitios generados (Upstash Redis, TTL)
+- Soporte multimedia: upload vídeo a MUX, reproductor embebido, selector en wizard
+- Control de pagos y upgrades: integración Stripe completa, webhooks, middleware, historial
+- Panel premium de analítica: páginas vistas, retención, logs de actividad
+- Soporte prioritario desde dashboard
+- Generación automática de textos legales (política, cookies, T&C, editable)
+- Backups automáticos por sitio, restauración desde dashboard
+- Banners visuales de upsell (desde dashboard)
 
-Agentes/automatización: /docs/AGENTS.md
+📊 ADMIN & Retención
+- Panel básico de métricas de uso y actividad (admin only)
+- Tracking avanzado: eventos wizard, upgrades, feedback usuarios
+- Feedback capture tras creación de sitios o upgrade
+- Alertas visuales en puntos clave del funnel
 
-🧭 Roadmap inmediato (MVP/Monetizar rápido)
-Login, registro, dashboard y perfil funcional
-
-Mock proyectos (limitado a 1 por usuario FREE)
-
-Upgrade y pagos: Stripe listo en dashboard
-
-Página pública de sitio generado (demo)
-
-Emails automáticos básicos
-
-Tracking mínimo y feedback de usuario
-
-¡Nada más antes de lanzar!
-Todo lo demás es secundario hasta tener usuarios y feedback real.
-
-🤖 Onboarding para devs
-Lee /docs/PLAN_FREE.md y /docs/TAREAS.md
-
-Ejecuta el flujo de login > dashboard > proyectos > perfil
-
-Las rutas API están en /pages/api (irán migrando a /app/api)
-
-Prioriza entregar valor y evitar over-engineering
-
-Refactoriza sólo lo necesario para lanzar
+🤝 Contribuir / Feedback
+Consulta `/docs/CONTRIBUTING.md` para conocer el flujo de trabajo y abre un issue
+si detectas problemas o quieres proponer mejoras.
 
 🛡️ Licencia
 MIT
-
-¿Listo para contribuir? ¡Sigue el roadmap, prioriza lo que da valor y lanza ya!
-Cualquier duda de arquitectura, mejor preguntar antes de migrar grandes partes.
