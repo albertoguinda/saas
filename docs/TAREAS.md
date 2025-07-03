@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **03-Jul-2025**_
+_Actualizado: **04-Jul-2025**_
 
 ---
 
@@ -57,6 +57,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
+- [x] Rate-limit en APIs sensibles con Upstash Redis — 04-Jul-2025
 
 ---
 
