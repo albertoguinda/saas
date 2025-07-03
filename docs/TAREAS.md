@@ -35,6 +35,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 - [x] Manejo de errores en wizard (validación Zod + feedback)
 - [x] Tracking evento `wizard_completed`
+- [x] Tracking evento `upgrade_click`
 - [x] API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
 - [x] Badge visual del plan en dashboard y navbar
 - [x] Avisos visuales de upgrade por límite de uso
