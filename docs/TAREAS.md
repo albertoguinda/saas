@@ -23,6 +23,7 @@ _Actualizado: **04-Jul-2025**_
 - [x] APIs
   - [x] `/api/sites` (GET/POST) – CRUD sitios
   - [x] `/api/me` (GET/PATCH) – perfil
+  - [x] `/api/me/avatar` (PATCH) – actualizar avatar
 - [x] Paquetes lint (`@eslint/*`) + `cross-env` + script `dev`
 - [x] Seeds & reset via **tsx**
 - [x] Instancia Stripe (`lib/stripe.ts`)

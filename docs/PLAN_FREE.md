@@ -21,6 +21,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Vista de proyectos**: crear / borrar proyecto, **límite 1 en FREE**, avisos + CTA upgrade
 - **Wizard de sitios** (3 pasos — title, slug, template) con HeroUI, validación básica y POST `/api/projects/[id]/generate`
 - **Navbar dinámica** con avatar al autenticar
+- **API** `PATCH /api/me/avatar` para actualizar avatar
 - **Layouts** claros: público vs privado
 - Mensajes de feedback (login, registro, perfil)
 - Flujo mínimo: login → dashboard → perfil / proyectos / bienvenida
