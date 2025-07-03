@@ -60,6 +60,12 @@ _Actualizado: **03-Jul-2025**_
 
 ### 🔓 FREE – Core público y experiencia
 
+- [ ] Subida y gestión de avatar real
+- [ ] Mejora de accesibilidad (focus, labels, roles)
+- [ ] Spinner y estados de red en wizard
+- [ ] Panel mínimo de métricas (registros, proyectos, actividad)
+- [ ] Separar vistas en `/app/` (migración App Router)
+
 ---
 
 ### 💼 PRO – Funcionalidades avanzadas
