@@ -93,6 +93,8 @@ _Actualizado: **03-Jul-2025**_
 - Generador de textos legales (cookies, privacy, T&C)
 - Backups automáticos + restore 1 clic
 - Banners visuales de upsell (dashboard)
+- Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
+  Shadcn UI, Flowbite y DaisyUI
 
 ---
 

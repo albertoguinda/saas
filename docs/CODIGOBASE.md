@@ -96,6 +96,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 - Layouts (`default`, `auth`, `/app/layout.tsx`)
 - Responsive, accesible (a11y ready)
 - ThemeProvider (`next-themes`)
+- Inspiración visual de HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 
 ---
 
