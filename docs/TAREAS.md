@@ -49,6 +49,8 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
 - ✅ Creación de `lib/utils.ts` (modularizar helpers y hooks) — 03-Jul-2025
 - ✅ Setup inicial de pruebas con Jest + Testing Library — 03-Jul-2025
+- ✅ Workflow CI con GitHub Actions — 03-Jul-2025
+- ✅ Validación avanzada de formularios (login, registro, perfil) con React Hook Form + Zod — 03-Jul-2025
 
 ---
 
@@ -56,12 +58,8 @@ _Actualizado: **03-Jul-2025**_
 
 ### 🔓 FREE – Core público y experiencia
 
-- ✅ Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
-- ✅ Instalación de React Hook Form y Zod para validación de formularios
-- ✅ Render dinámico en `/[slug]`
-- ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
-- ✅ Badge visual del plan activo (FREE) en dashboard y navbar
-- ✅ Avisos visuales de upgrade por límite de uso o flujo crítico
+- Guardar configuración del sitio en MongoDB (estructura del wizard)
+- Demo pública navegable
 ---
 
 ### 💼 PRO – Funcionalidades avanzadas
