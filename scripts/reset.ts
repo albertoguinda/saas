@@ -1,13 +1,18 @@
-// scripts/reset.js
-import dbConnect from '../lib/dbConnect.js'
-import mongoose from 'mongoose'
+// scripts/reset.ts - uses dbConnect.ts
+import "dotenv/config";
+import mongoose from "mongoose";
+import dbConnect from "../lib/dbConnect";
 
-;(async () => {
-  await dbConnect()
-  await mongoose.connection.db.dropDatabase()
-  console.log('✅ Base de datos borrada')
-  process.exit(0)
-})().catch(err => {
-  console.error(err)
-  process.exit(1)
-})
+async function main() {
+  await dbConnect();
+
+  await mongoose.connection.db.dropDatabase();
+
+  console.log("✅ Base de datos borrada");
+  mongoose.connection.close();
+}
+
+main().catch((err) => {
+  console.error(err);
+  mongoose.connection.close();
+});
