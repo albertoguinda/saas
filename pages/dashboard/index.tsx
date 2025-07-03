@@ -6,14 +6,21 @@ import { useSession } from "next-auth/react";
 import PlanBadge from "@/components/PlanBadge";
 import { useRouter } from "next/router";
 import { LayoutDashboard, User, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function DashboardHome() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  // Mock info, luego conectar a la API real
-  const projectsCount = 1; // simulando límite FREE
+  const [projectsCount, setProjectsCount] = useState(0);
   const projectLimit = 1;
+
+  useEffect(() => {
+    fetch("/api/sites")
+      .then((res) => res.json())
+      .then((data) => setProjectsCount(data.sites?.length ?? 0))
+      .catch(() => setProjectsCount(0));
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto py-12">

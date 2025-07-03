@@ -10,7 +10,7 @@ import { Card } from '@heroui/card'
 import { Input } from '@heroui/input'
 import { Button } from '@heroui/button'
 import { Alert, FormAlert } from '@heroui/alert'
-import { toast } from 'sonner'
+import { toast } from '@heroui/toast'
 
 const schema = z.object({
   title: z.string().min(3, 'Mínimo 3 caracteres'),
