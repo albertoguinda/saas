@@ -48,6 +48,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Verificación backend de slug único en `/api/sites` — 03-Jul-2025
 - ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
 - ✅ Creación de `lib/utils.ts` (modularizar helpers y hooks) — 03-Jul-2025
+- ✅ Setup inicial de pruebas con Jest + Testing Library — 03-Jul-2025
 
 ---
 

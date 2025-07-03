@@ -33,6 +33,12 @@ npm run refresh-db                    # limpia y seed (BBDD) en un solo paso
 npm run dev
 TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
+### 🧪 Ejecutar tests
+
+```bash
+npm test
+```
+
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
 (Vercel, Railway, variables de entorno y consideraciones de red).
