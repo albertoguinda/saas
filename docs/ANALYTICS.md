@@ -51,3 +51,24 @@ Todos los campos salvo `event` son opcionales.
 - Los datos se almacenan sin información personal identificable.
 - Se respetan las configuraciones de cookies y consentimiento.
 - Las métricas se usan solo con fines de mejora interna y nunca se comparten con terceros.
+
+## 🧠 Del dato a la decisión
+
+Las métricas capturadas sirven para extraer **insights** de distinto nivel:
+
+### Descriptivo
+
+- **Resúmenes** de visitas, clics y pasos completados permiten detectar patrones generales de uso.
+- **Funnels** y **heatmaps** muestran dónde se estancan los usuarios y qué zonas reciben más atención.
+
+### Predictivo
+
+- Al analizar secuencias de eventos y tiempos de sesión es posible **predecir** intentos de abandono o probabilidad de upgrade.
+- Estos modelos se alimentan de las métricas agregadas almacenadas en **Upstash Redis** para consultas rápidas.
+
+### Prescriptivo
+
+- A partir de las predicciones se pueden **recomendar acciones**: mostrar un CTA específico, ajustar el precio o simplificar el wizard.
+- Decisiones como priorizar mejoras de UX o lanzar una campaña de emails se basan en estos datos.
+
+En conjunto, la plataforma evoluciona de recopilar eventos a tomar decisiones informadas que mejoran la retención y monetización.
