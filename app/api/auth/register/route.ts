@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
+import { withValidationRoute } from "@/lib/middlewares/withValidation";
+import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 
 // POST /api/auth/register
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest & { body: RegisterInput }) {
   try {
-    const { email, password, name } = await request.json();
-    if (!email || !password || !name) {
-      return NextResponse.json({ error: "Faltan datos" }, { status: 400 });
-    }
+    const { email, password, name } = request.body;
 
     await dbConnect();
 
@@ -28,3 +27,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Error de servidor" }, { status: 500 });
   }
 }
+
+export const POST = withValidationRoute(handler, registerSchema);

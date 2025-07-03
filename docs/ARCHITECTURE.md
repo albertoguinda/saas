@@ -112,9 +112,9 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 
 - **REST / Route Handlers**:  
   `/api/auth`, `/api/me`, `/api/sites`, `/api/stripe`
-- **Middlewares**
-  - `withAuthPlan` (checks por plan)
-  - `withValidation` (Zod)
+  - **Middlewares**
+    - `withAuthPlan` (checks por plan)
+    - `withValidation` (Zod en todas las APIs)
 
 ---
 
