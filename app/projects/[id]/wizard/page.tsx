@@ -9,6 +9,7 @@ import * as z from "zod";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
+import { Spinner } from "@heroui/spinner";
 import { Alert, FormAlert } from "@heroui/alert";
 import { toast } from "@heroui/toast";
 import { track } from "@/lib/track";
@@ -46,10 +47,12 @@ export default function WizardPage({ params }: WizardPageProps) {
     },
   });
   const [loading, setLoading] = useState(false);
+  const [checkingSlug, setCheckingSlug] = useState(false);
 
   const onSubmit = async (data: FormData) => {
     setApiError("");
     // Verifica unicidad del slug
+    setCheckingSlug(true);
     try {
       const check = await fetch(`/api/sites?slug=${data.slug}`);
       const checkJson = await check.json();
@@ -63,6 +66,8 @@ export default function WizardPage({ params }: WizardPageProps) {
         message: "No se pudo verificar el slug",
       });
       return;
+    } finally {
+      setCheckingSlug(false);
     }
 
     setLoading(true);
@@ -93,7 +98,12 @@ export default function WizardPage({ params }: WizardPageProps) {
           {errors.title && (
             <FormAlert color="danger">{errors.title.message}</FormAlert>
           )}
-          <Input label="Slug" {...register("slug")} />
+          <Input
+            label="Slug"
+            {...register("slug")}
+            isDisabled={checkingSlug}
+            endContent={checkingSlug ? <Spinner size="sm" /> : null}
+          />
           {errors.slug && (
             <FormAlert color="danger">{errors.slug.message}</FormAlert>
           )}

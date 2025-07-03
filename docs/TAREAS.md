@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025**_
+_Actualizado: **05-Jul-2025**_
 
 ---
 
@@ -68,7 +68,7 @@ _Actualizado: **04-Jul-2025**_
 
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
-- [ ] Spinner y estados de red en wizard
+- [x] Spinner y estados de red en wizard
 - [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
