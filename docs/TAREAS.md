@@ -1,118 +1,87 @@
-TAREAS.md
-✅ Tareas Completadas
-Setup del proyecto (Next.js 15, TypeScript, estructura /pages)
+# TAREAS.md
 
-TailwindCSS + HeroUI instalados y configurados
+_Actualizado: **03-Jul-2025**_
 
-ESLint, Prettier y convenciones de código
+---
 
-Auth.js (NextAuth) + MongoDB Atlas (usuarios y sesiones)
+## ✅ Tareas Completadas
 
-Modelo de usuario (/lib/models/user.ts) con bcrypt
+- Setup inicial (Next.js 15 + TS + estructura `/pages`)
+- TailwindCSS + HeroUI configurados
+- ESLint, Prettier y convenciones
+- Auth.js (NextAuth) + MongoDB Atlas
+- Modelo **User** (`/lib/models/user.ts`) con bcrypt
+- API **register** (`/api/auth/register`)
+- Formularios login/registro (HeroUI, feedback)
+- Login funcional + redirección SSR/client
+- Layouts: público (`default`) y auth (`auth`)
+- Dashboard básico, navbar dinámica (avatar, logout, perfil)
+- Vistas FREE: profile, projects, welcome, settings (mock)
+- 🌗 Tema claro/oscuro (next-themes)
+- **Limitación real**: 1 proyecto FREE + aviso upgrade
+- Modelo **Site** (`site.ts`) relacionado con usuario
+- APIs
+  - `/api/sites` (GET/POST) – CRUD sitios
+  - `/api/me` (GET/PATCH) – perfil
+- Paquetes lint (`@eslint/*`) + `cross-env` + script `dev`
+- Seeds & reset via **tsx**
+- Instancia Stripe (`lib/stripe.ts`)
+- **withAuthPlan** middleware (protección por plan)
+- Verificación de `@types/*`
+- Persistencia real de perfil y proyectos (MongoDB)
+- Edición perfil persistente (nombre, contraseña)
+- Render público de sitio en `/[slug]`
+- Aviso + bloqueo backend si >1 sitio FREE
+- **Wizard/Generador de sitios** mínimo viable (3 pasos, 1 sitio FREE) **— 03-Jul-2025**
 
-API de registro (/api/auth/register)
+---
 
-Formularios de login y registro (HeroUI, feedback visual, placeholders genéricos)
+## 🚧 Tareas Pendientes por Fase
 
-Login funcional con credentials
+### 🔓 FREE – Core público y experiencia
 
-Redirección automática por sesión (SSR + client)
+- Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
+- **Preview pública** del sitio generado: `/projects/[id]/preview`
+- Manejo de errores / validación granular en wizard (spinner, estados)
+- Página de error amigable para rutas privadas sin sesión
+- Badge visual del plan activo (FREE) en dashboard y navbar
+- Avisos visuales de upgrade por límite de uso o flujo crítico
+- Tracking básico: eventos `wizard_completed`, nº registros, nº proyectos por usuario
 
-Layouts: público (default.tsx) y auth (auth.tsx)
+---
 
-Dashboard básico (overview, saludo, navegación)
+### 💼 PRO – Funcionalidades avanzadas
 
-Navbar dinámica: avatar, nombre/email, logout, acceso a perfil
+- Guardar estructura completa del sitio (branding, assets) en MongoDB
+- Branding extendido (selector de color, fuentes, logo, favicon)
+- Emails transaccionales (Resend) + confirmación de cuenta
+- Panel de analítica simple (visitas, actividad – Upstash opc.)
+- Conexión dominio propio (Namecheap / Cloudflare)
+- Exportación de sitios como HTML estático
 
-Vistas FREE: profile, projects, welcome, settings (mock/local)
+---
 
-Limitación visual: 1 proyecto en FREE, avisos y CTA de upgrade
+### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
-Soporte completo de temas claro/oscuro
+- Integrar **DataFast** (IA) para generación de contenido
+- Cache de sitios (Upstash Redis, TTL dinámico)
+- Soporte vídeo (upload a MUX, player embebido, selector en wizard)
+- Integración Stripe completa (producto PREMIUM, webhooks, historial)
+- Panel premium de analítica (páginas vistas, retención, logs)
+- Soporte prioritario (chat/email)
+- Generador de textos legales (cookies, privacy, T&C)
+- Backups automáticos + restore 1 clic
+- Banners visuales de upsell (dashboard)
 
-Mock de creación/edición de proyectos y perfil (faltan APIs reales)
+---
 
-Feedback visual: alertas y mensajes en login/registro/perfil
+### 📊 ADMIN & Retención
 
-Modelo de sitio (site.ts) — estructura básica y relación con usuario
+- Panel admin de métricas (registros, actividad)
+- Tracking avanzado: wizard, upgrades, feedback usuarios
+- Captura de feedback post-creación o upgrade
+- Alertas visuales en puntos clave del funnel
 
-API /api/sites (GET/POST: CRUD de sitios generados)
+---
 
-API /api/me (GET: sesión extendida, PATCH: edición de perfil)
-
-Instalar @eslint/compat, @eslint/js, @eslint/eslintrc y cross-env
-Reemplazar script dev con cross-env NODE_OPTIONS=--trace-warnings
-Configurar seed con tsx
-Configurar instancia de Stripe (lib/stripe.ts) y STRIPE_SECRET_KEY
-
-🚧 Tareas Pendientes por Fase
-🔓 FREE – Core público y experiencia base
-[x] Verificar paquetes de tipos (@types/node, @types/react, etc.) instalados
-[x] Persistencia real de perfil y proyectos en MongoDB (API REST)
-
-Validación avanzada de formularios (login, registro, perfil) en frontend y backend
-
-[x] Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
-
-Avatar real (upload y persistencia)
-
-[x] Edición de perfil persistente: nombre, contraseña, avatar
-
-[x] Render público de sitio generado (/[slug], modo demo)
-
-[x] Limitación y aviso real al crear más de 1 sitio en FREE
-
-Página de error amigable para rutas privadas sin sesión
-
-Wizard/Generador de sitios (mínimo viable, 1 sitio por usuario FREE)
-
-Badge visual de plan en dashboard y navbar
-
-Avisos visuales de upgrade por límite de uso
-
-Tracking básico: uso de wizard, nº de registros, nº de proyectos por usuario
-
-💼 PRO – Funcionalidades avanzadas
-Guardado real de sitios generados (estructura completa, branding, assets)
-
-Branding extendido: selector de color, logo, fuentes, favicon
-
-Emails transaccionales: integración Resend (registro, cambios, notificaciones)
-
-Confirmación de cuenta por email (opcional)
-
-Panel de analítica simple: nº visitas, actividad, fetch via Upstash opcional
-
-Conexión de dominio propio (Namecheap: docs/manual + campo en modelo)
-
-Exportación de sitios como HTML estático
-
-🚀 PREMIUM – IA, multimedia, retención y soporte
-Integrar DataFast IA (API: generación de contenido, tono/estilo editable)
-
-Caching de sitios generados (Upstash Redis, TTL)
-
-Soporte multimedia: upload vídeo a MUX, reproductor embebido, selector en wizard
-
-Control de pagos y upgrades: integración Stripe completa, webhooks, middleware, historial
-
-Panel premium de analítica: páginas vistas, retención, logs de actividad
-
-Soporte prioritario desde dashboard
-
-Generación automática de textos legales (política, cookies, T&C, editable)
-
-Backups automáticos por sitio, restauración desde dashboard
-
-Banners visuales de upsell (desde dashboard)
-
-📊 ADMIN & Retención
-Panel básico de métricas de uso y actividad (admin only)
-
-Tracking avanzado: eventos wizard, upgrades, feedback usuarios
-
-Feedback capture tras creación de sitios o upgrade
-
-Alertas visuales en puntos clave del funnel
-
-Actualiza siempre este archivo al cerrar una feature, descubrir una nueva necesidad o refactorizar algo relevante. Si una tarea cambia de fase, muévela, no la dupliques. Usa checkboxes y títulos claros.
+> **Recuerda:** Actualiza este archivo al cerrar una feature, añadir una nueva necesidad o mover tareas de fase. No dupliques; mueve y marca con `[x]` según corresponda.

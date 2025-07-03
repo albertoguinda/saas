@@ -1,154 +1,125 @@
 # CONTRIBUTING.md
 
 > 🛠️ **Guía de colaboración, buenas prácticas y convenciones para el SaaS “Web Builder”**  
-> **Actualizado:** Junio 2025
+> **Actualizado:** **Julio 2025**
 
 ---
 
 ## 🚀 Visión del proyecto
 
-Este repositorio tiene como objetivo construir una plataforma SaaS de generación de sitios web, escalable y monetizable, orientada a iteración rápida, código limpio y calidad de producto.
+Construir una plataforma SaaS de generación de sitios web, **escalable y monetizable**, orientada a iteración rápida, código limpio y calidad de producto.
 
 Toda contribución debe alinearse con:
-- **Evolución incremental** (cada feature debe poder desplegarse en producción)
+
+- **Evolución incremental** (cada feature lista para producción)
 - **Escalabilidad y modularidad** (pensado para equipos)
-- **Consistencia visual y técnica** (HeroUI, Tailwind, estructura de carpetas clara)
+- **Consistencia visual y técnica** (HeroUI + Tailwind, estructura de carpetas clara)
 - **Preparado para crecimiento y onboarding fácil**
 
 ---
 
 ## 📁 Estructura de carpetas y módulos
 
-**Lee y respeta `CODIGOBASE.md` y el resto de la documentación de `/docs`.**
+**Lee y respeta `CODIGOBASE.md` y el resto de `/docs`.**
 
-- **Pages Router** (`/pages/`):  
-  Estructura tradicional de Next.js. Cada página equivale a una ruta.  
-  Cuando se migre a **App Router**, se moverán las vistas a `/app/`.
+- **Pages Router** (`/pages/`)  
+  Estructura clásica Next.js. Migración progresiva a **App Router** (`/app/`).
 
-- **Componentes** (`/components/`):  
-  - **`/components/ui/`**: Reexporta y extiende componentes de HeroUI (o crea nuevos)
-  - **`/components/forms/`**: Formularios reutilizables (login, registro, perfil, etc)
-  - **`/components/layout/`**: Navbar, sidebar, footer, toggles, etc.
-  - **Evita componentes ultra-específicos: si sólo vive en una página, déjalo local por ahora.**
+- **Componentes** (`/components/`)
 
-- **Lib** (`/lib/`):  
-  - **`dbConnect.ts`**: Conexión a MongoDB (persistente y reutilizable)
-  - **`models/`**: Modelos mongoose (`user.ts`, `site.ts`, etc)
-  - **`middlewares/`**: Middlewares reutilizables (ej: protección por plan)
-  - **`utils.ts`**: Helpers generales (`cn`, `hashPassword`, etc)
+  - `/components/ui/` → wrappers/extensiones de HeroUI
+  - `/components/forms/` → formularios reutilizables
+  - `/components/layout/` → navbar, sidebar, footer, toggles…
+  - Componentes ultra-específicos: mantenlos locales a la página.
 
-- **Config** (`/config/`):  
-  - Archivos de configuración global (enlaces, fuentes, meta)
+- **Lib** (`/lib/`)
 
-- **Docs** (`/docs/`):  
-  - Documentación interna, roadmap, stack, tareas, agentes
+  - `dbConnect.ts` – conexión Mongo (cache global)
+  - `models/` – modelos Mongoose (`user.ts`, `site.ts`, …)
+  - `middlewares/` – middlewares reutilizables (`withAuthPlan`, …)
+  - `utils.ts` – helpers globales (`cn`, `hashPassword`, …)
+
+- **Config** (`/config/`) – archivos de configuración global
+
+- **Docs** (`/docs/`) – roadmap, tareas, stack, agentes, architecture…
 
 ---
 
 ## 🧠 Convenciones de desarrollo
 
-- **Tipado SIEMPRE** con TypeScript. No se permiten componentes sin tipos.
-- **Usa HeroUI y Tailwind para toda la UI.**  
-  Extiende HeroUI sólo si hace falta. Si usas otro paquete, justifica la decisión en PR.
-- **Variables de entorno:**  
-  Toda variable nueva debe documentarse en `.env.example`.
-- **Evita lógica compleja en componentes:**  
-  Si tienes lógica repetida o que crece mucho, mueve a un helper o custom hook.
-- **Rutas y endpoints:**  
-  - **API**: Usa `/pages/api/` para endpoints REST.
-  - Siempre retorna status HTTP claros y mensajes explícitos.
-
-- **Persistencia:**  
-  - Usa Mongoose para todos los modelos persistentes.
-  - Haz que los modelos sean compatibles con hot-reload (`export default models.User || model<User>()`)
+- **TypeScript obligatorio** (sin códigos sin tipar).
+- **HeroUI v2 + TailwindCSS** para toda la UI. Extiende HeroUI sólo si es estrictamente necesario.
+- **Variables .env** – cualquier variable nueva debe aparecer en `.env.example`.
+- **Componentes ≠ lógica pesada** – extrae a hooks/helpers.
+- **API Routes** – en `/pages/api/` o route handlers `/app/api/`, con status claros.
 
 ---
 
 ## 📦 Buenas prácticas de código
 
-- **ESLint y Prettier:**  
-  Corre `npm run lint` y `npm run format` antes de cada PR.  
-  ¡No aceptes PRs con errores de linting ni formato!
-
-- **Convención de commits:**  
-  Usa mensajes claros:  
-  `feat: Añade vista de perfil`  
-  `fix: Corrige validación de login`
-
-- **Comentarios:**  
-  Breves y sólo donde el código no sea autoexplicativo.  
-  **No comentes código muerto**: bórralo si no es relevante.
-
-- **Componentes:**  
-  - Nombra los componentes con mayúscula (`ProfileForm.tsx`)
-  - Si es un wrapper de HeroUI, usa el mismo nombre (`CustomCard`, `FormAlert`)
-  - Usa props tipados y props.children cuando sea posible.
+- **ESLint & Prettier** (`npm run lint` / `format`) – PRs sin errores.
+- **Commits semánticos**:  
+  `feat: wizard paso a paso` • `fix: validar slug`
+- **Comentarios** breves, sin código muerto.
+- **Componentes** PascalCase, props tipados, usa `props.children` cuando aplique.
 
 ---
 
 ## 🏗️ Organización de nuevas features
 
-- **Crea primero el mock de la UI** usando HeroUI y datos simulados.
-- Añade lógica y conexión a backend sólo cuando la experiencia esté clara.
-- Cada nueva feature debe estar justificada en el `ROADMAP.md` y reflejada en `TAREAS.md`.
-- Si cambias flujos, explica por qué en el PR o en un comentario en la tarea.
+- Prototipa la **UI en mock** (HeroUI + datos ficticios).
+- Conecta backend sólo cuando la UX esté validada.
+- Toda feature nueva debe aparecer en `ROADMAP.md` **y** `TAREAS.md`.
+- Si modificas flujos, justifica en el PR o issue.
+- **Tras mergear el wizard u otra feature, marca la tarea en `TAREAS.md`.**
 
 ---
 
 ## 🧩 Modularidad y escalabilidad
 
-- **Nunca crees helpers duplicados.**  
-  Si una función se repite en varios sitios, muévela a `/lib/utils.ts`.
-
-- **Evita el “spaghetti” de imports:**  
-  Si una carpeta empieza a tener >5-6 archivos, considera subcarpetas (`/components/ui/forms/`).
-
-- **Cuida la nomenclatura:**  
-  - Evita nombres genéricos (`Data`, `Thing`)
-  - Usa nombres de dominio (`UserProfileCard`, `SiteWizardStep`)
+- Evita helpers duplicados → mueve a `/lib/utils.ts`.
+- Si una carpeta crece > 5-6 archivos → subcarpetas.
+- Nombrado de dominio (`SiteWizardStep`, `UserProfileCard`) > nombres genéricos.
 
 ---
 
 ## 🔐 Seguridad y datos
 
-- **Nunca expongas claves en el repo.**  
-  Usa `.env` y `.env.example`.
-- **Hashea SIEMPRE las contraseñas** (bcrypt ya está en el proyecto).
-- **No loguees datos sensibles** ni retornes errores internos a cliente.
+- Secrets nunca en repo → usa `.env` + `.env.example`.
+- Contraseñas hash (`bcrypt`).
+- No loguear datos sensibles ni devolver errores internos al cliente.
 
 ---
 
 ## 🧪 Testing y validación
 
-- **Haz testing manual antes de cada PR.**  
-  - Login, registro, flows del dashboard, vistas públicas.
-  - Si rompes algo, documenta el error y propón solución.
-- (Opcional futuro) Añade tests unitarios con Jest/Testing Library.
+- **Testing manual** antes de cada PR (auth, dashboard, wizard…).
+- Tests automáticos (Jest + RTL) — _pendiente roadmap_.
 
 ---
 
 ## 📚 Documentación y tareas
 
-- **Actualiza los archivos de `/docs` si cambias una convención, una estructura o añades dependencias.**
-- **Sincroniza siempre `TAREAS.md` tras cada funcionalidad nueva.**
-- **Si dudas sobre estructura, consulta `CODIGOBASE.md` o pregunta antes de mergear.**
+- Actualiza `/docs` si cambias convenciones, estructura o dependencias.
+- **Sincroniza `TAREAS.md`** tras cada funcionalidad.
+- Si dudas, consulta `CODIGOBASE.md` o abre discusión antes de mergear.
 
 ---
 
 ## 💡 Filosofía de contribución
 
-- **Itera rápido, pero no sacrifiques calidad.**
-- **No hay PRs demasiado pequeños si aportan claridad.**
-- **Piensa en el siguiente dev (o tú mismo en 3 meses): deja el proyecto autoexplicativo.**
-- **Propón, debate y documenta tus decisiones: aquí no hay ego, solo producto.**
+Itera rápido **sin sacrificar calidad**.  
+PRs pequeños y claros > grandes y confusos.  
+Piensa en el dev futuro (o en ti +6 meses).  
+Debate, documenta y prioriza el producto.
 
 ---
 
 ## 🛡️ Licencia y legal
 
-- El proyecto está bajo licencia **MIT**.
-- No aceptes PRs con dependencias con licencias incompatibles.
+Proyecto bajo **MIT**.  
+Comprueba licencias de nuevas dependencias.
 
 ---
 
-**¡Gracias por contribuir! Haz crecer este SaaS con visión, orden y calidad. 🚀**
+**¡Gracias por contribuir 💜 — hagamos crecer este SaaS con visión y orden! 🚀**

@@ -1,83 +1,76 @@
-🆓 PLAN_FREE.md
-🎯 Objetivo
-Permitir que cualquier usuario experimente la creación de un sitio web personalizado de forma gratuita, autenticándose, configurando su cuenta y generando un proyecto básico. El objetivo es validar la propuesta de valor del SaaS y facilitar la conversión a planes de pago.
+# 🆓 PLAN_FREE.md
 
-✨ Funcionalidades implementadas
- Registro de usuario con email y contraseña (Auth.js, credentials)
+**Actualizado:** **Julio 2025**
 
- Inicio de sesión seguro con redirección al dashboard
+---
 
- Placeholder de usuario/contraseña visible en login (modo dev)
+## 🎯 Objetivo
 
- Dashboard: saludo personalizado y datos de sesión
+Permitir que cualquier usuario experimente la creación de un sitio web personalizado de forma gratuita — autenticándose, configurando su cuenta y generando **un** proyecto básico. El plan FREE valida la propuesta de valor y sirve como trampolín a los planes de pago.
 
- Pantalla de bienvenida tras login (HeroUI, onboarding rápido)
+---
 
- Vista de perfil: edición mock de nombre y contraseña
+## ✨ Funcionalidades implementadas
 
- Vista de proyectos: crear/borrar proyecto (mock), límite de 1 en FREE, avisos y CTA upgrade
+- **Registro** de usuario por email + contraseña (Auth.js, credentials)
+- **Inicio de sesión** seguro con redirección al dashboard
+- Placeholders dev de credenciales en login
+- **Dashboard**: saludo + datos de sesión
+- **Pantalla de bienvenida** (HeroUI, onboarding rápido)
+- **Vista de perfil**: edición mock de nombre/contraseña
+- **Vista de proyectos**: crear / borrar proyecto, **límite 1 en FREE**, avisos + CTA upgrade
+- **Wizard de sitios** (3 pasos — title, slug, template) con HeroUI, validación básica y POST `/api/projects/[id]/generate`
+- **Navbar dinámica** con avatar al autenticar
+- **Layouts** claros: público vs privado
+- Mensajes de feedback (login, registro, perfil)
+- Flujo mínimo: login → dashboard → perfil / proyectos / bienvenida
+- **HeroUI + Tailwind** en todas las vistas
+- **Tema claro / oscuro** (`next-themes`)
 
- Modal/formulario para crear proyecto (HeroUI)
+---
 
- Navbar dinámica: sesión y avatar visible al autenticar
+## 🚧 Funcionalidades pendientes (Backlog inmediato)
 
- Layouts claros: público (landing, docs...) y privado (dashboard)
+### 👤 Usuario y perfil
 
- Mensajes de feedback (login, registro, perfil)
+- Validación avanzada de formularios (login, registro) con feedback real-time
+- Subida y gestión de **avatar real**
+- Persistencia real de perfil en MongoDB
+- Cambio de contraseña y actualización de datos
+- Toasts / alerts de feedback en cambios de perfil
+- Mejora de accesibilidad (focus, labels, roles)
 
- Flujo de navegación mínimo: login → dashboard → perfil/proyectos/bienvenida
+### 🌐 Sitio público y proyectos
 
- Diseño HeroUI aplicado en todas las vistas
+- **Preview pública** del sitio generado — `/projects/[id]/preview`
+- Renderizado dinámico en ruta `/[slug]` (demo pública)
+- Validación backend del límite 1 sitio (ahora sólo en middleware)
+- Página de error amigable para rutas privadas sin sesión
 
- Soporte de temas claro/oscuro (next-themes)
+### 🧱 Wizard & UX
 
-🚧 Funcionalidades pendientes (Backlog inmediato)
-👤 Usuario y perfil
- Validación avanzada de formularios (login, registro) con feedback real-time
+- Manejo de errores y validación granular en el wizard
+- Spinner y estados de red al generar
+- Mensajes de éxito / error contextualizados
 
- Subida y gestión de avatar real (ahora solo nombre/email)
+### 🚀 Upsell & tracking
 
- Persistencia real de perfil en la BBDD (MongoDB)
+- Aviso visual de upgrade al llegar al límite o uso intensivo
+- Tracking anónimo de eventos: `wizard_completed`, `upgrade_click`, etc.
+- Etiqueta “FREE” en dashboard y navbar
 
- Cambiar contraseña y actualizar datos reales
+### 🧪 Métricas
 
- Toasts/alerts de feedback en cambios de perfil
+- Panel mínimo: nº registros, proyectos por usuario, actividad reciente
 
- Mejorar accesibilidad (focus states, labels, roles...)
+### 🛠 Refactor y escalabilidad
 
-🌐 Sitio público y proyectos
- Renderizado público del sitio generado (modo demo)
+- Modularizar helpers y hooks
+- Separar vistas en `/app/` conforme a migración App Router
 
- Limitación y avisos al intentar crear más de 1 sitio (validación real, no solo UI)
+---
 
- Demo pública: publicar y navegar el sitio generado
+## ✍️ Notas
 
- Página de error amigable para rutas privadas sin sesión
-
- Integración del generador/wizard (sólo 1 sitio posible en FREE)
-
-🚀 Otros detalles & UX
- Aviso visual de upgrade (al llegar a límite o uso intensivo)
-
- Tracking anónimo de uso (eventos, wizard, registros)
-
- Tag visual de plan (FREE) en dashboard y navbar
-
- Mejorar modularidad del código para escalar (refactor, separación por features)
-
-🧪 Validación de uso y métricas
- Mostrar aviso de upgrade si el usuario usa mucho el wizard o alcanza el límite de proyectos
-
- Métricas básicas: nº de registros, nº de proyectos por usuario, actividad reciente
-
-✍️ Notas
-La base del plan FREE está funcional y navegable.
-
-Próximos pasos:
-
-Persistencia real en BBDD (perfil y proyectos)
-
-Desarrollo completo del generador de sitios/wizard
-
-Mejora progresiva de UX/UI y validación de uso
-
+La experiencia FREE ya cubre registro → dashboard → **creación de un sitio vía wizard**.  
+Siguientes hitos: **preview pública**, tracking de uso y mejoras de UX / accesibilidad.

@@ -1,94 +1,68 @@
-🧱 SaaS Web Builder – Next.js & HeroUI
-Base sólida para un SaaS moderno de generación de sitios web y portfolios.
-Toda la pila está escrita en TypeScript.
+# 🧱 SaaS Web Builder – Next.js 15 + HeroUI v2
 
-🚦 Visión
-Crear un servicio escalable que permita generar sitios web de forma sencilla y
-monetizar la plataforma a través de planes FREE, PRO y PREMIUM.
+_Base sólida en TypeScript para crear y desplegar sitios web en 3 pasos (planes **FREE → PRO → PREMIUM**)._
 
-📦 Instalación
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Next.js 15](https://img.shields.io/badge/Next.js-15-black)
+![Node 18+](https://img.shields.io/badge/Node-18%2B-green)
 
-1. Instala dependencias
+---
+
+## 🚀 Visión
+
+Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upsell fluido entre planes.
+
+---
+
+## 🖥️ Demo rápida
+
+| Flujo                                 | GIF / captura                                 |
+| ------------------------------------- | --------------------------------------------- |
+| Login → Dashboard → Wizard de 3 pasos | _(añade screenshot cuando tengas la preview)_ |
+
+---
+
+## 📦 Instalación local
 
 ```bash
+git clone https://github.com/albertoguinda/saas.git
+cd saas
 npm install
-```
-
-2. Configura el entorno
-   Copia `.env.example` a `.env.local` y rellena tus claves.
-   Para futuras pruebas de pago incluye `STRIPE_SECRET_KEY`.
-   Define `SEED_USER_PASSWORD` para fijar la contraseña del usuario demo.
-3. Ejecuta el seed para crear el usuario demo
-
-```bash
-npm run seed
-```
-
-4. Lanza en local
-
-```bash
+cp .env.example .env.local            # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY
+npm run refresh-db                    # limpia y seed (BBDD) en un solo paso
 npm run dev
-```
+TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
-▶️ Uso (plan FREE)
+🌐 Deploy rápido
+Consulta la guía docs/deploy-free-plan.md
+(Vercel, Railway, variables de entorno y consideraciones de red).
 
-- Regístrate e inicia sesión para acceder al dashboard.
-- Crea tu primer proyecto (limitado a uno en el plan FREE).
-- Personaliza tu perfil y prueba el generador de sitios.
-- Si necesitas más funcionalidades puedes pasar a un plan superior.
+🆓 / 💼 / 👑 Planes
+Feature	FREE	PRO	PREMIUM
+Sitios	1	∞	∞
+Branding completo	—	✅	✅
+Dominio propio	—	✅	✅
+Emails transaccionales	—	✅	✅
+IA DataFast	—	—	✅
+Vídeo (MUX)	—	—	✅
+Analítica avanzada	—	—	✅
 
-📅 Roadmap
-🚧 Tareas Pendientes por Fase
-🔓 FREE – Core público y experiencia base
+🗺️ Roadmap & tareas
+Visión estratégica → docs/ROADMAP.md
 
-- Persistencia real de perfil y proyectos en MongoDB (API REST)
-- Validación avanzada de formularios (login, registro, perfil) en frontend y backend
-- Modelo de sitio (site.ts) — estructura básica y relación con usuario
-- API /api/sites (GET/POST: CRUD de sitios generados)
-- API /api/me (GET: sesión extendida, PATCH: edición de perfil)
-- Middleware withAuthPlan — proteger rutas según plan (FREE/PRO/PREMIUM)
-- Avatar real (upload y persistencia)
-- Edición de perfil persistente: nombre, contraseña, avatar
-- Render público de sitio generado (/[slug], modo demo)
-- Limitación y aviso real al crear más de 1 sitio en FREE
-- Página de error amigable para rutas privadas sin sesión
-- Wizard/Generador de sitios (mínimo viable, 1 sitio por usuario FREE)
-- Badge visual de plan en dashboard y navbar
-- Avisos visuales de upgrade por límite de uso
-- Tracking básico: uso de wizard, nº de registros, nº de proyectos por usuario
+Backlog por fases → docs/TAREAS.md
 
-💼 PRO – Funcionalidades avanzadas
+🛠 Stack principal
+Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas • Auth.js • Stripe • Resend • tsx
+Detalle completo en docs/STACK.md.
 
-- Guardado real de sitios generados (estructura completa, branding, assets)
-- Branding extendido: selector de color, logo, fuentes, favicon
-- Emails transaccionales: integración Resend (registro, cambios, notificaciones)
-- Confirmación de cuenta por email (opcional)
-- Panel de analítica simple: nº visitas, actividad, fetch via Upstash opcional
-- Conexión de dominio propio (Namecheap: docs/manual + campo en modelo)
-- Exportación de sitios como HTML estático
+🤝 Cómo contribuir
+Lee docs/CONTRIBUTING.md.
 
-🚀 PREMIUM – IA, multimedia, retención y soporte
+Abre issue/PR con descripción clara.
 
-- Integrar DataFast IA (API: generación de contenido, tono/estilo editable)
-- Caching de sitios generados (Upstash Redis, TTL)
-- Soporte multimedia: upload vídeo a MUX, reproductor embebido, selector en wizard
-- Control de pagos y upgrades: integración Stripe completa, webhooks, middleware, historial
-- Panel premium de analítica: páginas vistas, retención, logs de actividad
-- Soporte prioritario desde dashboard
-- Generación automática de textos legales (política, cookies, T&C, editable)
-- Backups automáticos por sitio, restauración desde dashboard
-- Banners visuales de upsell (desde dashboard)
-
-📊 ADMIN & Retención
-
-- Panel básico de métricas de uso y actividad (admin only)
-- Tracking avanzado: eventos wizard, upgrades, feedback usuarios
-- Feedback capture tras creación de sitios o upgrade
-- Alertas visuales en puntos clave del funnel
-
-🤝 Contribuir / Feedback
-Consulta `/docs/CONTRIBUTING.md` para conocer el flujo de trabajo y abre un issue
-si detectas problemas o quieres proponer mejoras.
+Toda feature debe reflejarse en docs/TAREAS.md.
 
 🛡️ Licencia
-MIT
+MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
+```

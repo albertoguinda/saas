@@ -1,51 +1,59 @@
-💎 PLAN_PRO.md
-🎯 Objetivo
-Ofrecer funcionalidades avanzadas para usuarios individuales que quieren llevar su web al siguiente nivel: personalización total de branding, dominio propio, emails automáticos y analítica. Es el punto de entrada a la monetización y el “primer upgrade” natural.
+# 💎 PLAN_PRO.md
 
-✨ Funcionalidades que desbloquea el plan PRO
-Sitios sin límite (frente a 1 en FREE)
+**Actualizado:** **Julio 2025**
 
-Branding y personalización visual completa
+---
 
-Métricas básicas de visitas y actividad
+## 🎯 Objetivo
 
-Emails automáticos con Resend
+Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al siguiente nivel: **branding completo, dominio propio, analítica y automatización de emails**. Este plan constituye el “primer upgrade” natural y principal vía de monetización.
 
-Conexión con dominio propio (manual)
+---
 
-🚧 Funcionalidades pendientes (Backlog PRO)
-💾 Backend y almacenamiento
- Guardar estructura completa del sitio generado en MongoDB (por usuario)
+## ✨ Funcionalidades que desbloquea el **Plan PRO**
 
- Subida y almacenamiento seguro de imágenes personalizadas por sitio
+| Bloque                 | Descripción                                                                   |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| **Sitios ilimitados**  | El límite de 1 proyecto del plan FREE desaparece.                             |
+| **Branding total**     | Cambios de colores, fuentes, favicon, meta-tags y logo.                       |
+| **Dominio propio**     | Conecta tu dominio externo (Namecheap u otro) o sub-dominio gestionado.       |
+| **Métricas básicas**   | Visitas, clicks, actividad reciente con retención de 30 días (Upstash Redis). |
+| **Emails automáticos** | Plantillas de Resend para registro, cambios y notificaciones.                 |
 
- Exportar sitios como archivos HTML estáticos (descarga fácil)
+---
 
-🎨 Personalización y branding
- Selector de paleta de colores (UI simple, opciones prediseñadas)
+## 🚧 Backlog inmediato (Plan PRO)
 
- Personalizar fuentes, espaciados y estilos generales del sitio
+### 💾 Backend & almacenamiento
 
- Branding propio: favicon, logo, títulos y meta tags editables
+- Persistir **estructura completa del sitio** en MongoDB (`pages`, `components`, `styles`).
+- Subida y almacenamiento seguro de **imágenes personalizadas** (S3 / Cloudinary).
+- Exportar sitios como **HTML estático** (descarga ZIP).
 
-📧 Emails y comunicación
- Integración real con Resend: emails transaccionales (registro, cambios, notificaciones)
+### 🎨 Personalización & branding
 
- Confirmación de cuenta por email (opcional, upgrade de seguridad)
+- Selector de **paleta de colores** (UI con presets).
+- Cambiar **tipografía**, espaciados y estilos globales.
+- Branding propio: favicon, logo, títulos, meta-tags editables.
 
-📊 Métricas y dominio
- Analítica básica: visitas, clicks, actividad reciente (fetch simple, Upstash opcional)
+### 📧 Emails & comunicación
 
- Conectar dominio propio manualmente (gestión externa vía Namecheap o similar)
+- Integración con **Resend**: emails transaccionales / marketing.
+- (Opcional) **Confirmación de cuenta** por email al upgrade.
 
- Panel de estadísticas visual en el dashboard
+### 📊 Métricas & dominio
 
-🚀 Siguientes pasos
-Desbloqueo automático de features en cuanto el usuario paga (Stripe)
+- Analítica básica: visitas, páginas vistas, clicks (fetch Redis).
+- Conexión de **dominio propio** manual (Namecheap API).
+- Panel de estadísticas en dashboard (HeroUI charts).
 
-Onboarding guiado para personalización avanzada y dominio propio
+---
 
-Upsell visual y mensajes claros en el dashboard (migración FREE → PRO)
+## 🚀 Siguientes pasos
 
-Documentación actualizada y ejemplos de branding/analytics
+1. **Stripe** → Desbloqueo automático en cuanto el pago se confirma (webhook).
+2. **Onboarding guiado** tras upgrade: branding ➜ dominio ➜ analytics.
+3. Upsell visual constante en dashboard (botones, banners).
+4. Mantener `/docs` al día con ejemplos de branding, analytics y dominio.
 
+---

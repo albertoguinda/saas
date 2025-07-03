@@ -1,54 +1,58 @@
-👑 PLAN_PREMIUM.md
-🎯 Objetivo
-Brindar el máximo nivel de personalización, rendimiento, multimedia y soporte. El plan PREMIUM convierte tu SaaS en una solución profesional y empresarial: IA, vídeos, legal, analítica avanzada, y más.
+# 👑 PLAN_PREMIUM.md
 
-🚀 Funcionalidades avanzadas (Backlog PREMIUM)
-🤖 IA y generación de contenido
- Integrar API de DataFast para autogenerar textos: secciones, claims, descripciones, etc.
+**Actualizado:** **Julio 2025**
 
- Inputs inteligentes: elegir tono, objetivo y estilo (branding controlado)
+---
 
- Live preview del texto generado durante el wizard
+## 🎯 Objetivo
 
-⚡ Rendimiento & cacheo
- Integrar Upstash Redis para cachear webs y mejorar velocidad
+Brindar el **máximo nivel** de personalización, rendimiento y soporte. El plan PREMIUM convierte Web Builder en una solución profesional y empresarial con **IA**, **vídeo**, **analítica avanzada** y **backups**.
 
- Configurar TTL dinámico (según plan o tráfico)
+---
 
- Evitar regeneraciones innecesarias, ahorrar costes de infra
+## ✨ Funcionalidades PREMIUM (a desbloquear)
 
-🎥 Soporte multimedia
- Subida de vídeos a MUX directamente desde el dashboard
+### 🤖 IA & generación de contenido
 
- Selección de vídeo como fondo/sección en sitios generados
+- Integrar **API DataFast** para autogenerar textos (claims, secciones, descripciones).
+- Inputs inteligentes: tono, objetivo, estilo (respeta branding).
+- **Live preview** del texto generado dentro del wizard.
 
- Reproductor nativo embebido optimizado (mobile & desktop)
+### ⚡ Rendimiento & cacheo
 
-💳 Control de suscripción y pagos
- Stripe: productos PREMIUM, webhooks, validación automática de plan activo
+- **Upstash Redis** para cache de sitios → velocidad y ahorro de costes.
+- TTL dinámico por plan / tráfico.
+- Evitar regeneraciones innecesarias.
 
- Middleware avanzado para control de acceso según plan contratado
+### 🎥 Multimedia
 
- Historial de pagos y facturas descargables desde el dashboard
+- Subida de vídeos a **MUX** desde el dashboard.
+- Vídeo como fondo / sección en sitios generados.
+- Reproductor embebido optimizado (mobile + desktop).
 
-📈 Analítica avanzada y dashboard
- Estadísticas en profundidad: páginas más vistas, fuentes de tráfico, retención, conversiones
+### 💳 Suscripciones & pagos
 
- Logs de actividad y auditoría por usuario
+- Stripe: producto PREMIUM + webhooks de validación automática.
+- Middleware avanzado → acceso según plan.
+- Historial de pagos & facturas descargables.
 
-🛡️ Legal, soporte y backups
- Sistema de soporte prioritario en el dashboard (chat/email)
+### 📈 Analítica avanzada
 
- Generador automático de textos legales (cookies, privacidad, términos), editable
+- Métricas profundas: páginas más vistas, fuentes, retención, conversiones.
+- Logs de actividad y auditoría por usuario.
+- Dashboard de estadísticas (HeroUI charts).
 
- Backups automáticos de sitios y restauración en 1 clic
+### 🛡️ Legal, soporte & backups
 
-📝 Notas y visión
-Todo lo incluido en FREE y PRO está desbloqueado en PREMIUM.
+- Soporte prioritario (chat / email) en el dashboard.
+- Generador automático de textos legales (cookies, privacidad, TOS) editable.
+- Backups automáticos de sitios + restauración en 1 clic.
 
-Las features premium tienen prioridad de soporte y mantenimiento.
+---
 
-El onboarding debe ser guiado y orientado a empresas/equipos.
+## 📝 Notas
 
-Listo para escalar: IA, multimedia, pagos y legal, todo en uno.
-
+- Incluye **todo** lo ofrecido en FREE + PRO.
+- Features PREMIUM tienen prioridad de soporte y mantenimiento.
+- Onboarding guiado, orientado a **empresas / equipos**.
+- Listo para escalar: IA, multimedia, analítica, pagos y legal en un solo plan.

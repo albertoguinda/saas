@@ -1,164 +1,180 @@
-📦 CODIGOBASE.md
-Estructura, arquitectura y convenciones técnicas base
-Stack: Next.js 15 (Pages Router, migrable a App Router) · TypeScript · MongoDB (Mongoose) · Auth.js · TailwindCSS · HeroUI · Stripe · Resend
+# CODIGOBASE.md
 
-📁 Estructura real del proyecto
-swift
-Copiar
-Editar
+_Estructura, arquitectura y convenciones técnicas base_  
+**Stack**: Next.js 15 (Pages → App Router híbrido) · TypeScript · MongoDB (Mongoose 8) · Auth.js · TailwindCSS · HeroUI v2 · Stripe · Resend · tsx
+
+---
+
+## 📁 Estructura real del proyecto (Jul 2025)
+
 /pages
-  ├─ _app.tsx                // Setup de sesión global, estilos y providers
-  ├─ _document.tsx           // HTML root (fuentes, meta)
-  ├─ index.tsx               // Landing pública
-  ├─ about/index.tsx         // About page
-  ├─ auth/
-  │    ├─ login.tsx          // Login
-  │    └─ register.tsx       // Registro
-  ├─ dashboard/
-  │    ├─ index.tsx          // Dashboard principal (overview)
-  │    ├─ profile.tsx        // Perfil usuario
-  │    ├─ projects.tsx       // Proyectos del usuario
-  │    ├─ settings.tsx       // Ajustes (mock)
-  │    └─ welcome.tsx        // Pantalla de bienvenida
-  ├─ blog/index.tsx
-  ├─ docs/index.tsx
-  └─ pricing/index.tsx
+├─ \_app.tsx // Providers, estilos globales
+├─ \_document.tsx // HTML root (fuentes, meta)
+├─ index.tsx // Landing pública
+├─ about/index.tsx
+├─ auth/
+│ ├─ login.tsx
+│ └─ register.tsx
+├─ dashboard/
+│ ├─ index.tsx
+│ ├─ profile.tsx
+│ ├─ projects.tsx
+│ ├─ settings.tsx
+│ └─ welcome.tsx
+├─ blog/index.tsx
+├─ docs/index.tsx
+└─ pricing/index.tsx
+
+/app
+├─ projects/[id]/wizard/page.tsx // ✅ Wizard 3-pasos (title, slug, template)
+├─ projects/[id]/preview/page.tsx // ⚠️ Preview pública (pendiente)
+└─ layout.tsx // Root Layout (App Router)
 
 /layouts/
-  ├─ default.tsx         // Layout general (navbar, theme)
-  ├─ auth.tsx            // Layout login/registro
-  └─ head.tsx            // Head global
+├─ default.tsx // Layout global
+├─ auth.tsx // Layout login/registro
+└─ head.tsx // Head global
 
 /components/
-  ├─ navbar.tsx          // Navbar global
-  ├─ theme-switch.tsx    // Toggle tema
-  ├─ icons.tsx           // Iconos SVG centralizados
-  └─ primitives.ts       // Utilidades de clases
+├─ navbar.tsx
+├─ theme-switch.tsx
+├─ icons.tsx
+└─ primitives.ts
 
 /lib/
-  ├─ dbConnect.ts        // Conexión MongoDB Atlas
-  ├─ models/
-  │    ├─ user.ts        // User model (mongoose)
-  │    └─ site.ts        // Site model (pendiente)
-  └─ middlewares/
-       └─ withAuthPlan.ts // Middleware protección de planes
+├─ dbConnect.ts
+├─ models/
+│ ├─ user.ts
+│ └─ site.ts // ✅ Site model implementado
+└─ middlewares/
+└─ withAuthPlan.ts
 
 /scripts/
-  └─ seed.ts             // Seed usuarios test
+├─ seed.ts // Seed usuarios test
+├─ reset.ts // Drop DB (via tsx)
+└─ preview.ts (⚠️ future)
 
 /styles/
-  └─ globals.css         // Tailwind + fuentes + resets
-
-/public/
-  └─ favicon.ico
+└─ globals.css
 
 /config/
-  ├─ site.ts             // Config general del SaaS
-  └─ fonts.ts            // Fuentes personalizadas
+├─ site.ts
+└─ fonts.ts
 
 /types/
-  └─ next-auth.d.ts      // Tipado NextAuth personalizado
+└─ next-auth.d.ts
 
 /docs/
-  (docs técnicos, roadmap, tareas, etc.)
-🧠 Arquitectura & lógica principal
-🟣 Auth.js (NextAuth)
-Login/registro por credentials (email+password)
+… (roadmap, tareas, stack, agentes, contributing, architecture)
 
-JWT + MongoDB Adapter
-
-Middleware/HOC de protección en dashboard y APIs
-
-Roles & planes: campo user.plan en DB (free | pro | premium)
-
-Sesión persistente (cookie segura + JWT)
-
-🟡 MongoDB + Mongoose
-Modelos en /lib/models/
-
-User: email, password, name, plan, createdAt
-
-Site (próximo): userId, slug, config...
-
-Conexión centralizada vía dbConnect.ts (persistente y eficiente)
-
-Helpers opcionales en dbConnect.ts
-
-🔵 UI & Diseño
-TailwindCSS + HeroUI (2.x)
-
-Layouts claros (default, auth)
-
-Componentes visuales extendidos
-
-ThemeProvider (next-themes)
-
-Responsive & accesible (a11y ready)
-
-🧩 Utilidades base y helpers
-lib/utils.ts (si existe):
-Helpers de clases (clsx), sesión (getServerSession), helpers bcrypt
-
-Middlewares:
-withAuthPlan (protección de rutas por plan)
-
-Validación backend (añadir Zod opcional para robustez)
-
-📡 API y rutas core
-Ruta	Método	Protección	Descripción
-/api/auth/register      POST    Pública Registro manual (hash pre-save)
-/api/auth/login	POST	Pública	Login credentials
-/api/me	GET	🔐	Info del usuario logueado
-/api/me/update	PATCH	🔐	Actualizar nombre o pass
-/api/sites	POST	🔐	Crear sitio web generado
-/api/sites	GET	🔐	Listar sitios del usuario
-/api/stripe/checkout	POST	🔐	Checkout de plan/upgrade
-/api/stripe/webhook	POST	🔐	Webhooks Stripe (pagos, subs)
-
-🧠 Convenciones técnicas
-UI en /components/, siempre reutilizable y clara
-
-Endpoints: status claros (200, 400, 401, 403, 500)
-
-Modelos en /lib/models y singleton para evitar sobrecarga dev
-
-Lógica protegida: session via HOC/useSession/SSR
-
-Planes y roles: definidos como constantes, chequeo en runtime/backend
-
-📦 Paquetes principales instalados
-next, react, react-dom
-
-tailwindcss, postcss, autoprefixer
-
-@heroui/* (HeroUI 2.x)
-
-next-auth (Auth.js)
-
-mongoose, bcryptjs
-
-clsx, framer-motion, next-themes
-
-📝 NOTA
-Actualmente, el proyecto utiliza Pages Router (/pages).
-La estructura y organización permite migrar fácilmente a App Router (/app) para mayor flexibilidad, SSR y layouts anidados.
-
-💡 Ejemplo de estructura futura en /app:
-txt
+markdown
 Copiar
 Editar
+
+> **Migración progresiva:** código nuevo se escribe en **/app**; legacy permanece en **/pages** hasta completar la transición.
+
+---
+
+## 🧠 Arquitectura & lógica principal
+
+### 🟣 Auth.js (NextAuth)
+
+- Login/registro (credentials) → JWT + MongoAdapter
+- Middleware/HOC protección en dashboard y APIs
+- Roles & planes (`user.plan`: free | pro | premium)
+- Sesión persistente (cookie segura)
+
+### 🟡 MongoDB + Mongoose
+
+- Modelos en `/lib/models/`
+  - **User**: email, password, name, plan, createdAt
+  - **Site**: userId, slug, config, createdAt
+- Conexión centralizada `dbConnect.ts` con cache global
+- Scripts **tsx**: `seed.ts`, `reset.ts`
+
+### 🔵 UI & Diseño
+
+- TailwindCSS + HeroUI v2
+- Layouts (`default`, `auth`, `/app/layout.tsx`)
+- Responsive, accesible (a11y ready)
+- ThemeProvider (`next-themes`)
+
+---
+
+## 🧩 Utilidades y helpers
+
+- `lib/utils.ts` (clsx, getServerSession, hash helpers)
+- **Middlewares**
+  - `withAuthPlan` – protección por plan
+  - `withValidation` (Zod) – ⚠️ pendiente
+- Validación frontend con **React Hook Form + Zod**
+
+---
+
+## 📡 API y rutas core
+
+| Ruta                          | Método | Auth | Descripción                        |
+| ----------------------------- | ------ | ---- | ---------------------------------- |
+| `/api/auth/register`          | POST   | —    | Registro (hash pre-save)           |
+| `/api/auth/login`             | POST   | —    | Login credentials                  |
+| `/api/me`                     | GET    | 🔐   | Info usuario logueado              |
+| `/api/me/update`              | PATCH  | 🔐   | Actualizar nombre o pass           |
+| `/api/sites`                  | POST   | 🔐   | Crear sitio (límite 1 para FREE)   |
+| `/api/sites`                  | GET    | 🔐   | Listar sitios del usuario          |
+| `/api/projects/[id]/generate` | POST   | 🔐   | Generar HTML estático desde wizard |
+| `/api/stripe/checkout`        | POST   | 🔐   | Checkout de plan/upgrade           |
+| `/api/stripe/webhook`         | POST   | —    | Webhooks Stripe (subs, pagos)      |
+
+---
+
+## 🧠 Convenciones técnicas
+
+- Componentes reutilizables en `/components/`
+- Endpoints: códigos claros (200, 400, 401, 403, 500)
+- Modelos Mongoose singleton (evita redefinición en dev)
+- Checks de plan en backend + UI
+- Lint + Prettier CI (husky pre-commit)
+
+---
+
+## 📦 Paquetes principales instalados
+
+next, react, react-dom
+tailwindcss, postcss, autoprefixer
+@heroui/\* (v2)
+next-auth, mongoose@8, bcryptjs
+clsx, framer-motion, next-themes
+tsx (scripts TS), zod
+
+yaml
+Copiar
+Editar
+
+---
+
+## 📝 NOTA
+
+- Proyecto base **Pages Router**; nuevas features → **App Router**.
+- Wizard implementado (Jul 2025). Preview pública y tracking pendientes.
+
+---
+
+## 💡 Ejemplo de estructura futura completa en `/app`
+
 /app
-  layout.tsx
-  page.tsx
-  dashboard/
-    layout.tsx
-    page.tsx
-    projects/page.tsx
-    profile/page.tsx
-    settings/page.tsx
-    welcome/page.tsx
-  login/page.tsx
-  register/page.tsx
-  [slug]/page.tsx
+layout.tsx
+page.tsx
+dashboard/
+layout.tsx
+page.tsx
+projects/page.tsx
+profile/page.tsx
+settings/page.tsx
+welcome/page.tsx
+projects/[id]/wizard/page.tsx // ✅
+projects/[id]/preview/page.tsx // ⚠️
+login/page.tsx
+register/page.tsx
+[slug]/page.tsx
 /api
-  ... (rutas API modernizadas)
+… (route handlers modernizados)

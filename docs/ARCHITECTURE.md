@@ -1,8 +1,7 @@
 # ARCHITECTURE.md
 
-> 🏗️ **Arquitectura técnica, decisiones y visión para el SaaS “Web Builder”**
->  
-> Actualizado: Junio 2025
+> 🏗️ **Arquitectura técnica, decisiones y visión para el SaaS “Web Builder”**  
+> **Actualizado: Julio 2025**
 
 ---
 
@@ -11,11 +10,12 @@
 El objetivo es construir un SaaS de generación de sitios web, fácil de escalar, monetizar y evolucionar, con una base robusta pero ágil.
 
 **Principios clave:**
+
 - Modularidad total (features desacopladas, fácil onboarding)
-- Escalabilidad (a cientos/miles de usuarios y sitios)
+- Escalabilidad (cientos/miles de usuarios y sitios)
 - Seguridad y privacidad por defecto
 - Experiencia de usuario premium desde el plan FREE
-- Orientado a código limpio, patrones y extensibilidad
+- Código limpio, patrones, extensibilidad
 
 ---
 
@@ -23,7 +23,7 @@ El objetivo es construir un SaaS de generación de sitios web, fácil de escalar
 
 [ Cliente (Next.js + React + HeroUI) ]
 ↓
-[ API interna (Next.js API Routes) ]
+[ API interna (Next.js API Routes / Route Handlers) ]
 ↓
 [ Servicios backend (MongoDB, Stripe, Redis, Resend, IA) ]
 ↓
@@ -37,36 +37,33 @@ Editar
 
 ## 📦 Stack de tecnologías principales
 
-Consulta y mantén actualizado `STACK.md` para dependencias reales.
+_(consulta `STACK.md` para versiones y dependencias reales)_
 
 ### Frontend
 
-- **Next.js 15** (Pages Router, migrable a App Router)
+- **Next.js 15** (Pages Router + App Router híbrido)
 - **React 18**, **TypeScript**
-- **HeroUI v2** para UI, extensible y themeable
-- **TailwindCSS** (estilos utilitarios + tokens)
-- **next-themes** (soporte dark/light global)
+- **HeroUI v2** (componentes + theming)
+- **TailwindCSS** (tokens utilitarios)
+- **next-themes** (dark/light)
 - **Framer Motion** (animaciones)
-- **Lucide** (iconografía SVG)
+- **Lucide** (iconos SVG)
 
 ### Backend y persistencia
 
-- **MongoDB Atlas** (multi-tenant, escalable)
-- **Mongoose** (modelado seguro y reusable)
-- **Auth.js (NextAuth)** (autenticación, JWT, adaptador Mongo)
-- **Stripe** (pagos, suscripciones, upgrades)
-- **Upstash Redis** (caching y colas serverless)
-- **Resend** (envío de emails)
-- **Zod** (validación, schemas de seguridad)
-- **Dotenv** (configuración centralizada .env)
+- **MongoDB Atlas** (multi-tenant)
+- **Mongoose 8** (modelado seguro)
+- **Auth.js (NextAuth)** + MongoAdapter
+- **Stripe** (pagos & subscripciones)
+- **Upstash Redis** (caching / rate-limit)
+- **Resend** (e-mails)
+- **Zod** (validación)
+- **Dotenv** (config `.env`)
+- **tsx** para ejecutar scripts TS (seed/reset)
 
 ### Integraciones externas futuras
 
-- **MUX** (vídeo hosting)
-- **Namecheap** (conexión de dominios)
-- **DataFast** (IA generación de textos)
-- **CurrencyAPI** (multi-moneda y precios internacionales)
-- **Capacitor** (exportación mobile)
+- **MUX** (vídeo) · **Namecheap** (dominios) · **DataFast** (IA copy) · **CurrencyAPI** (multi-moneda) · **Capacitor** (export mobile)
 
 ---
 
@@ -74,145 +71,151 @@ Consulta y mantén actualizado `STACK.md` para dependencias reales.
 
 ### Modelos principales
 
-- **User:**  
-  - `email`, `name`, `password` (hashed), `plan` (enum), `createdAt`
-- **Site:**  
-  - `userId`, `slug`, `config` (estructura, estilos, contenido), `createdAt`
-- **Subscription/Plan:**  
-  - Stripe ID, estado, fechas, webhooks
+| Modelo                  | Propiedades                                                              |
+| ----------------------- | ------------------------------------------------------------------------ |
+| **User**                | `email`, `name`, `password (hash)`, `plan`, `createdAt`                  |
+| **Site**                | `userId`, `slug`, `config` (estructura, estilos, contenido), `createdAt` |
+| **Subscription / Plan** | `stripeId`, `status`, `currentPeriod`, webhooks                          |
 
-> *Todos los modelos en `/lib/models/`. Mongoose para compatibilidad dev/prod, protección contra redefiniciones.*
+> Modelos en `/lib/models/`, protegidos contra redefinición.
 
 ---
 
-### Estructura de carpetas (Pages Router)
+### Estructura de carpetas
 
-- `/pages/`  
-  - **/auth/** (login, register)  
-  - **/dashboard/** (index, projects, profile, settings, welcome)
-  - **/api/** (REST endpoints)
-  - **/[slug]/** (render dinámico del sitio web generado)
-- `/components/` (UI y lógica visual)
-- `/layouts/` (layouts globales y privados)
-- `/lib/` (models, dbConnect, utils, middlewares)
-- `/config/` (site, fonts, rutas)
-- `/styles/` (globals.css)
-- `/scripts/` (seeds)
-- `/docs/` (roadmap, tareas, stack, agentes, contributing, architecture)
+#### Pages Router (MVP heredado)
 
-> Migración futura a `/app/` **(App Router)**:  
-> - Cada vista es un server component.  
-> - API Routes migran a server actions o routes handlers.
+/pages/
+/ auth/ (login, register)
+/ dashboard/ (index, projects, profile, settings, welcome)
+/ api/ (REST endpoints)
+/ [slug]/ (render dinámico del sitio generado)
+
+shell
+Copiar
+Editar
+
+#### 🆕 App Router (módulos nuevos)
+
+/app/
+/ projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
+/ projects/[id]/preview/ (⚠️ pendiente)
+
+Copiar
+Editar
+/components/ (UI)
+/layouts/ (layouts públicos / privados)
+/lib/ (dbConnect, models, utils, middlewares)
+/config/ (tokens, rutas, fuentes)
+/styles/ (globals.css + tokens)
+/scripts/ (seed.ts, reset.ts via tsx)
+/docs/ (roadmap, tareas, stack, agentes…)
+
+yaml
+Copiar
+Editar
+
+> **Migración progresiva:** nuevas features van en **/app/**, legacy en **/pages/** hasta completar la transición.
 
 ---
 
 ### API interna
 
-- **REST**: `/api/auth`, `/api/me`, `/api/sites`, `/api/stripe`
-- **Protección con middlewares:**  
-  - `withAuthPlan` (acceso por plan: FREE, PRO, PREMIUM)
-  - `withValidation` (Zod schemas)
-- **Autenticación JWT** vía Auth.js + MongoAdapter
+- **REST / Route Handlers**:  
+  `/api/auth`, `/api/me`, `/api/sites`, `/api/stripe`
+- **Middlewares**
+  - `withAuthPlan` (checks por plan)
+  - `withValidation` (Zod)
 
 ---
 
 ### Control de acceso y planes
 
-- **FREE:** 1 proyecto, branding básico, sin dominio propio
-- **PRO:** ilimitado, branding, dominio, métricas básicas
-- **PREMIUM:** IA, vídeo, métricas avanzadas, soporte, backups
+| Plan        | Límites & features                                  |
+| ----------- | --------------------------------------------------- |
+| **FREE**    | 1 sitio, branding básico                            |
+| **PRO**     | sitios ilimitados, dominio propio, métricas básicas |
+| **PREMIUM** | IA, vídeo, métricas avanzadas, soporte, backups     |
 
-> Los checks de plan deben estar **tanto en backend (API)** como en frontend (UI/UX).
+> La lógica vive en middleware **y** en UI (visibilidad de botones/upsell).
 
 ---
 
-### Internacionalización y escalabilidad
+### Internacionalización & theming
 
-- **Listo para i18n:**  
-  - Textos y labels en archivos aparte o contexto (`/config/` o `/locales/`)
-- **Tokens y theming:**  
-  - HeroUI y Tailwind soportan tokens para fácil rebranding
+- Preparado para i18n (archivos externos / `/locales/`)
+- Themable vía tokens Tailwind + HeroUI
 
 ---
 
 ### Seguridad
 
-- Contraseñas siempre hasheadas (`bcrypt`)
-- Variables sensibles sólo en `.env`
-- Validación de entrada con Zod
-- Stripe: claves sólo en server, webhooks con firma
-- Rate-limiting pendiente de implementar (Upstash Redis u otro)
+- Contraseñas hash (bcrypt)
+- Secrets solo en `.env`
+- Validación Zod en API
+- Stripe keys server-only + webhooks firmados
+- Rate-limit con Upstash Redis _(pendiente)_
 
 ---
 
 ## 🚦 Flujo de desarrollo recomendado
 
-1. **Prototipa la UI en mock:**  
-   Usa HeroUI, tailwind y componentes, con datos simulados.
-2. **Conecta con la API:**  
-   Añade lógica, fetch a endpoints, maneja loading/error.
-3. **Implementa lógica de negocio:**  
-   Lógica de planes, límites, checks en backend.
-4. **Persistencia real:**  
-   Conecta modelos y servicios de MongoDB.
-5. **Integraciones externas:**  
-   Stripe, Resend, Upstash, IA... sólo cuando el core esté sólido.
-6. **Itera y refina:**  
-   Refactoriza, extrae componentes y helpers, testea flows.
-7. **Documenta todo en `/docs`**:  
-   Roadmap, nuevas features, migraciones o convenciones.
+1. Prototipa UI (HeroUI + Tailwind)
+2. Conecta API (fetch, loading/error)
+3. Lógica de negocio (planes, límites)
+4. Persistencia real (Mongo)
+5. Integraciones externas (Stripe, Resend, IA…)
+6. Itera / refactor / tests
+7. Documenta avances en `/docs`
 
 ---
 
-## 🗂️ Decisiones arquitectónicas importantes
+## 🗂️ Decisiones arquitectónicas
 
-- **Pages Router hasta tener MVP sólido**, migrar a App Router sólo cuando aporte valor real (SSR/ISR más avanzado, layouts anidados).
-- **Cada feature, su carpeta o módulo**:  
-  Evita mega-archivos, prefiere la división por feature.
-- **Middleware para control de planes**:  
-  Que no se duplique lógica de acceso.
-- **UI desacoplada de la lógica**:  
-  El backend expone APIs claras, la UI sólo consume y muestra.
+- **Híbrido Pages + App Router** hasta estabilizar la migración.
+- Cada feature en su módulo → evita archivos monolíticos.
+- Lógica de planes centralizada (middleware).
+- UI desacoplada del backend.
 
 ---
 
-## 📊 Observabilidad y métricas
+## 📊 Observabilidad & métricas
 
-- Logs de error sólo en backend
-- Agregar tracking de uso del wizard, upgrades y retención en siguientes fases
-- Considera panel admin en el futuro
+- Logs de error en backend
+- Tracking básico (wizard_completed, upgrade_click) — **pendiente**
+- Panel admin futuro
 
 ---
 
 ## 🔮 Futuro y escalabilidad
 
-- **Migración progresiva a App Router** (cuando Next.js esté estable para todas las features que uses)
-- **Testing automático** (Jest, Testing Library)
-- **Monorepo si el producto escala** (admin panel, sitio público, microservicios)
-- **CD/CI** con Vercel, Github Actions o similar
+- Migración completa a App Router
+- Tests automáticos (Jest + Testing Library)
+- Monorepo si crecen servicios
+- CI/CD (Vercel + GitHub Actions)
 
 ---
 
-## 📚 Documentación y cultura de equipo
+## 📚 Documentación & cultura
 
-- Mantén sincronizados `ROADMAP.md`, `TAREAS.md`, `PLAN_FREE.md`, etc.
-- Documenta convenciones nuevas en `CONTRIBUTING.md`
-- Prefiere la claridad y la coherencia técnica sobre la “rapidez” improvisada
+- Mantén `ROADMAP.md`, `TAREAS.md`, `PLAN_*` sincronizados.
+- Convenciones nuevas → `CONTRIBUTING.md`.
+- Prioriza claridad sobre velocidad.
 
 ---
 
-## 🛡️ Licencia y protección
+## 🛡️ Licencia & protección
 
-- **Licencia MIT**  
-- Valida licencias de todas las dependencias antes de publicar
-- Nunca expongas secrets ni datos de usuarios en logs o docs públicas
+- **MIT**
+- Verifica licencias de dep.
+- No exponer secrets ni datos sensibles.
 
 ---
 
 ## 📝 Última nota
 
-> Esta arquitectura está viva: cada nueva integración, mejora o decisión debe quedar reflejada aquí y en los archivos de `/docs`.
+Esta arquitectura está viva: **cada cambio relevante** debe reflejarse aquí y en `/docs`.
 
 ---
 
-**Construye el futuro SaaS que te gustaría usar. Refactoriza y documenta siempre. 🚀**
+**Construye el SaaS que te gustaría usar. Refactoriza y documenta siempre. 🚀**
