@@ -27,6 +27,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **HeroUI + Tailwind** en todas las vistas
 - **Tema claro / oscuro** (`next-themes`)
 - **Preview pública** del sitio generado — `/projects/[id]/preview`
+- **Modularización de helpers y hooks** en `lib/utils.ts`
 
 ---
 
@@ -65,7 +66,6 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 
 ### 🛠 Refactor y escalabilidad
 
-- Modularizar helpers y hooks
 - Separar vistas en `/app/` conforme a migración App Router
 
 ---
