@@ -24,12 +24,14 @@ Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upse
 
 ## 📦 Instalación local
 
+Requiere **Node.js 18 LTS** y `npm` instalado.
+
 ```bash
 git clone https://github.com/albertoguinda/saas.git
 cd saas
-npm install
-cp .env.example .env.local            # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY
-npm run refresh-db                    # limpia y seed (BBDD) en un solo paso
+npm ci                                 # instala dependencias según package-lock
+cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY
+npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
 npm run dev
 ```
 
