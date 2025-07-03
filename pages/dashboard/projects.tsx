@@ -9,6 +9,7 @@ import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import UpgradeBanner from "@/components/UpgradeBanner";
+import { track } from "@/lib/track";
 
 // Límite de proyectos para el plan FREE
 const FREE_PROJECT_LIMIT = 1;
@@ -28,7 +29,9 @@ export default function ProjectsPage() {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   // --- Edición inline ---
-  const [editing, setEditing] = useState<{ id: string; title: string } | null>(null);
+  const [editing, setEditing] = useState<{ id: string; title: string } | null>(
+    null,
+  );
   const [editTitle, setEditTitle] = useState("");
   const [editError, setEditError] = useState("");
   const [updating, setUpdating] = useState(false);
@@ -123,7 +126,7 @@ export default function ProjectsPage() {
       return;
     }
     // Actualiza en la lista
-    setProjects(projects.map(p => p._id === data.site._id ? data.site : p));
+    setProjects(projects.map((p) => (p._id === data.site._id ? data.site : p)));
     setEditing(null);
   };
 
@@ -152,7 +155,10 @@ export default function ProjectsPage() {
             color="warning"
             variant="bordered"
             startContent={<Lock />}
-            onClick={() => router.push("/pricing")}
+            onClick={() => {
+              track("upgrade_click");
+              router.push("/pricing");
+            }}
           >
             Mejorar plan
           </Button>
@@ -186,7 +192,10 @@ export default function ProjectsPage() {
       {/* Listado de proyectos */}
       <div className="grid gap-6">
         {projects.map((project) => (
-          <Card key={project._id} className="flex items-center justify-between px-6 py-4">
+          <Card
+            key={project._id}
+            className="flex items-center justify-between px-6 py-4"
+          >
             <div>
               <div className="font-medium">{project.title}</div>
               <div className="text-xs text-default-400">
@@ -231,12 +240,12 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
             {error && <Alert color="danger">{error}</Alert>}
-              <Input
-                label="Nombre del proyecto"
-                value={newName}
-                onChange={e => setNewName(e.target.value)}
-                ref={createInputRef}
-              />
+            <Input
+              label="Nombre del proyecto"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              ref={createInputRef}
+            />
             <div className="flex gap-2">
               <Button onClick={handleCreate}>Crear</Button>
               <Button
@@ -263,12 +272,12 @@ export default function ProjectsPage() {
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
             <h3 className="text-lg font-semibold">Editar proyecto</h3>
             {editError && <Alert color="danger">{editError}</Alert>}
-              <Input
-                label="Título del proyecto"
-                value={editTitle}
-                onChange={e => setEditTitle(e.target.value)}
-                ref={editInputRef}
-              />
+            <Input
+              label="Título del proyecto"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+              ref={editInputRef}
+            />
             <div className="flex gap-2">
               <Button onClick={handleEdit} isLoading={updating}>
                 Guardar
@@ -286,11 +295,12 @@ export default function ProjectsPage() {
       )}
 
       {/* Aviso de límite para plan FREE */}
-      {session?.user?.plan === "free" && projects.length >= FREE_PROJECT_LIMIT && (
-        <div className="mt-8 text-center">
-          <UpgradeBanner />
-        </div>
-      )}
+      {session?.user?.plan === "free" &&
+        projects.length >= FREE_PROJECT_LIMIT && (
+          <div className="mt-8 text-center">
+            <UpgradeBanner />
+          </div>
+        )}
     </div>
   );
 }
