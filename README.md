@@ -66,3 +66,7 @@ Toda feature debe reflejarse en docs/TAREAS.md.
 🛡️ Licencia
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
 ```
+
+## ⚙️ Integración continua
+Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que instala dependencias con `npm ci`, ejecuta `npm run lint`, compila con `npm run build` y lanza `npm test` cuando existan pruebas.
+
