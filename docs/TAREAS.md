@@ -37,6 +37,9 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Tracking evento `wizard_completed`
 - ✅ Badge visual del plan en dashboard y navbar
 - ✅ Avisos visuales de upgrade por límite de uso
+- ✅ Toasts operativos con @heroui/toast — 03-Jul-2025
+- ✅ Ruta pública estable sin error params.slug — 03-Jul-2025
+- ✅ Refactor contador proyectos en dashboard
 
 ---
 

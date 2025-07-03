@@ -14,7 +14,7 @@ import UpgradeBanner from "@/components/UpgradeBanner";
 const FREE_PROJECT_LIMIT = 1;
 
 export default function ProjectsPage() {
-  const router = useRouter();
+  const router: any = useRouter();
   const { data: session } = useSession();
 
   // Estados principales del componente
@@ -75,6 +75,7 @@ export default function ProjectsPage() {
     setProjects([data.site, ...projects]);
     setCreating(false);
     setNewName("");
+    router.refresh();
   };
 
   // Elimina un proyecto (DELETE /api/sites/[id])
@@ -85,6 +86,7 @@ export default function ProjectsPage() {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
       if (res.ok) {
         setProjects(projects.filter((p) => p._id !== id));
+        router.refresh();
       } else {
         setApiError("No se pudo borrar el proyecto.");
       }
