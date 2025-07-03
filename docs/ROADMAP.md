@@ -38,7 +38,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 | Límite 1 sitio por usuario FREE          | **✅**          |
 | Guardar config de sitio en MongoDB       | 🟡 parcial      |
 | Render dinámico en `/[slug]`             | **✅ 03-Jul-2025** |
-| Preview pública `/projects/[id]/preview` | ⬜ pendiente    |
+| Preview pública `/projects/[id]/preview` | **✅ Jul-2025** |
 | Demo pública navegable                   | ⬜ pendiente    |
 
 ---
