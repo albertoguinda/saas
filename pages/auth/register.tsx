@@ -1,27 +1,30 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Card } from "@heroui/card";
-import { Alert } from "@heroui/alert";
+import { Alert, FormAlert } from "@heroui/alert";
 
 import AuthLayout from "@/layouts/auth";
+import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterInput>({
+    resolver: zodResolver(registerSchema),
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: RegisterInput) => {
     setLoading(true);
     setError("");
     setSuccess(false);
@@ -29,14 +32,16 @@ export default function RegisterPage() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form }),
+      body: JSON.stringify(data),
     });
 
     const data = await res.json();
+
     setLoading(false);
 
     if (!res.ok) {
       setError(data.error || "Error al registrar");
+
       return;
     }
 
@@ -49,56 +54,57 @@ export default function RegisterPage() {
   return (
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto shadow-2xl flex flex-col gap-6 p-8">
-        <h1 className="text-xl font-semibold text-center">Crear cuenta gratuita</h1>
+        <h1 className="text-xl font-semibold text-center">
+          Crear cuenta gratuita
+        </h1>
         {error && (
-          <Alert color="danger" className="mb-2">
+          <Alert className="mb-2" color="danger">
             {error}
           </Alert>
         )}
         {success && (
-          <Alert color="success" className="mb-2">
+          <Alert className="mb-2" color="success">
             Usuario creado correctamente. Redirigiendo...
           </Alert>
         )}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <Input
-            label="Nombre"
-            name="name"
-            type="text"
             autoComplete="name"
+            label="Nombre"
             placeholder="Tu nombre"
-            value={form.name}
-            onChange={handleChange}
-            required
+            type="text"
+            {...register("name")}
           />
+          {errors.name && (
+            <FormAlert color="danger">{errors.name.message}</FormAlert>
+          )}
           <Input
-            label="Email"
-            name="email"
-            type="email"
             autoComplete="email"
+            label="Email"
             placeholder="alberto@gmail.com" // USUARIO DEMO
-            value={form.email}
-            onChange={handleChange}
-            required
+            type="email"
+            {...register("email")}
           />
+          {errors.email && (
+            <FormAlert color="danger">{errors.email.message}</FormAlert>
+          )}
           <Input
-            label="Contraseña"
-            name="password"
-            type="password"
             autoComplete="new-password"
+            label="Contraseña"
             placeholder="••••••••" // EJEMPLO GENERICO
-            value={form.password}
-            onChange={handleChange}
-            required
-            minLength={6}
+            type="password"
+            {...register("password")}
           />
-          <Button type="submit" isLoading={loading} className="w-full">
+          {errors.password && (
+            <FormAlert color="danger">{errors.password.message}</FormAlert>
+          )}
+          <Button className="w-full" isLoading={loading} type="submit">
             Registrarse gratis
           </Button>
         </form>
         <p className="text-center text-sm text-default-500">
           ¿Ya tienes cuenta?{" "}
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
+          <Link className="text-blue-600 hover:underline" href="/auth/login">
             Inicia sesión aquí
           </Link>
         </p>
