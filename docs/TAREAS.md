@@ -55,6 +55,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Demo pública navegable — 03-Jul-2025
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
+- [x] Tracking evento `upgrade_click`
 
 ---
 
@@ -98,6 +99,12 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Banners visuales de upsell (dashboard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
   Shadcn UI, Flowbite y DaisyUI
+- [ ] Evaluar Toastify para notificaciones
+- [ ] Evaluar Swiper para carruseles
+- [ ] Evaluar PhotoSwipe para galerías de imágenes
+- [ ] Evaluar Atropos para efectos parallax
+- [ ] Evaluar canvas-confetti para animaciones festivas
+- [ ] Evaluar Arctic para componentes UI
 
 ---
 
@@ -107,6 +114,8 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
+- [ ] Implementar sistema de lealtad por puntos
+- [ ] Mostrar insignias de lealtad en el dashboard
 
 ---
 
