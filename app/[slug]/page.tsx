@@ -8,12 +8,13 @@ interface PageProps {
 }
 
 export default async function PublicSite({ params }: PageProps) {
+  // ⚠️ Capturamos el slug ANTES de cualquier await:
+  const { slug } = params;
+
   await dbConnect();
-  const site = await Site.findOne({ slug: params.slug }).lean();
+  const site = await Site.findOne({ slug }).lean();
 
   if (!site) notFound();
 
-  const plainSite = site as unknown as SiteDoc;
-
-  return <Landing site={plainSite} />;
+  return <Landing site={site as unknown as SiteDoc} />;
 }
