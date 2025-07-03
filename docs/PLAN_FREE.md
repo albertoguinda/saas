@@ -28,6 +28,9 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Tema claro / oscuro** (`next-themes`)
 - **Preview pública** del sitio generado — `/projects/[id]/preview`
 - **Modularización de helpers y hooks** en `lib/utils.ts`
+- **Renderizado dinámico** en ruta `/[slug]`
+- **Demo pública navegable** desde `/[slug]`
+- **Validación backend** del límite 1 sitio
 
 ---
 
@@ -44,8 +47,6 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 
 ### 🌐 Sitio público y proyectos
 
-- Renderizado dinámico en ruta `/[slug]` (demo pública)
-- Validación backend del límite 1 sitio (ahora sólo en middleware)
 - Página de error amigable para rutas privadas sin sesión
 
 ### 🧱 Wizard & UX
@@ -72,5 +73,5 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 
 ## ✍️ Notas
 
-La experiencia FREE ya cubre registro → dashboard → **creación de un sitio vía wizard**.  
-Siguientes hitos: tracking de uso y mejoras de UX / accesibilidad.
+La experiencia FREE ya cubre registro → dashboard → **creación de un sitio vía wizard**.
+Los siguientes hitos se centran en tracking de uso y mejoras de UX.
