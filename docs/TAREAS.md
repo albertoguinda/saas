@@ -98,6 +98,7 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Banners visuales de upsell (dashboard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
   Shadcn UI, Flowbite y DaisyUI
+- [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
 ---
 
@@ -107,6 +108,8 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
+- [ ] Sistema de fidelización/puntos con recompensas diarias
+- [ ] Insignias y logros visibles en el perfil del usuario
 
 ---
 
