@@ -62,6 +62,7 @@ _Actualizado: **05-Jul-2025**_
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
 - [x] API admin `/api/admin/stats` devuelve conteo de usuarios, sitios y eventos — 04-Jul-2025
 - [x] Tests API perfil (`/api/me/update` y `/api/me/avatar`) — 04-Jul-2025
+- [x] Tests middleware withAuthPlan — 05-Jul-2025
 
 ---
 
