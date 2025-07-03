@@ -3,6 +3,7 @@ import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
 import { useSession } from "next-auth/react";
+import PlanBadge from "@/components/PlanBadge";
 import { useRouter } from "next/router";
 import { LayoutDashboard, User, Zap } from "lucide-react";
 
@@ -16,8 +17,9 @@ export default function DashboardHome() {
 
   return (
     <div className="max-w-3xl mx-auto py-12">
-      <h1 className="text-2xl font-bold mb-6">
+      <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
         {session?.user?.name ? `Hola, ${session.user.name}!` : "Bienvenido a tu Dashboard"}
+        {session?.user?.plan && <PlanBadge plan={session.user.plan} />}
       </h1>
       <div className="grid md:grid-cols-2 gap-6">
         {/* Tarjeta Proyectos */}
