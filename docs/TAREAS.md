@@ -36,6 +36,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Manejo de errores en wizard (validación Zod + feedback)
 - [x] Tracking evento `wizard_completed`
 - [x] API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
+- [x] Modelo `Event` ampliado (page, tiempo y coords) — 03-Jul-2025
 - [x] Badge visual del plan en dashboard y navbar
 - [x] Avisos visuales de upgrade por límite de uso
 - [x] Toasts operativos con @heroui/toast — 03-Jul-2025
