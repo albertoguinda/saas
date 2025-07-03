@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-      - run: npm ci
+      - run: ./scripts/setup.sh
       - run: npm run lint
       - run: npm run build
       - run: npm test
