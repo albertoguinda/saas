@@ -31,6 +31,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Renderizado dinámico** en ruta `/[slug]`
 - **Demo pública navegable** desde `/[slug]`
 - **Validación backend** del límite 1 sitio
+- Tracking de eventos `wizard_completed` y `upgrade_click`
 
 ---
 
@@ -58,7 +59,6 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 ### 🚀 Upsell & tracking
 
 - Aviso visual de upgrade al llegar al límite o uso intensivo
-- Tracking anónimo de eventos: `wizard_completed`, `upgrade_click`, etc.
 - Etiqueta “FREE” en dashboard y navbar
 
 ### 🧪 Métricas
