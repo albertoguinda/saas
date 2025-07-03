@@ -26,6 +26,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - Flujo mínimo: login → dashboard → perfil / proyectos / bienvenida
 - **HeroUI + Tailwind** en todas las vistas
 - **Tema claro / oscuro** (`next-themes`)
+- **Preview pública** del sitio generado — `/projects/[id]/preview`
 
 ---
 
@@ -42,7 +43,6 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 
 ### 🌐 Sitio público y proyectos
 
-- **Preview pública** del sitio generado — `/projects/[id]/preview`
 - Renderizado dinámico en ruta `/[slug]` (demo pública)
 - Validación backend del límite 1 sitio (ahora sólo en middleware)
 - Página de error amigable para rutas privadas sin sesión
@@ -73,4 +73,4 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 ## ✍️ Notas
 
 La experiencia FREE ya cubre registro → dashboard → **creación de un sitio vía wizard**.  
-Siguientes hitos: **preview pública**, tracking de uso y mejoras de UX / accesibilidad.
+Siguientes hitos: tracking de uso y mejoras de UX / accesibilidad.
