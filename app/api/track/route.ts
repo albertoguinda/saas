@@ -4,26 +4,30 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/lib/models/event";
+import { withValidationRoute } from "@/lib/middlewares/withValidation";
+import { eventSchema, type EventInput } from "@/lib/validations/event";
 
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest & { body: EventInput }) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user) {
     return NextResponse.json({ error: "No autenticado" }, { status: 401 });
   }
 
-  try {
-    const { event } = (await request.json()) as { event?: string };
+  const { event, page, timestamp, duration, x, y } = request.body;
 
-    if (!event) {
-      return NextResponse.json({ error: "Evento requerido" }, { status: 400 });
-    }
+  await dbConnect();
+  await Event.create({
+    userId: session.user.id,
+    event,
+    page,
+    timestamp,
+    duration,
+    x,
+    y,
+  });
 
-    await dbConnect();
-    await Event.create({ userId: session.user.id, event });
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
-  }
+  return NextResponse.json({ ok: true });
 }
+
+export const POST = withValidationRoute(handler, eventSchema);

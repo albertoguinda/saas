@@ -26,15 +26,50 @@ beforeEach(() => {
 
 
 test('returns 401 when unauthenticated', async () => {
-  const req = { json: async () => ({ event: 'test' }) } as unknown as NextRequest;
+  const req = { method: 'POST', json: async () => ({ event: 'test' }) } as unknown as NextRequest;
   const res = await POST(req);
   expect(res.status).toBe(401);
 });
 
-test('saves event when authenticated', async () => {
+test('saves event with extra data', async () => {
   (getServerSession as jest.Mock).mockResolvedValue({ user: { id: '1' } });
-  const req = { json: async () => ({ event: 'wizard_completed' }) } as unknown as NextRequest;
+  const req = {
+    method: 'POST',
+    json: async () => ({ event: 'click', page: '/d', x: 1, y: 2, timestamp: 10 }),
+  } as unknown as NextRequest;
   const res = await POST(req);
-  expect(Event.create).toHaveBeenCalledWith({ userId: '1', event: 'wizard_completed' });
+  expect(Event.create).toHaveBeenCalledWith({
+    userId: '1',
+    event: 'click',
+    page: '/d',
+    x: 1,
+    y: 2,
+    timestamp: 10,
+    duration: undefined,
+  });
   expect(res.status).toBe(200);
+});
+
+test('returns 400 when missing event', async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: '1' } });
+  const req = { method: 'POST', json: async () => ({ page: '/d' }) } as unknown as NextRequest;
+  const res = await POST(req);
+  expect(res.status).toBe(400);
+  expect(Event.create).not.toHaveBeenCalled();
+});
+
+test('returns 400 when validation fails', async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: '1' } });
+  const req = { method: 'POST', json: async () => ({ event: 1 }) } as unknown as NextRequest;
+  const res = await POST(req);
+  expect(res.status).toBe(400);
+  expect(Event.create).not.toHaveBeenCalled();
+});
+
+test('returns 400 on malformed JSON', async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: '1' } });
+  const req = { method: 'POST', json: async () => { throw new Error('bad'); } } as unknown as NextRequest;
+  const res = await POST(req);
+  expect(res.status).toBe(400);
+  expect(Event.create).not.toHaveBeenCalled();
 });
