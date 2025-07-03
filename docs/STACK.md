@@ -80,3 +80,9 @@ Para la biblioteca de componentes de pago tomaremos como referencia estas librer
 - [TradingView Lightweight Charts](https://www.tradingview.com/lightweight-charts/)
 - [Apache ECharts](https://echarts.apache.org/en/index.html)
 - [D3.js](https://d3js.org/)
+- [Toastify](https://apvarun.github.io/toastify-js/) – notificaciones
+- [Swiper](https://swiperjs.com/) – sliders responsivos
+- [PhotoSwipe](https://photoswipe.com/) – galerías de imágenes
+- [Atropos](https://atroposjs.com/) – efecto parallax
+- [canvas-confetti](https://www.kirilv.com/canvas-confetti/) – celebraciones
+- [Arctic](https://arctic.jackyz.xyz/) – transiciones y efectos 3D
