@@ -52,6 +52,7 @@
 | **ESLint (Flat Config)** + **Prettier** | Lint & format                                           |
 | **tsx**                                 | Ejecución directa de scripts TS (`seed.ts`, `reset.ts`) |
 
+| **Jest + Testing Library** | Tests unitarios y de componentes |
 ---
 
 ## 🟨 CONVENCIÓN Y ESTRUCTURA

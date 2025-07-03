@@ -32,6 +32,12 @@ cp .env.example .env.local            # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_
 npm run refresh-db                    # limpia y seed (BBDD) en un solo paso
 npm run dev
 TIP: si solo necesitas seedear de nuevo usa npm run seed.
+## 🧪 Tests
+
+```bash
+npm test
+```
+
 
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
