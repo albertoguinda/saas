@@ -62,7 +62,7 @@ Si tu proveedor bloquea tráfico saliente, el build o los webhooks (Stripe, Rese
 
 📝 Notas rápidas del Plan FREE
 Límite 1 sitio por usuario: ya manejado por middleware withAuthPlan.
-Protección de APIs: middleware withRateLimit con Upstash Redis.
+Protección de APIs: middleware withRateLimit con Upstash Redis (implementado).
 
 Branding “Web Builder” visible en el footer del sitio generado.
 

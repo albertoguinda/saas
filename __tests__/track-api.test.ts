@@ -8,6 +8,15 @@ jest.mock('next/server', () => {
   };
 });
 
+jest.mock('@/lib/middlewares/rateLimit', () => ({
+  __esModule: true,
+  withRateLimitRoute: (h: any) => h,
+  withRateLimit: (h: any) => h,
+  checkLimit: jest.fn().mockResolvedValue(true),
+}));
+
+import { checkLimit } from '@/lib/middlewares/rateLimit';
+
 jest.mock('next-auth', () => ({
   getServerSession: jest.fn().mockResolvedValue(null),
 }));
@@ -72,4 +81,12 @@ test('returns 400 on malformed JSON', async () => {
   const res = await POST(req);
   expect(res.status).toBe(400);
   expect(Event.create).not.toHaveBeenCalled();
+});
+
+test('returns 429 when rate limit exceeded', async () => {
+  (checkLimit as jest.Mock).mockResolvedValue(false);
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: '1' } });
+  const req = { method: 'POST', json: async () => ({ event: 'x' }) } as unknown as NextRequest;
+  const res = await POST(req);
+  expect(res.status).toBe(429);
 });
