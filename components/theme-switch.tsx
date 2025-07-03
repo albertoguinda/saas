@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
 import { useTheme } from "next-themes";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
@@ -46,7 +46,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     <Component
       aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
       {...getBaseProps({
-        className: clsx(
+        className: cn(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
           classNames?.base,
@@ -59,7 +59,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
       <div
         {...getWrapperProps()}
         className={slots.wrapper({
-          class: clsx(
+          class: cn(
             [
               "w-auto h-auto",
               "bg-transparent",
