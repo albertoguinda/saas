@@ -5,6 +5,12 @@ import { title as titleStyle, subtitle } from "@/components/primitives";
 import { Check, Layout, ImageIcon } from "lucide-react";
 import clsx from "clsx";
 
+const POSTS = [
+  { title: "Primer post", desc: "Lorem ipsum dolor sit amet." },
+  { title: "Segundo post", desc: "Consectetur adipiscing elit." },
+  { title: "Tercer post", desc: "Sed do eiusmod tempor." },
+];
+
 export interface SiteDoc {
   _id: string;
   userId: string;
@@ -27,9 +33,14 @@ export default function Landing({ site }: LandingProps) {
   const template = site.structure?.template ?? "default";
 
   const Hero = (
-    <section className="py-20 text-center">
+    <section className="py-24 text-center">
       <h1 className={clsx(titleStyle({ size: "lg" }), "mb-4")}>{site.title}</h1>
-      <p className={clsx(subtitle(), "mx-auto max-w-xl")}>Tu web generada al instante.</p>
+      <p className={clsx(subtitle(), "mx-auto max-w-xl mb-8")}>
+        Crea tu sitio en minutos con Next.js y HeroUI.
+      </p>
+      <Button as={Link} href="/auth/login" color="primary">
+        Comenzar
+      </Button>
     </section>
   );
 
@@ -47,28 +58,33 @@ export default function Landing({ site }: LandingProps) {
     </section>
   );
 
-  const CTA = (
-    <section className="py-20 text-center">
-      <Button as={Link} href="/dashboard" color="primary">
-        Volver al dashboard
-      </Button>
+  const BlogPosts = (
+    <section className="py-16">
+      <div className="container mx-auto">
+        <h2 className="text-center text-xl font-semibold mb-8">Últimos posts</h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          {POSTS.map(({ title, desc }) => (
+            <Card key={title} className="p-6 flex flex-col gap-2">
+              <h3 className="font-semibold">{title}</h3>
+              <p className="text-sm text-default-500">{desc}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
     </section>
   );
 
-  if (template === "blog") {
-    return (
-      <div className="flex flex-col">
-        {Hero}
-        {CTA}
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       {Hero}
       {Features}
-      {CTA}
+      {template === "blog" && BlogPosts}
+      <footer className="mt-auto py-6 text-center text-sm text-default-500 border-t">
+        &copy; {new Date().getFullYear()} {" "}
+        <Link isExternal href="https://www.heroui.com">
+          SaaS Web Builder
+        </Link>
+      </footer>
     </div>
   );
 }
