@@ -57,7 +57,10 @@ _Actualizado: **03-Jul-2025**_
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
-- [x] Middleware `withRateLimit` con Upstash Redis — 03-Jul-2025
+
+## ⚠️ Tareas con merge pendiente
+
+- Middleware `withRateLimit` con Upstash Redis — pendiente por conflictos de merge. Revisar en próximos sprints.
 
 ---
 
