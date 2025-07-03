@@ -63,3 +63,20 @@
 - Nueva funcionalidad ⇒ carpeta propia en `/app/` (migración progresiva).
 - Wizard 3-pasos reside en `/app/projects/[id]/wizard/`.
 - **Actualiza este archivo** cuando añadas dependencias clave o cambies el stack.
+
+## 🌟 Inspiración para componentes UI premium
+
+Para la biblioteca de componentes de pago tomaremos como referencia estas librerías y recursos:
+
+- [HeroUI Plus](https://www.heroui.com/)
+- [Tailwind UI](https://tailwindcss.com/plus)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Flowbite](https://flowbite.com/)
+- [DaisyUI](https://daisyui.com/)
+- [Material UI](https://mui.com/material-ui/)
+- [Tremor](https://tremor.so/)
+- [Material Tailwind – Web3 Charts](https://www.material-tailwind.com/blocks/web3-charts)
+- [Threads – Midu.dev](https://www.threads.com/@midu.dev/post/C558KlMtyAM)
+- [TradingView Lightweight Charts](https://www.tradingview.com/lightweight-charts/)
+- [Apache ECharts](https://echarts.apache.org/en/index.html)
+- [D3.js](https://d3js.org/)
