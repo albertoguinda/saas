@@ -73,7 +73,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 ## 7️⃣ Fase 7 — Validación, métricas & feedback (⬜ pendiente)
 
-- Tracking de eventos (`wizard_completed`, `upgrade_click`, etc.)
+- ✅ Tracking inicial de eventos (`wizard_completed`) en MongoDB — 03-Jul-2025
 - Avisos de upgrade en puntos de fricción / límites
 - Badge visual del plan activo (FREE / PRO / PREMIUM)
 - Captura de feedback y link a soporte
