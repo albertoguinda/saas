@@ -13,9 +13,23 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
   const session = await getServerSession(req, res, authOptions);
 
-  // GET: Listar proyectos del usuario
+  // GET: Listar proyectos o verificar un slug
   if (req.method === "GET") {
     try {
+      const slug = Array.isArray(req.query.slug)
+        ? req.query.slug[0]
+        : req.query.slug;
+
+      if (slug) {
+        if (typeof slug !== "string" || !slug.trim()) {
+          return res.status(400).json({ error: "Slug inválido" });
+        }
+
+        const exists = await Site.exists({ slug });
+
+        return res.status(200).json({ exists: Boolean(exists) });
+      }
+
       const sites = await Site.find({ userId: session.user.id }).sort({
         createdAt: -1,
       });
