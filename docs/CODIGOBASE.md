@@ -106,8 +106,8 @@ _Estructura, arquitectura y convenciones técnicas base_
 - `lib/utils.ts` – helpers globales (`cn`, `hashPassword`, `comparePassword`)
 - **Middlewares**
   - `withAuthPlan` – protección por plan
-  - `withValidation` – validación Zod en APIs
-- Validación frontend con **React Hook Form + Zod**
+  - `withValidation` – validación Zod en APIs (se aplica a todos los POST/PATCH)
+  - Validación frontend con **React Hook Form + Zod**
 
 ---
 
@@ -115,7 +115,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 
 | Ruta                          | Método | Auth | Descripción                        |
 | ----------------------------- | ------ | ---- | ---------------------------------- |
-| `/api/auth/register`          | POST   | —    | Registro (hash pre-save)           |
+| `/api/auth/register`          | POST   | —    | Registro (hash pre-save, Zod)      |
 | `/api/auth/login`             | POST   | —    | Login credentials                  |
 | `/api/me`                     | GET    | 🔐   | Info usuario logueado              |
 | `/api/me/update`              | PATCH  | 🔐   | Actualizar nombre o pass           |

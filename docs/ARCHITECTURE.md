@@ -114,9 +114,9 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 - **REST / Route Handlers**:  
   `/api/auth`, `/api/me`, `/api/sites`, `/api/stripe`
-- **Middlewares**
-  - `withAuthPlan` (checks por plan)
-  - `withValidation` (Zod)
+  - **Middlewares**
+    - `withAuthPlan` (checks por plan)
+    - `withValidation` (Zod en todas las APIs)
 
 ---
 

@@ -1,4 +1,6 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import type { ZodSchema } from "zod";
 
 /**
@@ -25,5 +27,34 @@ export function withValidation<T>(
     }
 
     return handler(req, res);
+  };
+}
+
+export function withValidationRoute<T>(
+  handler: (req: NextRequest & { body: T }) => Promise<Response> | Response,
+  schema: ZodSchema<T>,
+) {
+  return async (req: NextRequest) => {
+    if (["POST", "PUT", "PATCH"].includes(req.method)) {
+      let json: unknown;
+      try {
+        json = await req.json();
+      } catch {
+        return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
+      }
+
+      const result = schema.safeParse(json);
+
+      if (!result.success) {
+        return NextResponse.json(
+          { error: "Datos inválidos", issues: result.error.flatten() },
+          { status: 400 },
+        );
+      }
+
+      (req as unknown as { body: T }).body = result.data;
+    }
+
+    return handler(req as NextRequest & { body: T });
   };
 }
