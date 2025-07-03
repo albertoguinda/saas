@@ -112,6 +112,7 @@ _Actualizado: **05-Jul-2025**_
 ### 📊 ADMIN & Retención
 
 - [ ] Panel admin de métricas (registros, actividad)
+- [x] Pruebas API admin `/api/admin/stats` — 05-Jul-2025
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
