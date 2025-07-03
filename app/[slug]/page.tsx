@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export default async function PublicSite({ params }: PageProps) {
-  const { slug } = params;      // ✅ antes de await
+  const { slug } = params;
 
   await dbConnect();
   const site = (await Site.findOne({ slug }).lean()) as SiteDoc | null;
