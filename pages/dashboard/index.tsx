@@ -7,6 +7,7 @@ import PlanBadge from "@/components/PlanBadge";
 import { useRouter } from "next/router";
 import { LayoutDashboard, User, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
+import { track } from "@/lib/track";
 
 export default function DashboardHome() {
   const { data: session } = useSession();
@@ -25,7 +26,9 @@ export default function DashboardHome() {
   return (
     <div className="max-w-3xl mx-auto py-12">
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
-        {session?.user?.name ? `Hola, ${session.user.name}!` : "Bienvenido a tu Dashboard"}
+        {session?.user?.name
+          ? `Hola, ${session.user.name}!`
+          : "Bienvenido a tu Dashboard"}
         {session?.user?.plan && <PlanBadge plan={session.user.plan} />}
       </h1>
       <div className="grid md:grid-cols-2 gap-6">
@@ -34,7 +37,8 @@ export default function DashboardHome() {
           <LayoutDashboard size={36} className="text-violet-600 mb-1" />
           <span className="font-semibold">Tus proyectos</span>
           <div>
-            <span className="text-lg">{projectsCount}</span> / {projectLimit} en plan Free
+            <span className="text-lg">{projectsCount}</span> / {projectLimit} en
+            plan Free
           </div>
           <Button
             color="primary"
@@ -49,7 +53,9 @@ export default function DashboardHome() {
         <Card className="flex flex-col gap-4 p-6 items-center text-center">
           <User size={36} className="text-violet-600 mb-1" />
           <span className="font-semibold">Tu perfil</span>
-          <div className="text-default-500">Actualiza tu información personal y tu contraseña.</div>
+          <div className="text-default-500">
+            Actualiza tu información personal y tu contraseña.
+          </div>
           <Button
             color="secondary"
             variant="bordered"
@@ -71,7 +77,10 @@ export default function DashboardHome() {
               color="warning"
               variant="light"
               className="ml-2"
-              onClick={() => router.push("/pricing")}
+              onClick={() => {
+                track("upgrade_click");
+                router.push("/pricing");
+              }}
               startContent={<Zap />}
             >
               Mejorar plan
