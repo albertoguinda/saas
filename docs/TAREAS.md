@@ -71,6 +71,7 @@ _Actualizado: **03-Jul-2025**_
 ### 💼 PRO – Funcionalidades avanzadas
 
 - Guardar estructura completa del sitio (branding, assets) en MongoDB
+- Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
 - Branding extendido (selector de color, fuentes, logo, favicon)
 - Emails transaccionales (Resend) + confirmación de cuenta
 - Panel de analítica simple (visitas, actividad – Upstash opc.)
