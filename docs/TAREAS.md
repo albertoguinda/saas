@@ -45,14 +45,14 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Fix estilos globales + warning slug
 - ✅ Estilos HeroUI restaurados (Tailwind content + plugin) — 03-Jul-2025
 - ✅ Verificación backend de slug único en `/api/sites` — 03-Jul-2025
+- ✅ Validación avanzada de login y registro con Zod + React Hook Form — 03-Jul-2025
 
 ---
 
 ## 🚧 Tareas Pendientes por Fase
 
 ### 🔓 FREE – Core público y experiencia
-
-- Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
+- Validación avanzada del formulario de perfil (Zod + feedback real-time)
 - ✅ Instalación de React Hook Form y Zod para validación de formularios
 - ✅ Render dinámico en `/[slug]`
 - Página de error amigable para rutas privadas sin sesión
