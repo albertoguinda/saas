@@ -4,6 +4,8 @@ _Actualizado: **03-Jul-2025**_
 
 ---
 
+> **Aviso:** Hay un conflicto de merge sin resolver.
+
 ## ✅ Tareas Completadas
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
@@ -57,7 +59,6 @@ _Actualizado: **03-Jul-2025**_
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
-- [x] Middleware `withRateLimit` con Upstash Redis — 03-Jul-2025
 
 ---
 
@@ -72,6 +73,7 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
 - [ ] Corregir `.npmrc` y asegurar `npm install` limpio
+- [ ] Middleware `withRateLimit` con Upstash Redis
 
 ---
 
