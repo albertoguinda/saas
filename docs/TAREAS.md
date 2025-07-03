@@ -32,7 +32,7 @@ _Actualizado: **03-Jul-2025**_
 - Edición perfil persistente (nombre, contraseña)
 - Render público de sitio en `/[slug]`
 - Aviso + bloqueo backend si >1 sitio FREE
-- **Wizard/Generador de sitios** mínimo viable (3 pasos, 1 sitio FREE) **— 03-Jul-2025**
+- ✅ Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 
 ---
 
@@ -41,12 +41,13 @@ _Actualizado: **03-Jul-2025**_
 ### 🔓 FREE – Core público y experiencia
 
 - Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
-- **Preview pública** del sitio generado: `/projects/[id]/preview`
-- Manejo de errores / validación granular en wizard (spinner, estados)
+- ✅ Preview pública `/projects/[id]/preview`
+- ✅ Render dinámico en `/[slug]`
+- Manejo de errores en wizard
 - Página de error amigable para rutas privadas sin sesión
 - Badge visual del plan activo (FREE) en dashboard y navbar
 - Avisos visuales de upgrade por límite de uso o flujo crítico
-- Tracking básico: eventos `wizard_completed`, nº registros, nº proyectos por usuario
+- Tracking evento `wizard_completed`
 
 ---
 
