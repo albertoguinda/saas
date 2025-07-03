@@ -27,6 +27,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - ✅ Modelo **User** (`/lib/models/user.ts`) con hash + validaciones
 - ✅ Modelo **Site** (`/lib/models/site.ts`)
 - ✅ API `/api/me` GET/PATCH
+- ✅ API `/api/me/avatar` PATCH (actualizar avatar)
 
 ---
 
