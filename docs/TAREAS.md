@@ -67,6 +67,8 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Spinner y estados de red en wizard
 - [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
+- [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
+- [ ] Corregir `.npmrc` y asegurar `npm install` limpio
 
 ---
 
