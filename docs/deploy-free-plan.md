@@ -20,6 +20,8 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
    | MONGODB_URI     | Cadena de conexión MongoDB Atlas (servidor 6.x) |
    | NEXTAUTH_SECRET | String aleatorio seguro (`openssl rand -base64 32`)              |
    | NEXTAUTH_URL    | URL pública de tu app (`https://tu-app.vercel.app`)             |
+   | UPSTASH_REDIS_REST_URL | Endpoint REST de Upstash Redis para rate-limit |
+   | UPSTASH_REDIS_REST_TOKEN | Token de acceso Upstash Redis |
 
    Comprueba que el build funciona en local:
 
@@ -60,6 +62,7 @@ Si tu proveedor bloquea tráfico saliente, el build o los webhooks (Stripe, Rese
 
 📝 Notas rápidas del Plan FREE
 Límite 1 sitio por usuario: ya manejado por middleware withAuthPlan.
+Protección de APIs: middleware withRateLimit con Upstash Redis.
 
 Branding “Web Builder” visible en el footer del sitio generado.
 

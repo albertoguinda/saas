@@ -30,7 +30,7 @@ Requiere **Node.js 18 LTS** y `npm` instalado.
 git clone https://github.com/albertoguinda/saas.git
 cd saas
 ./scripts/setup.sh                     # instala dependencias según package-lock
-cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY
+cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY, UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN
 npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
 npm run dev
 ```
@@ -71,8 +71,9 @@ Visión estratégica → docs/ROADMAP.md
 Backlog por fases → docs/TAREAS.md
 
 🛠 Stack principal
-Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5) • Auth.js • Stripe • Resend • tsx
+Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5) • Auth.js • Stripe • Upstash Redis • Resend • tsx
 Detalle completo en docs/STACK.md.
+Las APIs están protegidas con el middleware `withRateLimit` gracias a Upstash Redis.
 
 🤝 Cómo contribuir
 Lee docs/CONTRIBUTING.md.
