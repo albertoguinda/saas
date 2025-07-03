@@ -36,6 +36,7 @@ _Actualizado: **04-Jul-2025**_
 - [x] Aviso + bloqueo backend si >1 sitio FREE
 - [x] Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 - [x] Manejo de errores en wizard (validación Zod + feedback)
+- [x] Spinner y estados de red en wizard — 04-Jul-2025
 - [x] Tracking evento `wizard_completed`
 - [x] Tracking evento `upgrade_click`
 - [x] API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
@@ -69,7 +70,6 @@ _Actualizado: **04-Jul-2025**_
 
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
-- [ ] Spinner y estados de red en wizard
 - [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
