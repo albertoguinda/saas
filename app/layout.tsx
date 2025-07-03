@@ -1,21 +1,19 @@
-// app/layout.tsx
-import '@/styles/globals.css';
-import { ThemeProvider } from 'next-themes';
-import { ToastProvider } from '@heroui/toast';
-import type { ReactNode } from 'react';
+import { ToastProvider, ToastViewport, ToastList } from '@heroui/toast';
 
-export const metadata = {
-  title: 'SaaS Web Builder',
-  description: 'Genera tu web en 3 pasos',
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground">
-        {/* ThemeProvider añade o quita la clase `dark` en el lado cliente */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ToastProvider placement="top-right">{children}</ToastProvider>
+          {/* Provider */}
+          <ToastProvider placement="top-right">
+            {children}
+
+            {/* UNO de los dos, según tu versión */}
+            <ToastViewport />   {/* v2.1+ */}
+            {/* ó */}
+            <ToastList />       {/* v2.0.x */}
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
