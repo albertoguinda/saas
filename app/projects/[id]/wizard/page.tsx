@@ -69,6 +69,11 @@ export default function WizardPage({ params }: WizardPageProps) {
     }
 
     toast.success('Sitio generado')
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event: 'wizard_completed' }),
+    }).catch(() => {})
     router.push(`/projects/${params.id}/preview`)
   }
 

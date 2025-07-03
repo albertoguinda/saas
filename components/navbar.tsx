@@ -18,6 +18,7 @@ import {
 } from '@heroui/dropdown';
 import { Avatar } from '@heroui/avatar';
 import { Button } from '@heroui/button';
+import PlanBadge from './PlanBadge';
 
 export const Logo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
@@ -62,11 +63,13 @@ export default function AppNavbar() {
 
       <NavbarContent as="div" justify="end">
         {session?.user ? (
-          <Dropdown placement="bottom-end">
-            <DropdownTrigger>
-              <Avatar
-                isBordered
-                as="button"
+          <>
+            <PlanBadge plan={session.user.plan} className="mr-2" />
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
                 className="transition-transform"
                 color="secondary"
                 name={session.user.name || 'Usuario'}
@@ -88,7 +91,8 @@ export default function AppNavbar() {
                 Cerrar sesión
               </DropdownItem>
             </DropdownMenu>
-          </Dropdown>
+            </Dropdown>
+          </>
         ) : (
           <Button color="secondary" size="sm" onClick={() => signIn()}>
             Iniciar sesión

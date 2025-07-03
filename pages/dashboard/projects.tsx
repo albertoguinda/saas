@@ -7,12 +7,15 @@ import { Input } from "@heroui/input";
 import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import UpgradeBanner from "@/components/UpgradeBanner";
 
 // Límite de proyectos para el plan FREE
 const FREE_PROJECT_LIMIT = 1;
 
 export default function ProjectsPage() {
   const router = useRouter();
+  const { data: session } = useSession();
 
   // Estados principales del componente
   const [projects, setProjects] = useState<any[]>([]);
@@ -281,20 +284,9 @@ export default function ProjectsPage() {
       )}
 
       {/* Aviso de límite para plan FREE */}
-      {projects.length >= FREE_PROJECT_LIMIT && (
+      {session?.user?.plan === "free" && projects.length >= FREE_PROJECT_LIMIT && (
         <div className="mt-8 text-center">
-          <Alert color="warning" className="inline-block">
-            Has alcanzado el máximo de proyectos en el plan Free.
-            <Button
-              size="sm"
-              color="warning"
-              variant="light"
-              onClick={() => router.push("/pricing")}
-              className="ml-2"
-            >
-              Mejorar plan
-            </Button>
-          </Alert>
+          <UpgradeBanner />
         </div>
       )}
     </div>

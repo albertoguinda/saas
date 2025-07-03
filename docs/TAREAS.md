@@ -34,6 +34,9 @@ _Actualizado: **03-Jul-2025**_
 - Aviso + bloqueo backend si >1 sitio FREE
 - ✅ Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 - ✅ Manejo de errores en wizard (validación Zod + feedback)
+- ✅ Tracking evento `wizard_completed`
+- ✅ Badge visual del plan en dashboard y navbar
+- ✅ Avisos visuales de upgrade por límite de uso
 
 ---
 
@@ -45,9 +48,9 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Preview pública `/projects/[id]/preview`
 - ✅ Render dinámico en `/[slug]`
 - Página de error amigable para rutas privadas sin sesión
-- Badge visual del plan activo (FREE) en dashboard y navbar
-- Avisos visuales de upgrade por límite de uso o flujo crítico
-- Tracking evento `wizard_completed`
+- ✅ Badge visual del plan activo (FREE) en dashboard y navbar
+- ✅ Avisos visuales de upgrade por límite de uso o flujo crítico
+- ✅ Tracking evento `wizard_completed`
 
 ---
 
