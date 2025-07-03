@@ -104,7 +104,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 - `lib/utils.ts` – helpers globales (`cn`, `hashPassword`, `comparePassword`)
 - **Middlewares**
   - `withAuthPlan` – protección por plan
-  - `withValidation` (Zod) – ⚠️ pendiente
+  - `withValidation` – validación Zod en APIs
 - Validación frontend con **React Hook Form + Zod**
 
 ---

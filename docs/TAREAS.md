@@ -53,6 +53,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Validación avanzada de formularios (login, registro, perfil) con React Hook Form + Zod — 03-Jul-2025
 - ✅ Guardar configuración del sitio en MongoDB (estructura del wizard) — 03-Jul-2025
 - ✅ Demo pública navegable — 03-Jul-2025
+- ✅ Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 
 ---
 
