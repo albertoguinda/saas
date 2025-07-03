@@ -1,6 +1,7 @@
 // app/layout.tsx
 import '@/styles/globals.css';
 import { ThemeProvider } from 'next-themes';
+import { ToastProvider } from '@heroui/toast';
 import type { ReactNode } from 'react';
 
 export const metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen bg-background text-foreground">
         {/* ThemeProvider añade o quita la clase `dark` en el lado cliente */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <ToastProvider placement="top-right">{children}</ToastProvider>
         </ThemeProvider>
       </body>
     </html>
