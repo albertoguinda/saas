@@ -4,8 +4,6 @@ _Actualizado: **04-Jul-2025**_
 
 ---
 
-> **Aviso:** Hay un conflicto de merge sin resolver.
-
 ## ✅ Tareas Completadas
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
@@ -60,6 +58,7 @@ _Actualizado: **04-Jul-2025**_
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
+- [x] API admin `/api/admin/stats` devuelve conteo de usuarios, sitios y eventos — 04-Jul-2025
 
 ---
 
@@ -74,7 +73,7 @@ _Actualizado: **04-Jul-2025**_
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
 - [ ] Corregir `.npmrc` y asegurar `npm install` limpio
-- [ ] Middleware `withRateLimit` con Upstash Redis
+- [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 
 ---
 
@@ -103,7 +102,7 @@ _Actualizado: **04-Jul-2025**_
 - [ ] Backups automáticos + restore 1 clic
 - [ ] Banners visuales de upsell (dashboard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
-  Shadcn UI, Flowbite y DaisyUI
+      Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
 ---

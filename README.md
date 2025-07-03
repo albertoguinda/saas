@@ -74,6 +74,7 @@ Backlog por fases → docs/TAREAS.md
 Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5) • Auth.js • Stripe • Upstash Redis • Resend • tsx
 Detalle completo en docs/STACK.md.
 Las APIs están protegidas por el middleware `withRateLimit` (Upstash Redis).
+Ruta de métricas admin `/api/admin/stats` (solo `ADMIN_EMAIL`).
 
 🤝 Cómo contribuir
 Lee docs/CONTRIBUTING.md.
