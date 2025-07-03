@@ -54,6 +54,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Guardar configuración del sitio en MongoDB (estructura del wizard) — 03-Jul-2025
 - ✅ Demo pública navegable — 03-Jul-2025
 - ✅ Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
+- ✅ Tests API register y middleware withValidation — 03-Jul-2025
 
 ---
 
