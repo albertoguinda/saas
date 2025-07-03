@@ -3,7 +3,7 @@ import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { title as titleStyle, subtitle } from "@/components/primitives";
 import { Check, Layout, ImageIcon } from "lucide-react";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 const POSTS = [
   { title: "Primer post", desc: "Lorem ipsum dolor sit amet." },
@@ -34,8 +34,8 @@ export default function Landing({ site }: LandingProps) {
 
   const Hero = (
     <section className="py-24 text-center">
-      <h1 className={clsx(titleStyle({ size: "lg" }), "mb-4")}>{site.title}</h1>
-      <p className={clsx(subtitle(), "mx-auto max-w-xl mb-8")}>
+      <h1 className={cn(titleStyle({ size: "lg" }), "mb-4")}>{site.title}</h1>
+      <p className={cn(subtitle(), "mx-auto max-w-xl mb-8")}>
         Crea tu sitio en minutos con Next.js y HeroUI.
       </p>
       <Button as={Link} href="/auth/login" color="primary">

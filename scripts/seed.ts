@@ -1,6 +1,5 @@
 import "dotenv/config";
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
 import dbConnect from "../lib/dbConnect";
 import User from "../lib/models/user";
 

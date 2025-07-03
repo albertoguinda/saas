@@ -101,7 +101,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 
 ## 🧩 Utilidades y helpers
 
-- `lib/utils.ts` (clsx, getServerSession, hash helpers)
+- `lib/utils.ts` – helpers globales (`cn`, `hashPassword`, `comparePassword`)
 - **Middlewares**
   - `withAuthPlan` – protección por plan
   - `withValidation` (Zod) – ⚠️ pendiente

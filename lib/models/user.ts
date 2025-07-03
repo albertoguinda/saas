@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 import type { Document } from "mongoose";
 const { Schema, model, models } = mongoose;
-import bcrypt from "bcryptjs";
+import { hashPassword, comparePassword } from "../utils";
 
 // Interfaz para TypeScript: extiende Document para compatibilidad con mongoose
 export interface IUser extends Document {
@@ -29,13 +29,13 @@ const UserSchema = new Schema<IUser>({
 // Middleware: hashea el password solo si se modifica
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 12);
+  this.password = await hashPassword(this.password);
   next();
 });
 
 // Método de instancia para comparar contraseñas
 UserSchema.methods.comparePassword = async function (candidatePassword: string) {
-  return bcrypt.compare(candidatePassword, this.password);
+  return comparePassword(candidatePassword, this.password);
 };
 
 // Exporta el modelo, reutilizando si ya existe (hot reload friendly)

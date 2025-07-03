@@ -7,7 +7,7 @@ import type { JWT } from "next-auth/jwt";
 
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
+import { comparePassword } from "@/lib/utils";
 
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
@@ -28,7 +28,7 @@ const authOptions: NextAuthOptions = {
 
         if (!user) return null;
 
-        const valid = await bcrypt.compare(
+        const valid = await comparePassword(
           credentials?.password || "",
           user.password,
         );
