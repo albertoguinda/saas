@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import type { NextRequest } from "next/server";
 
 jest.mock("next/server", () => {

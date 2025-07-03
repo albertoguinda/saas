@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth/next";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import { authOptions } from "@/lib/auth";
+import { logger } from "@/lib/logger";
 
 // Permite que el usuario suba o actualice su avatar (base64 o URL)
 export default async function handler(
@@ -40,7 +41,7 @@ export default async function handler(
 
     return res.status(200).json({ ok: true, avatar: user.avatar });
   } catch (err) {
-    console.error(err);
+    logger.error(err);
 
     return res.status(500).json({ error: "Error actualizando avatar" });
   }
