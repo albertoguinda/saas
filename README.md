@@ -66,6 +66,9 @@ Toda feature debe reflejarse en docs/TAREAS.md.
 🛡️ Licencia
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
 ```
+## 🧪 Testing
+Ejecuta `npm test` para lanzar Jest. Los tests se ubican en `__tests__/` y se configuran con `jest.setup.ts`.
+
 
 ## ⚙️ Integración continua
 Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que instala dependencias con `npm ci`, ejecuta `npm run lint`, compila con `npm run build` y lanza `npm test` cuando existan pruebas.

@@ -51,6 +51,7 @@
 | **dotenv**                              | Gestión de secrets `.env`                               |
 | **ESLint (Flat Config)** + **Prettier** | Lint & format                                           |
 | **tsx**                                 | Ejecución directa de scripts TS (`seed.ts`, `reset.ts`) |
+| **Jest + Testing Library**                   | Pruebas de componentes y APIs                    |
 
 ---
 
