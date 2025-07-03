@@ -146,13 +146,12 @@ next-auth, mongoose@8, bcryptjs
 clsx, framer-motion, next-themes
 tsx (scripts TS), zod
 
-
 ---
 
 ## 📝 NOTA
 
 - Proyecto base **Pages Router**; nuevas features → **App Router**.
-- Wizard implementado (Jul 2025). Preview pública lista. Solo tracking `upgrade_click` pendiente.
+- Wizard implementado (Jul 2025). Preview pública lista. Tracking `upgrade_click` completado.
 
 ---
 
