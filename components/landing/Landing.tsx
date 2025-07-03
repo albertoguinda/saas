@@ -16,7 +16,11 @@ export interface SiteDoc {
   userId: string;
   slug: string;
   title: string;
-  structure: { template?: string };
+  structure: {
+    template?: string;
+    color?: string;
+    font?: string;
+  };
 }
 
 export interface LandingProps {
@@ -31,10 +35,31 @@ const FEATURES = [
 
 export default function Landing({ site }: LandingProps) {
   const template = site.structure?.template ?? "default";
+  const color = site.structure?.color ?? 'indigo';
+  const font = site.structure?.font ?? 'sans';
+  const COLOR_CLASSES: Record<string, string> = {
+    indigo: 'text-indigo-600',
+    emerald: 'text-emerald-600',
+    rose: 'text-rose-600',
+  };
+  const FONT_CLASSES: Record<string, string> = {
+    serif: 'font-serif',
+    mono: 'font-mono',
+    sans: '',
+  };
 
   const Hero = (
     <section className="py-24 text-center">
-      <h1 className={cn(titleStyle({ size: "lg" }), "mb-4")}>{site.title}</h1>
+      <h1
+        className={cn(
+          titleStyle({ size: "lg" }),
+          "mb-4",
+          COLOR_CLASSES[color],
+          FONT_CLASSES[font],
+        )}
+      >
+        {site.title}
+      </h1>
       <p className={cn(subtitle(), "mx-auto max-w-xl mb-8")}>
         Crea tu sitio en minutos con Next.js y HeroUI.
       </p>
@@ -49,7 +74,7 @@ export default function Landing({ site }: LandingProps) {
       <div className="container mx-auto grid gap-8 md:grid-cols-3">
         {FEATURES.map(({ icon: Icon, title, desc }) => (
           <Card key={title} className="p-6 flex flex-col items-center text-center gap-2">
-            <Icon className="w-8 h-8 text-primary" />
+            <Icon className={cn('w-8 h-8', COLOR_CLASSES[color])} />
             <h3 className="font-semibold">{title}</h3>
             <p className="text-sm text-default-500">{desc}</p>
           </Card>

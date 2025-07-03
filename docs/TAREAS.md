@@ -51,6 +51,8 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Setup inicial de pruebas con Jest + Testing Library — 03-Jul-2025
 - ✅ Workflow CI con GitHub Actions — 03-Jul-2025
 - ✅ Validación avanzada de formularios (login, registro, perfil) con React Hook Form + Zod — 03-Jul-2025
+- ✅ Guardar configuración del sitio en MongoDB (estructura del wizard) — 03-Jul-2025
+- ✅ Demo pública navegable — 03-Jul-2025
 
 ---
 
@@ -58,8 +60,6 @@ _Actualizado: **03-Jul-2025**_
 
 ### 🔓 FREE – Core público y experiencia
 
-- Guardar configuración del sitio en MongoDB (estructura del wizard)
-- Demo pública navegable
 ---
 
 ### 💼 PRO – Funcionalidades avanzadas

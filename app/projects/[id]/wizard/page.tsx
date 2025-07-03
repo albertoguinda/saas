@@ -18,6 +18,8 @@ const schema = z.object({
     .string()
     .regex(/^[a-z0-9-]+$/, 'Solo minúsculas, números y guiones'),
   template: z.enum(['one-page', 'blog']),
+  color: z.enum(['indigo', 'emerald', 'rose']).default('indigo'),
+  font: z.enum(['sans', 'serif', 'mono']).default('sans'),
 })
 
 type FormData = z.infer<typeof schema>
@@ -36,7 +38,13 @@ export default function WizardPage({ params }: WizardPageProps) {
     setError,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { title: '', slug: '', template: 'one-page' },
+    defaultValues: {
+      title: '',
+      slug: '',
+      template: 'one-page',
+      color: 'indigo',
+      font: 'sans',
+    },
   })
   const [loading, setLoading] = useState(false)
 
@@ -98,6 +106,28 @@ export default function WizardPage({ params }: WizardPageProps) {
             {errors.template && (
               <FormAlert color="danger">{errors.template.message}</FormAlert>
             )}
+          </div>
+          <div>
+            <label className="mb-1 font-medium text-sm" htmlFor="color">
+              Color principal
+            </label>
+            <select id="color" {...register('color')} className="w-full p-2 rounded-md border">
+              <option value="indigo">Indigo</option>
+              <option value="emerald">Emerald</option>
+              <option value="rose">Rose</option>
+            </select>
+            {errors.color && <FormAlert color="danger">{errors.color.message}</FormAlert>}
+          </div>
+          <div>
+            <label className="mb-1 font-medium text-sm" htmlFor="font">
+              Fuente
+            </label>
+            <select id="font" {...register('font')} className="w-full p-2 rounded-md border">
+              <option value="sans">Sans</option>
+              <option value="serif">Serif</option>
+              <option value="mono">Mono</option>
+            </select>
+            {errors.font && <FormAlert color="danger">{errors.font.message}</FormAlert>}
           </div>
           <Button type="submit" isLoading={loading} className="w-full">
             Generar sitio
