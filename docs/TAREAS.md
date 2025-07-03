@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **03-Jul-2025**_
+_Actualizado: **04-Jul-2025**_
 
 ---
 
@@ -30,6 +30,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Verificación de `@types/*`
 - [x] Persistencia real de perfil y proyectos (MongoDB)
 - [x] Edición perfil persistente (nombre, contraseña)
+- [x] Avatar emoji seleccionable en perfil
 - [x] Render público de sitio en `/[slug]` — 03-Jul-2025
 - [x] Aviso + bloqueo backend si >1 sitio FREE
 - [x] Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
