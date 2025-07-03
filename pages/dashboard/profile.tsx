@@ -1,17 +1,12 @@
 // pages/dashboard/profile.tsx
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
+import { emojiAvatars } from "@/lib/avatars";
 
-// Array de emojis/avatar (simple, para ejemplo)
-const AVATAR_EMOJIS = [
-  "😀", "😎", "👩‍💻", "🧑‍🚀", "🦸‍♂️", "🐶", "🐱", "🦊", "🐼", "🐸",
-  "🦄", "🐵", "🐧", "🐲", "🦁", "🐷", "🐰", "🐻", "🐨", "🐤",
-  "💡", "🚀", "🌈", "🎸", "🎨", "🕹️", "🥑", "🍕", "🍣", "⚡️"
-];
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
@@ -19,7 +14,7 @@ export default function ProfilePage() {
   // Inicializa el form con datos de la sesión
   const [form, setForm] = useState({
     name: session?.user?.name || "",
-    avatar: session?.user?.avatar || AVATAR_EMOJIS[0],
+    avatar: session?.user?.avatar || emojiAvatars[0],
     password: "",
     password2: "",
   });
@@ -101,7 +96,7 @@ export default function ProfilePage() {
           <div>
             <div className="mb-1 font-medium text-sm">Avatar</div>
             <div className="flex flex-wrap gap-2">
-              {AVATAR_EMOJIS.map((emoji) => (
+              {emojiAvatars.map((emoji) => (
                 <button
                   type="button"
                   key={emoji}
