@@ -4,6 +4,8 @@ import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 
 interface PreviewPageProps {
   params: { id: string };
@@ -21,5 +23,17 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
 
   const plainSite = site as unknown as SiteDoc;
 
-  return <Landing site={plainSite} />;
+  return (
+    <div className="relative">
+      <div className="fixed top-0 inset-x-0 z-50 bg-primary text-primary-foreground py-2 text-center flex items-center justify-center gap-2 text-sm">
+        <span>Vista previa —</span>
+        <Button as={Link} href="/dashboard" size="sm" variant="flat" color="primary">
+          Volver al dashboard
+        </Button>
+      </div>
+      <div className="pt-12">
+        <Landing site={plainSite} />
+      </div>
+    </div>
+  );
 }
