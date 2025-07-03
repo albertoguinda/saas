@@ -42,6 +42,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Refactor contador proyectos en dashboard
 - ✅ Preview pública `/projects/[id]/preview`
 - ✅ Landing MVP real
+- ✅ Fix estilos globales + warning slug
 
 ---
 
