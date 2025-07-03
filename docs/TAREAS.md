@@ -33,6 +33,7 @@ _Actualizado: **03-Jul-2025**_
 - Render público de sitio en `/[slug]`
 - Aviso + bloqueo backend si >1 sitio FREE
 - ✅ Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
+- ✅ Manejo de errores en wizard (validación Zod + feedback)
 
 ---
 
@@ -43,7 +44,6 @@ _Actualizado: **03-Jul-2025**_
 - Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
 - ✅ Preview pública `/projects/[id]/preview`
 - ✅ Render dinámico en `/[slug]`
-- Manejo de errores en wizard
 - Página de error amigable para rutas privadas sin sesión
 - Badge visual del plan activo (FREE) en dashboard y navbar
 - Avisos visuales de upgrade por límite de uso o flujo crítico
