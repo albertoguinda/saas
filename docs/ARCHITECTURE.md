@@ -171,8 +171,8 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 ## 📊 Observabilidad & métricas
 
 - Logs de error en backend
- - Tracking básico (`wizard_completed` implementado, `upgrade_click` pendiente)
-  - Panel admin futuro
+- Tracking básico (`wizard_completed` y `upgrade_click` implementados)
+- Panel admin futuro
 
 ---
 

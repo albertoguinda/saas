@@ -32,13 +32,13 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 ## 3️⃣ Fase 3 — Generador de sitios (Plan FREE) (🟡 en curso)
 
-| Tarea                                    | Estado          |
-| ---------------------------------------- | --------------- |
-| Wizard paso-a-paso (HeroUI)              | **✅ Jul-2025** |
-| Límite 1 sitio por usuario FREE          | **✅**          |
+| Tarea                                    | Estado             |
+| ---------------------------------------- | ------------------ |
+| Wizard paso-a-paso (HeroUI)              | **✅ Jul-2025**    |
+| Límite 1 sitio por usuario FREE          | **✅**             |
 | Guardar config de sitio en MongoDB       | **✅ 03-Jul-2025** |
 | Render dinámico en `/[slug]`             | **✅ 03-Jul-2025** |
-| Preview pública `/projects/[id]/preview` | **✅ Jul-2025** |
+| Preview pública `/projects/[id]/preview` | **✅ Jul-2025**    |
 | Demo pública navegable                   | **✅ 03-Jul-2025** |
 
 ---
@@ -74,6 +74,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 ## 7️⃣ Fase 7 — Validación, métricas & feedback (⬜ pendiente)
 
 - ✅ Tracking inicial de eventos (`wizard_completed`) en MongoDB — 03-Jul-2025
+- ✅ Registro de `upgrade_click` — Jul-2025
 - Avisos de upgrade en puntos de fricción / límites
 - Badge visual del plan activo (FREE / PRO / PREMIUM)
 - Captura de feedback y link a soporte

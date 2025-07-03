@@ -28,6 +28,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Tema claro / oscuro** (`next-themes`)
 - **Preview pública** del sitio generado — `/projects/[id]/preview`
 - **Modularización de helpers y hooks** en `lib/utils.ts`
+- **Tracking de eventos** (`wizard_completed`, `upgrade_click`) en MongoDB
 
 ---
 
@@ -57,7 +58,6 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 ### 🚀 Upsell & tracking
 
 - Aviso visual de upgrade al llegar al límite o uso intensivo
-- Tracking anónimo de eventos: `wizard_completed`, `upgrade_click`, etc.
 - Etiqueta “FREE” en dashboard y navbar
 
 ### 🧪 Métricas

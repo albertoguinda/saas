@@ -1,24 +1,20 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/router';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useRouter } from "next/router";
+import { signIn, signOut, useSession } from "next-auth/react";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-} from '@heroui/navbar';
-import { Link } from '@heroui/link';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
+import { Link } from "@heroui/link";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from '@heroui/dropdown';
-import { Avatar } from '@heroui/avatar';
-import { Button } from '@heroui/button';
-import PlanBadge from './PlanBadge';
+} from "@heroui/dropdown";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { track } from "@/lib/track";
+import PlanBadge from "./PlanBadge";
 
 export const Logo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
@@ -35,11 +31,11 @@ export default function AppNavbar() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  const handleLogout = () => signOut({ callbackUrl: '/' });
+  const handleLogout = () => signOut({ callbackUrl: "/" });
 
   return (
     <Navbar isBordered>
-      <NavbarBrand onClick={() => router.push('/')} className="cursor-pointer">
+      <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
         <Logo />
         <p className="font-bold text-inherit ml-2">PLANTSCARE</p>
       </NavbarBrand>
@@ -49,7 +45,9 @@ export default function AppNavbar() {
           <Link href="/">Inicio</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/pricing">Precios</Link>
+          <Link href="/pricing" onClick={() => track("upgrade_click")}>
+            Precios
+          </Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="/blog">Blog</Link>
@@ -70,27 +68,34 @@ export default function AppNavbar() {
                 <Avatar
                   isBordered
                   as="button"
-                className="transition-transform"
-                color="secondary"
-                name={session.user.name || 'Usuario'}
-                size="sm"
-                src={`https://ui-avatars.com/api/?name=${session.user.name || 'U'}&background=0D8ABC&color=fff`}
-              />
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Opciones de usuario" variant="flat">
-              <DropdownItem key="profile" className="h-14 gap-2">
-                <p className="font-semibold">Sesión iniciada como</p>
-                <p className="font-semibold text-gray-500 text-sm">
-                  {session.user.email}
-                </p>
-              </DropdownItem>
-              <DropdownItem key="dashboard" onClick={() => router.push('/dashboard')}>
-                Dashboard
-              </DropdownItem>
-              <DropdownItem key="logout" color="danger" onClick={handleLogout}>
-                Cerrar sesión
-              </DropdownItem>
-            </DropdownMenu>
+                  className="transition-transform"
+                  color="secondary"
+                  name={session.user.name || "Usuario"}
+                  size="sm"
+                  src={`https://ui-avatars.com/api/?name=${session.user.name || "U"}&background=0D8ABC&color=fff`}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Opciones de usuario" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2">
+                  <p className="font-semibold">Sesión iniciada como</p>
+                  <p className="font-semibold text-gray-500 text-sm">
+                    {session.user.email}
+                  </p>
+                </DropdownItem>
+                <DropdownItem
+                  key="dashboard"
+                  onClick={() => router.push("/dashboard")}
+                >
+                  Dashboard
+                </DropdownItem>
+                <DropdownItem
+                  key="logout"
+                  color="danger"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </DropdownItem>
+              </DropdownMenu>
             </Dropdown>
           </>
         ) : (

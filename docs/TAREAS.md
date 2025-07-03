@@ -35,6 +35,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 - ✅ Manejo de errores en wizard (validación Zod + feedback)
 - ✅ Tracking evento `wizard_completed`
+- ✅ Tracking evento `upgrade_click`
 - ✅ API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
 - ✅ Badge visual del plan en dashboard y navbar
 - ✅ Avisos visuales de upgrade por límite de uso
@@ -101,7 +102,7 @@ _Actualizado: **03-Jul-2025**_
 ### 📊 ADMIN & Retención
 
 - Panel admin de métricas (registros, actividad)
-- Tracking avanzado: wizard, upgrades, feedback usuarios
+- Tracking avanzado: feedback usuarios
 - Captura de feedback post-creación o upgrade
 - Alertas visuales en puntos clave del funnel
 
