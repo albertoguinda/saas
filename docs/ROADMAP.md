@@ -41,6 +41,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 | Render dinámico en `/[slug]`             | **✅ 03-Jul-2025** |
 | Preview pública `/projects/[id]/preview` | **✅ Jul-2025** |
 | Demo pública navegable                   | **✅ 03-Jul-2025** |
+| Middleware `withRateLimit` para APIs | **✅ 04-Jul-2025** |
 
 ---
 

@@ -62,6 +62,7 @@ _Actualizado: **05-Jul-2025**_
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
 - [x] API admin `/api/admin/stats` devuelve conteo de usuarios, sitios y eventos — 04-Jul-2025
 - [x] Tests API perfil (`/api/me/update` y `/api/me/avatar`) — 04-Jul-2025
+- [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 
 ---
 
@@ -75,7 +76,6 @@ _Actualizado: **05-Jul-2025**_
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
 - [ ] Corregir `.npmrc` y asegurar `npm install` limpio
-- [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 
 ---
 

@@ -33,6 +33,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Demo pública navegable** desde `/[slug]`
 - **Validación backend** del límite 1 sitio
 - Tracking de eventos `wizard_completed` y `upgrade_click`
+- **API** `/api/admin/stats` (protegida por `ADMIN_EMAIL`)
 
 ---
 
