@@ -9,9 +9,10 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
 
 1. Clona el repo y ejecuta:
    ```bash
-   npm install
+   ./scripts/setup.sh
    cp .env.example .env
    ```
+   Ejecuta de nuevo `./scripts/setup.sh` antes de lanzar `npm test` o `npm run lint`.
    Rellena en `.env` (al menos):
 
    | Variable        | Descripción                                                     |
