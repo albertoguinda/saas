@@ -28,7 +28,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 
 /app
 ├─ projects/[id]/wizard/page.tsx // ✅ Wizard 3-pasos (title, slug, template)
-├─ projects/[id]/preview/page.tsx // ⚠️ Preview pública (pendiente)
+├─ projects/[id]/preview/page.tsx // ✅ Preview pública implementada
 └─ layout.tsx // Root Layout (App Router)
 
 /layouts/
@@ -150,7 +150,7 @@ tsx (scripts TS), zod
 ## 📝 NOTA
 
 - Proyecto base **Pages Router**; nuevas features → **App Router**.
-- Wizard implementado (Jul 2025). Preview pública y tracking pendientes.
+- Wizard implementado (Jul 2025). Preview pública lista. Solo tracking `upgrade_click` pendiente.
 
 ---
 
@@ -168,7 +168,7 @@ tsx (scripts TS), zod
     settings/page.tsx
     welcome/page.tsx
     projects/[id]/wizard/page.tsx // ✅
-    projects/[id]/preview/page.tsx // ⚠️
+    projects/[id]/preview/page.tsx // ✅
   login/page.tsx
   register/page.tsx
   [slug]/page.tsx

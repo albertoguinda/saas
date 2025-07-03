@@ -94,7 +94,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 ```text
 /app/
   projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
-  projects/[id]/preview/ (⚠️ pendiente)
+  projects/[id]/preview/ (vista previa pública – implementado Ago-2025)
   components/ (UI)
   layouts/ (layouts públicos / privados)
   lib/ (dbConnect, models, utils, middlewares)
@@ -171,8 +171,8 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 ## 📊 Observabilidad & métricas
 
 - Logs de error en backend
-- Tracking básico (wizard_completed, upgrade_click) — **pendiente**
-- Panel admin futuro
+ - Tracking básico (`wizard_completed` implementado, `upgrade_click` pendiente)
+  - Panel admin futuro
 
 ---
 
