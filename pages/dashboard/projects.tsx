@@ -299,6 +299,6 @@ export default function ProjectsPage() {
   - Carga proyectos del usuario autenticado vía API (GET /api/sites)
   - Permite crear, editar (PATCH) y borrar (DELETE) proyectos de forma robusta
   - UX completo: feedback en todos los casos y control de estados
-  - El botón "Ver" te lleva a la ruta pública del proyecto (por implementar)
+  - El botón "Ver" te lleva a la ruta pública del proyecto (/[slug]), ya operativa
   - Documentado para escalar con lógica real de BBDD
 */
