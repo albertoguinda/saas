@@ -44,6 +44,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Landing MVP real
 - ✅ Fix estilos globales + warning slug
 - ✅ Estilos HeroUI restaurados (Tailwind content + plugin) — 03-Jul-2025
+- ✅ Verificación backend de slug único en `/api/sites` — 03-Jul-2025
 
 ---
 
