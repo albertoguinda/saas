@@ -78,6 +78,7 @@ _Actualizado: **03-Jul-2025**_
 - Panel de analítica simple (visitas, actividad – Upstash opc.)
 - Conexión dominio propio (Namecheap / Cloudflare)
 - Exportación de sitios como HTML estático
+- Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics
 
 ---
 
