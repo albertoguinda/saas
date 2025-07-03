@@ -45,6 +45,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Fix estilos globales + warning slug
 - ✅ Estilos HeroUI restaurados (Tailwind content + plugin) — 03-Jul-2025
 - ✅ Verificación backend de slug único en `/api/sites` — 03-Jul-2025
+- ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
 
 ---
 
@@ -55,7 +56,7 @@ _Actualizado: **03-Jul-2025**_
 - Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
 - ✅ Instalación de React Hook Form y Zod para validación de formularios
 - ✅ Render dinámico en `/[slug]`
-- Página de error amigable para rutas privadas sin sesión
+- ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
 - ✅ Badge visual del plan activo (FREE) en dashboard y navbar
 - ✅ Avisos visuales de upgrade por límite de uso o flujo crítico
 - ✅ Tracking evento `wizard_completed`

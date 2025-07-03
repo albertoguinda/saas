@@ -13,7 +13,7 @@ interface PreviewPageProps {
 
 export default async function PreviewPage({ params }: PreviewPageProps) {
   const session = await getServerSession(authOptions);
-  if (!session) redirect("/auth/login");
+  if (!session) redirect("/401");
 
   await dbConnect();
   const site = await Site.findById(params.id).lean();
@@ -27,7 +27,13 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
     <div className="relative">
       <div className="fixed top-0 inset-x-0 z-50 bg-primary text-primary-foreground py-2 text-center flex items-center justify-center gap-2 text-sm">
         <span>Vista previa —</span>
-        <Button as={Link} href="/dashboard" size="sm" variant="flat" color="primary">
+        <Button
+          as={Link}
+          href="/dashboard"
+          size="sm"
+          variant="flat"
+          color="primary"
+        >
           Volver al dashboard
         </Button>
       </div>
