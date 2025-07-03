@@ -35,6 +35,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Wizard/Generador de sitios (mínimo viable, 1 sitio FREE) — 03-Jul-2025
 - ✅ Manejo de errores en wizard (validación Zod + feedback)
 - ✅ Tracking evento `wizard_completed`
+- ✅ API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
 - ✅ Badge visual del plan en dashboard y navbar
 - ✅ Avisos visuales de upgrade por límite de uso
 - ✅ Toasts operativos con @heroui/toast — 03-Jul-2025
@@ -59,8 +60,6 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Página de error amigable para rutas privadas sin sesión — 03-Jul-2025
 - ✅ Badge visual del plan activo (FREE) en dashboard y navbar
 - ✅ Avisos visuales de upgrade por límite de uso o flujo crítico
-- ✅ Tracking evento `wizard_completed`
-
 ---
 
 ### 💼 PRO – Funcionalidades avanzadas
