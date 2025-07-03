@@ -16,7 +16,7 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
 
    | Variable        | Descripción                                                     |
    | --------------- | ---------------------------------------------------------------- |
-   | MONGODB_URI     | Cadena de conexión MongoDB Atlas                                 |
+   | MONGODB_URI     | Cadena de conexión MongoDB Atlas (servidor 6.x) |
    | NEXTAUTH_SECRET | String aleatorio seguro (`openssl rand -base64 32`)              |
    | NEXTAUTH_URL    | URL pública de tu app (`https://tu-app.vercel.app`)             |
 
@@ -46,10 +46,14 @@ Railway detectará automáticamente Next.js y correrá npm run build.
 Finalizado el deploy tendrás tu dominio <project>.up.railway.app.
 
 ⚠️ Restricciones de red conocidas
-Servicio Motivo
-registry.npmjs.org Instalación de dependencias
-_.vercel.com, _.railway.app Hooks de despliegue y rutas internas
-\*.mongodb.net Conexión a MongoDB Atlas
+
+| Servicio | Motivo |
+| --- | --- |
+| registry.npmjs.org | Instalación de dependencias |
+| *.vercel.com, *.railway.app | Hooks de despliegue y rutas internas |
+| *.mongodb.net | Conexión a MongoDB Atlas |
+
+Asegúrate de permitir tráfico saliente a `registry.npmjs.org`, `*.vercel.com`, `*.railway.app` y `*.mongodb.net` para que las instalaciones y webhooks funcionen correctamente.
 
 Si tu proveedor bloquea tráfico saliente, el build o los webhooks (Stripe, Resend) pueden fallar. Habilita reglas de salida o usa IP allow-list en Atlas.
 
