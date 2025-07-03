@@ -43,6 +43,7 @@ _Actualizado: **03-Jul-2025**_
 - ✅ Preview pública `/projects/[id]/preview`
 - ✅ Landing MVP real
 - ✅ Fix estilos globales + warning slug
+- ✅ Estilos HeroUI restaurados (Tailwind content + plugin) — 03-Jul-2025
 
 ---
 
