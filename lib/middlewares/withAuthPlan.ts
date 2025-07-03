@@ -22,8 +22,10 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getServerSession(req, res, authOptions);
 
-    if (!session?.user)
-      return res.status(401).json({ error: "No autenticado" });
+    if (!session?.user) {
+      res.redirect("/401");
+      return;
+    }
 
     const plan = (session.user.plan || "free").toUpperCase() as PlanName;
 
