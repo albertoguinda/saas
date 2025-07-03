@@ -4,6 +4,7 @@ import User from "@/lib/models/user";
 import { withValidationRoute } from "@/lib/middlewares/withValidation";
 import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
+import { logger } from "@/lib/logger";
 
 // POST /api/auth/register
 async function handler(request: NextRequest & { body: RegisterInput }) {
@@ -24,7 +25,7 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error(err);
+    logger.error(err);
     return NextResponse.json({ error: "Error de servidor" }, { status: 500 });
   }
 }

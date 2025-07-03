@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth/next";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
+import { logger } from "@/lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
@@ -54,7 +55,7 @@ export default async function handler(
 
       return res.status(200).json({ site });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
 
       return res.status(500).json({ error: "Error actualizando el proyecto" });
     }
@@ -71,7 +72,7 @@ export default async function handler(
 
       return res.status(200).json({ ok: true, message: "Proyecto eliminado" });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
 
       return res.status(500).json({ error: "Error al borrar el proyecto" });
     }

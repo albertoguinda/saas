@@ -7,6 +7,7 @@ import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
 import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
+import { logger } from "@/lib/logger";
 
 // Solo autenticados pueden acceder a sus proyectos
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -36,7 +37,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
       return res.status(200).json({ sites });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
 
       return res.status(500).json({ error: "Error al cargar los proyectos" });
     }
@@ -79,7 +80,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
       return res.status(201).json({ site });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
 
       return res.status(500).json({ error: "Error al crear el proyecto" });
     }

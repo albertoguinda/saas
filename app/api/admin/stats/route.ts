@@ -7,7 +7,7 @@ import Site from "@/lib/models/site";
 import Event from "@/lib/models/event";
 import { authOptions } from "@/lib/auth";
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
