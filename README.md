@@ -18,7 +18,7 @@ Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upse
 
 | Flujo                                 | GIF / captura                                 |
 | ------------------------------------- | --------------------------------------------- |
-| Login → Dashboard → Wizard de 3 pasos | _(añade screenshot cuando tengas la preview)_ |
+| Login → Dashboard → Wizard de 3 pasos | _(añade screenshot de la vista preview)_ |
 
 ---
 

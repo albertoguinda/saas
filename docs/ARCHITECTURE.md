@@ -94,7 +94,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 ```text
 /app/
   projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
-  projects/[id]/preview/ (⚠️ pendiente)
+  projects/[id]/preview/ (✅ preview pública implementada)
   components/ (UI)
   layouts/ (layouts públicos / privados)
   lib/ (dbConnect, models, utils, middlewares)
