@@ -31,10 +31,12 @@ export default async function handler(
   }
 
   try {
-    const { title, slug, template } = req.body as {
+    const { title, slug, template, color, font } = req.body as {
       title?: string;
       slug?: string;
       template?: string;
+      color?: string;
+      font?: string;
     };
 
     if (!title || typeof title !== "string" || !title.trim()) {
@@ -47,6 +49,12 @@ export default async function handler(
 
     if (template !== "one-page" && template !== "blog") {
       return res.status(400).json({ error: "Plantilla inválida" });
+    }
+    if (color !== "indigo" && color !== "emerald" && color !== "rose") {
+      return res.status(400).json({ error: "Color inválido" });
+    }
+    if (font !== "sans" && font !== "serif" && font !== "mono") {
+      return res.status(400).json({ error: "Fuente inválida" });
     }
 
     const existing = await Site.findOne({ slug });
@@ -61,7 +69,7 @@ export default async function handler(
 
     site.title = title.trim();
     site.slug = slug;
-    site.structure = { template };
+    site.structure = { template, color, font };
     await site.save();
 
     return res.status(200).json({ site });

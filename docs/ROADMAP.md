@@ -36,10 +36,10 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 | ---------------------------------------- | --------------- |
 | Wizard paso-a-paso (HeroUI)              | **✅ Jul-2025** |
 | Límite 1 sitio por usuario FREE          | **✅**          |
-| Guardar config de sitio en MongoDB       | 🟡 parcial      |
+| Guardar config de sitio en MongoDB       | **✅ 03-Jul-2025** |
 | Render dinámico en `/[slug]`             | **✅ 03-Jul-2025** |
 | Preview pública `/projects/[id]/preview` | **✅ Jul-2025** |
-| Demo pública navegable                   | ⬜ pendiente    |
+| Demo pública navegable                   | **✅ 03-Jul-2025** |
 
 ---
 
