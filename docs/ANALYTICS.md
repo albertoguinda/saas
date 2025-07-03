@@ -16,6 +16,23 @@ Registrar el uso de la plataforma para mejorar la experiencia de usuario y valid
 - Página o ruta visitada
 - Tipo de evento
 
+### Endpoint `/api/track`
+
+Envia un JSON con la siguiente estructura:
+
+```json
+{
+  "event": "click",
+  "page": "/dashboard",
+  "timestamp": 1720000000,
+  "duration": 120,
+  "x": 10,
+  "y": 20
+}
+```
+
+Todos los campos salvo `event` son opcionales.
+
 ## 📊 Eventos registrados
 
 - `page_view` – visita de página

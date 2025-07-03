@@ -56,6 +56,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Demo pública navegable — 03-Jul-2025
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
+- [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
 
 ---
 
@@ -66,7 +67,6 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
 - [ ] Spinner y estados de red en wizard
-- [ ] Tracking básico de visitas y clics según `docs/ANALYTICS.md`
 - [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
