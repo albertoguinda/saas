@@ -29,6 +29,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 /app
 ├─ projects/[id]/wizard/page.tsx // ✅ Wizard 3-pasos (title, slug, template)
 ├─ projects/[id]/preview/page.tsx // ✅ Preview pública implementada
+├─ demo/page.tsx // Muestra el sitio generado con datos de ejemplo
 └─ layout.tsx // Root Layout (App Router)
 
 /layouts/
@@ -170,6 +171,7 @@ tsx (scripts TS), zod
     welcome/page.tsx
     projects/[id]/wizard/page.tsx // ✅
     projects/[id]/preview/page.tsx // ✅
+  demo/page.tsx // Demo con datos de ejemplo
   login/page.tsx
   register/page.tsx
   [slug]/page.tsx

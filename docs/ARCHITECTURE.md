@@ -95,6 +95,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 /app/
   projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
   projects/[id]/preview/ (vista previa pública – implementado Ago-2025)
+  demo/ (sitio generado con datos de ejemplo)
   components/ (UI)
   layouts/ (layouts públicos / privados)
   lib/ (dbConnect, models, utils, middlewares)
@@ -103,6 +104,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
   scripts/ (seed.ts, reset.ts via tsx)
   docs/ (roadmap, tareas, stack, agentes…)
 ```
+La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 > **Migración progresiva:** nuevas features van en **/app/**, legacy en **/pages/** hasta completar la transición.
 
