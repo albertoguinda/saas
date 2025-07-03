@@ -7,6 +7,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 
 ## 📁 Estructura real del proyecto (Jul 2025)
 
+```text
 /pages
 ├─ \_app.tsx // Providers, estilos globales
 ├─ \_document.tsx // HTML root (fuentes, meta)
@@ -66,10 +67,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 
 /docs/
 … (roadmap, tareas, stack, agentes, contributing, architecture)
-
-markdown
-Copiar
-Editar
+```
 
 > **Migración progresiva:** código nuevo se escribe en **/app**; legacy permanece en **/pages** hasta completar la transición.
 
@@ -146,9 +144,6 @@ next-auth, mongoose@8, bcryptjs
 clsx, framer-motion, next-themes
 tsx (scripts TS), zod
 
-yaml
-Copiar
-Editar
 
 ---
 
@@ -161,20 +156,22 @@ Editar
 
 ## 💡 Ejemplo de estructura futura completa en `/app`
 
+```text
 /app
-layout.tsx
-page.tsx
-dashboard/
-layout.tsx
-page.tsx
-projects/page.tsx
-profile/page.tsx
-settings/page.tsx
-welcome/page.tsx
-projects/[id]/wizard/page.tsx // ✅
-projects/[id]/preview/page.tsx // ⚠️
-login/page.tsx
-register/page.tsx
-[slug]/page.tsx
-/api
-… (route handlers modernizados)
+  layout.tsx
+  page.tsx
+  dashboard/
+    layout.tsx
+    page.tsx
+    projects/page.tsx
+    profile/page.tsx
+    settings/page.tsx
+    welcome/page.tsx
+    projects/[id]/wizard/page.tsx // ✅
+    projects/[id]/preview/page.tsx // ⚠️
+  login/page.tsx
+  register/page.tsx
+  [slug]/page.tsx
+  /api
+    … (route handlers modernizados)
+```
