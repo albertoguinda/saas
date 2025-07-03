@@ -12,9 +12,9 @@ export default async function PublicSite({ params }: PageProps) {
   const { slug } = params;
 
   await dbConnect();
-  const site = await Site.findOne({ slug }).lean();
+  const site = (await Site.findOne({ slug }).lean()) as SiteDoc | null;
 
   if (!site) notFound();
 
-  return <Landing site={site as unknown as SiteDoc} />;
+  return <Landing site={site} />;
 }
