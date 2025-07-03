@@ -65,6 +65,7 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
 - [ ] Spinner y estados de red en wizard
+- [ ] Tracking básico de visitas y clics según `docs/ANALYTICS.md`
 - [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
@@ -78,10 +79,10 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
 - [ ] Branding extendido (selector de color, fuentes, logo, favicon)
 - [ ] Emails transaccionales (Resend) + confirmación de cuenta
-- [ ] Panel de analítica simple (visitas, actividad – Upstash opc.)
+- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`)
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
-- [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics
+- [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ---
 
@@ -91,7 +92,7 @@ _Actualizado: **03-Jul-2025**_
 - [ ] Cache de sitios (Upstash Redis, TTL dinámico)
 - [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
 - [ ] Integración Stripe completa (producto PREMIUM, webhooks, historial)
-- [ ] Panel premium de analítica (páginas vistas, retención, logs)
+- [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
 - [ ] Soporte prioritario (chat/email)
 - [ ] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Backups automáticos + restore 1 clic
@@ -104,7 +105,7 @@ _Actualizado: **03-Jul-2025**_
 ### 📊 ADMIN & Retención
 
 - [ ] Panel admin de métricas (registros, actividad)
-- [ ] Tracking avanzado: wizard, upgrades, feedback usuarios
+- [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
 
