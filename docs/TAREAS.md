@@ -53,6 +53,7 @@ _Actualizado: **03-Jul-2025**_
 ### 🔓 FREE – Core público y experiencia
 
 - Validación avanzada de formularios (login, registro, perfil) con Zod + feedback real-time
+- ✅ Instalación de React Hook Form y Zod para validación de formularios
 - ✅ Render dinámico en `/[slug]`
 - Página de error amigable para rutas privadas sin sesión
 - ✅ Badge visual del plan activo (FREE) en dashboard y navbar
