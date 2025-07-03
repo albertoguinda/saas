@@ -31,6 +31,8 @@ npm install
 cp .env.example .env.local            # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY
 npm run refresh-db                    # limpia y seed (BBDD) en un solo paso
 npm run dev
+```
+
 TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
 ### 🧪 Ejecutar tests
@@ -71,7 +73,6 @@ Toda feature debe reflejarse en docs/TAREAS.md.
 
 🛡️ Licencia
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
-```
 
 ## ⚙️ Integración continua
 Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que instala dependencias con `npm ci`, ejecuta `npm run lint`, compila con `npm run build` y lanza `npm test` cuando existan pruebas.
