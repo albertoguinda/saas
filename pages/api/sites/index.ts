@@ -7,6 +7,7 @@ import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
 import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
+import { withRateLimit } from "@/lib/middlewares/rateLimit";
 
 // Solo autenticados pueden acceder a sus proyectos
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -99,4 +100,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   - Protegido por sesión NextAuth.
 */
 
-export default withAuthPlan(handler, "FREE");
+export default withRateLimit(withAuthPlan(handler, "FREE"), {
+  limit: 20,
+  window: 60,
+});

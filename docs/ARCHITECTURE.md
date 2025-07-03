@@ -145,7 +145,7 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 - Secrets solo en `.env`
 - Validación Zod en API
 - Stripe keys server-only + webhooks firmados
-- Rate-limit con Upstash Redis _(pendiente)_
+- Rate-limit con Upstash Redis
 
 ---
 

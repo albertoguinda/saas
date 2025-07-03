@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import { withValidationRoute } from "@/lib/middlewares/withValidation";
+import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 
 // POST /api/auth/register
@@ -28,4 +29,7 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
   }
 }
 
-export const POST = withValidationRoute(handler, registerSchema);
+export const POST = withRateLimitRoute(
+  withValidationRoute(handler, registerSchema),
+  { limit: 5, window: 60 },
+);

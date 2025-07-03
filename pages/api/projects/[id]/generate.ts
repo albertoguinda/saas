@@ -6,8 +6,9 @@ import { getServerSession } from "next-auth/next";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
+import { withRateLimit } from "@/lib/middlewares/rateLimit";
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
@@ -79,3 +80,5 @@ export default async function handler(
     return res.status(500).json({ error: "Error al generar el sitio" });
   }
 }
+
+export default withRateLimit(handler, { limit: 10, window: 60 });

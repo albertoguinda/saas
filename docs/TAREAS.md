@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **03-Jul-2025**_
+_Actualizado: **04-Jul-2025**_
 
 ---
 
@@ -56,6 +56,7 @@ _Actualizado: **03-Jul-2025**_
 - [x] Demo pública navegable — 03-Jul-2025
 - [x] Middleware `withValidation` (Zod) para APIs — 03-Jul-2025
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
+- [x] Middleware `rateLimit` con Upstash aplicado a endpoints sensibles — Jul-2025
 
 ---
 

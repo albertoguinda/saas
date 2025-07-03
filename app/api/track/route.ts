@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 
+import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
+
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/lib/models/event";
 
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user) {
@@ -27,3 +29,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
   }
 }
+
+export const POST = withRateLimitRoute(handler, { limit: 20, window: 60 });
