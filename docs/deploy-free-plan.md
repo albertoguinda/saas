@@ -10,26 +10,21 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
 1. Clona el repo y ejecuta:
    ```bash
    npm install
-   Copia el ejemplo de entorno:
+   cp .env.example .env
    ```
+   Rellena en `.env` (al menos):
 
-bash
-Copiar
-Editar
-cp .env.example .env
-Rellena en .env (al menos):
+   | Variable        | Descripción                                                     |
+   | --------------- | ---------------------------------------------------------------- |
+   | MONGODB_URI     | Cadena de conexión MongoDB Atlas                                 |
+   | NEXTAUTH_SECRET | String aleatorio seguro (`openssl rand -base64 32`)              |
+   | NEXTAUTH_URL    | URL pública de tu app (`https://tu-app.vercel.app`)             |
 
-Variable Descripción
-MONGODB_URI Cadena de conexión MongoDB Atlas
-NEXTAUTH_SECRET String aleatorio seguro (openssl rand -base64 32)
-NEXTAUTH_URL URL pública de tu app (https://tu-app.vercel.app)
+   Comprueba que el build funciona en local:
 
-Comprueba que el build funciona en local:
-
-bash
-Copiar
-Editar
-npm run build && npm start
+   ```bash
+   npm run build && npm start
+   ```
 🌐 Despliegue en Vercel
 Inicia sesión en Vercel y crea un New Project desde tu repo.
 
