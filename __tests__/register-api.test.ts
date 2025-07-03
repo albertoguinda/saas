@@ -7,6 +7,15 @@ jest.mock('next/server', () => {
   };
 });
 
+jest.mock('@/lib/middlewares/rateLimit', () => ({
+  __esModule: true,
+  withRateLimitRoute: (h: any) => h,
+  withRateLimit: (h: any) => h,
+  checkLimit: jest.fn().mockResolvedValue(true),
+}));
+
+import { checkLimit } from '@/lib/middlewares/rateLimit';
+
 const saveMock = jest.fn();
 const findOneMock = jest.fn();
 const userConstructor = jest.fn(() => ({ save: saveMock }));
@@ -41,4 +50,12 @@ test('creates user when data valid', async () => {
   const res = await POST(req);
   expect(saveMock).toHaveBeenCalled();
   expect(res.status).toBe(200);
+});
+
+test('returns 429 when rate limit exceeded', async () => {
+  (checkLimit as jest.Mock).mockResolvedValue(false);
+  findOneMock.mockResolvedValue(null);
+  const req = { method: 'POST', json: async () => ({ email: 'b@test.com', password: '123456', name: 'test' }) } as unknown as NextRequest;
+  const res = await POST(req);
+  expect(res.status).toBe(429);
 });

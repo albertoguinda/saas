@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/lib/models/event";
 import { withValidationRoute } from "@/lib/middlewares/withValidation";
+import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { eventSchema, type EventInput } from "@/lib/validations/event";
 
 async function handler(request: NextRequest & { body: EventInput }) {
@@ -30,4 +31,12 @@ async function handler(request: NextRequest & { body: EventInput }) {
   return NextResponse.json({ ok: true });
 }
 
-export const POST = withValidationRoute(handler, eventSchema);
+export const POST = withRateLimitRoute(
+  withValidationRoute(handler, eventSchema),
+  {
+    identifier: async () => {
+      const session = await getServerSession(authOptions);
+      return session?.user?.id || "anon";
+    },
+  },
+);
