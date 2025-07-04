@@ -43,6 +43,7 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 ./scripts/setup.sh
 npm test
 ```
+> **Importante:** ejecuta `./scripts/setup.sh` cada vez antes de `npm test`. Si faltan paquetes, verás errores de módulos no encontrados.
 
 ### 🔍 Ejecutar lint
 
@@ -50,6 +51,7 @@ npm test
 ./scripts/setup.sh
 npm run lint
 ```
+> **Importante:** igual que con los tests, corre `./scripts/setup.sh` antes de `npm run lint` para evitar fallos por dependencias ausentes.
 
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md

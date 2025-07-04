@@ -13,6 +13,7 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
    cp .env.example .env
    ```
    Ejecuta de nuevo `./scripts/setup.sh` antes de lanzar `npm test` o `npm run lint`.
+   Si omites este paso y faltan paquetes, verás errores de módulos no encontrados.
    Rellena en `.env` (al menos):
 
    | Variable        | Descripción                                                     |
