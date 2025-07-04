@@ -51,6 +51,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - Middleware de control de plan + free trial (7 días, opc.)
 - Dashboard: historial y panel de pagos
 
+- Vista de facturación e historial de pagos
 ---
 
 ## 5️⃣ Fase 5 — Funcionalidades PRO (⬜ pendiente)
