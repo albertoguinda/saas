@@ -61,9 +61,13 @@ _Actualizado: **06-Jul-2025**_
 - [x] Tests API register y middleware withValidation — 03-Jul-2025
 - [x] Tracking básico de visitas y clics (`/api/track` extendido) — 03-Jul-2025
 - [x] API admin `/api/admin/stats` devuelve conteo de usuarios, sitios y eventos — 04-Jul-2025
+- [x] Pruebas API admin `/api/admin/stats` — 05-Jul-2025
 - [x] Tests API perfil (`/api/me/update` y `/api/me/avatar`) — 04-Jul-2025
 - [x] Introducción de helper `logger` y reemplazo de `console.error` — 04-Jul-2025
 - [x] Tests middleware withAuthPlan — 05-Jul-2025
+- [x] Corregir `.npmrc` y asegurar `npm install` limpio — 06-Jul-2025
+- [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
+- [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
 
 ---
 
@@ -74,9 +78,6 @@ _Actualizado: **06-Jul-2025**_
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
 - [ ] Separar vistas en `/app/` (migración App Router)
-- [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
-- [x] Corregir `.npmrc` y asegurar `npm install` limpio — 06-Jul-2025
-- [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 
 ---
 
@@ -116,7 +117,6 @@ _Actualizado: **06-Jul-2025**_
 ### 📊 ADMIN & Retención
 
 - [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
-- [x] Pruebas API admin `/api/admin/stats` — 05-Jul-2025
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
