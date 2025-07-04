@@ -80,7 +80,7 @@ _Actualizado: **04-Jul-2025 20:30 CEST**_
 
 #### 🔐 Backend
 - [ ] Actualizar docs de Arquitectura
-- [ ] Subida y gestión de avatar real
+ - [x] Subida y gestión de avatar real — 05-Jul-2025
 - [ ] Separar vistas en `/app/` (migración App Router)
 
 #### 🧱 Generador de sitios (wizard)

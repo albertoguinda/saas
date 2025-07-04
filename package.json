@@ -17,6 +17,7 @@
     "test": "node --test jest-runner.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.842.0",
     "@heroui/alert": "^2.2.22",
     "@heroui/avatar": "^2.2.18",
     "@heroui/badge": "^2.2.14",
@@ -40,6 +41,7 @@
     "@stripe/stripe-js": "^7.4.0",
     "@upstash/redis": "^1.35.0",
     "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.7.0",
     "clsx": "2.1.1",
     "dotenv": "^17.0.0",
     "framer-motion": "11.13.1",

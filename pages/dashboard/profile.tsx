@@ -1,6 +1,6 @@
 // pages/dashboard/profile.tsx
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
@@ -30,6 +30,33 @@ export default function ProfilePage() {
   // Selecciona un emoji como avatar
   const handleSelectAvatar = (emoji: string) => {
     setForm((prev) => ({ ...prev, avatar: emoji }));
+  };
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setLoading(true);
+    setError("");
+    setMsg("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/me/avatar/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Error subiendo avatar.");
+      } else {
+        setForm((prev) => ({ ...prev, avatar: data.avatar }));
+        setMsg("Avatar actualizado");
+        update?.();
+      }
+    } catch {
+      setError("Error de red.");
+    }
+    setLoading(false);
   };
 
   // Envía cambios al backend
@@ -78,9 +105,14 @@ export default function ProfilePage() {
       <h1 className="text-2xl font-bold mb-4">Perfil</h1>
       <Card className="flex flex-col gap-6 p-8">
         <div className="flex items-center gap-4">
-          <span className="text-4xl">{form.avatar}</span>
+          {form.avatar.startsWith("http") ? (
+            <img src={form.avatar} alt="avatar" className="w-12 h-12 rounded-full" />
+          ) : (
+            <span className="text-4xl">{form.avatar}</span>
+          )}
           <span className="font-semibold">{session?.user?.email}</span>
         </div>
+        <input type="file" accept="image/*" onChange={handleUpload} />
         {msg && <Alert color="success">{msg}</Alert>}
         {error && <Alert color="danger">{error}</Alert>}
         <form onSubmit={handleSave} className="flex flex-col gap-4 mt-2">
@@ -141,7 +173,7 @@ export default function ProfilePage() {
 }
 
 /*
-  - Permite cambiar nombre, avatar emoji y contraseña del usuario autenticado.
+  - Permite cambiar nombre, avatar (emoji o imagen) y contraseña del usuario autenticado.
   - Valida contraseñas.
   - Actualiza la sesión tras guardar (useSession().update).
   - Diseño HeroUI y UX amigable.
