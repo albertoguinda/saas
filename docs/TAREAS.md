@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 19:10 CEST**_
+_Actualizado: **04-Jul-2025 17:44 UTC**_
 
 ---
 
@@ -72,6 +72,7 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
 - [x] Constante `FREE_PROJECT_LIMIT` centraliza límite de proyectos
 - [x] Recarga automática de proyectos tras crear/borrar/editar — 04-Jul-2025
+- [x] Base librería de componentes premium (PricingTable, TestimonialCarousel, etc.) — 04-Jul-2025
 
 ---
 
@@ -113,8 +114,7 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [ ] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Backups automáticos + restore 1 clic
 - [ ] Banners visuales de upsell (dashboard)
-- [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
-      Shadcn UI, Flowbite y DaisyUI
+- [ ] Ampliar librería de componentes **premium** (más ejemplos y documentación)
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
 ---
