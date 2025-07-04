@@ -54,7 +54,6 @@ _Estructura, arquitectura y convenciones técnicas base_
 /scripts/
 ├─ seed.ts // Seed usuarios test
 ├─ reset.ts // Drop DB (via tsx)
-└─ preview.ts (⚠️ future)
 
 /styles/
 └─ globals.css
@@ -123,8 +122,6 @@ _Estructura, arquitectura y convenciones técnicas base_
 | `/api/sites`                  | POST   | 🔐   | Crear sitio (límite 1 para FREE)   |
 | `/api/sites`                  | GET    | 🔐   | Listar sitios del usuario          |
 | `/api/projects/[id]/generate` | POST   | 🔐   | Generar HTML estático desde wizard |
-| `/api/stripe/checkout`        | POST   | 🔐   | Checkout de plan/upgrade           |
-| `/api/stripe/webhook`         | POST   | —    | Webhooks Stripe (subs, pagos)      |
 
 ---
 
