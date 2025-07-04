@@ -5,6 +5,7 @@ import { withValidationRoute } from "@/lib/middlewares/withValidation";
 import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 import { logger } from "@/lib/logger";
+import Event from "@/lib/models/event";
 
 // POST /api/auth/register
 async function handler(request: NextRequest & { body: RegisterInput }) {
@@ -22,6 +23,12 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
     // Crea y guarda el usuario (hash por middleware)
     const user = new User({ email, password, name, plan: "free" });
     await user.save();
+
+    try {
+      await Event.create({ userId: user.id, event: "signup_free" });
+    } catch (err) {
+      logger.error(err);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {

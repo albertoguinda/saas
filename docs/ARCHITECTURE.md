@@ -207,7 +207,7 @@ Las siguientes vistas y APIs siguen bajo `pages/` y deberán migrarse al App Rou
 ## 📊 Observabilidad & métricas
 
 - Logs de error en backend
- - Tracking básico (`wizard_completed` y `upgrade_click` implementados)
+- Tracking básico (`signup_free`, `wizard_completed` y `upgrade_click` implementados)
   - Panel admin futuro
 
 ---

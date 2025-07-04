@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 19:10 CEST**_
+_Actualizado: **04-Jul-2025 20:00 CEST**_
 
 ---
 

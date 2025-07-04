@@ -32,7 +32,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Renderizado dinámico** en ruta `/[slug]`
 - **Demo pública navegable** desde `/[slug]`
 - **Validación backend** del límite `FREE_PROJECT_LIMIT` por usuario
-- Tracking de eventos `wizard_completed` y `upgrade_click`
+ - Tracking de eventos `signup_free`, `wizard_completed` y `upgrade_click`
 - **Validación avanzada** de formularios (login, registro, perfil) con feedback en tiempo real
 - **Persistencia** de datos de perfil en MongoDB
 - **Wizard** con manejo de errores y spinner de carga
