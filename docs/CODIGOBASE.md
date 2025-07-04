@@ -124,6 +124,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 | `/api/sites`                  | GET    | 🔐   | Listar sitios del usuario          |
 | `/api/projects/[id]/generate` | POST   | 🔐   | Generar HTML estático desde wizard |
 | `/api/stripe/history` | GET | 🔐 | Historial de pagos |
+| `/api/stripe/webhook` | POST | — | Webhook de Stripe (actualiza plan) |
 
 ---
 

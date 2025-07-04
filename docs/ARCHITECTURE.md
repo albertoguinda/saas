@@ -63,6 +63,7 @@ Rellena `.env` tomando como referencia `.env.example`:
 | `S3_REGION` | Región donde se aloja el bucket |
 | `S3_ACCESS_KEY` | Access key con permisos de subida |
 | `S3_SECRET_KEY` | Secret key asociada |
+| `STRIPE_WEBHOOK_SECRET` | Clave para verificar webhooks de Stripe |
 ---
 
 ## 📦 Stack de tecnologías principales
