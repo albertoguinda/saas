@@ -96,13 +96,20 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
   projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
   projects/[id]/preview/ (vista previa pública – implementado 03-Jul-2025)
   demo/ (sitio generado con datos de ejemplo)
-  components/ (UI)
-  layouts/ (layouts públicos / privados)
-  lib/ (dbConnect, models, utils, middlewares)
-  config/ (tokens, rutas, fuentes)
-  styles/ (globals.css + tokens)
-  scripts/ (seed.ts, reset.ts via tsx)
-  docs/ (roadmap, tareas, stack, agentes…)
+  api/ (route handlers)
+  [slug]/page.tsx
+  layout.tsx
+```
+Otros directorios a nivel raíz:
+
+```text
+/components/ (UI)
+/layouts/ (layouts públicos / privados)
+/lib/ (dbConnect, models, utils, middlewares)
+/config/ (tokens, rutas, fuentes)
+/styles/ (globals.css + tokens)
+/scripts/ (seed.ts, reset.ts via tsx)
+/docs/ (roadmap, tareas, stack, agentes…)
 ```
 La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
