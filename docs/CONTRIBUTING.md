@@ -98,6 +98,14 @@ Toda contribución debe alinearse con:
 
 ---
 
+## ♿ Accesibilidad
+
+- Mantén visibles los focus outlines definidos en `styles/globals.css`.
+- Usa `aria-label` para botones/links sin texto claro.
+- Muestra mensajes de error/envío con `role="alert"` para lectores de pantalla.
+
+---
+
 ## 📚 Documentación y tareas
 
 - Actualiza `/docs` si cambias convenciones, estructura o dependencias.

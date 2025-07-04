@@ -11,6 +11,7 @@ export default {
   transform: {
     '^.+\\.[tj]sx?$': ['ts-jest', { useESM: true, tsconfig: 'tsconfig.jest.json' }],
   },
+  transformIgnorePatterns: ['/node_modules/(?!(jose|next-auth|openid-client)/)'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };

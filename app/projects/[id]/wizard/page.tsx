@@ -87,7 +87,11 @@ export default function WizardPage({ params }: WizardPageProps) {
     <div className="max-w-lg mx-auto py-12">
       <Card className="p-8 flex flex-col gap-6">
         <h1 className="text-2xl font-bold">Crear sitio</h1>
-        {apiError && <Alert color="danger">{apiError}</Alert>}
+        {apiError && (
+          <Alert color="danger" role="alert">
+            {apiError}
+          </Alert>
+        )}
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <Input label="Título" {...register("title")} />
           {errors.title && (
