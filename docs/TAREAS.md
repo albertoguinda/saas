@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 20:00 CEST**_
+_Actualizado: **04-Jul-2025 20:06 CEST**_
 
 ---
 
@@ -79,6 +79,7 @@ _Actualizado: **04-Jul-2025 20:00 CEST**_
 ### 🔓 FREE – Core público y experiencia
 
 #### 🔐 Backend
+- [ ] Actualizar docs de Arquitectura
 - [ ] Subida y gestión de avatar real
 - [ ] Separar vistas en `/app/` (migración App Router)
 
