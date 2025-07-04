@@ -15,7 +15,8 @@ import { track } from "@/lib/track";
 const FREE_PROJECT_LIMIT = 1;
 
 export default function ProjectsPage() {
-  const router: any = useRouter();
+  const router = useRouter();
+  // Reloading the page ensures fresh project data after create/delete actions
   const { data: session } = useSession();
 
   // Estados principales del componente
@@ -78,7 +79,7 @@ export default function ProjectsPage() {
     setProjects([data.site, ...projects]);
     setCreating(false);
     setNewName("");
-    router.refresh();
+    router.reload();
   };
 
   // Elimina un proyecto (DELETE /api/sites/[id])
@@ -89,7 +90,7 @@ export default function ProjectsPage() {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
       if (res.ok) {
         setProjects(projects.filter((p) => p._id !== id));
-        router.refresh();
+        router.reload();
       } else {
         setApiError("No se pudo borrar el proyecto.");
       }
