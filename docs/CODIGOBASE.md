@@ -123,6 +123,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 | `/api/sites`                  | POST   | 🔐   | Crear sitio (límite 1 para FREE)   |
 | `/api/sites`                  | GET    | 🔐   | Listar sitios del usuario          |
 | `/api/projects/[id]/generate` | POST   | 🔐   | Generar HTML estático desde wizard |
+| `/api/stripe/history` | GET | 🔐 | Historial de pagos |
 
 ---
 
@@ -173,6 +174,7 @@ tsx (scripts TS), zod
   demo/page.tsx // Demo con datos de ejemplo
   login/page.tsx
   register/page.tsx
+  billing/page.tsx // Historial de pagos
   [slug]/page.tsx
   /api
     … (route handlers modernizados)
