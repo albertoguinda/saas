@@ -74,7 +74,7 @@ _Actualizado: **06-Jul-2025**_
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
 - [ ] Separar vistas en `/app/` (migración App Router)
-- [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
+- [ ] Mantener driver MongoDB **5.9.x** (NextAuth compatible)
 - [x] Corregir `.npmrc` y asegurar `npm install` limpio — 06-Jul-2025
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 

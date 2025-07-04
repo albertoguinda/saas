@@ -25,6 +25,7 @@
 | ------------------------------ | ------------------------ | ----------------------------------------- |
 | **Auth.js (NextAuth)**         | Auth credentials/OAuth   | JWT + MongoAdapter                        |
 | **MongoDB Atlas + Mongoose 8** | DB NoSQL escalable       | Modelos `User`, `Site`, conexión cacheada (driver MongoDB 5) |
+> *Se mantiene en `mongodb` **5.9.x** por compatibilidad con el MongoAdapter de NextAuth.*
 | **Stripe**                     | Pagos y suscripciones    | Upgrades de plan (PRO / PREMIUM)          |
 | **Upstash Redis**              | Cache y colas serverless | Métricas y rate-limit en middleware (implementado) |
 
