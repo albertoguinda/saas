@@ -1,7 +1,26 @@
 # ARCHITECTURE.md
 
 > 🏗️ **Arquitectura técnica, decisiones y visión para el SaaS “Web Builder”**  
-> **Actualizado: Julio 2025**
+> **Actualizado: 04-Jul-2025**
+
+## Índice
+
+1. [Visión y principios](#-visión-y-principios)
+2. [Capas principales del sistema](#-capas-principales-del-sistema)
+3. [Stack de tecnologías principales](#-stack-de-tecnologías-principales)
+4. [Diseño de dominio y módulos](#-diseño-de-dominio-y-módulos)
+5. [Estructura de carpetas](#-estructura-de-carpetas)
+6. [API interna](#-api-interna)
+7. [Control de acceso y planes](#-control-de-acceso-y-planes)
+8. [Internacionalización & theming](#-internacionalización--theming)
+9. [Seguridad](#-seguridad)
+10. [Flujo de desarrollo recomendado](#-flujo-de-desarrollo-recomendado)
+11. [Decisiones arquitectónicas](#-decisiones-arquitectónicas)
+12. [Observabilidad & métricas](#-observabilidad--métricas)
+13. [Futuro y escalabilidad](#-futuro-y-escalabilidad)
+14. [Documentación & cultura](#-documentación--cultura)
+15. [Licencia & protección](#-licencia--protección)
+16. [Última nota](#-última-nota)
 
 ---
 
@@ -79,6 +98,31 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 
 ### Estructura de carpetas
 
+La estructura actual puede consultarse de forma completa en
+[`CODIGOBASE.md`](CODIGOBASE.md). Resumen de directorios clave:
+
+```text
+/pages
+  _app.tsx
+  _document.tsx
+  index.tsx
+  about/index.tsx
+  auth/
+    login.tsx
+    register.tsx
+  dashboard/
+    index.tsx
+    profile.tsx
+    projects.tsx
+    settings.tsx
+    welcome.tsx
+/app
+  projects/[id]/wizard/page.tsx
+  projects/[id]/preview/page.tsx
+  demo/page.tsx
+  layout.tsx
+```
+
 #### Pages Router (MVP heredado)
 
 ```text
@@ -100,6 +144,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
   [slug]/page.tsx
   layout.tsx
 ```
+
 Otros directorios a nivel raíz:
 
 ```text
@@ -111,6 +156,7 @@ Otros directorios a nivel raíz:
 /scripts/ (seed.ts, reset.ts via tsx)
 /docs/ (roadmap, tareas, stack, agentes…)
 ```
+
 La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 > **Migración progresiva:** nuevas features van en **/app/**, legacy en **/pages/** hasta completar la transición.
@@ -119,21 +165,21 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 Las siguientes vistas y APIs siguen bajo `pages/` y deberán migrarse al App Router:
 
-| Ruta actual                        | Nuevo archivo sugerido                           |
-| ---------------------------------- | ------------------------------------------------ |
-| `/pages/auth/login.tsx`            | `/app/login/page.tsx`                            |
-| `/pages/auth/register.tsx`         | `/app/register/page.tsx`                         |
-| `/pages/dashboard/index.tsx`       | `/app/dashboard/page.tsx`                        |
-| `/pages/dashboard/projects.tsx`    | `/app/dashboard/projects/page.tsx`               |
-| `/pages/dashboard/profile.tsx`     | `/app/dashboard/profile/page.tsx`                |
-| `/pages/dashboard/settings.tsx`    | `/app/dashboard/settings/page.tsx`               |
-| `/pages/dashboard/welcome.tsx`     | `/app/dashboard/welcome/page.tsx`                |
-| `/pages/api/me/index.ts`           | `/app/api/me/route.ts`                           |
-| `/pages/api/me/update.ts`          | `/app/api/me/update/route.ts`                    |
-| `/pages/api/me/avatar.ts`          | `/app/api/me/avatar/route.ts`                    |
-| `/pages/api/sites/index.ts`        | `/app/api/sites/route.ts`                        |
-| `/pages/api/sites/[id].ts`         | `/app/api/sites/[id]/route.ts`                   |
-| `/pages/api/projects/[id]/generate.ts` | `/app/api/projects/[id]/generate/route.ts`    |
+| Ruta actual                            | Nuevo archivo sugerido                     |
+| -------------------------------------- | ------------------------------------------ |
+| `/pages/auth/login.tsx`                | `/app/login/page.tsx`                      |
+| `/pages/auth/register.tsx`             | `/app/register/page.tsx`                   |
+| `/pages/dashboard/index.tsx`           | `/app/dashboard/page.tsx`                  |
+| `/pages/dashboard/projects.tsx`        | `/app/dashboard/projects/page.tsx`         |
+| `/pages/dashboard/profile.tsx`         | `/app/dashboard/profile/page.tsx`          |
+| `/pages/dashboard/settings.tsx`        | `/app/dashboard/settings/page.tsx`         |
+| `/pages/dashboard/welcome.tsx`         | `/app/dashboard/welcome/page.tsx`          |
+| `/pages/api/me/index.ts`               | `/app/api/me/route.ts`                     |
+| `/pages/api/me/update.ts`              | `/app/api/me/update/route.ts`              |
+| `/pages/api/me/avatar.ts`              | `/app/api/me/avatar/route.ts`              |
+| `/pages/api/sites/index.ts`            | `/app/api/sites/route.ts`                  |
+| `/pages/api/sites/[id].ts`             | `/app/api/sites/[id]/route.ts`             |
+| `/pages/api/projects/[id]/generate.ts` | `/app/api/projects/[id]/generate/route.ts` |
 
 **Pasos recomendados**
 
