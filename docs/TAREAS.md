@@ -72,6 +72,7 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
 - [x] Constante `FREE_PROJECT_LIMIT` centraliza límite de proyectos
 - [x] Recarga automática de proyectos tras crear/borrar/editar — 04-Jul-2025
+- [x] Endpoints Stripe (`create-customer`, `subscribe`, `cancel`, `webhook`) — 04-Jul-2025
 
 ---
 
@@ -96,7 +97,7 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
-- [ ] Integrar Stripe (productos, subscripciones, webhooks)
+- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
 - [ ] Dashboard: historial y panel de pagos
 

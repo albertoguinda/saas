@@ -123,6 +123,9 @@ _Estructura, arquitectura y convenciones técnicas base_
 | `/api/sites`                  | POST   | 🔐   | Crear sitio (límite 1 para FREE)   |
 | `/api/sites`                  | GET    | 🔐   | Listar sitios del usuario          |
 | `/api/projects/[id]/generate` | POST   | 🔐   | Generar HTML estático desde wizard |
+| `/api/stripe/create-customer`        | POST   | 🔐   | Crear cliente en Stripe |
+| `/api/stripe/subscribe`       | POST   | 🔐   | Suscribir a un plan |
+| `/api/stripe/cancel`          | POST   | 🔐   | Cancelar suscripción |
 | `/api/stripe/checkout`        | POST   | 🔐   | Checkout de plan/upgrade           |
 | `/api/stripe/webhook`         | POST   | —    | Webhooks Stripe (subs, pagos)      |
 

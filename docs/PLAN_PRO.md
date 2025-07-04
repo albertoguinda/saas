@@ -52,6 +52,8 @@ Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al sigu
 ## 🚀 Siguientes pasos
 
 1. **Stripe** → Desbloqueo automático en cuanto el pago se confirma (webhook).
+   Nuevos endpoints: `/api/stripe/create-customer`, `/api/stripe/subscribe`,
+   `/api/stripe/cancel` y `/api/stripe/webhook`.
 2. **Onboarding guiado** tras upgrade: branding ➜ dominio ➜ analytics.
 3. Upsell visual constante en dashboard (botones, banners).
 4. Mantener `/docs` al día con ejemplos de branding, analytics y dominio.

@@ -32,7 +32,9 @@ Brindar el **máximo nivel** de personalización, rendimiento y soporte. El plan
 
 ### 💳 Suscripciones & pagos
 
-- Stripe: producto PREMIUM + webhooks de validación automática.
+ - Stripe: producto PREMIUM + webhooks de validación automática.
+   Utiliza los endpoints `/api/stripe/create-customer`, `/api/stripe/subscribe`,
+   `/api/stripe/cancel` y `/api/stripe/webhook`.
 - Middleware avanzado → acceso según plan.
 - Historial de pagos & facturas descargables.
 
