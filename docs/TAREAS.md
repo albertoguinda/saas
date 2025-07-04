@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 20:06 CEST**_
+_Actualizado: **04-Jul-2025 20:30 CEST**_
 
 ---
 
@@ -105,8 +105,8 @@ _Actualizado: **04-Jul-2025 20:06 CEST**_
 #### 🧱 Generador de sitios (wizard)
 - [ ] Branding extendido (selector de color, fuentes, logo, favicon)
 
-#### 💳 Sistema de pagos y planes
-- [ ] Integrar Stripe (productos, subscripciones, webhooks)
+-#### 💳 Sistema de pagos y planes
+- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
 - [ ] Dashboard: historial y panel de pagos
 
