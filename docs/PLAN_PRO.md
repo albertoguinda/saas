@@ -27,7 +27,7 @@ Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al sigu
 ### 💾 Backend & almacenamiento
 
 - Persistir **estructura completa del sitio** en MongoDB (`pages`, `components`, `styles`).
-- Subida y almacenamiento seguro de **imágenes personalizadas** (S3 / Cloudinary).
+- Subida y almacenamiento seguro de **imágenes personalizadas** (S3 / Cloudinary). Usa las variables `CLOUDINARY_*` o `S3_*` definidas en `CODIGOBASE.md`.
 - Exportar sitios como **HTML estático** (descarga ZIP).
 
 ### 🎨 Personalización & branding

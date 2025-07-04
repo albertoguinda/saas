@@ -176,3 +176,17 @@ tsx (scripts TS), zod
   /api
     … (route handlers modernizados)
 ```
+
+## 🌐 Variables de entorno
+
+Rellena `.env` tomando como referencia `.env.example`:
+
+| Variable | Descripción |
+| -------- | ----------- |
+| `CLOUDINARY_CLOUD_NAME` | Nombre de tu cuenta Cloudinary |
+| `CLOUDINARY_API_KEY` | API Key de Cloudinary |
+| `CLOUDINARY_API_SECRET` | API Secret de Cloudinary |
+| `S3_BUCKET` | Nombre del bucket S3 para las imágenes |
+| `S3_REGION` | Región donde se aloja el bucket |
+| `S3_ACCESS_KEY` | Access key con permisos de subida |
+| `S3_SECRET_KEY` | Secret key asociada |
