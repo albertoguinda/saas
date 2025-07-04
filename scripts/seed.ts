@@ -2,6 +2,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import dbConnect from "../lib/dbConnect";
 import User from "../lib/models/user";
+import { logger } from "@/lib/logger";
 
 
 async function main() {
@@ -24,6 +25,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Error en seed:", err);
+  logger.error("Error en seed:", err);
   mongoose.connection.close();
 });

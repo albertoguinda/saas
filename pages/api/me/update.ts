@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth/next";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import { authOptions } from "@/lib/auth";
+import { logger } from "@/lib/logger";
 
 /**
  * Endpoint PATCH /api/me/update
@@ -66,8 +67,7 @@ export default async function handler(
   } catch (err) {
     // Log detallado solo en desarrollo
     if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
-      console.error("[API] Error actualizando perfil:", err);
+      logger.error("[API] Error actualizando perfil:", err);
     }
 
     return res.status(500).json({ error: "Error actualizando perfil" });
