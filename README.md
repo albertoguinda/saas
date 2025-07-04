@@ -58,14 +58,16 @@ Consulta la guía docs/deploy-free-plan.md
 (Vercel, Railway, variables de entorno y consideraciones de red).
 
 🆓 / 💼 / 👑 Planes
-Feature	FREE	PRO	PREMIUM
-Sitios	1	∞	∞
-Branding completo	—	✅	✅
-Dominio propio	—	✅	✅
-Emails transaccionales	—	✅	✅
-IA DataFast	—	—	✅
-Vídeo (MUX)	—	—	✅
-Analítica avanzada	—	—	✅
+
+| Feature | FREE | PRO | PREMIUM |
+| ------- | ---- | --- | ------- |
+| Sitios | 1 | ∞ | ∞ |
+| Branding completo | — | ✅ | ✅ |
+| Dominio propio | — | ✅ | ✅ |
+| Emails transaccionales | — | ✅ | ✅ |
+| IA DataFast | — | — | ✅ |
+| Vídeo (MUX) | — | — | ✅ |
+| Analítica avanzada | — | — | ✅ |
 
 🗺️ Roadmap & tareas
 Visión estratégica → docs/ROADMAP.md
