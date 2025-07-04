@@ -15,7 +15,8 @@ _Resumen de avances tras la última tanda de tareas (julio 2025)_
 Las tareas completadas y pendientes se reflejan en `TAREAS.md`. Destacan:
 
 - Funcionalidades finalizadas del wizard, seguimiento de eventos y API admin.
-- Pendientes inmediatas: subir avatar real, mejorar accesibilidad y continuar la migración a `/app/`.
+- Mejora de accesibilidad completada (focus, labels, roles).
+- Pendientes inmediatas: subir avatar real y continuar la migración a `/app/`.
 
 ## 🚚 Progreso de migración
 
