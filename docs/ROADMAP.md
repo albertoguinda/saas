@@ -27,8 +27,8 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - ✅ Modelo **User** (`/lib/models/user.ts`) con hash + validaciones
 - ✅ Modelo **Site** (`/lib/models/site.ts`)
 - ✅ API `/api/me` GET/PATCH
-- ✅ API `/api/me/avatar` PATCH (actualizar avatar)
-- ✅ Rate limiting vía **Upstash Redis**
+- ✅ API `/api/me/avatar` PATCH (actualizar avatar) — 04-Jul-2025
+- ✅ Rate limiting vía **Upstash Redis** — 04-Jul-2025
 
 ---
 
@@ -36,11 +36,11 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 | Tarea                                    | Estado          |
 | ---------------------------------------- | --------------- |
-| Wizard paso-a-paso (HeroUI)              | **✅ Jul-2025** |
-| Límite 1 sitio por usuario FREE          | **✅**          |
+| Wizard paso-a-paso (HeroUI)              | **✅ 03-Jul-2025** |
+| Límite 1 sitio por usuario FREE          | **✅ 03-Jul-2025** |
 | Guardar config de sitio en MongoDB       | **✅ 03-Jul-2025** |
 | Render dinámico en `/[slug]`             | **✅ 03-Jul-2025** |
-| Preview pública `/projects/[id]/preview` | **✅ Jul-2025** |
+| Preview pública `/projects/[id]/preview` | **✅ 03-Jul-2025** |
 | Demo pública navegable                   | **✅ 03-Jul-2025** |
 
 ---
