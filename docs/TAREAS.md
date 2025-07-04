@@ -79,7 +79,7 @@ _Actualizado: **04-Jul-2025 20:30 CEST**_
 ### 🔓 FREE – Core público y experiencia
 
 #### 🔐 Backend
-- [ ] Actualizar docs de Arquitectura
+- [x] Actualizar docs de Arquitectura — 04-Jul-2025
  - [x] Subida y gestión de avatar real — 05-Jul-2025
 - [ ] Separar vistas en `/app/` (migración App Router)
 
