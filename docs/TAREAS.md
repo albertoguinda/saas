@@ -71,8 +71,6 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [x] Corregir `.npmrc` y asegurar `npm install` limpio — 04-Jul-2025 CEST
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
-- [x] Constante `FREE_PROJECT_LIMIT` centraliza límite de proyectos
-- [x] Recarga automática de proyectos tras crear/borrar/editar — 04-Jul-2025
 
 ---
 
@@ -80,48 +78,69 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 
 ### 🔓 FREE – Core público y experiencia
 
+#### 🔐 Backend
 - [ ] Subida y gestión de avatar real
-- [ ] Mejora de accesibilidad (focus, labels, roles)
-- [ ] Mensajes de éxito / error contextualizados
 - [ ] Separar vistas en `/app/` (migración App Router)
 
----
+#### 🧱 Generador de sitios (wizard)
+
+#### 💳 Sistema de pagos y planes
+
+#### 🌟 Funcionalidades premium
+
+#### 🧪 Retención, métricas y feedback
+- [ ] Mejora de accesibilidad (focus, labels, roles)
+- [ ] Mensajes de éxito / error contextualizados
 
 ### 💼 PRO – Funcionalidades avanzadas
 
+#### 🔐 Backend
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
-- [ ] Branding extendido (selector de color, fuentes, logo, favicon)
-- [ ] Emails transaccionales (Resend) + confirmación de cuenta
-- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`)
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
-- [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
+- [ ] Emails transaccionales (Resend) + confirmación de cuenta
+
+#### 🧱 Generador de sitios (wizard)
+- [ ] Branding extendido (selector de color, fuentes, logo, favicon)
+
+#### 💳 Sistema de pagos y planes
 - [ ] Integrar Stripe (productos, subscripciones, webhooks)
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
 - [ ] Dashboard: historial y panel de pagos
 
----
+#### 🌟 Funcionalidades premium
+
+#### 🧪 Retención, métricas y feedback
+- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`)
+- [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
-- [ ] Integrar **DataFast** (IA) para generación de contenido
+#### 🔐 Backend
 - [ ] Cache de sitios (Upstash Redis, TTL dinámico)
-- [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
-- [ ] Integración Stripe completa (producto PREMIUM, webhooks, historial)
-- [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
-- [ ] Soporte prioritario (chat/email)
-- [ ] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Backups automáticos + restore 1 clic
-- [ ] Banners visuales de upsell (dashboard)
-- [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI,
-      Shadcn UI, Flowbite y DaisyUI
+
+#### 🧱 Generador de sitios (wizard)
+- [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
+- [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
----
+#### 💳 Sistema de pagos y planes
+- [ ] Integración Stripe completa (producto PREMIUM, webhooks, historial)
+
+#### 🌟 Funcionalidades premium
+- [ ] Integrar **DataFast** (IA) para generación de contenido
+- [ ] Soporte prioritario (chat/email)
+- [ ] Generador de textos legales (cookies, privacy, T&C)
+- [ ] Banners visuales de upsell (dashboard)
+
+#### 🧪 Retención, métricas y feedback
+- [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
 
 ### 📊 ADMIN & Retención
 
+#### 🧪 Retención, métricas y feedback
 - [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
