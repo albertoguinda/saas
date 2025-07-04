@@ -52,7 +52,7 @@ Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al sigu
 
 ## 🚀 Siguientes pasos
 
-1. **Stripe** → Desbloqueo automático en cuanto el pago se confirma (webhook).
+1. **Stripe** → Desbloqueo automático en cuanto el pago se confirma (webhook `checkout.session.completed`).
 2. **Onboarding guiado** tras upgrade: branding ➜ dominio ➜ analytics.
 3. Upsell visual constante en dashboard (botones, banners).
 4. Mantener `/docs` al día con ejemplos de branding, analytics y dominio.

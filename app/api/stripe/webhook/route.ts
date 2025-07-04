@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
+import dbConnect from "@/lib/dbConnect";
+import User from "@/lib/models/user";
+import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
@@ -16,9 +19,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Firma inválida" }, { status: 400 });
   }
 
-  // Por ahora solo confirmamos recepción
   if (event.type === "checkout.session.completed") {
-    // TODO: actualizar plan del usuario
+    const session = (event.data?.object || {}) as any;
+    const userId = session.metadata?.userId;
+    const email = session.customer_email;
+    try {
+      if (userId || email) {
+        await dbConnect();
+        await User.findOneAndUpdate(
+          userId ? { _id: userId } : { email },
+          { plan: "pro" },
+        );
+      }
+    } catch (err) {
+      logger.error(err);
+    }
   }
 
   return NextResponse.json({ received: true });
