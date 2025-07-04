@@ -1,10 +1,11 @@
-// pages/dashboard/index.tsx
+"use client";
+
 import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
 import { useSession } from "next-auth/react";
 import PlanBadge from "@/components/PlanBadge";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { LayoutDashboard, User, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { track } from "@/lib/track";

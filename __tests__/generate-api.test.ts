@@ -19,7 +19,7 @@ jest.mock("@/lib/models/event", () => ({
   default: { create: jest.fn() },
 }));
 
-import handler from "@/pages/api/projects/[id]/generate";
+import { POST as handler } from "@/app/api/projects/[id]/generate/route";
 import Event from "@/lib/models/event";
 import { getServerSession } from "next-auth/next";
 

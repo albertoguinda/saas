@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@heroui/card";
 import { Switch } from "@heroui/switch";
 import { Button } from "@heroui/button";

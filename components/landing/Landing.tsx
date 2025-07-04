@@ -63,7 +63,7 @@ export default function Landing({ site }: LandingProps) {
       <p className={cn(subtitle(), "mx-auto max-w-xl mb-8")}>
         Crea tu sitio en minutos con Next.js y HeroUI.
       </p>
-      <Button as={Link} href="/auth/login" color="primary">
+      <Button as={Link} href="/login" color="primary">
         Comenzar
       </Button>
     </section>

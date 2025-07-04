@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,7 +51,7 @@ export default function RegisterPage() {
     setSuccess(true);
     track("signup_free");
     setTimeout(() => {
-      router.push("/auth/login");
+      router.push("/login");
     }, 1500);
   };
 
@@ -106,7 +108,7 @@ export default function RegisterPage() {
         </form>
         <p className="text-center text-sm text-default-500">
           ¿Ya tienes cuenta?{" "}
-          <Link className="text-blue-600 hover:underline" href="/auth/login">
+          <Link className="text-blue-600 hover:underline" href="/login">
             Inicia sesión aquí
           </Link>
         </p>

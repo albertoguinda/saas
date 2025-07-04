@@ -8,7 +8,7 @@ export default function UnauthorizedPage() {
       <div className="max-w-lg mx-auto py-20 text-center">
         <h1 className="text-3xl font-bold mb-4">401 - Acceso no autorizado</h1>
         <p className="mb-6">Debes iniciar sesión para continuar.</p>
-        <Button as={Link} href="/auth/login" color="primary">
+        <Button as={Link} href="/login" color="primary">
           Ir al login
         </Button>
       </div>

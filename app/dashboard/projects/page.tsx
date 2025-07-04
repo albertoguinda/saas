@@ -1,4 +1,5 @@
-// pages/dashboard/projects.tsx
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
@@ -6,7 +7,7 @@ import { Badge } from "@heroui/badge";
 import { Input } from "@heroui/input";
 import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import UpgradeBanner from "@/components/UpgradeBanner";

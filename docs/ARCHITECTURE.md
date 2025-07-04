@@ -115,9 +115,9 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 > **Migración progresiva:** nuevas features van en **/app/**, legacy en **/pages/** hasta completar la transición.
 
-#### Rutas pendientes en `/pages/` y equivalentes propuestos
+#### Rutas migradas desde `/pages/`
 
-Las siguientes vistas y APIs siguen bajo `pages/` y deberán migrarse al App Router:
+Las siguientes vistas y APIs se han movido al App Router:
 
 | Ruta actual                        | Nuevo archivo sugerido                           |
 | ---------------------------------- | ------------------------------------------------ |
@@ -135,12 +135,12 @@ Las siguientes vistas y APIs siguen bajo `pages/` y deberán migrarse al App Rou
 | `/pages/api/sites/[id].ts`         | `/app/api/sites/[id]/route.ts`                   |
 | `/pages/api/projects/[id]/generate.ts` | `/app/api/projects/[id]/generate/route.ts`    |
 
-**Pasos recomendados**
+**Pasos realizados**
 
-1. Crear la carpeta y el archivo correspondiente en `/app/` siguiendo la tabla.
-2. Trasladar la lógica del componente o handler, adaptándola a `route.ts` donde aplique.
-3. Probar cada ruta y actualizar imports o redirecciones en el código.
-4. Una vez verificadas, eliminar las versiones en `pages/`.
+1. Se crearon las carpetas y archivos en `/app/` según la tabla.
+2. Se trasladó la lógica de cada página o API a `page.tsx` o `route.ts`.
+3. Se ajustaron imports, redirecciones y navegación.
+4. Se eliminaron las rutas antiguas en `pages/`.
 
 ---
 

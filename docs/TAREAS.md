@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 20:06 CEST**_
+_Actualizado: **04-Jul-2025 18:41 CEST**_
 
 ---
 
@@ -71,6 +71,8 @@ _Actualizado: **04-Jul-2025 20:06 CEST**_
 - [x] Corregir `.npmrc` y asegurar `npm install` limpio — 04-Jul-2025 CEST
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
+- [x] Actualizar docs de Arquitectura — 04-Jul-2025
+- [x] Separar vistas en `/app/` (migración App Router) — 04-Jul-2025
 
 ---
 
@@ -79,9 +81,7 @@ _Actualizado: **04-Jul-2025 20:06 CEST**_
 ### 🔓 FREE – Core público y experiencia
 
 #### 🔐 Backend
-- [ ] Actualizar docs de Arquitectura
 - [ ] Subida y gestión de avatar real
-- [ ] Separar vistas en `/app/` (migración App Router)
 
 #### 🧱 Generador de sitios (wizard)
 

@@ -1,6 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -81,7 +83,7 @@ export default function LoginPage() {
         </form>
         <p className="text-center text-sm text-default-500">
           ¿No tienes cuenta?{" "}
-          <Link className="text-blue-600 hover:underline" href="/auth/register">
+          <Link className="text-blue-600 hover:underline" href="/register">
             Regístrate aquí
           </Link>
         </p>

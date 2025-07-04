@@ -1,7 +1,9 @@
+"use client";
+
 import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { User } from "lucide-react";
 import { useSession } from "next-auth/react";
 

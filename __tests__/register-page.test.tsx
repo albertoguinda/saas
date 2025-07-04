@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import RegisterPage from '@/pages/auth/register';
+import RegisterPage from '@/app/register/page';
 import { track } from '@/lib/track';
 
 jest.mock('next/link', () => ({
@@ -14,7 +14,7 @@ jest.mock('@heroui/ripple', () => ({
 }));
 
 const push = jest.fn();
-jest.mock('next/router', () => ({ useRouter: () => ({ push }) }));
+jest.mock('next/navigation', () => ({ useRouter: () => ({ push }) }));
 
 jest.mock('@/lib/track', () => ({ track: jest.fn() }));
 

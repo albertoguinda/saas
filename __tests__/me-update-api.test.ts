@@ -15,7 +15,7 @@ jest.mock("@/lib/models/user", () => ({
   default: { findOne: findOneMock },
 }));
 
-import handler from "@/pages/api/me/update";
+import { PATCH as handler } from "@/app/api/me/update/route";
 import { getServerSession } from "next-auth/next";
 
 beforeEach(() => {
