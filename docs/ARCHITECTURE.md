@@ -94,7 +94,7 @@ _(consulta `STACK.md` para versiones y dependencias reales)_
 ```text
 /app/
   projects/[id]/wizard/ (wizard paso-a-paso – implementado Jul-2025)
-  projects/[id]/preview/ (vista previa pública – implementado Ago-2025)
+  projects/[id]/preview/ (vista previa pública – implementado 03-Jul-2025)
   demo/ (sitio generado con datos de ejemplo)
   components/ (UI)
   layouts/ (layouts públicos / privados)
