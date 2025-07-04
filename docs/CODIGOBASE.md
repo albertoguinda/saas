@@ -106,6 +106,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 - `lib/logger.ts` – logger de errores (usa `logger.error` en lugar de `console.error`)
 - **Middlewares**
   - `withAuthPlan` – protección por plan
+  - `withAuthPlanRoute` – protección de plan en rutas App Router
   - `withValidation` – validación Zod en APIs (se aplica a todos los POST/PATCH)
   - Validación frontend con **React Hook Form + Zod**
 

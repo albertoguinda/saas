@@ -105,9 +105,10 @@ _Actualizado: **04-Jul-2025 20:30 CEST**_
 #### 🧱 Generador de sitios (wizard)
 - [ ] Branding extendido (selector de color, fuentes, logo, favicon)
 
--#### 💳 Sistema de pagos y planes
+#### 💳 Sistema de pagos y planes
 - [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
+- [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
 - [x] Dashboard: historial y panel de pagos — 04-Jul-2025
 
 #### 🌟 Funcionalidades premium
