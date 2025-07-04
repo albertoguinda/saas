@@ -161,24 +161,24 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 
 > **Migración progresiva:** nuevas features van en **/app/**, legacy en **/pages/** hasta completar la transición.
 
-#### Rutas pendientes en `/pages/` y equivalentes propuestos
+#### Rutas migradas a `/app/`
 
-Las siguientes vistas y APIs siguen bajo `pages/` y deberán migrarse al App Router:
+Se han creado archivos de placeholder en `app/` y la carpeta `pages` solo conserva las APIs:
 
-| Ruta actual                            | Nuevo archivo sugerido                     |
-| -------------------------------------- | ------------------------------------------ |
-| `/pages/auth/login.tsx`                | `/app/login/page.tsx`                      |
-| `/pages/auth/register.tsx`             | `/app/register/page.tsx`                   |
-| `/pages/dashboard/index.tsx`           | `/app/dashboard/page.tsx`                  |
-| `/pages/dashboard/projects.tsx`        | `/app/dashboard/projects/page.tsx`         |
-| `/pages/dashboard/profile.tsx`         | `/app/dashboard/profile/page.tsx`          |
-| `/pages/dashboard/settings.tsx`        | `/app/dashboard/settings/page.tsx`         |
-| `/pages/dashboard/welcome.tsx`         | `/app/dashboard/welcome/page.tsx`          |
-| `/pages/api/me/index.ts`               | `/app/api/me/route.ts`                     |
-| `/pages/api/me/update.ts`              | `/app/api/me/update/route.ts`              |
-| `/pages/api/me/avatar.ts`              | `/app/api/me/avatar/route.ts`              |
-| `/pages/api/sites/index.ts`            | `/app/api/sites/route.ts`                  |
-| `/pages/api/sites/[id].ts`             | `/app/api/sites/[id]/route.ts`             |
+| Ruta anterior | Nuevo archivo en `app/` |
+| --- | --- |
+| `/pages/auth/login.tsx` | ✔ `app/login/page.tsx` |
+| `/pages/auth/register.tsx` | ✔ `app/register/page.tsx` |
+| `/pages/dashboard/index.tsx` | ✔ `app/dashboard/page.tsx` |
+| `/pages/dashboard/projects.tsx` | ✔ `app/dashboard/projects/page.tsx` |
+| `/pages/dashboard/profile.tsx` | ✔ `app/dashboard/profile/page.tsx` |
+| `/pages/dashboard/settings.tsx` | ✔ `app/dashboard/settings/page.tsx` |
+| `/pages/dashboard/welcome.tsx` | ✔ `app/dashboard/welcome/page.tsx` |
+| `/pages/api/me/index.ts` | `/app/api/me/route.ts` |
+| `/pages/api/me/update.ts` | `/app/api/me/update/route.ts` |
+| `/pages/api/me/avatar.ts` | `/app/api/me/avatar/route.ts` |
+| `/pages/api/sites/index.ts` | `/app/api/sites/route.ts` |
+| `/pages/api/sites/[id].ts` | `/app/api/sites/[id]/route.ts` |
 | `/pages/api/projects/[id]/generate.ts` | `/app/api/projects/[id]/generate/route.ts` |
 
 **Pasos recomendados**

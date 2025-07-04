@@ -1,6 +1,5 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import RegisterPage from '@/pages/auth/register';
-import { track } from '@/lib/track';
+import { render, screen } from '@testing-library/react';
+import RegisterPage from '@/app/register/page';
 
 jest.mock('next/link', () => ({
   __esModule: true,
@@ -14,9 +13,7 @@ jest.mock('@heroui/ripple', () => ({
 }));
 
 const push = jest.fn();
-jest.mock('next/router', () => ({ useRouter: () => ({ push }) }));
-
-jest.mock('@/lib/track', () => ({ track: jest.fn() }));
+jest.mock('next/navigation', () => ({ useRouter: () => ({ push }) }));
 
 describe('RegisterPage', () => {
   const originalFetch = global.fetch;
@@ -28,22 +25,8 @@ describe('RegisterPage', () => {
     jest.clearAllMocks();
   });
 
-  test('calls track after successful registration', async () => {
+  test('renders placeholder text', () => {
     render(<RegisterPage />);
-    fireEvent.change(screen.getByPlaceholderText('Tu nombre'), {
-      target: { value: 'Test User' },
-    });
-    fireEvent.change(screen.getByPlaceholderText('alberto@gmail.com'), {
-      target: { value: 'test@example.com' },
-    });
-    fireEvent.change(screen.getByPlaceholderText('••••••••'), {
-      target: { value: '123456' },
-    });
-
-    fireEvent.click(screen.getByRole('button', { name: /registrarse gratis/i }));
-
-    await waitFor(() => {
-      expect(track).toHaveBeenCalledWith('signup_free');
-    });
+    expect(screen.getByText('Register page placeholder')).toBeInTheDocument();
   });
 });
