@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 20:30 CEST**_
+_Actualizado: **04-Jul-2025 21:15 CEST**_
 
 ---
 
@@ -96,6 +96,7 @@ _Actualizado: **04-Jul-2025 20:30 CEST**_
 ### 💼 PRO – Funcionalidades avanzadas
 
 #### 🔐 Backend
+- [x] Documentadas variables `CLOUDINARY_*` y `S3_*` — 04-Jul-2025
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
