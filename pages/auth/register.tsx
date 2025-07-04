@@ -35,12 +35,12 @@ export default function RegisterPage() {
       body: JSON.stringify(data),
     });
 
-    const data = await res.json();
+    const result = await res.json();
 
     setLoading(false);
 
     if (!res.ok) {
-      setError(data.error || "Error al registrar");
+      setError(result.error || "Error al registrar");
 
       return;
     }
