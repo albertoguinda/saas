@@ -4,6 +4,11 @@
 
 ---
 
+## ⚙️ Prerrequisitos
+
+Este proyecto requiere **Node.js 18 o superior**. Comprueba tu versión con `node -v`.
+El archivo `package.json` especifica la compatibilidad en el campo `"engines"` (`"node": ">=18"`).
+
 ## 🟦 FRONTEND PRINCIPAL
 
 | Herramienta                            | Rol                               | Por qué                                             |
