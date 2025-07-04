@@ -8,6 +8,7 @@ import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
 import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
 import { logger } from "@/lib/logger";
+import { FREE_PROJECT_LIMIT } from "@/config/constants";
 
 // Solo autenticados pueden acceder a sus proyectos
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -52,10 +53,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return res.status(400).json({ error: "Título obligatorio" });
       }
 
-      // Límite de 1 proyecto solo para plan FREE
+      // Límite de proyectos para plan FREE
       const count = await Site.countDocuments({ userId: session.user.id });
 
-      if (session.user.plan === "free" && count >= 1) {
+      if (session.user.plan === "free" && count >= FREE_PROJECT_LIMIT) {
         return res
           .status(403)
           .json({ error: "Límite de proyectos alcanzado para tu plan" });

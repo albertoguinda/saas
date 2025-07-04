@@ -8,11 +8,10 @@ import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+
 import UpgradeBanner from "@/components/UpgradeBanner";
 import { track } from "@/lib/track";
-
-// Límite de proyectos para el plan FREE
-const FREE_PROJECT_LIMIT = 1;
+import { FREE_PROJECT_LIMIT } from "@/config/constants";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -41,7 +40,6 @@ export default function ProjectsPage() {
   // Carga los proyectos del backend al montar
   useEffect(() => {
     fetchProjects();
-    // eslint-disable-next-line
   }, []);
 
   // Refresca la lista de proyectos
@@ -51,6 +49,7 @@ export default function ProjectsPage() {
     try {
       const res = await fetch("/api/sites");
       const data = await res.json();
+
       setProjects(data.sites || []);
     } catch {
       setApiError("No se pudieron cargar los proyectos.");
@@ -64,6 +63,7 @@ export default function ProjectsPage() {
     if (projects.length >= FREE_PROJECT_LIMIT) return;
     if (!newName.trim()) {
       setError("El nombre es obligatorio");
+
       return;
     }
     const res = await fetch("/api/sites", {
@@ -72,8 +72,10 @@ export default function ProjectsPage() {
       body: JSON.stringify({ title: newName }),
     });
     const data = await res.json();
+
     if (!res.ok) {
       setError(data.error || "No se pudo crear el proyecto");
+
       return;
     }
     setProjects([data.site, ...projects]);
@@ -88,6 +90,7 @@ export default function ProjectsPage() {
     setDeleting(id);
     try {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
+
       if (res.ok) {
         setProjects(projects.filter((p) => p._id !== id));
         router.reload();
@@ -112,6 +115,7 @@ export default function ProjectsPage() {
     setEditError("");
     if (!editTitle.trim()) {
       setEditError("El título es obligatorio");
+
       return;
     }
     setUpdating(true);
@@ -121,9 +125,11 @@ export default function ProjectsPage() {
       body: JSON.stringify({ title: editTitle }),
     });
     const data = await res.json();
+
     setUpdating(false);
     if (!res.ok) {
       setEditError(data.error || "No se pudo actualizar");
+
       return;
     }
     // Actualiza en la lista
@@ -154,8 +160,8 @@ export default function ProjectsPage() {
         ) : (
           <Button
             color="warning"
-            variant="bordered"
             startContent={<Lock />}
+            variant="bordered"
             onClick={() => {
               track("upgrade_click");
               router.push("/pricing");
@@ -168,7 +174,7 @@ export default function ProjectsPage() {
 
       {/* Errores generales */}
       {apiError && (
-        <Alert color="danger" className="mb-4">
+        <Alert className="mb-4" color="danger">
           {apiError}
         </Alert>
       )}
@@ -213,19 +219,19 @@ export default function ProjectsPage() {
                 Ver
               </Button>
               <Button
-                size="sm"
                 color="secondary"
+                size="sm"
                 startContent={<Pencil />}
                 onClick={() => openEdit(project)}
               >
                 Editar
               </Button>
               <Button
-                size="sm"
                 color="danger"
-                variant="light"
-                startContent={<Trash />}
                 disabled={deleting === project._id}
+                size="sm"
+                startContent={<Trash />}
+                variant="light"
                 onClick={() => handleDelete(project._id)}
               >
                 {deleting === project._id ? "Borrando..." : "Borrar"}
@@ -242,10 +248,10 @@ export default function ProjectsPage() {
             <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
             {error && <Alert color="danger">{error}</Alert>}
             <Input
+              ref={createInputRef}
               label="Nombre del proyecto"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              ref={createInputRef}
             />
             <div className="flex gap-2">
               <Button onClick={handleCreate}>Crear</Button>
@@ -274,19 +280,19 @@ export default function ProjectsPage() {
             <h3 className="text-lg font-semibold">Editar proyecto</h3>
             {editError && <Alert color="danger">{editError}</Alert>}
             <Input
+              ref={editInputRef}
               label="Título del proyecto"
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
-              ref={editInputRef}
             />
             <div className="flex gap-2">
-              <Button onClick={handleEdit} isLoading={updating}>
+              <Button isLoading={updating} onClick={handleEdit}>
                 Guardar
               </Button>
               <Button
+                disabled={updating}
                 variant="ghost"
                 onClick={() => setEditing(null)}
-                disabled={updating}
               >
                 Cancelar
               </Button>

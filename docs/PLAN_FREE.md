@@ -18,7 +18,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Dashboard**: saludo + datos de sesión
 - **Pantalla de bienvenida** (HeroUI, onboarding rápido)
 - **Vista de perfil**: edición mock de nombre/contraseña
-- **Vista de proyectos**: crear / borrar proyecto, **límite 1 en FREE**, avisos + CTA upgrade
+- **Vista de proyectos**: crear / borrar proyecto, **límite `FREE_PROJECT_LIMIT` en FREE**, avisos + CTA upgrade
 - **Wizard de sitios** (3 pasos — title, slug, template) con HeroUI, validación básica y POST `/api/projects/[id]/generate`
 - **Navbar dinámica** con avatar al autenticar
 - **API** `PATCH /api/me/avatar` para actualizar avatar
@@ -31,7 +31,7 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Modularización de helpers y hooks** en `lib/utils.ts`
 - **Renderizado dinámico** en ruta `/[slug]`
 - **Demo pública navegable** desde `/[slug]`
-- **Validación backend** del límite 1 sitio
+- **Validación backend** del límite `FREE_PROJECT_LIMIT` por usuario
 - Tracking de eventos `wizard_completed` y `upgrade_click`
 - **Validación avanzada** de formularios (login, registro, perfil) con feedback en tiempo real
 - **Persistencia** de datos de perfil en MongoDB
