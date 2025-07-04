@@ -38,6 +38,7 @@ Todos los campos salvo `event` son opcionales.
 - `page_view` – visita de página
 - `click` – interacción con elementos
 - `wizard_step` – avance o retroceso en el generador
+- `signup_free` – registro de usuario en plan gratuito
 - `upgrade_click` – intento de mejora de plan
 - `wizard_completed` – finalización del proceso de creación
 

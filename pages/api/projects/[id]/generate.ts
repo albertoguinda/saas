@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth/next";
 
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
+import Event from "@/lib/models/event";
 import { authOptions } from "@/lib/auth";
 import { logger } from "@/lib/logger";
 
@@ -72,6 +73,12 @@ export default async function handler(
     site.slug = slug;
     site.structure = { template, color, font };
     await site.save();
+
+    try {
+      await Event.create({ userId: session.user.id, event: "wizard_completed" });
+    } catch (err) {
+      logger.error(err);
+    }
 
     return res.status(200).json({ site });
   } catch (err) {

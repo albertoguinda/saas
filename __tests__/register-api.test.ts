@@ -33,9 +33,16 @@ jest.mock("@/lib/middlewares/rateLimit", () => ({
 
 import { checkLimit } from "@/lib/middlewares/rateLimit";
 
+jest.mock("@/lib/models/event", () => ({
+  __esModule: true,
+  default: { create: jest.fn() },
+}));
+
+import Event from "@/lib/models/event";
+
 const saveMock = jest.fn();
 const findOneMock = jest.fn();
-const userConstructor = jest.fn(() => ({ save: saveMock }));
+const userConstructor = jest.fn(() => ({ save: saveMock, id: "1" }));
 userConstructor.findOne = findOneMock;
 
 jest.mock("@/lib/dbConnect", () => ({ __esModule: true, default: jest.fn() }));
@@ -86,6 +93,7 @@ test("creates user when data valid", async () => {
   } as unknown as NextRequest;
   const res = await POST(req);
   expect(saveMock).toHaveBeenCalled();
+  expect(Event.create).toHaveBeenCalledWith({ userId: "1", event: "signup_free" });
   expect(res.status).toBe(200);
 });
 

@@ -173,7 +173,7 @@ La ruta `/app/demo` permite explorar el sitio generado con datos de demo.
 ## 📊 Observabilidad & métricas
 
 - Logs de error en backend
- - Tracking básico (`wizard_completed` y `upgrade_click` implementados)
+- Tracking básico (`signup_free`, `wizard_completed` y `upgrade_click` implementados)
   - Panel admin futuro
 
 ---

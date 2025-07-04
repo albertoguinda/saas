@@ -153,7 +153,7 @@ tsx (scripts TS), zod
 ## 📝 NOTA
 
 - Proyecto base **Pages Router**; nuevas features → **App Router**.
-- Wizard implementado (Jul 2025). Preview pública lista. Tracking `wizard_completed` y `upgrade_click` implementados.
+- Wizard implementado (Jul 2025). Preview pública lista. Tracking `signup_free`, `wizard_completed` y `upgrade_click` implementados.
 
 ---
 

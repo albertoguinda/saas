@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 19:10 CEST**_
+_Actualizado: **04-Jul-2025 20:00 CEST**_
 
 ---
 
@@ -39,6 +39,7 @@ _Actualizado: **04-Jul-2025 19:10 CEST**_
 - [x] Spinner y estados de red en wizard — 04-Jul-2025
 - [x] Tracking evento `wizard_completed`
 - [x] Tracking evento `upgrade_click`
+- [x] Tracking evento `signup_free`
 - [x] API `/api/track` guarda eventos en MongoDB — 03-Jul-2025
 - [x] Badge visual del plan en dashboard y navbar
 - [x] Avisos visuales de upgrade por límite de uso
