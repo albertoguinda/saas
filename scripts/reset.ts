@@ -2,6 +2,7 @@
 import "dotenv/config";
 import mongoose from "mongoose";
 import dbConnect from "../lib/dbConnect";
+import { logger } from "@/lib/logger";
 
 async function main() {
   await dbConnect();
@@ -13,6 +14,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err);
+  logger.error(err);
   mongoose.connection.close();
 });
