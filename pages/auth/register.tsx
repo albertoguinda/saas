@@ -10,6 +10,7 @@ import { Alert, FormAlert } from "@heroui/alert";
 
 import AuthLayout from "@/layouts/auth";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
+import { track } from "@/lib/track";
 
 export default function RegisterPage() {
   const {
@@ -46,6 +47,7 @@ export default function RegisterPage() {
     }
 
     setSuccess(true);
+    track("signup_free");
     setTimeout(() => {
       router.push("/auth/login");
     }, 1500);
