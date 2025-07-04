@@ -33,34 +33,23 @@ Permitir que cualquier usuario experimente la creación de un sitio web personal
 - **Demo pública navegable** desde `/[slug]`
 - **Validación backend** del límite 1 sitio
 - Tracking de eventos `wizard_completed` y `upgrade_click`
+- **Validación avanzada** de formularios (login, registro, perfil) con feedback en tiempo real
+- **Persistencia** de datos de perfil en MongoDB
+- **Wizard** con manejo de errores y spinner de carga
+- **Página 401** amigable para rutas privadas sin sesión
+- **Avisos visuales** de upgrade y **badge “FREE”** en dashboard y navbar
 
 ---
 
 ## 🚧 Funcionalidades pendientes (Backlog inmediato)
 
 ### 👤 Usuario y perfil
-
-- Validación avanzada de formularios (login, registro) con feedback real-time
 - Subida y gestión de **avatar real**
-- Persistencia real de perfil en MongoDB
-- Cambio de contraseña y actualización de datos
-- Toasts / alerts de feedback en cambios de perfil
 - Mejora de accesibilidad (focus, labels, roles)
-
-### 🌐 Sitio público y proyectos
-
-- Página de error amigable para rutas privadas sin sesión
 
 ### 🧱 Wizard & UX
 
-- Manejo de errores y validación granular en el wizard
-- Spinner y estados de red al generar
 - Mensajes de éxito / error contextualizados
-
-### 🚀 Upsell & tracking
-
-- Aviso visual de upgrade al llegar al límite o uso intensivo
-- Etiqueta “FREE” en dashboard y navbar
 
 ### 🧪 Métricas
 
