@@ -46,6 +46,7 @@ Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al sigu
 - Analítica básica: visitas, páginas vistas, clicks (fetch Redis).
 - Conexión de **dominio propio** manual (Namecheap API).
 - Panel de estadísticas en dashboard (HeroUI charts).
+- Historial de pagos accesible en `/billing` (API `/api/stripe/history`).
 
 ---
 
