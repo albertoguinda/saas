@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 15:00 CEST**_
+_Actualizado: **04-Jul-2025 18:55 CEST**_
 
 ---
 
@@ -70,6 +70,7 @@ _Actualizado: **04-Jul-2025 15:00 CEST**_
 - [x] Corregir `.npmrc` y asegurar `npm install` limpio — 04-Jul-2025 CEST
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
+- [x] Constante `FREE_PROJECT_LIMIT` centraliza límite de proyectos
 
 ---
 
