@@ -8,6 +8,7 @@ import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Card } from "@heroui/card"; // Solo Card, hijos directos
 import { Alert, FormAlert } from "@heroui/alert";
+import { toast } from "@heroui/toast";
 
 import AuthLayout from "@/layouts/auth";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
@@ -42,6 +43,7 @@ export default function LoginPage() {
       return;
     }
 
+    toast.success("Sesión iniciada");
     router.push("/dashboard");
   };
 
@@ -50,7 +52,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md mx-auto shadow-2xl flex flex-col gap-6 p-8">
         <h1 className="text-xl font-semibold text-center">Iniciar sesión</h1>
         {error && (
-          <Alert className="mb-2" color="danger">
+          <Alert className="mb-2" color="danger" role="alert">
             {error}
           </Alert>
         )}

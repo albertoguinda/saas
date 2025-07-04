@@ -60,12 +60,12 @@ export default function RegisterPage() {
           Crear cuenta gratuita
         </h1>
         {error && (
-          <Alert className="mb-2" color="danger">
+          <Alert className="mb-2" color="danger" role="alert">
             {error}
           </Alert>
         )}
         {success && (
-          <Alert className="mb-2" color="success">
+          <Alert className="mb-2" color="success" role="status" aria-live="polite">
             Usuario creado correctamente. Redirigiendo...
           </Alert>
         )}

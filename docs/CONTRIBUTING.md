@@ -62,6 +62,7 @@ Toda contribución debe alinearse con:
   `feat: wizard paso a paso` • `fix: validar slug`
 - **Comentarios** breves, sin código muerto.
 - **Componentes** PascalCase, props tipados, usa `props.children` cuando aplique.
+- **Accesibilidad**: usa `aria-label` y roles correctos; verifica foco visible (`:focus-visible`) y añade tests con `toHaveAccessibleName`.
 
 ---
 

@@ -34,7 +34,7 @@ export default function AppNavbar() {
   const handleLogout = () => signOut({ callbackUrl: "/" });
 
   return (
-    <Navbar isBordered>
+    <Navbar isBordered role="navigation" aria-label="Menú principal">
       <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
         <Logo />
         <p className="font-bold text-inherit ml-2">PLANTSCARE</p>

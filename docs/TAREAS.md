@@ -90,8 +90,8 @@ _Actualizado: **04-Jul-2025 20:06 CEST**_
 #### 🌟 Funcionalidades premium
 
 #### 🧪 Retención, métricas y feedback
-- [ ] Mejora de accesibilidad (focus, labels, roles)
-- [ ] Mensajes de éxito / error contextualizados
+- [x] Mejora de accesibilidad (focus, labels, roles)
+- [x] Mensajes de éxito / error contextualizados
 
 ### 💼 PRO – Funcionalidades avanzadas
 
