@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 13:01 CEST**_
+_Actualizado: **04-Jul-2025 15:00 CEST**_
 
 ---
 
@@ -65,6 +65,8 @@ _Actualizado: **04-Jul-2025 13:01 CEST**_
 - [x] Tests API perfil (`/api/me/update` y `/api/me/avatar`) — 04-Jul-2025
 - [x] Introducción de helper `logger` y reemplazo de `console.error` — 04-Jul-2025
 - [x] Tests middleware withAuthPlan — 04-Jul-2025 CEST
+- [x] Tests middleware withRateLimit — 04-Jul-2025
+- [x] Tests API track (`/api/track`) — 03-Jul-2025
 - [x] Corregir `.npmrc` y asegurar `npm install` limpio — 04-Jul-2025 CEST
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
