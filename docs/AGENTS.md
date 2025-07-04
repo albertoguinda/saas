@@ -79,3 +79,4 @@ Prioriza claridad y alineación con el stack actual.
 
 Haz backup de TAREAS.md antes de cambios masivos.
 ```
+- Las fechas de nuevas tareas deben usar el formato `DD-MMM-YYYY HH:mm CEST`.

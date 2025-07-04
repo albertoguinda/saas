@@ -1,6 +1,7 @@
 # TAREAS.md
 
 _Actualizado: **06-Jul-2025**_
+_Horas indicadas en CEST (Madrid)_
 
 ---
 
