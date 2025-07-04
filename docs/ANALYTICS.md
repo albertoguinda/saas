@@ -39,6 +39,7 @@ Todos los campos salvo `event` son opcionales.
 - `click` – interacción con elementos
 - `wizard_step` – avance o retroceso en el generador
 - `upgrade_click` – intento de mejora de plan
+- `signup_free` – registro exitoso de usuario
 - `wizard_completed` – finalización del proceso de creación
 
 ## 🔍 Uso de marcas de tiempo y coordenadas
