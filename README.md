@@ -37,6 +37,8 @@ npm run dev
 
 TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
+Antes de ejecutar `npm test` o `npm run lint`, lanza de nuevo `./scripts/setup.sh` para instalar dependencias de desarrollo y evitar fallos por módulos ausentes.
+
 ### 🧪 Ejecutar tests
 
 ```bash
