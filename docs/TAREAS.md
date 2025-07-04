@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **04-Jul-2025 18:55 CEST**_
+_Actualizado: **04-Jul-2025 19:10 CEST**_
 
 ---
 
@@ -71,6 +71,7 @@ _Actualizado: **04-Jul-2025 18:55 CEST**_
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 - [x] Ajustar dependencias MongoDB para evitar `legacy-peer-deps` (downgrade a v5.9.2) — 03-Jul-2025
 - [x] Constante `FREE_PROJECT_LIMIT` centraliza límite de proyectos
+- [x] Recarga automática de proyectos tras crear/borrar/editar — 04-Jul-2025
 
 ---
 
