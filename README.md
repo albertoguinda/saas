@@ -43,6 +43,7 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 ./scripts/setup.sh
 npm test
 ```
+El comando `npm test` aprovecha el **test runner** integrado en Node.js 18+ (`node --test`) y delega en `jest-runner.mjs` para lanzar Jest.
 > **Importante:** ejecuta `./scripts/setup.sh` cada vez antes de `npm test`. Si faltan paquetes, verás errores de módulos no encontrados.
 
 ### 🔍 Ejecutar lint
