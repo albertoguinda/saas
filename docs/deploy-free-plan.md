@@ -17,11 +17,13 @@ _Guía rápida para desplegar el **Plan FREE** en Vercel o Railway_
 
    | Variable        | Descripción                                                     |
    | --------------- | ---------------------------------------------------------------- |
-   | MONGODB_URI     | Cadena de conexión MongoDB Atlas (servidor 6.x) |
+   | MONGODB_URI     | Cadena de conexión MongoDB Atlas (servidor 6.x, driver 5.9.2) |
    | NEXTAUTH_SECRET | String aleatorio seguro (`openssl rand -base64 32`)              |
    | NEXTAUTH_URL    | URL pública de tu app (`https://tu-app.vercel.app`)             |
    | UPSTASH_REDIS_REST_URL | Endpoint REST de Upstash Redis para rate-limit |
    | UPSTASH_REDIS_REST_TOKEN | Token de acceso Upstash Redis |
+
+   > **Nota:** Atlas puede correr servidor 6.x, pero el proyecto fija el driver MongoDB en **5.9.2** para evitar problemas de `legacy-peer-deps`. No actualices hasta revisar compatibilidad.
 
    Comprueba que el build funciona en local:
 

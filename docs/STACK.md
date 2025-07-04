@@ -24,9 +24,11 @@
 | Herramienta                    | Rol                      | Detalles                                  |
 | ------------------------------ | ------------------------ | ----------------------------------------- |
 | **Auth.js (NextAuth)**         | Auth credentials/OAuth   | JWT + MongoAdapter                        |
-| **MongoDB Atlas + Mongoose 8** | DB NoSQL escalable       | Modelos `User`, `Site`, conexión cacheada (driver MongoDB 5) |
+| **MongoDB Atlas + Mongoose 8** | DB NoSQL escalable       | Modelos `User`, `Site`, conexión cacheada (driver MongoDB 5.9.2) |
 | **Stripe**                     | Pagos y suscripciones    | Upgrades de plan (PRO / PREMIUM)          |
 | **Upstash Redis**              | Cache y colas serverless | Métricas y rate-limit en middleware (implementado) |
+
+> **Nota:** Aunque Atlas funcione sobre servidor 6.x, el driver MongoDB se mantiene en **5.9.2** por dependencias legacy (`legacy-peer-deps`).
 
 ---
 
