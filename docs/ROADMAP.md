@@ -49,7 +49,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 - Integrar **Stripe** (productos, subscripciones, webhooks)
 - Middleware de control de plan + free trial (7 días, opc.)
-- Dashboard: historial y panel de pagos
+- Dashboard: historial y panel de pagos (`/billing`)
 
 ---
 
@@ -59,6 +59,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - Conexión de dominio propio (Namecheap/Cloudflare)
 - Panel de métricas básicas (Upstash opc.)
 - Emails transaccionales (**Resend**)
+- ✅ Vista `/billing` para historial de pagos — 04-Jul-2025
 
 ---
 

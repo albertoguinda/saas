@@ -108,7 +108,7 @@ _Actualizado: **04-Jul-2025 20:30 CEST**_
 -#### 💳 Sistema de pagos y planes
 - [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
-- [x] Dashboard: historial y panel de pagos — 04-Jul-2025
+- [x] Dashboard: historial y panel de pagos (`/billing`) — 04-Jul-2025
 
 #### 🌟 Funcionalidades premium
 
