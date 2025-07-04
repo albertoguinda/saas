@@ -52,6 +52,7 @@
 | **ESLint (Flat Config)** + **Prettier** | Lint & format                                           |
 | **tsx**                                 | Ejecución directa de scripts TS (`seed.ts`, `reset.ts`) |
 | **Jest** + **Testing Library**          | Pruebas unitarias y de componentes |
+| **lib/logger.ts**                        | Logger de errores (`logger.error`) |
 
 ---
 

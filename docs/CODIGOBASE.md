@@ -104,6 +104,7 @@ _Estructura, arquitectura y convenciones técnicas base_
 ## 🧩 Utilidades y helpers
 
 - `lib/utils.ts` – helpers globales (`cn`, `hashPassword`, `comparePassword`)
+- `lib/logger.ts` – logger de errores (usa `logger.error` en lugar de `console.error`)
 - **Middlewares**
   - `withAuthPlan` – protección por plan
   - `withValidation` – validación Zod en APIs (se aplica a todos los POST/PATCH)
