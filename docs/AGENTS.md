@@ -68,9 +68,9 @@ y compáralos con `TAREAS.md` + los commits recientes (si los hay).
 #### Formato de tareas
 
 ```md
-- [x] Tarea completada
-- [ ] Tarea pendiente
-      Agrupadas por fase FREE → PRO → PREMIUM, sin numeración, solo listas simples por prioridad.
+- [x] [1] Tarea completada
+- [ ] [2] Tarea pendiente
+      Agrupadas por fase FREE → PRO → PREMIUM. Cada tarea lleva un identificador numérico `[1]`, `[2]`, ... en orden secuencial.
 
 🧠 Recordatorios para agentes
 Nunca elimines tareas sin contexto ni copia previa.
