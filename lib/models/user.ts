@@ -10,7 +10,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  avatar?: string; // Emoji o URL. Por ahora, solo emoji.
+  avatar?: string; // Emoji o URL del avatar
   plan: "free" | "pro" | "premium";
   createdAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -42,7 +42,7 @@ UserSchema.methods.comparePassword = async function (candidatePassword: string) 
 export default models.User || model<IUser>("User", UserSchema);
 
 /*
-  - avatar: por ahora se usa para guardar el emoji (string). Futuro: URL/base64.
+  - avatar: puede ser emoji o URL (Cloudinary/S3).
   - Plan soportado: 'free', 'pro', 'premium'.
   - Middleware seguro para hashing de passwords.
   - Incluye typing estricto para APIs y lógica backend.
