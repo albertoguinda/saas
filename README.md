@@ -29,7 +29,7 @@ Requiere **Node.js 18 LTS** y `npm` instalado.
 ```bash
 git clone https://github.com/albertoguinda/saas.git
 cd saas
-./scripts/setup.sh                     # instala dependencias según package-lock
+./scripts/setup.sh                     # instala dependencias y ejecuta lint y tests
 cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY, UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN
 npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
 npm run dev
@@ -41,18 +41,16 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
 ```bash
 ./scripts/setup.sh
-npm test
 ```
-El comando `npm test` aprovecha el **test runner** integrado en Node.js 18+ (`node --test`) y delega en `jest-runner.mjs` para lanzar Jest.
-> **Importante:** ejecuta `./scripts/setup.sh` cada vez antes de `npm test`. Si faltan paquetes, verás errores de módulos no encontrados.
+El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` usando el **test runner** de Node.js 18+ (`node --test`).
+> **Importante:** reejecuta `./scripts/setup.sh` si fallan las pruebas por dependencias ausentes.
 
 ### 🔍 Ejecutar lint
 
 ```bash
 ./scripts/setup.sh
-npm run lint
 ```
-> **Importante:** igual que con los tests, corre `./scripts/setup.sh` antes de `npm run lint` para evitar fallos por dependencias ausentes.
+El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
 
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
@@ -93,5 +91,5 @@ Toda feature debe reflejarse en docs/TAREAS.md.
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
 
 ## ⚙️ Integración continua
-Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que ejecuta `./scripts/setup.sh`, luego `npm run lint`, compila con `npm run build` y finalmente lanza `npm test` cuando existan pruebas.
+Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que ejecuta `./scripts/setup.sh` (lint y tests incluidos), compila con `npm run build` y vuelve a lanzar `npm test` cuando existan pruebas.
 
