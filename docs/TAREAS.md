@@ -73,7 +73,6 @@ _Actualizado: **05-Jul-2025**_
 
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
-- [ ] Panel mínimo de métricas (registros, proyectos, actividad)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
 - [ ] Corregir `.npmrc` y asegurar `npm install` limpio
@@ -113,7 +112,7 @@ _Actualizado: **05-Jul-2025**_
 
 ### 📊 ADMIN & Retención
 
-- [ ] Panel admin de métricas (registros, actividad)
+- [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [x] Pruebas API admin `/api/admin/stats` — 05-Jul-2025
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
