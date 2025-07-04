@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **05-Jul-2025**_
+_Actualizado: **06-Jul-2025**_
 
 ---
 
@@ -75,7 +75,7 @@ _Actualizado: **05-Jul-2025**_
 - [ ] Mejora de accesibilidad (focus, labels, roles)
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] Ajustar dependencias MongoDB v6 para evitar `legacy-peer-deps`
-- [ ] Corregir `.npmrc` y asegurar `npm install` limpio
+- [x] Corregir `.npmrc` y asegurar `npm install` limpio — 06-Jul-2025
 - [x] Middleware `withRateLimit` con Upstash Redis — 04-Jul-2025
 
 ---
@@ -90,6 +90,9 @@ _Actualizado: **05-Jul-2025**_
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
+- [ ] Integrar Stripe (productos, subscripciones, webhooks)
+- [ ] Middleware de control de plan + free trial (7 días, opc.)
+- [ ] Dashboard: historial y panel de pagos
 
 ---
 
