@@ -79,6 +79,7 @@ _Actualizado: **04-Jul-2025 15:00 CEST**_
 
 - [ ] Subida y gestión de avatar real
 - [ ] Mejora de accesibilidad (focus, labels, roles)
+- [ ] Mensajes de éxito / error contextualizados
 - [ ] Separar vistas en `/app/` (migración App Router)
 
 ---
