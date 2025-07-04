@@ -8,7 +8,7 @@ jest.mock("next/server", () => ({
   },
 }));
 
-jest.mock("next-auth", () => ({
+jest.mock("next-auth/next", () => ({
   getServerSession: jest.fn().mockResolvedValue(null),
 }));
 
@@ -19,7 +19,7 @@ jest.mock("@/lib/stripe", () => ({
 }));
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { stripe } from "@/lib/stripe";
 import { GET } from "@/app/api/stripe/history/route";
 

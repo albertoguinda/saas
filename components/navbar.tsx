@@ -35,7 +35,11 @@ export default function AppNavbar() {
 
   return (
     <Navbar isBordered>
-      <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
+      <NavbarBrand
+        onClick={() => router.push("/")}
+        className="cursor-pointer"
+        aria-label="Ir al inicio"
+      >
         <Logo />
         <p className="font-bold text-inherit ml-2">PLANTSCARE</p>
       </NavbarBrand>
@@ -73,6 +77,7 @@ export default function AppNavbar() {
                   name={session.user.name || "Usuario"}
                   size="sm"
                   src={`https://ui-avatars.com/api/?name=${session.user.name || "U"}&background=0D8ABC&color=fff`}
+                  aria-label="Menú de usuario"
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Opciones de usuario" variant="flat">
