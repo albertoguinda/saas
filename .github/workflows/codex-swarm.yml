@@ -1,0 +1,23 @@
+name: Codex Swarm
+on:
+  push:
+  schedule:
+    - cron: '0 * * * *'
+concurrency:
+  group: codex-swarm
+  cancel-in-progress: false
+jobs:
+  codex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Launch Codex
+        uses: openai/assistant-action@v1
+        with:
+          model: gpt-4o-code
+          prompt: ${{ secrets.CODEX_SUPER_PROMPT }}
+          temperature: 0.2
+        env:
+          CTX: auto
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}

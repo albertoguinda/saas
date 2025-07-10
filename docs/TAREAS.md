@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **10-Jul-2025 22:00 CEST**
+\_Actualizado: **11-Jul-2025 00:20 CEST**
 
 ---
 
@@ -55,6 +55,7 @@
 - [x] Creación de `lib/utils.ts` (modularizar helpers y hooks) — 03-Jul-2025
 - [x] Setup inicial de pruebas con Jest + Testing Library — 03-Jul-2025
 - [x] Workflow CI con GitHub Actions — 03-Jul-2025
+- [x] GitHub Action "Codex Swarm" para automatizar el backlog — 11-Jul-2025
 - [x] Validación avanzada de formularios (login, registro, perfil) con React Hook Form + Zod — 03-Jul-2025
 - [x] Guardar configuración del sitio en MongoDB (estructura del wizard) — 03-Jul-2025
 - [x] Demo pública navegable — 03-Jul-2025
