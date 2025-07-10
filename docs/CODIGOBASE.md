@@ -69,6 +69,13 @@ _Estructura, arquitectura y convenciones técnicas base_
 … (roadmap, tareas, stack, agentes, contributing, architecture)
 ```
 
+Alias de importación:
+
+```ts
+import { logger } from "@/lib/logger";
+```
+El prefijo `@/` apunta a la raíz del proyecto y está configurado en `tsconfig.json` y en ESLint para el orden de imports.
+
 > **Migración progresiva:** código nuevo se escribe en **/app**; legacy permanece en **/pages** hasta completar la transición.
 
 ---

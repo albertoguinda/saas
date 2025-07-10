@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Alert, FormAlert } from "@heroui/alert";
 import { toast } from "@heroui/toast";
+
 import { track } from "@/lib/track";
 
 const schema = z.object({
@@ -53,8 +53,10 @@ export default function WizardPage({ params }: WizardPageProps) {
     try {
       const check = await fetch(`/api/sites?slug=${data.slug}`);
       const checkJson = await check.json();
+
       if (checkJson.exists) {
         setError("slug", { type: "manual", message: "Slug ya existe" });
+
         return;
       }
     } catch {
@@ -62,6 +64,7 @@ export default function WizardPage({ params }: WizardPageProps) {
         type: "manual",
         message: "No se pudo verificar el slug",
       });
+
       return;
     }
 
@@ -72,9 +75,11 @@ export default function WizardPage({ params }: WizardPageProps) {
       body: JSON.stringify(data),
     });
     const json = await res.json();
+
     setLoading(false);
     if (!res.ok) {
       setApiError(json.error || "Error al generar el sitio");
+
       return;
     }
 
@@ -92,12 +97,12 @@ export default function WizardPage({ params }: WizardPageProps) {
             {apiError}
           </Alert>
         )}
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <Input label="Título" {...register("title")} />
           {errors.title && (
             <FormAlert color="danger">{errors.title.message}</FormAlert>
           )}
-          <Input label="Slug" {...register("slug")} />
+          <Input inputMode="text" label="Slug" {...register("slug")} />
           {errors.slug && (
             <FormAlert color="danger">{errors.slug.message}</FormAlert>
           )}
@@ -151,7 +156,7 @@ export default function WizardPage({ params }: WizardPageProps) {
               <FormAlert color="danger">{errors.font.message}</FormAlert>
             )}
           </div>
-          <Button type="submit" isLoading={loading} className="w-full">
+          <Button className="w-full" isLoading={loading} type="submit">
             Generar sitio
           </Button>
         </form>

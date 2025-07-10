@@ -82,6 +82,7 @@ export default function RegisterPage() {
           )}
           <Input
             autoComplete="email"
+            inputMode="email"
             label="Email"
             placeholder="alberto@gmail.com" // USUARIO DEMO
             type="email"

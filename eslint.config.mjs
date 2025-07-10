@@ -115,11 +115,18 @@ export default defineConfig([globalIgnores([
                 "index",
             ],
 
-            pathGroups: [{
-                pattern: "~/**",
-                group: "external",
-                position: "after",
-            }],
+            pathGroups: [
+                {
+                    pattern: "@/**",
+                    group: "internal",
+                    position: "after",
+                },
+                {
+                    pattern: "~/**",
+                    group: "external",
+                    position: "after",
+                },
+            ],
 
             "newlines-between": "always",
         }],
