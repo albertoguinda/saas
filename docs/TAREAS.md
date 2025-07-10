@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **05-Jul-2025 21:00 CEST**
+\_Actualizado: **10-Jul-2025 22:00 CEST**
 
 ---
 
@@ -118,6 +118,7 @@
 - [ ] Export estático incremental
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
+- [ ] Fix Lighthouse en CI
 
 #### 🧱 Generador de sitios (wizard)
 
