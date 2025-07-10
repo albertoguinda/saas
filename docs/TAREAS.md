@@ -87,10 +87,10 @@
 - [x] Subida y gestión de avatar real — 05-Jul-2025
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] JSDoc completo + ejemplos de uso
-- [ ] Docs MDX con `:::tip`
+- [x] Docs MDX con `:::tip` — 05-Jul-2025
 - [ ] Demo efecto 3D CSS
-- [ ] Añadir `inputmode` móvil
-- [ ] Configurar alias `@` en ESLint y docs
+- [x] Añadir `inputmode` móvil — 05-Jul-2025
+- [x] Configurar alias `@` en ESLint y docs — 05-Jul-2025
 
 #### 🧱 Generador de sitios (wizard)
 

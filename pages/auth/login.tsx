@@ -57,6 +57,7 @@ export default function LoginPage() {
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <Input
             autoComplete="email"
+            inputMode="email"
             label="Email"
             placeholder="alberto@gmail.com" // USUARIO PRUEBA
             type="email"
