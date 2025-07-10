@@ -1,6 +1,6 @@
 # TAREAS.md
 
-_Actualizado: **05-Jul-2025 21:00 CEST**
+\_Actualizado: **05-Jul-2025 21:00 CEST**
 
 ---
 
@@ -82,9 +82,15 @@ _Actualizado: **05-Jul-2025 21:00 CEST**
 ### 🔓 FREE – Core público y experiencia
 
 #### 🔐 Backend
+
 - [x] Actualizar docs de Arquitectura — 04-Jul-2025
- - [x] Subida y gestión de avatar real — 05-Jul-2025
+- [x] Subida y gestión de avatar real — 05-Jul-2025
 - [ ] Separar vistas en `/app/` (migración App Router)
+- [ ] JSDoc completo + ejemplos de uso
+- [ ] Docs MDX con `:::tip`
+- [ ] Demo efecto 3D CSS
+- [ ] Añadir `inputmode` móvil
+- [ ] Configurar alias `@` en ESLint y docs
 
 #### 🧱 Generador de sitios (wizard)
 
@@ -93,21 +99,32 @@ _Actualizado: **05-Jul-2025 21:00 CEST**
 #### 🌟 Funcionalidades premium
 
 #### 🧪 Retención, métricas y feedback
+
 - [ ] Mensajes de éxito / error contextualizados
 
 ### 💼 PRO – Funcionalidades avanzadas
 
 #### 🔐 Backend
+
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
 - [ ] Emails transaccionales (Resend) + confirmación de cuenta
 
+#### 🔄 Mejora continua
+
+- [ ] i18n básico
+- [ ] Export estático incremental
+- [ ] Integrar metaexplorer SEO
+- [ ] Tema Material 3 Expressive
+
 #### 🧱 Generador de sitios (wizard)
+
 - [ ] Branding extendido (selector de color, fuentes, logo, favicon)
 
 #### 💳 Sistema de pagos y planes
+
 - [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
 - [ ] Middleware de control de plan + free trial (7 días, opc.)
 - [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
@@ -116,35 +133,42 @@ _Actualizado: **05-Jul-2025 21:00 CEST**
 #### 🌟 Funcionalidades premium
 
 #### 🧪 Retención, métricas y feedback
+
 - [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`)
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
 #### 🔐 Backend
+
 - [ ] Cache de sitios (Upstash Redis, TTL dinámico)
 - [ ] Backups automáticos + restore 1 clic
 
 #### 🧱 Generador de sitios (wizard)
+
 - [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
 #### 💳 Sistema de pagos y planes
+
 - [ ] Integración Stripe completa (producto PREMIUM, webhooks, historial)
 
 #### 🌟 Funcionalidades premium
+
 - [ ] Integrar **DataFast** (IA) para generación de contenido
 - [ ] Soporte prioritario (chat/email)
 - [ ] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 
 #### 🧪 Retención, métricas y feedback
+
 - [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
 
 ### 📊 ADMIN & Retención
 
 #### 🧪 Retención, métricas y feedback
+
 - [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
