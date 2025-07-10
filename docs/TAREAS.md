@@ -88,7 +88,7 @@
 - [ ] Separar vistas en `/app/` (migración App Router)
 - [ ] JSDoc completo + ejemplos de uso
 - [x] Docs MDX con `:::tip` — 05-Jul-2025
-- [ ] Demo efecto 3D CSS
+- [x] Demo efecto 3D CSS — 10-Jul-2025
 - [x] Añadir `inputmode` móvil — 05-Jul-2025
 - [x] Configurar alias `@` en ESLint y docs — 05-Jul-2025
 
