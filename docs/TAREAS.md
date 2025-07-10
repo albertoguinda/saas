@@ -118,6 +118,7 @@
 - [ ] Export estático incremental
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
+- [ ] Fix Lighthouse (instalar Chrome / usar chrome-aws-lambda)
 
 #### 🧱 Generador de sitios (wizard)
 
