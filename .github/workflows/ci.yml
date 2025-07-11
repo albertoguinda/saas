@@ -39,3 +39,4 @@ jobs:
 
       # 6. Lanza los tests
       - run: npm test
+      - run: npm run ci:test

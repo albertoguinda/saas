@@ -23,11 +23,11 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-interface WizardPageProps {
-  params: { id: string };
-}
-
-export default function WizardPage({ params }: WizardPageProps) {
+export default function WizardPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const router = useRouter();
   const [apiError, setApiError] = useState("");
   const {
@@ -69,7 +69,8 @@ export default function WizardPage({ params }: WizardPageProps) {
     }
 
     setLoading(true);
-    const res = await fetch(`/api/projects/${params.id}/generate`, {
+    const { id } = await params;
+    const res = await fetch(`/api/projects/${id}/generate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -85,7 +86,7 @@ export default function WizardPage({ params }: WizardPageProps) {
 
     toast.success("Sitio generado");
     track("wizard_completed");
-    router.push(`/projects/${params.id}/preview`);
+    router.push(`/projects/${id}/preview`);
   };
 
   return (
