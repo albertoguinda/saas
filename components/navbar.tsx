@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Link } from "@heroui/link";
+import { useTranslations } from "next-intl";
 import {
   Dropdown,
   DropdownItem,
@@ -31,13 +32,14 @@ export const Logo = () => (
 export default function AppNavbar() {
   const { data: session } = useSession();
   const router = useRouter();
+  const t = useTranslations("navbar");
 
   const handleLogout = () => signOut({ callbackUrl: "/" });
 
   return (
     <Navbar isBordered>
       <NavbarBrand
-        aria-label="Ir al inicio"
+        aria-label={t("home")}
         className="cursor-pointer"
         onClick={() => router.push("/")}
       >
@@ -47,19 +49,19 @@ export default function AppNavbar() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link href="/">Inicio</Link>
+          <Link href="/">{t("home")}</Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="/pricing" onClick={() => track("upgrade_click")}>
-            Precios
+            {t("pricing")}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/blog">Blog</Link>
+          <Link href="/blog">{t("blog")}</Link>
         </NavbarItem>
         {session?.user && (
           <NavbarItem>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard">{t("dashboard")}</Link>
           </NavbarItem>
         )}
       </NavbarContent>
@@ -72,7 +74,7 @@ export default function AppNavbar() {
               <DropdownTrigger>
                 <Avatar
                   isBordered
-                  aria-label="Menú de usuario"
+                  aria-label={t("userMenu")}
                   as="button"
                   className="transition-transform"
                   color="secondary"
@@ -81,9 +83,9 @@ export default function AppNavbar() {
                   src={`https://ui-avatars.com/api/?name=${session.user.name || "U"}&background=0D8ABC&color=fff`}
                 />
               </DropdownTrigger>
-              <DropdownMenu aria-label="Opciones de usuario" variant="flat">
+              <DropdownMenu aria-label={t("userOptions")} variant="flat">
                 <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">Sesión iniciada como</p>
+                  <p className="font-semibold">{t("signedInAs")}</p>
                   <p className="font-semibold text-gray-500 text-sm">
                     {session.user.email}
                   </p>
@@ -92,21 +94,21 @@ export default function AppNavbar() {
                   key="dashboard"
                   onClick={() => router.push("/dashboard")}
                 >
-                  Dashboard
+                  {t("dashboard")}
                 </DropdownItem>
                 <DropdownItem
                   key="logout"
                   color="danger"
                   onClick={handleLogout}
                 >
-                  Cerrar sesión
+                  {t("logout")}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </>
         ) : (
           <Button color="secondary" size="sm" onClick={() => signIn()}>
-            Iniciar sesión
+            {t("login")}
           </Button>
         )}
       </NavbarContent>

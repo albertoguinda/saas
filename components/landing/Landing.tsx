@@ -5,6 +5,7 @@ import { Check, Layout, ImageIcon } from "lucide-react";
 
 import { title as titleStyle, subtitle } from "@/components/primitives";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 const POSTS = [
   { title: "Primer post", desc: "Lorem ipsum dolor sit amet." },
@@ -31,22 +32,23 @@ export interface LandingProps {
 const FEATURES = [
   {
     icon: Layout,
-    title: "Diseño responsivo",
-    desc: "Se adapta a cualquier pantalla.",
+    title: "features.responsive.title",
+    desc: "features.responsive.desc",
   },
   {
     icon: ImageIcon,
-    title: "Imágenes optimizadas",
-    desc: "Carga rápida y calidad.",
+    title: "features.images.title",
+    desc: "features.images.desc",
   },
   {
     icon: Check,
-    title: "SEO básico",
-    desc: "Estructura lista para buscadores.",
+    title: "features.seo.title",
+    desc: "features.seo.desc",
   },
 ];
 
 export default function Landing({ site }: LandingProps) {
+  const t = useTranslations("landing");
   const template = site.structure?.template ?? "default";
   const color = site.structure?.color ?? "indigo";
   const font = site.structure?.font ?? "sans";
@@ -73,11 +75,9 @@ export default function Landing({ site }: LandingProps) {
       >
         {site.title}
       </h1>
-      <p className={cn(subtitle(), "mx-auto max-w-xl mb-8")}>
-        Crea tu sitio en minutos con Next.js y HeroUI.
-      </p>
+      <p className={cn(subtitle(), "mx-auto max-w-xl mb-8")}>{t("tagline")}</p>
       <Button as={Link} color="primary" href="/auth/login">
-        Comenzar
+        {t("start")}
       </Button>
     </section>
   );
@@ -91,8 +91,8 @@ export default function Landing({ site }: LandingProps) {
             className="p-6 flex flex-col items-center text-center gap-2"
           >
             <Icon className={cn("w-8 h-8", COLOR_CLASSES[color])} />
-            <h3 className="font-semibold">{title}</h3>
-            <p className="text-sm text-default-500">{desc}</p>
+            <h3 className="font-semibold">{t(title)}</h3>
+            <p className="text-sm text-default-500">{t(desc)}</p>
           </Card>
         ))}
       </div>
@@ -103,7 +103,7 @@ export default function Landing({ site }: LandingProps) {
     <section className="py-16">
       <div className="container mx-auto">
         <h2 className="text-center text-xl font-semibold mb-8">
-          Últimos posts
+          {t("latest")}
         </h2>
         <div className="grid gap-8 md:grid-cols-3">
           {POSTS.map(({ title, desc }) => (

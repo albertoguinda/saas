@@ -1,6 +1,7 @@
 import { Link } from "@heroui/link";
 
 import AppNavbar from "@/components/navbar";
+import { useTranslations } from "next-intl";
 
 import { Head } from "./head";
 
@@ -9,6 +10,7 @@ export default function DefaultLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const t = useTranslations("footer");
   return (
     <div className="relative flex flex-col min-h-screen">
       <Head />
@@ -23,7 +25,7 @@ export default function DefaultLayout({
           href="https://www.heroui.com"
           title="HeroUI homepage"
         >
-          <span className="text-default-600">Powered by</span>
+          <span className="text-default-600">{t("powered")}</span>
           <p className="text-primary font-semibold">HeroUI</p>
         </Link>
       </footer>

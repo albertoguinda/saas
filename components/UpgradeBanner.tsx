@@ -1,6 +1,7 @@
 import { Alert } from "@heroui/alert";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 import { track } from "@/lib/track";
@@ -10,12 +11,13 @@ export interface UpgradeBannerProps {
 }
 
 export default function UpgradeBanner({ className }: UpgradeBannerProps) {
+  const t = useTranslations("upgrade");
   return (
     <Alert
       className={cn("flex items-center justify-between", className)}
       color="warning"
     >
-      <span>Has alcanzado tu límite en el plan Free.</span>
+      <span>{t("limit")}</span>
       <Button
         as={Link}
         color="warning"
@@ -23,7 +25,7 @@ export default function UpgradeBanner({ className }: UpgradeBannerProps) {
         size="sm"
         onClick={() => track("upgrade_click")}
       >
-        Ver planes PRO
+        {t("viewPlans")}
       </Button>
     </Alert>
   );
