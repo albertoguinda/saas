@@ -33,17 +33,19 @@ beforeEach(() => {
 });
 
 test("returns 401 when unauthenticated", async () => {
-  const res = await GET({} as NextRequest);
+  const res = await GET({ nextUrl: new URL("http://x") } as NextRequest);
 
   expect(res.status).toBe(401);
 });
 
 test("returns visits count", async () => {
   (getServerSession as jest.Mock).mockResolvedValue({ user: { id: "1" } });
-  countDocuments.mockResolvedValue(5);
+  countDocuments.mockResolvedValueOnce(5);
+  countDocuments.mockResolvedValueOnce(2);
+  countDocuments.mockResolvedValueOnce(1);
 
-  const res = await GET({} as NextRequest);
+  const res = await GET({ nextUrl: new URL("http://x") } as NextRequest);
 
   expect(res.status).toBe(200);
-  expect(res.data).toEqual({ visits: 5 });
+  expect(res.data).toEqual({ visits: 5, upgrades: 2, wizard: 1 });
 });

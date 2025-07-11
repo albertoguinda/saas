@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **11-Jul-2025 18:09 UTC**
+\_Actualizado: **11-Jul-2025 19:47 UTC**
 
 ---
 
@@ -109,6 +109,7 @@
 
 - [x] Mensajes de éxito / error contextualizados
 - [x] Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
+- [x] Subida de imágenes de branding (logo y favicon) — 11-Jul-2025
 - [x] Script `export:zip` documentado
 - [x] Secciones FAQ en README y CONTRIBUTING
 
@@ -146,7 +147,7 @@
 
 #### 🧪 Retención, métricas y feedback
 
-- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) _(endpoint básico listo)_
+- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
