@@ -215,7 +215,9 @@ export default function ProjectsPage() {
             <div>
               <div className="font-medium">{project.title}</div>
               <div className="text-xs text-default-400">
-                Creado el {new Date(project.createdAt).toLocaleDateString()}
+                {t("projects.created", {
+                  date: new Date(project.createdAt).toLocaleDateString(),
+                })}
               </div>
             </div>
             <div className="flex items-center gap-3">

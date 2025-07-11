@@ -71,12 +71,12 @@ export default function ProfilePage() {
     setError("");
 
     if (form.password && form.password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres.");
+      setError(t("profile.password.min"));
 
       return;
     }
     if (form.password && form.password !== form.password2) {
-      setError("Las contraseñas no coinciden.");
+      setError(t("profile.password.match"));
 
       return;
     }
