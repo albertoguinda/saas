@@ -16,8 +16,8 @@ Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upse
 
 ## 🖥️ Demo rápida
 
-| Flujo                                 | GIF / captura                                 |
-| ------------------------------------- | --------------------------------------------- |
+| Flujo                                 | GIF / captura        |
+| ------------------------------------- | -------------------- |
 | Login → Dashboard → Wizard de 3 pasos | Captura próximamente |
 
 ---
@@ -42,7 +42,9 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 ```bash
 ./scripts/setup.sh
 ```
+
 El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` usando el **test runner** de Node.js 18+ (`node --test`).
+
 > **Importante:** reejecuta `./scripts/setup.sh` si fallan las pruebas por dependencias ausentes.
 
 ### 🔍 Ejecutar lint
@@ -50,6 +52,7 @@ El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` u
 ```bash
 ./scripts/setup.sh
 ```
+
 El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
 
 🌐 Deploy rápido
@@ -58,15 +61,15 @@ Consulta la guía docs/deploy-free-plan.md
 
 🆓 / 💼 / 👑 Planes
 
-| Feature | FREE | PRO | PREMIUM |
-| ------- | ---- | --- | ------- |
-| Sitios | 1 | ∞ | ∞ |
-| Branding completo | — | ✅ | ✅ |
-| Dominio propio | — | ✅ | ✅ |
-| Emails transaccionales | — | ✅ | ✅ |
-| IA DataFast | — | — | ✅ |
-| Vídeo (MUX) | — | — | ✅ |
-| Analítica avanzada | — | — | ✅ |
+| Feature                | FREE | PRO | PREMIUM |
+| ---------------------- | ---- | --- | ------- |
+| Sitios                 | 1    | ∞   | ∞       |
+| Branding completo      | —    | ✅  | ✅      |
+| Dominio propio         | —    | ✅  | ✅      |
+| Emails transaccionales | —    | ✅  | ✅      |
+| IA DataFast            | —    | —   | ✅      |
+| Vídeo (MUX)            | —    | —   | ✅      |
+| Analítica avanzada     | —    | —   | ✅      |
 
 🗺️ Roadmap & tareas
 Visión estratégica → docs/ROADMAP.md
@@ -76,9 +79,10 @@ Backlog por fases → docs/TAREAS.md
 🛠 Stack principal
 Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5.9.2) • Auth.js • Stripe • Upstash Redis • Resend • tsx
 Detalle completo en docs/STACK.md.
+
 > **Nota:** Atlas puede ejecutar servidor 6.x, pero mantenemos el driver 5.9.2 por dependencia de paquetes legacy.
-Las APIs están protegidas por el middleware `withRateLimit` (Upstash Redis).
-Ruta de métricas admin `/api/admin/stats` (solo `ADMIN_EMAIL`).
+> Las APIs están protegidas por el middleware `withRateLimit` (Upstash Redis).
+> Ruta de métricas admin `/api/admin/stats` (solo `ADMIN_EMAIL`).
 
 🤝 Cómo contribuir
 Lee docs/CONTRIBUTING.md.
@@ -91,5 +95,7 @@ Toda feature debe reflejarse en docs/TAREAS.md.
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
 
 ## ⚙️ Integración continua
-Este proyecto utiliza un workflow de GitHub Actions ubicado en `.github/workflows/ci.yml` que ejecuta `./scripts/setup.sh` (lint y tests incluidos), compila con `npm run build` y vuelve a lanzar `npm test` cuando existan pruebas.
 
+El repositorio cuenta con el workflow `.github/workflows/ci.yml` que valida cada pull request en Node.js 20 sobre Linux, macOS y Windows. El flujo instala dependencias con `npm ci`, ejecuta `npm run lint`, comprueba el formato con `npm run format` (fallando si se modifican archivos) y finalmente lanza `npm test`.
+
+De forma local se utilizan Husky y lint‑staged para correr los mismos comandos antes de cada commit, asegurando que el código pase lint y quede formateado tanto en local como en CI.

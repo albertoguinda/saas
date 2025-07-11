@@ -1,21 +1,41 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
+  # Ejecuta el workflow en cada Pull Request
   pull_request:
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+  lint-test-format:
+    # Corre en Linux, macOS y Windows
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
+      # 1. Descarga el código del repositorio
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      # 2. Configura Node.js 20 y habilita la caché de npm
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'npm'
-      - run: ./scripts/setup.sh
+          node-version: 20
+          cache: "npm"
+          # Soporta monorepos con varios package-lock
+          cache-dependency-path: |
+            package-lock.json
+            **/package-lock.json
+
+      # 3. Instala dependencias de manera reproducible
+      - run: npm ci
+
+      # 4. Ejecuta ESLint y falla ante errores
       - run: npm run lint
-      - run: npm run build
+
+      # 5. Comprueba que el formato es correcto
+      - run: npm run format
+      - name: Falla si hay archivos sin formatear
+        run: git diff --exit-code
+
+      # 6. Lanza los tests
       - run: npm test
-        if: ${{ hashFiles('**/*.test.*', '**/*.spec.*') != '' }}
