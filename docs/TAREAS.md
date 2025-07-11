@@ -120,14 +120,17 @@
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) _(endpoint básico listo)_
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
-- [ ] Exportación de sitios como HTML estático
+- [x] Exportación de sitios como HTML estático — 11-Jul-2025
 - [ ] Emails transaccionales (Resend) + confirmación de cuenta
 
 #### 🔄 Mejora continua
 
 - [x] i18n básico
 - [x] Cobertura i18n avanzada
-- [ ] Export estático incremental
+- [x] Export estático incremental — 11-Jul-2025
+- [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
+- [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
+- [x] Plantilla de issue feedback UX/traducciones
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
@@ -148,7 +151,7 @@
 #### 🧪 Retención, métricas y feedback
 
 - [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
-- [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
+- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 

@@ -57,13 +57,22 @@ El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` u
 
 El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
 
+### 🚀 Scripts de desarrollo
+
+```bash
+npm run check  # lint, format y test
+npm run setup  # instala dependencias y ejecuta las pruebas
+```
+
 ### 📦 Exportar proyecto
 
 ```bash
 npm run export:zip
 ```
 
-Genera `out.zip` con la versión estática del sitio.
+Genera `out.zip` con la versión estática del sitio. En el dashboard cada
+proyecto incluye un botón **Exportar ZIP** que llama a la API `/api/export` para
+descargar el contenido actual.
 
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
@@ -80,6 +89,16 @@ Consulta la guía docs/deploy-free-plan.md
 | IA DataFast            | —    | —   | ✅      |
 | Vídeo (MUX)            | —    | —   | ✅      |
 | Analítica avanzada     | —    | —   | ✅      |
+
+### Onboarding guiado tras upgrade
+
+Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
+
+1. **Personalizar branding** (logo, color y favicon).
+2. **Conectar dominio propio** (opcional).
+3. **Revisar analítica** de tu sitio.
+
+Cada paso se marca como completado y se almacena en tu cuenta.
 
 ## 🌍 Internacionalización
 
