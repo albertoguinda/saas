@@ -8,17 +8,18 @@ import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
 
-interface PreviewPageProps {
-  params: { id: string };
-}
-
-export default async function PreviewPage({ params }: PreviewPageProps) {
+export default async function PreviewPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const session = await getServerSession(authOptions);
 
   if (!session) redirect("/401");
 
   await dbConnect();
-  const site = await Site.findById(params.id).lean();
+  const { id } = await params;
+  const site = await Site.findById(id).lean();
 
   if (!site || site.userId !== session.user.id) {
     redirect("/dashboard");
