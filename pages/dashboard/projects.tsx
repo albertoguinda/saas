@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 import UpgradeBanner from "@/components/UpgradeBanner";
 import { track } from "@/lib/track";
 import { FREE_PROJECT_LIMIT } from "@/config/constants";
+import { notifySuccess } from "@/lib/notifications";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -87,7 +88,7 @@ export default function ProjectsPage() {
   };
 
   // Elimina un proyecto (DELETE /api/sites/[id])
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string, slug: string) => {
     if (
       !window.confirm(
         t("projects.deleteConfirm", {
@@ -102,6 +103,12 @@ export default function ProjectsPage() {
 
       if (res.ok) {
         setProjects(projects.filter((p) => p._id !== id));
+        await fetch("/api/cache/invalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug }),
+        });
+        notifySuccess(t("projects.cacheCleared"));
         router.reload();
       } else {
         setApiError(t("error.delete"));
@@ -143,6 +150,12 @@ export default function ProjectsPage() {
     }
     // Actualiza en la lista
     setProjects(projects.map((p) => (p._id === data.site._id ? data.site : p)));
+    await fetch("/api/cache/invalidate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug: data.site.slug }),
+    });
+    notifySuccess(t("projects.cacheCleared"));
     setEditing(null);
   };
 
@@ -265,7 +278,7 @@ export default function ProjectsPage() {
                 size="sm"
                 startContent={<Trash />}
                 variant="light"
-                onClick={() => handleDelete(project._id)}
+                onClick={() => handleDelete(project._id, project.slug)}
               >
                 {deleting === project._id
                   ? t("projects.deleting")

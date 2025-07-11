@@ -7,6 +7,7 @@ import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
 import { logger } from "@/lib/logger";
+import { invalidateSite } from "@/lib/cache";
 
 export default async function handler(
   req: NextApiRequest,
@@ -53,6 +54,8 @@ export default async function handler(
 
       await site.save();
 
+      await invalidateSite(site.slug);
+
       return res.status(200).json({ site });
     } catch (err) {
       logger.error(err);
@@ -69,6 +72,8 @@ export default async function handler(
       if (!site)
         return res.status(404).json({ error: "Proyecto no encontrado" });
       await site.deleteOne();
+
+      await invalidateSite(site.slug);
 
       return res.status(200).json({ ok: true, message: "Proyecto eliminado" });
     } catch (err) {

@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Branding from "@/lib/models/branding";
 import { uploadImage } from "@/lib/storage";
+import { invalidateSite } from "@/lib/cache";
 
 /**
  * Upload branding image (logo or favicon) and store URL.
@@ -47,6 +48,11 @@ export const POST = async (req: NextRequest) => {
       { [type]: url },
       { upsert: true },
     );
+
+    const { default: Site } = await import("@/lib/models/site");
+    const sites = await Site.find({ userId: session.user.id });
+
+    await Promise.all(sites.map((s) => invalidateSite(s.slug)));
 
     return NextResponse.json({ ok: true, url });
   } catch {

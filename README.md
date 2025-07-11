@@ -82,6 +82,17 @@ npm run backup
 
 Ejecuta una copia básica de seguridad en `backup.json` para pruebas y CI.
 
+### ⚡ Caché de sitios
+
+Cada sitio se guarda en **Upstash Redis** tras la primera carga. El TTL es de
+24h en plan Premium y 2h en planes Free/Pro. Para limpiar manualmente:
+
+```bash
+curl -X POST /api/cache/invalidate -d '{"slug":"mi-sitio"}'
+```
+
+Consulta [docs/cache-redis.md](docs/cache-redis.md) para más detalles.
+
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
 (Vercel, Railway, variables de entorno y consideraciones de red).
