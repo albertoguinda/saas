@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Branding from "@/lib/models/branding";
+import { invalidateSite } from "@/lib/cache";
 
 async function handler(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -36,6 +37,11 @@ async function handler(req: NextRequest) {
       { logo, favicon, color, font },
       { upsert: true, new: true },
     );
+
+    const { default: Site } = await import("@/lib/models/site");
+    const sites = await Site.find({ userId: session.user.id });
+
+    await Promise.all(sites.map((s) => invalidateSite(s.slug)));
 
     return NextResponse.json({ branding });
   }

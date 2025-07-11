@@ -19,11 +19,17 @@ jest.mock("@/lib/stripe", () => ({
 jest.mock("@/lib/dbConnect", () => ({ __esModule: true, default: jest.fn() }));
 
 const updateMock = jest.fn();
+const findSites = jest.fn();
 
 jest.mock("@/lib/models/user", () => ({
   __esModule: true,
   default: { findOneAndUpdate: updateMock },
 }));
+jest.mock("@/lib/models/site", () => ({
+  __esModule: true,
+  default: { find: (...args: unknown[]) => findSites(...args) },
+}));
+jest.mock("@/lib/upstash", () => ({ redis: {} }));
 
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 
@@ -31,6 +37,7 @@ import { POST } from "@/app/api/stripe/webhook/route";
 
 beforeEach(() => {
   jest.clearAllMocks();
+  findSites.mockResolvedValue([]);
 });
 
 test("returns 400 on invalid signature", async () => {
@@ -75,7 +82,11 @@ test("updates user plan when session completed", async () => {
   } as unknown as NextRequest;
 
   await POST(req);
-  expect(updateMock).toHaveBeenCalledWith({ _id: "u1" }, { plan: "pro" });
+  expect(updateMock).toHaveBeenCalledWith(
+    { _id: "u1" },
+    { plan: "pro" },
+    { new: true },
+  );
 });
 
 test("logs error when update fails", async () => {

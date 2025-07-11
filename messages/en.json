@@ -148,5 +148,6 @@
   "notFound.back": "Go back home",
   "wizard.ai": "Generate with AI",
   "wizard.ai.error": "AI error",
-  "wizard.ai.success": "Text generated"
+  "wizard.ai.success": "Text generated",
+  "projects.cacheCleared": "Site cache cleared"
 }

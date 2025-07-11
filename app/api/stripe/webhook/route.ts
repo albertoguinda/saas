@@ -4,6 +4,7 @@ import { stripe } from "@/lib/stripe";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import { logger } from "@/lib/logger";
+import { invalidateSite } from "@/lib/cache";
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
@@ -29,9 +30,18 @@ export async function POST(req: NextRequest) {
     try {
       if (userId || email) {
         await dbConnect();
-        await User.findOneAndUpdate(userId ? { _id: userId } : { email }, {
-          plan: "pro",
-        });
+        const user = await User.findOneAndUpdate(
+          userId ? { _id: userId } : { email },
+          { plan: "pro" },
+          { new: true },
+        );
+
+        if (user) {
+          const { default: Site } = await import("@/lib/models/site");
+          const sites = await Site.find({ userId: user._id });
+
+          await Promise.all(sites.map((s) => invalidateSite(s.slug)));
+        }
       }
     } catch (err) {
       logger.error(err);

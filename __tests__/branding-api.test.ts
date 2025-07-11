@@ -17,6 +17,14 @@ jest.mock("next-auth/next", () => ({
 jest.mock("@/lib/auth", () => ({ __esModule: true, authOptions: {} }));
 jest.mock("@/lib/dbConnect", () => ({ __esModule: true, default: jest.fn() }));
 
+const findSites = jest.fn();
+
+jest.mock("@/lib/models/site", () => ({
+  __esModule: true,
+  default: { find: (...args: unknown[]) => findSites(...args) },
+}));
+jest.mock("@/lib/upstash", () => ({ redis: {} }));
+
 const findOne = jest.fn();
 const findOneAndUpdate = jest.fn();
 
@@ -31,6 +39,7 @@ import { GET, PATCH } from "@/app/api/branding/route";
 
 beforeEach(() => {
   jest.clearAllMocks();
+  findSites.mockResolvedValue([]);
 });
 
 test("GET returns 401 when unauthenticated", async () => {
