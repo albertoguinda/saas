@@ -1,5 +1,11 @@
 /**
  * Send a tracking event from the client.
+ *
+ * @param event - Event name to record
+ * @example
+ * ```ts
+ * await track('wizard_completed');
+ * ```
  */
 export async function track(event: string) {
   try {
@@ -15,6 +21,9 @@ export async function track(event: string) {
 
 /**
  * Store a tracking event on the server.
+ *
+ * @param userId - User identifier
+ * @param event - Event name to record
  */
 export async function trackServer(userId: string, event: string) {
   try {

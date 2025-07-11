@@ -87,7 +87,7 @@
 
 - [x] Actualizar docs de Arquitectura — 04-Jul-2025
 - [x] Subida y gestión de avatar real — 05-Jul-2025
-- [ ] Separar vistas en `/app/` (migración App Router)
+- [x] Separar vistas en `/app/` (migración App Router)
 - [ ] JSDoc completo + ejemplos de uso
 - [x] Docs MDX con `:::tip` — 05-Jul-2025
 - [x] Demo efecto 3D CSS — 10-Jul-2025

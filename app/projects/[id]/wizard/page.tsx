@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useTranslations } from "next-intl";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
@@ -13,29 +14,29 @@ import { Alert, FormAlert } from "@heroui/alert";
 import { notifyError, notifySuccess } from "@/lib/notifications";
 import { track } from "@/lib/track";
 
-const schema = z.object({
-  title: z.string().min(3, "Mínimo 3 caracteres"),
-  slug: z.string().regex(/^[a-z0-9-]+$/, "Solo minúsculas, números y guiones"),
-  template: z.enum(["one-page", "blog"]),
-  color: z.enum(["indigo", "emerald", "rose"]).default("indigo"),
-  font: z.enum(["sans", "serif", "mono"]).default("sans"),
-});
-
-type FormData = z.infer<typeof schema>;
-
 export default function WizardPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const router = useRouter();
+  const t = useTranslations("wizard");
+  const schema = z.object({
+    title: z.string().min(3, t("validation.title.min")),
+    slug: z.string().regex(/^[a-z0-9-]+$/, t("validation.slug.pattern")),
+    template: z.enum(["one-page", "blog"]),
+    color: z.enum(["indigo", "emerald", "rose"]).default("indigo"),
+    font: z.enum(["sans", "serif", "mono"]).default("sans"),
+  });
+
+  type Schema = z.infer<typeof schema>;
   const [apiError, setApiError] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<FormData>({
+  } = useForm<Schema>({
     resolver: zodResolver(schema),
     defaultValues: {
       title: "",
@@ -55,7 +56,7 @@ export default function WizardPage({
       const checkJson = await check.json();
 
       if (checkJson.exists) {
-        const msg = "Slug ya existe";
+        const msg = t("slug.exists");
 
         setError("slug", { type: "manual", message: msg });
         notifyError(msg);
@@ -63,7 +64,7 @@ export default function WizardPage({
         return;
       }
     } catch {
-      const msg = "No se pudo verificar el slug";
+      const msg = t("slug.check");
 
       setError("slug", {
         type: "manual",
@@ -85,7 +86,7 @@ export default function WizardPage({
 
     setLoading(false);
     if (!res.ok) {
-      const msg = json.error || "Error al generar el sitio";
+      const msg = json.error || t("error");
 
       setApiError(msg);
       notifyError(msg);
@@ -93,7 +94,7 @@ export default function WizardPage({
       return;
     }
 
-    notifySuccess("Sitio generado");
+    notifySuccess(t("success"));
     track("wizard_completed");
     router.push(`/projects/${id}/preview`);
   };
@@ -101,24 +102,28 @@ export default function WizardPage({
   return (
     <div className="max-w-lg mx-auto py-12">
       <Card className="p-8 flex flex-col gap-6">
-        <h1 className="text-2xl font-bold">Crear sitio</h1>
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
         {apiError && (
           <Alert color="danger" role="alert">
             {apiError}
           </Alert>
         )}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <Input label="Título" {...register("title")} />
+          <Input label={t("form.title")} {...register("title")} />
           {errors.title && (
             <FormAlert color="danger">{errors.title.message}</FormAlert>
           )}
-          <Input inputMode="text" label="Slug" {...register("slug")} />
+          <Input
+            inputMode="text"
+            label={t("form.slug")}
+            {...register("slug")}
+          />
           {errors.slug && (
             <FormAlert color="danger">{errors.slug.message}</FormAlert>
           )}
           <div>
             <label className="mb-1 font-medium text-sm" htmlFor="template">
-              Plantilla
+              {t("form.template")}
             </label>
             <select
               id="template"
@@ -134,7 +139,7 @@ export default function WizardPage({
           </div>
           <div>
             <label className="mb-1 font-medium text-sm" htmlFor="color">
-              Color principal
+              {t("form.color")}
             </label>
             <select
               id="color"
@@ -151,7 +156,7 @@ export default function WizardPage({
           </div>
           <div>
             <label className="mb-1 font-medium text-sm" htmlFor="font">
-              Fuente
+              {t("form.font")}
             </label>
             <select
               id="font"
@@ -167,7 +172,7 @@ export default function WizardPage({
             )}
           </div>
           <Button className="w-full" isLoading={loading} type="submit">
-            Generar sitio
+            {t("submit")}
           </Button>
         </form>
       </Card>

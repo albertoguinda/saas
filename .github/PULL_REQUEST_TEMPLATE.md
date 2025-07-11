@@ -11,3 +11,6 @@ Breve resumen de la propuesta.
 
 - [ ] Lint y tests pasan
 - [ ] Documentación actualizada
+- [ ] Traducciones actualizadas
+- [ ] Screenshot o capturas si aplica
+- [ ] docs/TAREAS.md refleja los cambios
