@@ -1,6 +1,7 @@
 // pages/dashboard/profile.tsx
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
@@ -10,6 +11,7 @@ import { emojiAvatars } from "@/lib/avatars";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
+  const t = useTranslations();
 
   // Inicializa el form con datos de la sesión
   const [form, setForm] = useState({
@@ -50,14 +52,14 @@ export default function ProfilePage() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Error subiendo avatar.");
+        setError(data.error || t("profile.uploadError"));
       } else {
         setForm((prev) => ({ ...prev, avatar: data.avatar }));
-        setMsg("Avatar actualizado");
+        setMsg(t("profile.avatarUpdated"));
         update?.();
       }
     } catch {
-      setError("Error de red.");
+      setError(t("profile.networkError"));
     }
     setLoading(false);
   };
@@ -93,22 +95,22 @@ export default function ProfilePage() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Error actualizando el perfil.");
+        setError(data.error || t("profile.networkError"));
       } else {
-        setMsg("¡Perfil actualizado correctamente!");
+        setMsg(t("profile.updated"));
         // Refresca sesión para mostrar los cambios
         update?.();
         setForm((prev) => ({ ...prev, password: "", password2: "" }));
       }
     } catch {
-      setError("Error de red.");
+      setError(t("profile.networkError"));
     }
     setLoading(false);
   };
 
   return (
     <div className="max-w-lg mx-auto py-12">
-      <h1 className="text-2xl font-bold mb-4">Perfil</h1>
+      <h1 className="text-2xl font-bold mb-4">{t("profile.title")}</h1>
       <Card className="flex flex-col gap-6 p-8">
         <div className="flex items-center gap-4">
           {form.avatar.startsWith("http") ? (
@@ -136,9 +138,9 @@ export default function ProfilePage() {
         <form className="flex flex-col gap-4 mt-2" onSubmit={handleSave}>
           <Input
             required
-            label="Nombre"
+            label={t("register.name")}
             name="name"
-            placeholder="Nombre"
+            placeholder={t("register.name")}
             value={form.name}
             onChange={handleChange}
           />
@@ -163,7 +165,7 @@ export default function ProfilePage() {
           </div>
           <Input
             autoComplete="new-password"
-            label="Nueva contraseña"
+            label={t("profile.password.new")}
             minLength={6}
             name="password"
             placeholder="••••••••"
@@ -173,7 +175,7 @@ export default function ProfilePage() {
           />
           <Input
             autoComplete="new-password"
-            label="Repetir nueva contraseña"
+            label={t("profile.password.repeat")}
             minLength={6}
             name="password2"
             placeholder="••••••••"
@@ -187,7 +189,7 @@ export default function ProfilePage() {
             isLoading={loading}
             type="submit"
           >
-            Guardar cambios
+            {t("profile.save")}
           </Button>
         </form>
       </Card>

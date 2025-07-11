@@ -88,7 +88,7 @@
 - [x] Actualizar docs de Arquitectura — 04-Jul-2025
 - [x] Subida y gestión de avatar real — 05-Jul-2025
 - [x] Separar vistas en `/app/` (migración App Router)
-- [ ] JSDoc completo + ejemplos de uso
+- [x] JSDoc completo + ejemplos de uso
 - [x] Docs MDX con `:::tip` — 05-Jul-2025
 - [x] Demo efecto 3D CSS — 10-Jul-2025
 - [x] Añadir `inputmode` móvil — 05-Jul-2025
@@ -117,6 +117,7 @@
 #### 🔄 Mejora continua
 
 - [x] i18n básico
+- [x] Cobertura i18n avanzada
 - [ ] Export estático incremental
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive

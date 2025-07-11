@@ -7,6 +7,7 @@ import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Card } from "@heroui/card";
 import { Alert, FormAlert } from "@heroui/alert";
+import { useTranslations } from "next-intl";
 
 import AuthLayout from "@/layouts/auth";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
@@ -22,6 +23,7 @@ export default function RegisterPage() {
     resolver: zodResolver(registerSchema),
   });
   const [loading, setLoading] = useState(false);
+  const t = useTranslations();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const router = useRouter();
@@ -42,7 +44,7 @@ export default function RegisterPage() {
     setLoading(false);
 
     if (!res.ok) {
-      const msg = result.error || "Error al registrar";
+      const msg = result.error || t("register.error");
 
       setError(msg);
       notifyError(msg);
@@ -51,7 +53,7 @@ export default function RegisterPage() {
     }
 
     setSuccess(true);
-    notifySuccess("Usuario creado correctamente");
+    notifySuccess(t("register.success"));
     track("signup_free");
     setTimeout(() => {
       router.push("/auth/login");
@@ -62,7 +64,7 @@ export default function RegisterPage() {
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto shadow-2xl flex flex-col gap-6 p-8">
         <h1 className="text-xl font-semibold text-center">
-          Crear cuenta gratuita
+          {t("register.title")}
         </h1>
         {error && (
           <Alert className="mb-2" color="danger" role="alert">
@@ -71,13 +73,13 @@ export default function RegisterPage() {
         )}
         {success && (
           <Alert className="mb-2" color="success" role="alert">
-            Usuario creado correctamente. Redirigiendo...
+            {t("register.success")}
           </Alert>
         )}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <Input
             autoComplete="name"
-            label="Nombre"
+            label={t("register.name")}
             placeholder="Tu nombre"
             type="text"
             {...register("name")}
@@ -88,7 +90,7 @@ export default function RegisterPage() {
           <Input
             autoComplete="email"
             inputMode="email"
-            label="Email"
+            label={t("register.email")}
             placeholder="alberto@gmail.com" // USUARIO DEMO
             type="email"
             {...register("email")}
@@ -98,7 +100,7 @@ export default function RegisterPage() {
           )}
           <Input
             autoComplete="new-password"
-            label="Contraseña"
+            label={t("register.password")}
             placeholder="••••••••" // EJEMPLO GENERICO
             type="password"
             {...register("password")}
@@ -107,13 +109,13 @@ export default function RegisterPage() {
             <FormAlert color="danger">{errors.password.message}</FormAlert>
           )}
           <Button className="w-full" isLoading={loading} type="submit">
-            Registrarse gratis
+            {t("register.submit")}
           </Button>
         </form>
         <p className="text-center text-sm text-default-500">
-          ¿Ya tienes cuenta?{" "}
+          {t("register.login")}{" "}
           <Link className="text-blue-600 hover:underline" href="/auth/login">
-            Inicia sesión aquí
+            {t("login.title")}
           </Link>
         </p>
       </Card>
