@@ -16,6 +16,7 @@
     "seed": "tsx scripts/seed.ts",
     "translations:check": "tsx scripts/check-translations.ts",
     "i18n:check": "tsx scripts/i18n-check.ts",
+    "export:zip": "next build && next export && zip -r out.zip out",
     "test": "node --test jest-runner.mjs",
     "prepare": "husky install",
     "lhci": "lhci autorun --collect.url=http://localhost:3000 --collect.numberOfRuns=1 --upload.target=temporary-public-storage",

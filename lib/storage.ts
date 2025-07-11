@@ -65,3 +65,10 @@ export async function uploadAvatar(file: Blob): Promise<string> {
 
   throw new Error("No storage provider configured");
 }
+
+/**
+ * Upload a generic image using the configured provider.
+ */
+export async function uploadImage(file: Blob): Promise<string> {
+  return uploadAvatar(file);
+}

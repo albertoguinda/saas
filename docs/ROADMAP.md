@@ -58,6 +58,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 ## 5️⃣ Fase 5 — Funcionalidades PRO (⬜ pendiente)
 
 - Branding personalizado (paleta, fuentes, favicon, meta)
+- Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
 - Conexión de dominio propio (Namecheap/Cloudflare)
 - Panel de métricas básicas (Upstash opc.)
 - Emails transaccionales (**Resend**)

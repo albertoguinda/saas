@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **11-Jul-2025 18:21 CEST**
+\_Actualizado: **11-Jul-2025 18:09 UTC**
 
 ---
 
@@ -108,13 +108,16 @@
 #### 🧪 Retención, métricas y feedback
 
 - [x] Mensajes de éxito / error contextualizados
+- [x] Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
+- [x] Script `export:zip` documentado
+- [x] Secciones FAQ en README y CONTRIBUTING
 
 ### 💼 PRO – Funcionalidades avanzadas
 
 #### 🔐 Backend
 
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
-- [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary)
+- [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) *(endpoint básico listo)*
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
 - [ ] Emails transaccionales (Resend) + confirmación de cuenta
@@ -143,7 +146,7 @@
 
 #### 🧪 Retención, métricas y feedback
 
-- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`)
+- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) *(endpoint básico listo)*
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte

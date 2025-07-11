@@ -57,6 +57,14 @@ El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` u
 
 El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
 
+### 📦 Exportar proyecto
+
+```bash
+npm run export:zip
+```
+
+Genera `out.zip` con la versión estática del sitio.
+
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
 (Vercel, Railway, variables de entorno y consideraciones de red).
@@ -130,6 +138,13 @@ Abre issue/PR con descripción clara.
 
 Toda feature debe reflejarse en docs/TAREAS.md.
 Para aportar traducciones ejecuta `npm run translations:check` antes de abrir PR.
+
+## ❓ Preguntas frecuentes
+
+- **¿Cómo añado un nuevo idioma?** Ejecuta `npm run translations:check` tras crear `messages/<locale>.json` y actualiza `i18n.ts`.
+- **¿Cómo reporto problemas de UX?** Abre issue describiendo la ruta, el mensaje mostrado y pasos para reproducir.
+- **¿Qué workflow de contribución seguimos?** Fork ➜ rama de feature ➜ PR pequeño con descripción y actualización de `TAREAS.md`.
+- **¿Cómo despliego mi fork?** Revisa `docs/deploy-free-plan.md` y crea tus variables en Vercel o Railway.
 
 🛡️ Licencia
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
