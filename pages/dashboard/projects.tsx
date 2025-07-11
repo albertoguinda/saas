@@ -238,6 +238,28 @@ export default function ProjectsPage() {
                 {t("projects.edit")}
               </Button>
               <Button
+                size="sm"
+                onClick={() => {
+                  fetch("/api/export", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ siteId: project._id }),
+                  })
+                    .then((res) => res.blob())
+                    .then((blob) => {
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement("a");
+
+                      a.href = url;
+                      a.download = `${project.slug}.zip`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    });
+                }}
+              >
+                {t("projects.export")}
+              </Button>
+              <Button
                 color="danger"
                 disabled={deleting === project._id}
                 size="sm"
