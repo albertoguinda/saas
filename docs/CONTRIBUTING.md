@@ -26,14 +26,12 @@ Toda contribución debe alinearse con:
   Estructura clásica Next.js. Migración progresiva a **App Router** (`/app/`).
 
 - **Componentes** (`/components/`)
-
   - `/components/ui/` → wrappers/extensiones de HeroUI
   - `/components/forms/` → formularios reutilizables
   - `/components/layout/` → navbar, sidebar, footer, toggles…
   - Componentes ultra-específicos: mantenlos locales a la página.
 
 - **Lib** (`/lib/`)
-
   - `dbConnect.ts` – conexión Mongo (cache global)
   - `models/` – modelos Mongoose (`user.ts`, `site.ts`, …)
   - `middlewares/` – middlewares reutilizables (`withAuthPlan`, …)
@@ -58,10 +56,14 @@ Toda contribución debe alinearse con:
 ## 📦 Buenas prácticas de código
 
 - **ESLint & Prettier** (`npm run lint` / `format`) – PRs sin errores.
-- **Commits semánticos**:  
-  `feat: wizard paso a paso` • `fix: validar slug`
+- **Commits semánticos**: `feat: wizard paso a paso` • `fix: validar slug`
 - **Comentarios** breves, sin código muerto.
 - **Componentes** PascalCase, props tipados, usa `props.children` cuando aplique.
+- **Ordena imports**: externos, internos y estilos, con línea en blanco por
+  bloque.
+- **Elimina imports y variables sin usar**.
+- **Props en JSX**: `key`, `ref`, props estándar, callbacks y spread al final.
+- **Aplica Prettier y corrige warnings ESLint** antes de hacer commit.
 
 ---
 
