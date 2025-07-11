@@ -11,6 +11,7 @@ import { Alert, FormAlert } from "@heroui/alert";
 
 import AuthLayout from "@/layouts/auth";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
+import { notifyError } from "@/lib/notifications";
 
 export default function LoginPage() {
   const {
@@ -37,7 +38,10 @@ export default function LoginPage() {
     setLoading(false);
 
     if (res?.error) {
-      setError("Email o contraseña incorrectos");
+      const msg = "Email o contraseña incorrectos";
+
+      setError(msg);
+      notifyError(msg);
 
       return;
     }

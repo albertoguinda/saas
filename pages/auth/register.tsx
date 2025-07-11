@@ -11,6 +11,7 @@ import { Alert, FormAlert } from "@heroui/alert";
 import AuthLayout from "@/layouts/auth";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 import { track } from "@/lib/track";
+import { notifyError, notifySuccess } from "@/lib/notifications";
 
 export default function RegisterPage() {
   const {
@@ -41,12 +42,16 @@ export default function RegisterPage() {
     setLoading(false);
 
     if (!res.ok) {
-      setError(result.error || "Error al registrar");
+      const msg = result.error || "Error al registrar";
+
+      setError(msg);
+      notifyError(msg);
 
       return;
     }
 
     setSuccess(true);
+    notifySuccess("Usuario creado correctamente");
     track("signup_free");
     setTimeout(() => {
       router.push("/auth/login");

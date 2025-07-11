@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Card } from "@heroui/card";
+import { useTranslations } from "next-intl";
 
 interface Payment {
   id: string;
@@ -11,6 +12,7 @@ interface Payment {
 }
 
 export default function BillingPage() {
+  const t = useTranslations("billing");
   const [payments, setPayments] = useState<Payment[]>([]);
   const [error, setError] = useState("");
 
@@ -19,18 +21,18 @@ export default function BillingPage() {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          setError(data.error);
+          setError(t("error"));
 
           return;
         }
         setPayments(data.payments || []);
       })
-      .catch(() => setError("No se pudo cargar el historial"));
+      .catch(() => setError(t("error")));
   }, []);
 
   return (
     <div className="max-w-2xl mx-auto py-12">
-      <h1 className="text-2xl font-bold mb-6">Historial de pagos</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
       {error && <p className="text-danger mb-4">{error}</p>}
       <Card className="p-4">
         <ul className="divide-y divide-default-200">
@@ -44,9 +46,7 @@ export default function BillingPage() {
             </li>
           ))}
           {payments.length === 0 && !error && (
-            <li className="py-2 text-center text-default-500">
-              Sin pagos registrados
-            </li>
+            <li className="py-2 text-center text-default-500">{t("empty")}</li>
           )}
         </ul>
       </Card>

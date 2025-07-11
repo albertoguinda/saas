@@ -1,0 +1,5 @@
+{
+  "billing.title": "Historial de pagos",
+  "billing.empty": "Sin pagos registrados",
+  "billing.error": "No se pudo cargar el historial"
+}

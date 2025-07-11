@@ -102,7 +102,7 @@
 
 #### 🧪 Retención, métricas y feedback
 
-- [ ] Mensajes de éxito / error contextualizados
+- [x] Mensajes de éxito / error contextualizados
 
 ### 💼 PRO – Funcionalidades avanzadas
 
@@ -116,7 +116,7 @@
 
 #### 🔄 Mejora continua
 
-- [ ] i18n básico
+- [x] i18n básico
 - [ ] Export estático incremental
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive

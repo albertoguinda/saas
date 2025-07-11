@@ -9,8 +9,8 @@ import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Alert, FormAlert } from "@heroui/alert";
-import { toast } from "@heroui/toast";
 
+import { notifyError, notifySuccess } from "@/lib/notifications";
 import { track } from "@/lib/track";
 
 const schema = z.object({
@@ -55,15 +55,21 @@ export default function WizardPage({
       const checkJson = await check.json();
 
       if (checkJson.exists) {
-        setError("slug", { type: "manual", message: "Slug ya existe" });
+        const msg = "Slug ya existe";
+
+        setError("slug", { type: "manual", message: msg });
+        notifyError(msg);
 
         return;
       }
     } catch {
+      const msg = "No se pudo verificar el slug";
+
       setError("slug", {
         type: "manual",
-        message: "No se pudo verificar el slug",
+        message: msg,
       });
+      notifyError(msg);
 
       return;
     }
@@ -79,12 +85,15 @@ export default function WizardPage({
 
     setLoading(false);
     if (!res.ok) {
-      setApiError(json.error || "Error al generar el sitio");
+      const msg = json.error || "Error al generar el sitio";
+
+      setApiError(msg);
+      notifyError(msg);
 
       return;
     }
 
-    toast.success("Sitio generado");
+    notifySuccess("Sitio generado");
     track("wizard_completed");
     router.push(`/projects/${id}/preview`);
   };
