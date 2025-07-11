@@ -26,12 +26,14 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
     }
 
     // Crea y guarda el usuario (hash por middleware)
-    const user = new User({ email, password, name, plan: "free" });
+    const trialEndsAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    const user = new User({ email, password, name, plan: "free", trialEndsAt });
 
     await user.save();
 
     try {
       await Event.create({ userId: user.id, event: "signup_free" });
+      await Event.create({ userId: user.id, event: "trial_started" });
     } catch (err) {
       logger.error(err);
     }

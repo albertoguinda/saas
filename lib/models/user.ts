@@ -14,6 +14,7 @@ export interface IUser extends Document {
   password: string;
   avatar?: string; // Emoji o URL del avatar
   plan: "free" | "pro" | "premium";
+  trialEndsAt?: Date;
   createdAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
@@ -31,6 +32,7 @@ const UserSchema = new Schema<IUser>({
   password: { type: String, required: true, minlength: 6 },
   avatar: { type: String, default: "😀" }, // Por defecto: emoji sonriente
   plan: { type: String, enum: ["free", "pro", "premium"], default: "free" },
+  trialEndsAt: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -54,6 +56,7 @@ export default models.User || model<IUser>("User", UserSchema);
 /*
   - avatar: puede ser emoji o URL (Cloudinary/S3).
   - Plan soportado: 'free', 'pro', 'premium'.
+  - trialEndsAt define la expiración del free trial de 7 días.
   - Middleware seguro para hashing de passwords.
   - Incluye typing estricto para APIs y lógica backend.
 */

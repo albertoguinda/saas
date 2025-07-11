@@ -15,9 +15,14 @@ export default function DashboardHome() {
   const { data: session } = useSession();
   const router = useRouter();
   const t = useTranslations("dashboard");
+  const tTrial = useTranslations("trial");
 
   const [projectsCount, setProjectsCount] = useState(0);
   const projectLimit = 1;
+  const trialEnds = session?.user?.trialEndsAt
+    ? new Date(session.user.trialEndsAt)
+    : null;
+  const trialActive = trialEnds && trialEnds > new Date();
 
   useEffect(() => {
     fetch("/api/sites")
@@ -32,8 +37,36 @@ export default function DashboardHome() {
         {session?.user?.name
           ? t("greeting", { name: session.user.name })
           : t("welcome")}
-        {session?.user?.plan && <PlanBadge plan={session.user.plan} />}
+        {session?.user?.plan && (
+          <PlanBadge
+            plan={session.user.plan}
+            trialEndsAt={session.user.trialEndsAt}
+          />
+        )}
       </h1>
+      {trialActive && (
+        <Alert className="mb-4" color="success">
+          {tTrial("active", { date: trialEnds!.toLocaleDateString() })}
+        </Alert>
+      )}
+      {!trialActive && trialEnds && (
+        <Alert
+          className="mb-4 flex items-center justify-between"
+          color="warning"
+        >
+          <span>{tTrial("expired")}</span>
+          <Button
+            color="warning"
+            size="sm"
+            onClick={() => {
+              track("upgrade_click");
+              router.push("/pricing");
+            }}
+          >
+            {tTrial("upgrade")}
+          </Button>
+        </Alert>
+      )}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Tarjeta Proyectos */}
         <Card className="flex flex-col gap-4 p-6 items-center text-center">

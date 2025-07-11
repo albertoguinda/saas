@@ -30,7 +30,15 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
       return;
     }
 
-    const plan = (session.user.plan || "free").toUpperCase() as PlanName;
+    let plan = (session.user.plan || "free").toUpperCase() as PlanName;
+
+    if (
+      plan === "FREE" &&
+      session.user.trialEndsAt &&
+      new Date(session.user.trialEndsAt) > new Date()
+    ) {
+      plan = "PRO";
+    }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
       return res.status(403).json({ error: `Plan ${requiredPlan} requerido` });
@@ -50,7 +58,15 @@ export function withAuthPlanRoute(
     if (!session?.user) {
       return NextResponse.redirect(new URL("/401", req.url));
     }
-    const plan = (session.user.plan || "free").toUpperCase() as PlanName;
+    let plan = (session.user.plan || "free").toUpperCase() as PlanName;
+
+    if (
+      plan === "FREE" &&
+      session.user.trialEndsAt &&
+      new Date(session.user.trialEndsAt) > new Date()
+    ) {
+      plan = "PRO";
+    }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
       return NextResponse.json(

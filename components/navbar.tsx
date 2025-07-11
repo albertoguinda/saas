@@ -69,7 +69,11 @@ export default function AppNavbar() {
       <NavbarContent as="div" justify="end">
         {session?.user ? (
           <>
-            <PlanBadge className="mr-2" plan={session.user.plan} />
+            <PlanBadge
+              className="mr-2"
+              plan={session.user.plan}
+              trialEndsAt={session.user.trialEndsAt}
+            />
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
                 <Avatar

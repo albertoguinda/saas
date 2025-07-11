@@ -6,6 +6,7 @@ declare module "next-auth" {
       email: string;
       avatar?: string;
       plan: "free" | "pro" | "premium";
+      trialEndsAt?: Date;
     };
   }
 
@@ -15,6 +16,7 @@ declare module "next-auth" {
     email: string;
     avatar?: string;
     plan: "free" | "pro" | "premium";
+    trialEndsAt?: Date;
   }
 }
 
@@ -25,5 +27,6 @@ declare module "next-auth/jwt" {
     email?: string;
     avatar?: string;
     plan?: "free" | "pro" | "premium";
+    trialEndsAt?: Date;
   }
 }
