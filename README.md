@@ -109,6 +109,12 @@ Visión estratégica → docs/ROADMAP.md
 
 Backlog por fases → docs/TAREAS.md
 
+## 🎛️ Estado de i18n y feedback UX
+
+Todas las vistas comunes (navbar, footer, perfiles y wizard) usan claves de traducción.
+El feedback de formularios y notificaciones se muestra de forma contextual y accesible.
+Ejecuta `npm run i18n:check` para asegurar que no faltan mensajes.
+
 🛠 Stack principal
 Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5.9.2) • Auth.js • Stripe • Upstash Redis • Resend • tsx
 Detalle completo en docs/STACK.md.

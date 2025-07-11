@@ -146,12 +146,14 @@ export default function ProfilePage() {
           />
           {/* Selector de emoji avatar */}
           <div>
-            <div className="mb-1 font-medium text-sm">Avatar</div>
+            <div className="mb-1 font-medium text-sm">
+              {t("profile.avatarLabel")}
+            </div>
             <div className="flex flex-wrap gap-2">
               {emojiAvatars.map((emoji) => (
                 <button
                   key={emoji}
-                  aria-label={`Elegir avatar ${emoji}`}
+                  aria-label={t("profile.selectAvatar", { emoji })}
                   className={`text-2xl rounded-lg p-1 border transition
                     ${form.avatar === emoji ? "bg-violet-100 border-violet-400 scale-110" : "border-transparent hover:bg-violet-50"}
                   `}

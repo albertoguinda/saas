@@ -130,8 +130,8 @@ export default function WizardPage({
               {...register("template")}
               className="w-full p-2 rounded-md border"
             >
-              <option value="one-page">One Page</option>
-              <option value="blog">Blog</option>
+              <option value="one-page">{t("option.template.one-page")}</option>
+              <option value="blog">{t("option.template.blog")}</option>
             </select>
             {errors.template && (
               <FormAlert color="danger">{errors.template.message}</FormAlert>
@@ -146,9 +146,9 @@ export default function WizardPage({
               {...register("color")}
               className="w-full p-2 rounded-md border"
             >
-              <option value="indigo">Indigo</option>
-              <option value="emerald">Emerald</option>
-              <option value="rose">Rose</option>
+              <option value="indigo">{t("option.color.indigo")}</option>
+              <option value="emerald">{t("option.color.emerald")}</option>
+              <option value="rose">{t("option.color.rose")}</option>
             </select>
             {errors.color && (
               <FormAlert color="danger">{errors.color.message}</FormAlert>
@@ -163,9 +163,9 @@ export default function WizardPage({
               {...register("font")}
               className="w-full p-2 rounded-md border"
             >
-              <option value="sans">Sans</option>
-              <option value="serif">Serif</option>
-              <option value="mono">Mono</option>
+              <option value="sans">{t("option.font.sans")}</option>
+              <option value="serif">{t("option.font.serif")}</option>
+              <option value="mono">{t("option.font.mono")}</option>
             </select>
             {errors.font && (
               <FormAlert color="danger">{errors.font.message}</FormAlert>
