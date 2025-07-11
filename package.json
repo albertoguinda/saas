@@ -22,7 +22,8 @@
     "setup": "sh scripts/setup.sh",
     "prepare": "husky install",
     "lhci": "lhci autorun --collect.url=http://localhost:3000 --collect.numberOfRuns=1 --upload.target=temporary-public-storage",
-    "ci:test": "start-server-and-test dev http://localhost:3000 npm run lhci"
+    "ci:test": "start-server-and-test dev http://localhost:3000 npm run lhci",
+    "backup": "tsx scripts/backup.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.842.0",
