@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import { useTranslations } from "next-intl";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -19,6 +20,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   classNames,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const t = useTranslations("theme");
 
   const { theme, setTheme } = useTheme();
 
@@ -47,7 +49,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 
   return (
     <Component
-      aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
+      aria-label={isSelected ? t("dark") : t("light")}
       {...getBaseProps({
         className: cn(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
