@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **11-Jul-2025 10:30 CEST**
+\_Actualizado: **11-Jul-2025 18:21 CEST**
 
 ---
 
@@ -76,6 +76,8 @@
 - [x] API `/api/stripe/history` devuelve pagos — 05-Jul-2025
 - [x] Página `/app/billing` lista con historial — 05-Jul-2025
 - [x] Hooks pre-commit con Husky + lint-staged — 11-Jul-2025
+- [x] Traducción completa de dashboard y páginas públicas — 11-Jul-2025
+- [x] Script `translations:check` para detectar claves faltantes — 11-Jul-2025
 
 ---
 

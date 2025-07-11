@@ -4,10 +4,12 @@ import { Alert } from "@heroui/alert";
 import { useRouter } from "next/router";
 import { User } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 export default function WelcomeDashboard() {
   const router = useRouter();
   const { data: session } = useSession();
+  const t = useTranslations("welcome");
 
   return (
     <div className="max-w-2xl mx-auto py-16">
@@ -15,14 +17,15 @@ export default function WelcomeDashboard() {
         <div className="flex flex-col items-center gap-2">
           <User className="w-12 h-12 text-primary mb-2" />
           <h1 className="text-3xl font-bold">
-            ¡Bienvenido{session?.user?.name ? `, ${session.user.name}` : ""}!
+            {t("title")}
+            {session?.user?.name && `, ${session.user.name}`}!
           </h1>
           <p className="text-default-500 text-center">
-            Ya tienes acceso al plan{" "}
+            {t("free")}{" "}
             <span className="font-semibold text-green-600">FREE</span>.<br />
-            Puedes crear hasta <b>1 proyecto</b> y acceder a tu panel personal.
+            {t("limit", { limit: 1 })}
             <br />
-            ¿Listo para empezar?
+            {t("ready")}
           </p>
         </div>
         <div className="flex gap-4 mt-4">
@@ -31,18 +34,17 @@ export default function WelcomeDashboard() {
             size="lg"
             onClick={() => router.push("/dashboard/projects")}
           >
-            Crear mi primer proyecto
+            {t("cta.project")}
           </Button>
           <Button
             variant="bordered"
             onClick={() => router.push("/dashboard/profile")}
           >
-            Ver mi perfil
+            {t("cta.profile")}
           </Button>
         </div>
         <Alert className="mt-6" color="primary">
-          Puedes mejorar tu plan en cualquier momento para desbloquear más
-          proyectos y ventajas.
+          {t("upgrade")}
         </Alert>
       </Card>
     </div>
