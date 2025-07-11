@@ -130,6 +130,7 @@ Detalle completo en docs/STACK.md.
 > **Nota:** Atlas puede ejecutar servidor 6.x, pero mantenemos el driver 5.9.2 por dependencia de paquetes legacy.
 > Las APIs están protegidas por el middleware `withRateLimit` (Upstash Redis).
 > Ruta de métricas admin `/api/admin/stats` (solo `ADMIN_EMAIL`).
+> Nueva ruta `/api/analytics` devuelve visitas, upgrades y completados de wizard.
 
 🤝 Cómo contribuir
 Lee docs/CONTRIBUTING.md.
