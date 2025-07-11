@@ -16,11 +16,11 @@ Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upse
 
 ## 🖥️ Demo rápida
 
-| Flujo                                 | GIF / captura        |
-| ------------------------------------- | -------------------- |
-| Login → Dashboard → Wizard de 3 pasos | Captura próximamente |
+| Flujo                                 | GIF / captura  |
+| ------------------------------------- | -------------- |
+| Login → Dashboard → Wizard de 3 pasos | Captura actual |
 
-![Demo screenshot](https://placehold.co/600x400?text=demo)
+![Dashboard screenshot](public/dashboard.png)
 
 ---
 
@@ -72,6 +72,16 @@ Consulta la guía docs/deploy-free-plan.md
 | IA DataFast            | —    | —   | ✅      |
 | Vídeo (MUX)            | —    | —   | ✅      |
 | Analítica avanzada     | —    | —   | ✅      |
+
+## 🌍 Internacionalización
+
+El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.
+Para añadir un idioma:
+
+1. Crea un archivo `messages/<nuevo>.json` copiando la estructura de `en.json`.
+2. Añade el código de idioma al array `locales` en `i18n.ts`.
+3. Traduce cada clave siguiendo el formato `seccion.clave`.
+4. Reinicia el servidor de desarrollo.
 
 🗺️ Roadmap & tareas
 Visión estratégica → docs/ROADMAP.md
