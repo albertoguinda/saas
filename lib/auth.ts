@@ -39,6 +39,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           avatar: user.avatar || "",
           plan: user.plan || "free",
+          trialEndsAt: user.trialEndsAt,
         };
       },
     }),
@@ -65,6 +66,9 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id ?? "";
         session.user.avatar = token.avatar;
         session.user.plan = token.plan as "free" | "pro" | "premium";
+        if (token.trialEndsAt) {
+          session.user.trialEndsAt = token.trialEndsAt as Date;
+        }
       }
 
       return session;

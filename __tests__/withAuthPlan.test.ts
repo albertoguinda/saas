@@ -64,3 +64,25 @@ test("calls handler when plan sufficient", async () => {
   expect(status).toHaveBeenLastCalledWith(200);
   expect(json).toHaveBeenCalledWith({ ok: true });
 });
+
+test("allows trial users for PRO", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { plan: "free", trialEndsAt: new Date(Date.now() + 1000) },
+  });
+  const handler = jest.fn((_req, res: NextApiResponse) =>
+    res.status(200).json({ ok: true }),
+  );
+  const json = jest.fn();
+  const status = jest.fn(() => ({ json }));
+  const middleware = require("@/lib/middlewares/withAuthPlan").withAuthPlan(
+    handler,
+    "PRO",
+  );
+  const req = {} as NextApiRequest;
+  const res = { status } as unknown as NextApiResponse;
+
+  await middleware(req, res);
+  expect(handler).toHaveBeenCalled();
+  expect(status).toHaveBeenLastCalledWith(200);
+  expect(json).toHaveBeenCalledWith({ ok: true });
+});

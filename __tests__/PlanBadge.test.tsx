@@ -10,3 +10,8 @@ test("renders plan label", () => {
   render(<PlanBadge plan="pro" />);
   expect(screen.getByText("pro")).toBeInTheDocument();
 });
+
+test("shows trial when active", () => {
+  render(<PlanBadge plan="free" trialEndsAt={new Date(Date.now() + 1000)} />);
+  expect(screen.getByText("trial")).toBeInTheDocument();
+});

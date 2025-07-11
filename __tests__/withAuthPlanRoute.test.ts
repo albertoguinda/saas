@@ -53,3 +53,15 @@ test("calls handler when plan sufficient", async () => {
   expect(handler).toHaveBeenCalled();
   expect(res.status).toBe(200);
 });
+
+test("allows trial users for PRO", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { plan: "free", trialEndsAt: new Date(Date.now() + 1000) },
+  });
+  const handler = jest.fn(() => ({ status: 200 }));
+  const wrapped = withAuthPlanRoute(handler, "PRO");
+  const res = await wrapped({ url: "http://test" } as NextRequest);
+
+  expect(handler).toHaveBeenCalled();
+  expect(res.status).toBe(200);
+});

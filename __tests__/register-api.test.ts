@@ -101,9 +101,20 @@ test("creates user when data valid", async () => {
   const res = await POST(req);
 
   expect(saveMock).toHaveBeenCalled();
-  expect(Event.create).toHaveBeenCalledWith({
+  expect(userConstructor).toHaveBeenCalledWith({
+    email: "a@test.com",
+    password: "123456",
+    name: "test",
+    plan: "free",
+    trialEndsAt: expect.any(Date),
+  });
+  expect(Event.create).toHaveBeenNthCalledWith(1, {
     userId: "1",
     event: "signup_free",
+  });
+  expect(Event.create).toHaveBeenNthCalledWith(2, {
+    userId: "1",
+    event: "trial_started",
   });
   expect(res.status).toBe(200);
 });

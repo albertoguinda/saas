@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 
 export interface PlanBadgeProps {
   plan?: "free" | "pro" | "premium";
+  trialEndsAt?: Date;
   className?: string;
 }
 
@@ -24,13 +25,19 @@ const COLORS: Record<string, string> = {
  */
 export default function PlanBadge({
   plan = "free",
+  trialEndsAt,
   className,
 }: PlanBadgeProps) {
   const t = useTranslations("plan");
 
+  const isTrial =
+    plan === "free" && trialEndsAt && new Date(trialEndsAt) > new Date();
+  const label = isTrial ? t("trial") : t(plan);
+  const colorKey = isTrial ? "pro" : plan;
+
   return (
-    <Badge className={className} color={COLORS[plan]}>
-      {t(plan)}
+    <Badge className={className} color={COLORS[colorKey]}>
+      {label}
     </Badge>
   );
 }

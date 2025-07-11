@@ -117,7 +117,7 @@
 #### 🔐 Backend
 
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
-- [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) *(endpoint básico listo)*
+- [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) _(endpoint básico listo)_
 - [ ] Conexión dominio propio (Namecheap / Cloudflare)
 - [ ] Exportación de sitios como HTML estático
 - [ ] Emails transaccionales (Resend) + confirmación de cuenta
@@ -138,7 +138,7 @@
 #### 💳 Sistema de pagos y planes
 
 - [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
-- [ ] Middleware de control de plan + free trial (7 días, opc.)
+- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025
 - [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
 - [x] Dashboard: historial y panel de pagos — 04-Jul-2025
 
@@ -146,7 +146,7 @@
 
 #### 🧪 Retención, métricas y feedback
 
-- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) *(endpoint básico listo)*
+- [ ] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) _(endpoint básico listo)_
 - [ ] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics (ver `docs/ANALYTICS.md`)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
