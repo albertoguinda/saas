@@ -74,6 +74,14 @@ Genera `out.zip` con la versión estática del sitio. En el dashboard cada
 proyecto incluye un botón **Exportar ZIP** que llama a la API `/api/export` para
 descargar el contenido actual.
 
+### 🗄️ Backups locales
+
+```bash
+npm run backup
+```
+
+Ejecuta una copia básica de seguridad en `backup.json` para pruebas y CI.
+
 🌐 Deploy rápido
 Consulta la guía docs/deploy-free-plan.md
 (Vercel, Railway, variables de entorno y consideraciones de red).
@@ -99,6 +107,11 @@ Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
 3. **Revisar analítica** de tu sitio.
 
 Cada paso se marca como completado y se almacena en tu cuenta.
+
+### Conexión de dominio propio
+
+En el dashboard puedes añadir tu dominio y comprobar el estado de validación.
+Se guardan en MongoDB con las fases **pending**, **validating** y **active**.
 
 ## 🌍 Internacionalización
 

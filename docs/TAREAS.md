@@ -119,9 +119,9 @@
 
 - [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
 - [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) _(endpoint básico listo)_
-- [ ] Conexión dominio propio (Namecheap / Cloudflare)
+- [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025
-- [ ] Emails transaccionales (Resend) + confirmación de cuenta
+- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
 
 #### 🔄 Mejora continua
 
@@ -158,7 +158,7 @@
 #### 🔐 Backend
 
 - [ ] Cache de sitios (Upstash Redis, TTL dinámico)
-- [ ] Backups automáticos + restore 1 clic
+- [x] Backups automáticos + restore 1 clic — 12-Jul-2025
 
 #### 🧱 Generador de sitios (wizard)
 
