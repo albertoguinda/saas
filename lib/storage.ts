@@ -1,5 +1,9 @@
 import { v2 as cloudinary } from "cloudinary";
 
+/**
+ * Upload an avatar image to Cloudinary or S3.
+ * Returns the public URL of the uploaded image.
+ */
 export async function uploadAvatar(file: Blob): Promise<string> {
   if (
     process.env.CLOUDINARY_CLOUD_NAME &&

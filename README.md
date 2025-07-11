@@ -20,6 +20,8 @@ Generar webs y portfolios con **on-boarding rápido**, escalabilidad real y upse
 | ------------------------------------- | -------------------- |
 | Login → Dashboard → Wizard de 3 pasos | Captura próximamente |
 
+![Demo screenshot](https://placehold.co/600x400?text=demo)
+
 ---
 
 ## 📦 Instalación local

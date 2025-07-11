@@ -1,0 +1,5 @@
+{
+  "billing.title": "Payment history",
+  "billing.empty": "No payments found",
+  "billing.error": "Unable to load history"
+}

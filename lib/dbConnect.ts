@@ -11,6 +11,10 @@ if (!MONGODB_URI) {
 
 let cached = (global as any).mongoose || { conn: null, promise: null };
 
+/**
+ * Connect to MongoDB using Mongoose. Connection is cached
+ * across hot reloads to prevent exhausting the database.
+ */
 export default async function dbConnect() {
   if (cached.conn) return cached.conn;
 

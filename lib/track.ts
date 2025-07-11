@@ -1,3 +1,6 @@
+/**
+ * Send a tracking event from the client.
+ */
 export async function track(event: string) {
   try {
     await fetch("/api/track", {
@@ -10,6 +13,9 @@ export async function track(event: string) {
   }
 }
 
+/**
+ * Store a tracking event on the server.
+ */
 export async function trackServer(userId: string, event: string) {
   try {
     const { default: dbConnect } = await import("@/lib/dbConnect");
