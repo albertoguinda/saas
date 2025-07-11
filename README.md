@@ -81,7 +81,8 @@ Para añadir un idioma:
 1. Crea un archivo `messages/<nuevo>.json` copiando la estructura de `en.json`.
 2. Añade el código de idioma al array `locales` en `i18n.ts`.
 3. Traduce cada clave siguiendo el formato `seccion.clave`.
-4. Reinicia el servidor de desarrollo.
+4. Ejecuta `npm run translations:check` para verificar que todas las claves estén sincronizadas.
+5. Reinicia el servidor de desarrollo.
 
 🗺️ Roadmap & tareas
 Visión estratégica → docs/ROADMAP.md
@@ -102,6 +103,7 @@ Lee docs/CONTRIBUTING.md.
 Abre issue/PR con descripción clara.
 
 Toda feature debe reflejarse en docs/TAREAS.md.
+Para aportar traducciones ejecuta `npm run translations:check` antes de abrir PR.
 
 🛡️ Licencia
 MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀

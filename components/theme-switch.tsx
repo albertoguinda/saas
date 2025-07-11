@@ -11,6 +11,9 @@ export interface ThemeSwitchProps {
   classNames?: SwitchProps["classNames"];
 }
 
+/**
+ * Toggle between light and dark theme using next-themes.
+ */
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,

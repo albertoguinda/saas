@@ -40,8 +40,8 @@ export default function DashboardHome() {
           <LayoutDashboard className="text-violet-600 mb-1" size={36} />
           <span className="font-semibold">{t("projects.title")}</span>
           <div>
-            <span className="text-lg">{projectsCount}</span> / {projectLimit} en
-            plan Free
+            <span className="text-lg">{projectsCount}</span> /{" "}
+            {t("projects.limit", { limit: projectLimit })}
           </div>
           <Button
             className="w-full"

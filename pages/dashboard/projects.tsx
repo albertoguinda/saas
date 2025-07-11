@@ -8,6 +8,7 @@ import { Alert } from "@heroui/alert";
 import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 import UpgradeBanner from "@/components/UpgradeBanner";
 import { track } from "@/lib/track";
@@ -17,6 +18,7 @@ export default function ProjectsPage() {
   const router = useRouter();
   // Reloading the page ensures fresh project data after create/delete actions
   const { data: session } = useSession();
+  const t = useTranslations();
 
   // Estados principales del componente
   const [projects, setProjects] = useState<any[]>([]);
@@ -52,7 +54,7 @@ export default function ProjectsPage() {
 
       setProjects(data.sites || []);
     } catch {
-      setApiError("No se pudieron cargar los proyectos.");
+      setApiError(t("error.network"));
     }
     setLoading(false);
   };
@@ -62,7 +64,7 @@ export default function ProjectsPage() {
     setError("");
     if (projects.length >= FREE_PROJECT_LIMIT) return;
     if (!newName.trim()) {
-      setError("El nombre es obligatorio");
+      setError(t("projects.required"));
 
       return;
     }
@@ -74,7 +76,7 @@ export default function ProjectsPage() {
     const data = await res.json();
 
     if (!res.ok) {
-      setError(data.error || "No se pudo crear el proyecto");
+      setError(data.error || t("error.network"));
 
       return;
     }
@@ -86,7 +88,14 @@ export default function ProjectsPage() {
 
   // Elimina un proyecto (DELETE /api/sites/[id])
   const handleDelete = async (id: string) => {
-    if (!window.confirm("¿Seguro que quieres borrar este proyecto?")) return;
+    if (
+      !window.confirm(
+        t("projects.deleteConfirm", {
+          defaultValue: "¿Seguro que quieres borrar este proyecto?",
+        }),
+      )
+    )
+      return;
     setDeleting(id);
     try {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
@@ -95,10 +104,10 @@ export default function ProjectsPage() {
         setProjects(projects.filter((p) => p._id !== id));
         router.reload();
       } else {
-        setApiError("No se pudo borrar el proyecto.");
+        setApiError(t("error.delete"));
       }
     } catch {
-      setApiError("Error al borrar el proyecto.");
+      setApiError(t("error.network"));
     }
     setDeleting(null);
   };
@@ -114,7 +123,7 @@ export default function ProjectsPage() {
   const handleEdit = async () => {
     setEditError("");
     if (!editTitle.trim()) {
-      setEditError("El título es obligatorio");
+      setEditError(t("projects.required"));
 
       return;
     }
@@ -128,7 +137,7 @@ export default function ProjectsPage() {
 
     setUpdating(false);
     if (!res.ok) {
-      setEditError(data.error || "No se pudo actualizar");
+      setEditError(data.error || t("error.network"));
 
       return;
     }
@@ -152,10 +161,10 @@ export default function ProjectsPage() {
   return (
     <div className="max-w-3xl mx-auto py-12">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-bold">Mis proyectos</h2>
+        <h2 className="text-2xl font-bold">{t("projects.title")}</h2>
         {projects.length < FREE_PROJECT_LIMIT ? (
           <Button startContent={<Plus />} onClick={() => setCreating(true)}>
-            Nuevo proyecto
+            {t("projects.new")}
           </Button>
         ) : (
           <Button
@@ -167,7 +176,7 @@ export default function ProjectsPage() {
               router.push("/pricing");
             }}
           >
-            Mejorar plan
+            {t("dashboard.upgrade")}
           </Button>
         )}
       </div>
@@ -182,16 +191,16 @@ export default function ProjectsPage() {
       {/* Estado de carga */}
       {loading && (
         <Card className="flex flex-col items-center gap-6 py-12">
-          <span className="text-default-500">Cargando proyectos...</span>
+          <span className="text-default-500">{t("projects.loading")}</span>
         </Card>
       )}
 
       {/* Sin proyectos */}
       {!loading && projects.length === 0 && (
         <Card className="flex flex-col items-center gap-6 py-12">
-          <span className="text-default-500">Todavía no tienes proyectos.</span>
+          <span className="text-default-500">{t("projects.empty")}</span>
           <Button startContent={<Plus />} onClick={() => setCreating(true)}>
-            Crear mi primer proyecto
+            {t("projects.first")}
           </Button>
         </Card>
       )}
@@ -210,13 +219,13 @@ export default function ProjectsPage() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge color="success">activo</Badge>
+              <Badge color="success">{t("projects.active")}</Badge>
               <Button
                 size="sm"
                 startContent={<Eye />}
                 onClick={() => router.push(`/${project.slug}`)}
               >
-                Ver
+                {t("projects.view")}
               </Button>
               <Button
                 color="secondary"
@@ -224,7 +233,7 @@ export default function ProjectsPage() {
                 startContent={<Pencil />}
                 onClick={() => openEdit(project)}
               >
-                Editar
+                {t("projects.edit")}
               </Button>
               <Button
                 color="danger"
@@ -234,7 +243,9 @@ export default function ProjectsPage() {
                 variant="light"
                 onClick={() => handleDelete(project._id)}
               >
-                {deleting === project._id ? "Borrando..." : "Borrar"}
+                {deleting === project._id
+                  ? t("projects.deleting")
+                  : t("projects.delete")}
               </Button>
             </div>
           </Card>
@@ -245,16 +256,16 @@ export default function ProjectsPage() {
       {creating && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
-            <h3 className="text-lg font-semibold">Nuevo proyecto</h3>
+            <h3 className="text-lg font-semibold">{t("projects.new")}</h3>
             {error && <Alert color="danger">{error}</Alert>}
             <Input
               ref={createInputRef}
-              label="Nombre del proyecto"
+              label={t("projects.name")}
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
             />
             <div className="flex gap-2">
-              <Button onClick={handleCreate}>Crear</Button>
+              <Button onClick={handleCreate}>{t("projects.create")}</Button>
               <Button
                 variant="ghost"
                 onClick={() => {
@@ -263,11 +274,11 @@ export default function ProjectsPage() {
                   setNewName("");
                 }}
               >
-                Cancelar
+                {t("projects.cancel")}
               </Button>
             </div>
             <div className="text-xs text-default-400">
-              Límite de {FREE_PROJECT_LIMIT} proyecto en el plan Free.
+              {t("projects.limit", { limit: FREE_PROJECT_LIMIT })}
             </div>
           </Card>
         </div>
@@ -277,24 +288,24 @@ export default function ProjectsPage() {
       {editing && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <Card className="p-8 w-full max-w-sm flex flex-col gap-5">
-            <h3 className="text-lg font-semibold">Editar proyecto</h3>
+            <h3 className="text-lg font-semibold">{t("projects.edit")}</h3>
             {editError && <Alert color="danger">{editError}</Alert>}
             <Input
               ref={editInputRef}
-              label="Título del proyecto"
+              label={t("projects.titleLabel")}
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
             />
             <div className="flex gap-2">
               <Button isLoading={updating} onClick={handleEdit}>
-                Guardar
+                {t("profile.save")}
               </Button>
               <Button
                 disabled={updating}
                 variant="ghost"
                 onClick={() => setEditing(null)}
               >
-                Cancelar
+                {t("projects.cancel")}
               </Button>
             </div>
           </Card>
