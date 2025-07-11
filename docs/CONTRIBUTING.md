@@ -123,6 +123,12 @@ Toda contribución debe alinearse con:
 - **Sincroniza `TAREAS.md`** tras cada funcionalidad.
 - Si dudas, consulta `CODIGOBASE.md` o abre discusión antes de mergear.
 
+## ❓ Preguntas frecuentes
+
+- **¿Debo crear issue antes de un PR?** Sí, salvo correcciones menores.
+- **¿Cómo ejecuto los scripts de i18n?** Usa `npm run translations:check` e `npm run i18n:check` antes de subir cambios.
+- **¿Qué hago si falla CI?** Revisa los logs de lint o tests, corrige y vuelve a hacer push.
+
 ---
 
 ## 💡 Filosofía de contribución

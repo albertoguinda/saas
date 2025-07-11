@@ -15,7 +15,7 @@ export default {
     ],
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(jose|next-auth|openid-client|next-intl|use-intl)/)",
+    "/node_modules/(?!(jose|next-auth|openid-client|next-intl|use-intl|@panva/hkdf|preact-render-to-string|preact)/)",
   ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
