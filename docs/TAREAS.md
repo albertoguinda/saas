@@ -79,6 +79,8 @@
 - [x] Traducción completa de dashboard y páginas públicas — 11-Jul-2025
 - [x] Script `translations:check` para detectar claves faltantes — 11-Jul-2025
 - [x] Script `i18n-check` para claves faltantes y sin uso — 11-Jul-2025
+- [x] Internacionalización global (navbar, modals, perfil) — 11-Jul-2025
+- [x] Feedback UX coherente y accesible — 11-Jul-2025
 
 ---
 

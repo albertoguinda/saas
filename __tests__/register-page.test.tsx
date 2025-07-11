@@ -14,6 +14,10 @@ jest.mock("@heroui/ripple", () => ({
   useRipple: () => ({ onPress: jest.fn(), onClear: jest.fn(), ripples: [] }),
 }));
 
+jest.mock("next-intl", () => ({
+  useTranslations: () => (key: string) => key,
+}));
+
 const push = jest.fn();
 
 jest.mock("next/router", () => ({ useRouter: () => ({ push }) }));
@@ -45,9 +49,7 @@ describe("RegisterPage", () => {
       target: { value: "123456" },
     });
 
-    fireEvent.click(
-      screen.getByRole("button", { name: /registrarse gratis/i }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: /register.submit/i }));
 
     await waitFor(() => {
       expect(track).toHaveBeenCalledWith("signup_free");

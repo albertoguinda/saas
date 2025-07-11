@@ -72,6 +72,7 @@ Toda contribución debe alinearse con:
 - Añade idiomas en `messages/<locale>.json` siguiendo la estructura de `en.json`.
 - Ejecuta `npm run translations:check` tras modificar traducciones.
 - Ejecuta `npm run i18n:check` para detectar claves sin uso o faltantes.
+- Usa placeholders y plurales siguiendo los ejemplos de `messages/en.json`.
 
 ---
 

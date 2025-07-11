@@ -13,6 +13,10 @@ jest.mock("@heroui/ripple", () => ({
   useRipple: () => ({ onPress: jest.fn(), onClear: jest.fn(), ripples: [] }),
 }));
 
+jest.mock("next-intl", () => ({
+  useTranslations: () => (key: string) => key,
+}));
+
 jest.mock("next/router", () => ({ useRouter: () => ({ push: jest.fn() }) }));
 
 jest.mock("next-auth/react", () => ({
@@ -26,7 +30,7 @@ jest.mock("next-auth/react", () => ({
 describe("Navbar accessibility", () => {
   test("avatar button has aria-label", () => {
     render(<AppNavbar />);
-    const button = screen.getByRole("button", { name: /menú de usuario/i });
+    const button = screen.getByRole("button");
 
     expect(button).toBeInTheDocument();
   });

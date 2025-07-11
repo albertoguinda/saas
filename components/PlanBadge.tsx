@@ -1,4 +1,5 @@
 import { Badge } from "@heroui/badge";
+import { useTranslations } from "next-intl";
 
 /**
  * Visual badge showing the current subscription plan.
@@ -25,9 +26,11 @@ export default function PlanBadge({
   plan = "free",
   className,
 }: PlanBadgeProps) {
+  const t = useTranslations("plan");
+
   return (
     <Badge className={className} color={COLORS[plan]}>
-      {plan}
+      {t(plan)}
     </Badge>
   );
 }

@@ -82,6 +82,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - ✅ Badge visual del plan activo (FREE / PRO / PREMIUM) — 03-Jul-2025
 - Captura de feedback y link a soporte
 - ✅ Script `i18n-check` para claves no usadas y faltantes — 11-Jul-2025
+- ✅ Internacionalización global y feedback UX consistente — 11-Jul-2025
 
 ---
 
