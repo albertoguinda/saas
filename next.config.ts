@@ -1,5 +1,5 @@
 // next.config.ts
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   turbopack: {},
 
   images: {
-    domains: ['i.pravatar.cc'],
+    domains: ["i.pravatar.cc"],
   },
 
   // Puedes añadir rewrites/redirects aquí:

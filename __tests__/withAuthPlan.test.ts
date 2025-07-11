@@ -21,6 +21,7 @@ test("redirects when unauthenticated", async () => {
   );
   const req = {} as NextApiRequest;
   const res = { redirect } as unknown as NextApiResponse;
+
   await middleware(req, res);
   expect(redirect).toHaveBeenCalledWith("/401");
   expect(handler).not.toHaveBeenCalled();
@@ -37,6 +38,7 @@ test("returns 403 when plan insufficient", async () => {
   );
   const req = {} as NextApiRequest;
   const res = { status } as unknown as NextApiResponse;
+
   await middleware(req, res);
   expect(status).toHaveBeenCalledWith(403);
   expect(json).toHaveBeenCalledWith({ error: "Plan PRO requerido" });
@@ -56,6 +58,7 @@ test("calls handler when plan sufficient", async () => {
   );
   const req = {} as NextApiRequest;
   const res = { status } as unknown as NextApiResponse;
+
   await middleware(req, res);
   expect(handler).toHaveBeenCalled();
   expect(status).toHaveBeenLastCalledWith(200);

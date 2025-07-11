@@ -36,6 +36,7 @@ export const POST = withRateLimitRoute(
   {
     identifier: async () => {
       const session = await getServerSession(authOptions);
+
       return session?.user?.id || "anon";
     },
   },

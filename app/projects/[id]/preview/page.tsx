@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
+
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
-import { Button } from "@heroui/button";
-import { Link } from "@heroui/link";
 
 interface PreviewPageProps {
   params: { id: string };
@@ -13,10 +14,12 @@ interface PreviewPageProps {
 
 export default async function PreviewPage({ params }: PreviewPageProps) {
   const session = await getServerSession(authOptions);
+
   if (!session) redirect("/401");
 
   await dbConnect();
   const site = await Site.findById(params.id).lean();
+
   if (!site || site.userId !== session.user.id) {
     redirect("/dashboard");
   }
@@ -29,10 +32,10 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
         <span>Vista previa —</span>
         <Button
           as={Link}
+          color="primary"
           href="/dashboard"
           size="sm"
           variant="flat"
-          color="primary"
         >
           Volver al dashboard
         </Button>

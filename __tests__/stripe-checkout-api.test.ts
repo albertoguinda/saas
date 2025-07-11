@@ -34,6 +34,7 @@ test("creates checkout session", async () => {
   } as unknown as NextRequest;
 
   const res = await POST(req);
+
   expect(createMock).toHaveBeenCalledWith({
     mode: "subscription",
     line_items: [{ price: "price_1", quantity: 1 }],
@@ -50,6 +51,7 @@ test("returns 400 when data missing", async () => {
     json: async () => ({}),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
 });
 
@@ -64,5 +66,6 @@ test("returns 500 on stripe error", async () => {
     }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(500);
 });

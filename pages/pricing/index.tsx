@@ -6,13 +6,9 @@ const plans = [
   {
     name: "Free",
     price: "0€",
-    features: [
-      "1 proyecto",
-      "Soporte básico",
-      "Actualizaciones limitadas"
-    ],
+    features: ["1 proyecto", "Soporte básico", "Actualizaciones limitadas"],
     badge: "Actual",
-    color: "success"
+    color: "success",
   },
   {
     name: "Pro",
@@ -20,11 +16,11 @@ const plans = [
     features: [
       "Proyectos ilimitados",
       "Soporte prioritario",
-      "Actualizaciones premium"
+      "Actualizaciones premium",
     ],
     badge: "Próximamente",
-    color: "warning"
-  }
+    color: "warning",
+  },
 ];
 
 export default function PricingPage() {
@@ -32,17 +28,26 @@ export default function PricingPage() {
     <div className="max-w-4xl mx-auto py-16">
       <h1 className="text-3xl font-bold mb-8 text-center">Planes y precios</h1>
       <div className="grid md:grid-cols-2 gap-8">
-        {plans.map(plan => (
-          <Card key={plan.name} className="p-8 flex flex-col gap-4 items-center">
+        {plans.map((plan) => (
+          <Card
+            key={plan.name}
+            className="p-8 flex flex-col gap-4 items-center"
+          >
             <div className="flex items-center gap-2">
               <h2 className="text-2xl font-bold">{plan.name}</h2>
               <Badge color={plan.color as any}>{plan.badge}</Badge>
             </div>
             <div className="text-4xl font-extrabold">{plan.price}</div>
             <ul className="space-y-2 text-default-500">
-              {plan.features.map(f => <li key={f}>• {f}</li>)}
+              {plan.features.map((f) => (
+                <li key={f}>• {f}</li>
+              ))}
             </ul>
-            <Button disabled={plan.name !== "Free"} color="primary" className="w-full">
+            <Button
+              className="w-full"
+              color="primary"
+              disabled={plan.name !== "Free"}
+            >
               {plan.name === "Free" ? "Activo" : "Mejorar"}
             </Button>
           </Card>

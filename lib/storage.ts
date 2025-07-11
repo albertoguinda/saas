@@ -1,7 +1,11 @@
-import { v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 
 export async function uploadAvatar(file: Blob): Promise<string> {
-  if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+  if (
+    process.env.CLOUDINARY_CLOUD_NAME &&
+    process.env.CLOUDINARY_API_KEY &&
+    process.env.CLOUDINARY_API_SECRET
+  ) {
     cloudinary.config({
       cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
       api_key: process.env.CLOUDINARY_API_KEY,
@@ -9,17 +13,27 @@ export async function uploadAvatar(file: Blob): Promise<string> {
     });
     const buffer = await file.arrayBuffer();
     const url = await new Promise<string>((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream({ resource_type: 'image' }, (err, result) => {
-        if (err || !result) return reject(err);
-        resolve(result.secure_url);
-      });
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: "image" },
+        (err, result) => {
+          if (err || !result) return reject(err);
+          resolve(result.secure_url);
+        },
+      );
+
       stream.end(Buffer.from(buffer));
     });
+
     return url;
   }
 
-  if (process.env.S3_BUCKET && process.env.S3_REGION && process.env.S3_ACCESS_KEY && process.env.S3_SECRET_KEY) {
-    const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3');
+  if (
+    process.env.S3_BUCKET &&
+    process.env.S3_REGION &&
+    process.env.S3_ACCESS_KEY &&
+    process.env.S3_SECRET_KEY
+  ) {
+    const { S3Client, PutObjectCommand } = await import("@aws-sdk/client-s3");
     const client = new S3Client({
       region: process.env.S3_REGION,
       credentials: {
@@ -29,17 +43,19 @@ export async function uploadAvatar(file: Blob): Promise<string> {
     });
     const key = `avatars/${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const buffer = await file.arrayBuffer();
+
     await client.send(
       new PutObjectCommand({
         Bucket: process.env.S3_BUCKET!,
         Key: key,
         Body: Buffer.from(buffer),
         ContentType: file.type,
-        ACL: 'public-read',
+        ACL: "public-read",
       }),
     );
+
     return `https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/${key}`;
   }
 
-  throw new Error('No storage provider configured');
+  throw new Error("No storage provider configured");
 }

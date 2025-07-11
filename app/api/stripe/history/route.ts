@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { stripe } from "@/lib/stripe";
 import { logger } from "@/lib/logger";
 import { withAuthPlanRoute } from "@/lib/middlewares/withAuthPlan";
@@ -13,9 +14,11 @@ async function handler(_req: NextRequest) {
       status: p.status,
       created: p.created,
     }));
+
     return NextResponse.json({ payments });
   } catch (err) {
     logger.error(err);
+
     return NextResponse.json(
       { error: "Error al consultar Stripe" },
       { status: 500 },

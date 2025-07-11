@@ -1,7 +1,8 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
 import type { ZodSchema } from "zod";
+
+import { NextResponse } from "next/server";
 
 /**
  * Higher-order handler to validate request body with Zod before executing.
@@ -37,6 +38,7 @@ export function withValidationRoute<T>(
   return async (req: NextRequest) => {
     if (["POST", "PUT", "PATCH"].includes(req.method)) {
       let json: unknown;
+
       try {
         json = await req.json();
       } catch {

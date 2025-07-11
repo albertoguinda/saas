@@ -1,7 +1,7 @@
 // pages/_app.tsx
 import type { AppProps } from "next/app";
-import { SessionProvider } from "next-auth/react";
 
+import { SessionProvider } from "next-auth/react";
 import { HeroUIProvider } from "@heroui/system";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ToastProvider, ToastViewport } from "@heroui/toast";
@@ -22,9 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session}>
       <HeroUIProvider navigate={router.push}>
         <NextThemesProvider
+          enableSystem
           attribute="class"
           defaultTheme="system"
-          enableSystem
         >
           <ToastProvider placement="top-right">
             <Component {...pageProps} />

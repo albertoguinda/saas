@@ -1,7 +1,7 @@
-import * as z from 'zod';
+import * as z from "zod";
 
 export const eventSchema = z.object({
-  event: z.string().min(1, 'Evento requerido'),
+  event: z.string().min(1, "Evento requerido"),
   page: z.string().optional(),
   timestamp: z.number().optional(),
   duration: z.number().optional(),

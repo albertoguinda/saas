@@ -3,10 +3,11 @@ import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
 import { useSession } from "next-auth/react";
-import PlanBadge from "@/components/PlanBadge";
 import { useRouter } from "next/router";
 import { LayoutDashboard, User, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
+
+import PlanBadge from "@/components/PlanBadge";
 import { track } from "@/lib/track";
 
 export default function DashboardHome() {
@@ -34,16 +35,16 @@ export default function DashboardHome() {
       <div className="grid md:grid-cols-2 gap-6">
         {/* Tarjeta Proyectos */}
         <Card className="flex flex-col gap-4 p-6 items-center text-center">
-          <LayoutDashboard size={36} className="text-violet-600 mb-1" />
+          <LayoutDashboard className="text-violet-600 mb-1" size={36} />
           <span className="font-semibold">Tus proyectos</span>
           <div>
             <span className="text-lg">{projectsCount}</span> / {projectLimit} en
             plan Free
           </div>
           <Button
+            className="w-full"
             color="primary"
             onClick={() => router.push("/dashboard/projects")}
-            className="w-full"
           >
             Ver proyectos
           </Button>
@@ -51,16 +52,16 @@ export default function DashboardHome() {
 
         {/* Tarjeta Perfil */}
         <Card className="flex flex-col gap-4 p-6 items-center text-center">
-          <User size={36} className="text-violet-600 mb-1" />
+          <User className="text-violet-600 mb-1" size={36} />
           <span className="font-semibold">Tu perfil</span>
           <div className="text-default-500">
             Actualiza tu información personal y tu contraseña.
           </div>
           <Button
+            className="w-full"
             color="secondary"
             variant="bordered"
             onClick={() => router.push("/dashboard/profile")}
-            className="w-full"
           >
             Editar perfil
           </Button>
@@ -70,18 +71,18 @@ export default function DashboardHome() {
       {/* Aviso de límite */}
       {projectsCount >= projectLimit && (
         <div className="mt-8">
-          <Alert color="warning" className="inline-block">
+          <Alert className="inline-block" color="warning">
             Has alcanzado el máximo de proyectos en el plan Free.
             <Button
-              size="sm"
-              color="warning"
-              variant="light"
               className="ml-2"
+              color="warning"
+              size="sm"
+              startContent={<Zap />}
+              variant="light"
               onClick={() => {
                 track("upgrade_click");
                 router.push("/pricing");
               }}
-              startContent={<Zap />}
             >
               Mejorar plan
             </Button>
@@ -92,8 +93,8 @@ export default function DashboardHome() {
       <div className="mt-10 text-center text-sm text-default-400">
         <Button
           color="default"
-          variant="ghost"
           size="sm"
+          variant="ghost"
           onClick={() => router.push("/dashboard/welcome")}
         >
           Ir a la bienvenida

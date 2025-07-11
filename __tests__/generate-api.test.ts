@@ -21,7 +21,6 @@ jest.mock("@/lib/models/event", () => ({
 
 import handler from "@/pages/api/projects/[id]/generate";
 import Event from "@/lib/models/event";
-import { getServerSession } from "next-auth/next";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -30,6 +29,7 @@ beforeEach(() => {
 test("updates site and logs event", async () => {
   const save = jest.fn();
   const site = { save };
+
   findOneMock.mockResolvedValueOnce(null).mockResolvedValueOnce(site);
   const json = jest.fn();
   const status = jest.fn(() => ({ json }));
@@ -46,9 +46,13 @@ test("updates site and logs event", async () => {
     },
   } as unknown as NextApiRequest;
   const res = { status, setHeader } as unknown as NextApiResponse;
+
   await handler(req, res);
   expect(save).toHaveBeenCalled();
-  expect(Event.create).toHaveBeenCalledWith({ userId: "1", event: "wizard_completed" });
+  expect(Event.create).toHaveBeenCalledWith({
+    userId: "1",
+    event: "wizard_completed",
+  });
   expect(status).toHaveBeenCalledWith(200);
   expect(json).toHaveBeenCalledWith({ site });
 });

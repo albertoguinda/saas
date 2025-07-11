@@ -30,8 +30,12 @@ describe("rateLimit middleware", () => {
     const json = jest.fn();
     const status = jest.fn(() => ({ json }));
     const middleware = withRateLimit(handler, { limit: 10 });
-    const req = { headers: {}, socket: { remoteAddress: "1" } } as unknown as NextApiRequest;
+    const req = {
+      headers: {},
+      socket: { remoteAddress: "1" },
+    } as unknown as NextApiRequest;
     const res = { status } as unknown as NextApiResponse;
+
     await middleware(req, res);
     expect(status).toHaveBeenCalledWith(429);
     expect(json).toHaveBeenCalledWith({ error: "Demasiadas peticiones" });
@@ -44,6 +48,7 @@ describe("rateLimit middleware", () => {
     const middleware = withRateLimitRoute(handler, { limit: 10 });
     const req = { headers: { get: () => "1" } } as unknown as NextRequest;
     const res = await middleware(req);
+
     expect(res.status).toBe(429);
     expect(handler).not.toHaveBeenCalled();
   });

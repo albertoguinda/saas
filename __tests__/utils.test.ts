@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
-test('cn merges class names', () => {
-  expect(cn('a', 'b')).toBe('a b');
+test("cn merges class names", () => {
+  expect(cn("a", "b")).toBe("a b");
 });
