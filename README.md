@@ -81,8 +81,9 @@ Para añadir un idioma:
 1. Crea un archivo `messages/<nuevo>.json` copiando la estructura de `en.json`.
 2. Añade el código de idioma al array `locales` en `i18n.ts`.
 3. Traduce cada clave siguiendo el formato `seccion.clave`.
-4. Ejecuta `npx tsx scripts/check-translations.ts` para verificar claves faltantes.
-5. Reinicia el servidor de desarrollo.
+4. Ejecuta `npm run translations:check` para sincronizar con `en.json`.
+5. Ejecuta `npm run i18n:check` para detectar claves faltantes o sin uso.
+6. Reinicia el servidor de desarrollo.
 
 Ejemplo de uso:
 
@@ -94,6 +95,13 @@ export default function MyComponent() {
 
   return <h1>{t("welcome")}</h1>;
 }
+```
+
+Uso de placeholders y plurales:
+
+```tsx
+t("dashboard.greeting", { name: "Ada" });
+t("projects.limit", { count: 2 });
 ```
 
 🗺️ Roadmap & tareas
