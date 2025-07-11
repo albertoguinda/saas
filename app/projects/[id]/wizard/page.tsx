@@ -36,6 +36,7 @@ export default function WizardPage({
     handleSubmit,
     formState: { errors },
     setError,
+    setValue,
   } = useForm<Schema>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -47,6 +48,7 @@ export default function WizardPage({
     },
   });
   const [loading, setLoading] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
 
   const onSubmit = async (data: FormData) => {
     setApiError("");
@@ -99,6 +101,33 @@ export default function WizardPage({
     router.push(`/projects/${id}/preview`);
   };
 
+  const handleAi = async () => {
+    setAiLoading(true);
+    try {
+      const res = await fetch("/api/ia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: "landing" }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        const msg = json.error || t("ai.error");
+
+        notifyError(msg);
+
+        return;
+      }
+
+      setValue("title", json.content);
+      notifySuccess(t("ai.success"));
+    } catch {
+      notifyError(t("ai.error"));
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   return (
     <div className="max-w-lg mx-auto py-12">
       <Card className="p-8 flex flex-col gap-6">
@@ -110,6 +139,15 @@ export default function WizardPage({
         )}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <Input label={t("form.title")} {...register("title")} />
+          <Button
+            className="w-full"
+            color="secondary"
+            isLoading={aiLoading}
+            type="button"
+            onClick={handleAi}
+          >
+            {t("ai")}
+          </Button>
           {errors.title && (
             <FormAlert color="danger">{errors.title.message}</FormAlert>
           )}

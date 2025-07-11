@@ -129,6 +129,7 @@
 - [x] Cobertura i18n avanzada
 - [x] Export estático incremental — 11-Jul-2025
 - [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
+- [x] Script `npm run check:legal` para verificar textos legales
 - [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
 - [x] Plantilla de issue feedback UX/traducciones
 - [ ] Integrar metaexplorer SEO
@@ -157,7 +158,7 @@
 
 #### 🔐 Backend
 
-- [ ] Cache de sitios (Upstash Redis, TTL dinámico)
+- [x] Cache de sitios (Upstash Redis, TTL dinámico)
 - [x] Backups automáticos + restore 1 clic — 12-Jul-2025
 
 #### 🧱 Generador de sitios (wizard)
@@ -172,9 +173,9 @@
 
 #### 🌟 Funcionalidades premium
 
-- [ ] Integrar **DataFast** (IA) para generación de contenido
+- [x] Integrar **DataFast** (IA) para generación de contenido
 - [ ] Soporte prioritario (chat/email)
-- [ ] Generador de textos legales (cookies, privacy, T&C)
+- [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 
 #### 🧪 Retención, métricas y feedback

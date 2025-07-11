@@ -145,5 +145,8 @@
   "demo.3d": "3D Demo",
   "notFound.title": "404 - Page not found",
   "notFound.desc": "The page you are looking for does not exist.",
-  "notFound.back": "Go back home"
+  "notFound.back": "Go back home",
+  "wizard.ai": "Generate with AI",
+  "wizard.ai.error": "AI error",
+  "wizard.ai.success": "Text generated"
 }
