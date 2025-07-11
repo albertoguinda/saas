@@ -1,5 +1,7 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import type { NextRequest } from "next/server";
 
+import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 
 import { authOptions } from "@/lib/auth";
@@ -24,6 +26,7 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
 
     if (!session?.user) {
       res.redirect("/401");
+
       return;
     }
 
@@ -37,25 +40,25 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
   };
 }
 
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-
 export function withAuthPlanRoute(
   handler: (req: NextRequest) => Promise<Response> | Response,
   requiredPlan: PlanName,
 ) {
   return async (req: NextRequest) => {
     const session = await getServerSession(authOptions);
+
     if (!session?.user) {
       return NextResponse.redirect(new URL("/401", req.url));
     }
     const plan = (session.user.plan || "free").toUpperCase() as PlanName;
+
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
       return NextResponse.json(
         { error: `Plan ${requiredPlan} requerido` },
         { status: 403 },
       );
     }
+
     return handler(req);
   };
 }

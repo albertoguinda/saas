@@ -1,7 +1,8 @@
 import { Link } from "@heroui/link";
 
-import { Head } from "./head";
 import AppNavbar from "@/components/navbar";
+
+import { Head } from "./head";
 
 export default function DefaultLayout({
   children,

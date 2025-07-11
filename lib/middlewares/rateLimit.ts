@@ -1,5 +1,6 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import type { NextRequest } from "next/server";
+
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
@@ -15,9 +16,11 @@ export async function checkLimit(
 ) {
   const key = `ratelimit:${identifier}`;
   const count = await redis.incr(key);
+
   if (count === 1) {
     await redis.expire(key, windowSeconds);
   }
+
   return count <= limit;
 }
 
@@ -32,6 +35,7 @@ export function withRateLimit(
   opts: RateLimitOptions = {},
 ) {
   const { limit = 10, window = 60, identifier } = opts;
+
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const id = identifier
       ? await Promise.resolve(identifier(req))
@@ -39,9 +43,11 @@ export function withRateLimit(
         req.socket.remoteAddress ||
         "unknown";
     const allowed = await checkLimit(id, limit, window);
+
     if (!allowed) {
       return res.status(429).json({ error: "Demasiadas peticiones" });
     }
+
     return handler(req, res);
   };
 }
@@ -51,6 +57,7 @@ export function withRateLimitRoute(
   opts: RateLimitOptions = {},
 ) {
   const { limit = 10, window = 60, identifier } = opts;
+
   return async (req: NextRequest) => {
     const id = identifier
       ? await Promise.resolve(identifier(req))
@@ -58,13 +65,14 @@ export function withRateLimitRoute(
         (req as unknown as { ip?: string }).ip ||
         "unknown";
     const allowed = await checkLimit(id, limit, window);
+
     if (!allowed) {
       return NextResponse.json(
         { error: "Demasiadas peticiones" },
         { status: 429 },
       );
     }
+
     return handler(req);
   };
 }
-

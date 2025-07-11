@@ -26,8 +26,9 @@ jest.mock("@/lib/storage", () => ({
   uploadAvatar: jest.fn(),
 }));
 
-import { POST } from "@/app/api/me/avatar/upload/route";
 import { getServerSession } from "next-auth";
+
+import { POST } from "@/app/api/me/avatar/upload/route";
 import { uploadAvatar } from "@/lib/storage";
 
 beforeEach(() => {
@@ -35,37 +36,53 @@ beforeEach(() => {
 });
 
 test("returns 401 when unauthenticated", async () => {
-  const req = { formData: async () => new FormData() } as unknown as NextRequest;
+  const req = {
+    formData: async () => new FormData(),
+  } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(401);
 });
 
 test("returns 400 when no file", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { email: "a@test.com" } });
-  const req = { formData: async () => new FormData() } as unknown as NextRequest;
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { email: "a@test.com" },
+  });
+  const req = {
+    formData: async () => new FormData(),
+  } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
 });
 
 test("returns 404 when user not found", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { email: "a@test.com" } });
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { email: "a@test.com" },
+  });
   (uploadAvatar as jest.Mock).mockResolvedValue("http://img");
   updateMock.mockResolvedValue(null);
   const fd = new FormData();
+
   fd.append("file", new Blob(["a"], { type: "image/png" }));
   const req = { formData: async () => fd } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(404);
 });
 
 test("uploads avatar and updates user", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { email: "a@test.com" } });
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { email: "a@test.com" },
+  });
   (uploadAvatar as jest.Mock).mockResolvedValue("http://img");
   updateMock.mockResolvedValue({ avatar: "http://img" });
   const fd = new FormData();
+
   fd.append("file", new Blob(["a"], { type: "image/png" }));
   const req = { formData: async () => fd } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(uploadAvatar).toHaveBeenCalled();
   expect(updateMock).toHaveBeenCalled();
   expect(res.status).toBe(200);
@@ -73,11 +90,15 @@ test("uploads avatar and updates user", async () => {
 });
 
 test("returns 500 on error", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { email: "a@test.com" } });
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { email: "a@test.com" },
+  });
   (uploadAvatar as jest.Mock).mockRejectedValue(new Error("x"));
   const fd = new FormData();
+
   fd.append("file", new Blob(["a"], { type: "image/png" }));
   const req = { formData: async () => fd } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(500);
 });

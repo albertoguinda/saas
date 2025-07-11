@@ -16,17 +16,21 @@ jest.mock("@/lib/middlewares/rateLimit", () => ({
   withRateLimitRoute: (handler: any) => async (req: any) => {
     const { checkLimit } = require("@/lib/middlewares/rateLimit");
     const allowed = await checkLimit("id", 10, 60);
+
     if (!allowed) {
       return { status: 429, data: { error: "Demasiadas peticiones" } };
     }
+
     return handler(req);
   },
   withRateLimit: (handler: any) => async (req: any, res: any) => {
     const { checkLimit } = require("@/lib/middlewares/rateLimit");
     const allowed = await checkLimit("id", 10, 60);
+
     if (!allowed) {
       return res.status(429).json({ error: "Demasiadas peticiones" });
     }
+
     return handler(req, res);
   },
 }));
@@ -58,6 +62,7 @@ test("returns 401 when unauthenticated", async () => {
     json: async () => ({ event: "test" }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(401);
 });
 
@@ -74,6 +79,7 @@ test("saves event with extra data", async () => {
     }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(Event.create).toHaveBeenCalledWith({
     userId: "1",
     event: "click",
@@ -93,6 +99,7 @@ test("returns 400 when missing event", async () => {
     json: async () => ({ page: "/d" }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
   expect(Event.create).not.toHaveBeenCalled();
 });
@@ -104,6 +111,7 @@ test("returns 400 when validation fails", async () => {
     json: async () => ({ event: 1 }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
   expect(Event.create).not.toHaveBeenCalled();
 });
@@ -117,6 +125,7 @@ test("returns 400 on malformed JSON", async () => {
     },
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
   expect(Event.create).not.toHaveBeenCalled();
 });
@@ -129,5 +138,6 @@ test("returns 429 when rate limit exceeded", async () => {
     json: async () => ({ event: "x" }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(429);
 });

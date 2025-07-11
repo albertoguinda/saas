@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import { withValidationRoute } from "@/lib/middlewares/withValidation";
@@ -16,12 +17,17 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
 
     // Comprueba si existe ya el usuario
     const exists = await User.findOne({ email });
+
     if (exists) {
-      return NextResponse.json({ error: "El email ya está registrado" }, { status: 409 });
+      return NextResponse.json(
+        { error: "El email ya está registrado" },
+        { status: 409 },
+      );
     }
 
     // Crea y guarda el usuario (hash por middleware)
     const user = new User({ email, password, name, plan: "free" });
+
     await user.save();
 
     try {
@@ -33,6 +39,7 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     logger.error(err);
+
     return NextResponse.json({ error: "Error de servidor" }, { status: 500 });
   }
 }

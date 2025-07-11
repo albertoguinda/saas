@@ -75,7 +75,10 @@ export default async function handler(
     await site.save();
 
     try {
-      await Event.create({ userId: session.user.id, event: "wizard_completed" });
+      await Event.create({
+        userId: session.user.id,
+        event: "wizard_completed",
+      });
     } catch (err) {
       logger.error(err);
     }

@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { cn } from "@/lib/utils";
 
+import { cn } from "@/lib/utils";
 import { fontSans } from "@/config/fonts";
 
 export default function Document() {

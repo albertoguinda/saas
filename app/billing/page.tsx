@@ -20,6 +20,7 @@ export default function BillingPage() {
       .then((data) => {
         if (data.error) {
           setError(data.error);
+
           return;
         }
         setPayments(data.payments || []);

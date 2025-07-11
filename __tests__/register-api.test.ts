@@ -16,17 +16,21 @@ jest.mock("@/lib/middlewares/rateLimit", () => ({
   withRateLimitRoute: (handler: any) => async (req: any) => {
     const { checkLimit } = require("@/lib/middlewares/rateLimit");
     const allowed = await checkLimit("id", 10, 60);
+
     if (!allowed) {
       return { status: 429, data: { error: "Demasiadas peticiones" } };
     }
+
     return handler(req);
   },
   withRateLimit: (handler: any) => async (req: any, res: any) => {
     const { checkLimit } = require("@/lib/middlewares/rateLimit");
     const allowed = await checkLimit("id", 10, 60);
+
     if (!allowed) {
       return res.status(429).json({ error: "Demasiadas peticiones" });
     }
+
     return handler(req, res);
   },
 }));
@@ -43,6 +47,7 @@ import Event from "@/lib/models/event";
 const saveMock = jest.fn();
 const findOneMock = jest.fn();
 const userConstructor = jest.fn(() => ({ save: saveMock, id: "1" }));
+
 userConstructor.findOne = findOneMock;
 
 jest.mock("@/lib/dbConnect", () => ({ __esModule: true, default: jest.fn() }));
@@ -63,6 +68,7 @@ test("returns 400 when missing data", async () => {
     json: async () => ({ email: "a@test.com" }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(400);
 });
 
@@ -77,6 +83,7 @@ test("returns 409 when user exists", async () => {
     }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(findOneMock).toHaveBeenCalledWith({ email: "a@test.com" });
   expect(res.status).toBe(409);
 });
@@ -92,8 +99,12 @@ test("creates user when data valid", async () => {
     }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(saveMock).toHaveBeenCalled();
-  expect(Event.create).toHaveBeenCalledWith({ userId: "1", event: "signup_free" });
+  expect(Event.create).toHaveBeenCalledWith({
+    userId: "1",
+    event: "signup_free",
+  });
   expect(res.status).toBe(200);
 });
 
@@ -109,5 +120,6 @@ test("returns 429 when rate limit exceeded", async () => {
     }),
   } as unknown as NextRequest;
   const res = await POST(req);
+
   expect(res.status).toBe(429);
 });

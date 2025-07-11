@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
-
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Link } from "@heroui/link";
 import {
@@ -13,8 +12,10 @@ import {
 } from "@heroui/dropdown";
 import { Avatar } from "@heroui/avatar";
 import { Button } from "@heroui/button";
-import PlanBadge from "./PlanBadge";
+
 import { track } from "@/lib/track";
+
+import PlanBadge from "./PlanBadge";
 
 export const Logo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
@@ -36,9 +37,9 @@ export default function AppNavbar() {
   return (
     <Navbar isBordered>
       <NavbarBrand
-        onClick={() => router.push("/")}
-        className="cursor-pointer"
         aria-label="Ir al inicio"
+        className="cursor-pointer"
+        onClick={() => router.push("/")}
       >
         <Logo />
         <p className="font-bold text-inherit ml-2">PLANTSCARE</p>
@@ -66,18 +67,18 @@ export default function AppNavbar() {
       <NavbarContent as="div" justify="end">
         {session?.user ? (
           <>
-            <PlanBadge plan={session.user.plan} className="mr-2" />
+            <PlanBadge className="mr-2" plan={session.user.plan} />
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
                 <Avatar
                   isBordered
+                  aria-label="Menú de usuario"
                   as="button"
                   className="transition-transform"
                   color="secondary"
                   name={session.user.name || "Usuario"}
                   size="sm"
                   src={`https://ui-avatars.com/api/?name=${session.user.name || "U"}&background=0D8ABC&color=fff`}
-                  aria-label="Menú de usuario"
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Opciones de usuario" variant="flat">

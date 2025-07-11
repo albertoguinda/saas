@@ -11,9 +11,12 @@ const COLORS: Record<string, string> = {
   premium: "secondary",
 };
 
-export default function PlanBadge({ plan = "free", className }: PlanBadgeProps) {
+export default function PlanBadge({
+  plan = "free",
+  className,
+}: PlanBadgeProps) {
   return (
-    <Badge color={COLORS[plan]} className={className}>
+    <Badge className={className} color={COLORS[plan]}>
       {plan}
     </Badge>
   );

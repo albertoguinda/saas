@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { stripe } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
   let json: any;
+
   try {
     json = await req.json();
   } catch {
@@ -10,6 +12,7 @@ export async function POST(req: NextRequest) {
   }
 
   const { priceId, successUrl, cancelUrl } = json || {};
+
   if (!priceId || !successUrl || !cancelUrl) {
     return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
   }
@@ -23,7 +26,10 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ id: session.id });
-  } catch (err) {
-    return NextResponse.json({ error: "Error al crear sesión" }, { status: 500 });
+  } catch {
+    return NextResponse.json(
+      { error: "Error al crear sesión" },
+      { status: 500 },
+    );
   }
 }

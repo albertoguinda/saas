@@ -14,7 +14,7 @@ export default function SettingsPage() {
           <span>Modo oscuro</span>
           <Switch isSelected={darkMode} onValueChange={setDarkMode} />
         </div>
-        <Button color="warning" variant="bordered" className="mt-4">
+        <Button className="mt-4" color="warning" variant="bordered">
           Eliminar cuenta (no implementado)
         </Button>
       </Card>

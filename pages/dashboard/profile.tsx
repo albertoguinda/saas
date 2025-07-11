@@ -1,12 +1,12 @@
 // pages/dashboard/profile.tsx
 import { useSession } from "next-auth/react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Card } from "@heroui/card";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
-import { emojiAvatars } from "@/lib/avatars";
 
+import { emojiAvatars } from "@/lib/avatars";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
@@ -34,18 +34,21 @@ export default function ProfilePage() {
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
     if (!file) return;
     setLoading(true);
     setError("");
     setMsg("");
     try {
       const formData = new FormData();
+
       formData.append("file", file);
       const res = await fetch("/api/me/avatar/upload", {
         method: "POST",
         body: formData,
       });
       const data = await res.json();
+
       if (!res.ok) {
         setError(data.error || "Error subiendo avatar.");
       } else {
@@ -67,10 +70,12 @@ export default function ProfilePage() {
 
     if (form.password && form.password.length < 6) {
       setError("La contraseña debe tener al menos 6 caracteres.");
+
       return;
     }
     if (form.password && form.password !== form.password2) {
       setError("Las contraseñas no coinciden.");
+
       return;
     }
 
@@ -86,6 +91,7 @@ export default function ProfilePage() {
         }),
       });
       const data = await res.json();
+
       if (!res.ok) {
         setError(data.error || "Error actualizando el perfil.");
       } else {
@@ -106,13 +112,17 @@ export default function ProfilePage() {
       <Card className="flex flex-col gap-6 p-8">
         <div className="flex items-center gap-4">
           {form.avatar.startsWith("http") ? (
-            <img src={form.avatar} alt="avatar" className="w-12 h-12 rounded-full" />
+            <img
+              alt="avatar"
+              className="w-12 h-12 rounded-full"
+              src={form.avatar}
+            />
           ) : (
             <span className="text-4xl">{form.avatar}</span>
           )}
           <span className="font-semibold">{session?.user?.email}</span>
         </div>
-        <input type="file" accept="image/*" onChange={handleUpload} />
+        <input accept="image/*" type="file" onChange={handleUpload} />
         {msg && (
           <Alert color="success" role="alert">
             {msg}
@@ -123,14 +133,14 @@ export default function ProfilePage() {
             {error}
           </Alert>
         )}
-        <form onSubmit={handleSave} className="flex flex-col gap-4 mt-2">
+        <form className="flex flex-col gap-4 mt-2" onSubmit={handleSave}>
           <Input
+            required
             label="Nombre"
             name="name"
+            placeholder="Nombre"
             value={form.name}
             onChange={handleChange}
-            placeholder="Nombre"
-            required
           />
           {/* Selector de emoji avatar */}
           <div>
@@ -138,13 +148,13 @@ export default function ProfilePage() {
             <div className="flex flex-wrap gap-2">
               {emojiAvatars.map((emoji) => (
                 <button
-                  type="button"
                   key={emoji}
+                  aria-label={`Elegir avatar ${emoji}`}
                   className={`text-2xl rounded-lg p-1 border transition
                     ${form.avatar === emoji ? "bg-violet-100 border-violet-400 scale-110" : "border-transparent hover:bg-violet-50"}
                   `}
+                  type="button"
                   onClick={() => handleSelectAvatar(emoji)}
-                  aria-label={`Elegir avatar ${emoji}`}
                 >
                   {emoji}
                 </button>
@@ -152,26 +162,31 @@ export default function ProfilePage() {
             </div>
           </div>
           <Input
+            autoComplete="new-password"
             label="Nueva contraseña"
+            minLength={6}
             name="password"
+            placeholder="••••••••"
             type="password"
             value={form.password}
             onChange={handleChange}
-            placeholder="••••••••"
-            minLength={6}
-            autoComplete="new-password"
           />
           <Input
+            autoComplete="new-password"
             label="Repetir nueva contraseña"
+            minLength={6}
             name="password2"
+            placeholder="••••••••"
             type="password"
             value={form.password2}
             onChange={handleChange}
-            placeholder="••••••••"
-            minLength={6}
-            autoComplete="new-password"
           />
-          <Button type="submit" className="w-full" color="primary" isLoading={loading}>
+          <Button
+            className="w-full"
+            color="primary"
+            isLoading={loading}
+            type="submit"
+          >
             Guardar cambios
           </Button>
         </form>

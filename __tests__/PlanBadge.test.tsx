@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import PlanBadge from '@/components/PlanBadge';
+import { render, screen } from "@testing-library/react";
 
-test('renders plan label', () => {
+import PlanBadge from "@/components/PlanBadge";
+
+test("renders plan label", () => {
   render(<PlanBadge plan="pro" />);
-  expect(screen.getByText('pro')).toBeInTheDocument();
+  expect(screen.getByText("pro")).toBeInTheDocument();
 });

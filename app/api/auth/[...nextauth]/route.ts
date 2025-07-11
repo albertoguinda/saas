@@ -7,8 +7,8 @@ import type { JWT } from "next-auth/jwt";
 
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { comparePassword } from "@/lib/utils";
 
+import { comparePassword } from "@/lib/utils";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 

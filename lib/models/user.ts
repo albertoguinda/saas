@@ -1,8 +1,10 @@
 // lib/models/user.ts
 
-import mongoose from "mongoose";
 import type { Document } from "mongoose";
+
+import mongoose from "mongoose";
 const { Schema, model, models } = mongoose;
+
 import { hashPassword, comparePassword } from "../utils";
 
 // Interfaz para TypeScript: extiende Document para compatibilidad con mongoose
@@ -18,11 +20,17 @@ export interface IUser extends Document {
 
 // Definición del esquema del usuario
 const UserSchema = new Schema<IUser>({
-  name:      { type: String, trim: true },
-  email:     { type: String, required: true, unique: true, lowercase: true, trim: true },
-  password:  { type: String, required: true, minlength: 6 },
-  avatar:    { type: String, default: "😀" }, // Por defecto: emoji sonriente
-  plan:      { type: String, enum: ["free", "pro", "premium"], default: "free" },
+  name: { type: String, trim: true },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+  },
+  password: { type: String, required: true, minlength: 6 },
+  avatar: { type: String, default: "😀" }, // Por defecto: emoji sonriente
+  plan: { type: String, enum: ["free", "pro", "premium"], default: "free" },
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -34,7 +42,9 @@ UserSchema.pre("save", async function (next) {
 });
 
 // Método de instancia para comparar contraseñas
-UserSchema.methods.comparePassword = async function (candidatePassword: string) {
+UserSchema.methods.comparePassword = async function (
+  candidatePassword: string,
+) {
   return comparePassword(candidatePassword, this.password);
 };
 
