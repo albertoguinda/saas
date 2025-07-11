@@ -26,12 +26,14 @@ Toda contribución debe alinearse con:
   Estructura clásica Next.js. Migración progresiva a **App Router** (`/app/`).
 
 - **Componentes** (`/components/`)
+
   - `/components/ui/` → wrappers/extensiones de HeroUI
   - `/components/forms/` → formularios reutilizables
   - `/components/layout/` → navbar, sidebar, footer, toggles…
   - Componentes ultra-específicos: mantenlos locales a la página.
 
 - **Lib** (`/lib/`)
+
   - `dbConnect.ts` – conexión Mongo (cache global)
   - `models/` – modelos Mongoose (`user.ts`, `site.ts`, …)
   - `middlewares/` – middlewares reutilizables (`withAuthPlan`, …)
@@ -64,6 +66,12 @@ Toda contribución debe alinearse con:
 - **Elimina imports y variables sin usar**.
 - **Props en JSX**: `key`, `ref`, props estándar, callbacks y spread al final.
 - **Aplica Prettier y corrige warnings ESLint** antes de hacer commit.
+
+## 🌍 Traducciones
+
+- Añade idiomas en `messages/<locale>.json` siguiendo la estructura de `en.json`.
+- Ejecuta `npm run translations:check` tras modificar traducciones.
+- Ejecuta `npm run i18n:check` para detectar claves sin uso o faltantes.
 
 ---
 
