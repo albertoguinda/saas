@@ -15,7 +15,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 - ✅ Proyecto **Next.js 15** (Pages Router + App Router híbrido) con **TypeScript estricto**
 - ✅ **TailwindCSS + HeroUI v2** instalados
-- ✅ Entorno dev: **ESLint**, **Prettier**, `cross-env`, tipos `@types/*`
+- ✅ Entorno dev: **ESLint**, **Prettier**, `cross-env`, tipos `@types/*`, hooks pre-commit **Husky + lint-staged**
 - ✅ Script `dev` con `NODE_OPTIONS=--trace-warnings`
 
 ---
@@ -34,8 +34,8 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 ## 3️⃣ Fase 3 — Generador de sitios (Plan FREE) (✅ completada)
 
-| Tarea                                    | Estado          |
-| ---------------------------------------- | --------------- |
+| Tarea                                    | Estado             |
+| ---------------------------------------- | ------------------ |
 | Wizard paso-a-paso (HeroUI)              | **✅ 03-Jul-2025** |
 | Límite 1 sitio por usuario FREE          | **✅ 03-Jul-2025** |
 | Guardar config de sitio en MongoDB       | **✅ 03-Jul-2025** |
@@ -52,6 +52,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - Dashboard: historial y panel de pagos
 
 - Vista de facturación e historial de pagos
+
 ---
 
 ## 5️⃣ Fase 5 — Funcionalidades PRO (⬜ pendiente)
