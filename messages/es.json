@@ -136,6 +136,7 @@
   "plan.pro": "Pro",
   "plan.premium": "Premium",
   "plan.trial": "Trial",
+  "plan.required": "Plan {plan} requerido",
   "theme.dark": "Cambiar a modo oscuro",
   "theme.light": "Cambiar a modo claro",
   "footer.powered": "Impulsado por",

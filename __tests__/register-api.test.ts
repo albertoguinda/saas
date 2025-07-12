@@ -113,6 +113,8 @@ test("creates user when data valid", async () => {
     password: "123456",
     name: "test",
     plan: "free",
+    trialStart: expect.any(Date),
+    trialDurationDays: 7,
     trialEndsAt: expect.any(Date),
   });
   expect(Event.create).toHaveBeenNthCalledWith(1, {
