@@ -25,6 +25,13 @@ jest.mock("@/lib/models/user", () => ({
   __esModule: true,
   default: { findOneAndUpdate: updateMock },
 }));
+const onboardingFind = jest.fn();
+const onboardingCreate = jest.fn();
+
+jest.mock("@/lib/models/onboarding", () => ({
+  __esModule: true,
+  default: { findOne: onboardingFind, create: onboardingCreate },
+}));
 jest.mock("@/lib/models/site", () => ({
   __esModule: true,
   default: { find: (...args: unknown[]) => findSites(...args) },
@@ -32,12 +39,14 @@ jest.mock("@/lib/models/site", () => ({
 jest.mock("@/lib/upstash", () => ({ redis: {} }));
 
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
+jest.mock("@/lib/track", () => ({ trackServer: jest.fn() }));
 
 import { POST } from "@/app/api/stripe/webhook/route";
 
 beforeEach(() => {
   jest.clearAllMocks();
   findSites.mockResolvedValue([]);
+  onboardingFind.mockResolvedValue(null);
 });
 
 test("returns 400 on invalid signature", async () => {
@@ -75,6 +84,7 @@ test("updates user plan when session completed", async () => {
       object: { metadata: { userId: "u1" }, customer_email: "a@test.com" },
     },
   });
+  updateMock.mockResolvedValue({ _id: "u1" });
   const req = {
     method: "POST",
     text: async () => "{}",
@@ -84,9 +94,10 @@ test("updates user plan when session completed", async () => {
   await POST(req);
   expect(updateMock).toHaveBeenCalledWith(
     { _id: "u1" },
-    { plan: "pro" },
+    { plan: "premium" },
     { new: true },
   );
+  expect(onboardingCreate).toHaveBeenCalled();
 });
 
 test("logs error when update fails", async () => {

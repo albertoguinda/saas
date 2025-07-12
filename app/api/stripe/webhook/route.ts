@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
+import Onboarding from "@/lib/models/onboarding";
 import { logger } from "@/lib/logger";
 import { invalidateSite } from "@/lib/cache";
+import { trackServer } from "@/lib/track";
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
@@ -32,7 +34,7 @@ export async function POST(req: NextRequest) {
         await dbConnect();
         const user = await User.findOneAndUpdate(
           userId ? { _id: userId } : { email },
-          { plan: "pro" },
+          { plan: "premium" },
           { new: true },
         );
 
@@ -41,6 +43,14 @@ export async function POST(req: NextRequest) {
           const sites = await Site.find({ userId: user._id });
 
           await Promise.all(sites.map((s) => invalidateSite(s.slug)));
+
+          const existing = await Onboarding.findOne({ userId: user._id });
+
+          if (!existing) {
+            await Onboarding.create({ userId: user._id });
+            logger.info("[onboarding] started", user._id);
+            trackServer(user._id.toString(), "onboarding_started");
+          }
         }
       }
     } catch (err) {

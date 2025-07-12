@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Onboarding from "@/lib/models/onboarding";
+import { trackServer } from "@/lib/track";
+import { logger } from "@/lib/logger";
 
 async function handler(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -15,7 +17,13 @@ async function handler(req: NextRequest) {
   await dbConnect();
 
   if (req.method === "GET") {
-    const onboarding = await Onboarding.findOne({ userId: session.user.id });
+    let onboarding = await Onboarding.findOne({ userId: session.user.id });
+
+    if (!onboarding && session.user.plan === "premium") {
+      onboarding = await Onboarding.create({ userId: session.user.id });
+      logger.info("[onboarding] started", session.user.id);
+      trackServer(session.user.id, "onboarding_started");
+    }
 
     return NextResponse.json({ onboarding });
   }
@@ -40,6 +48,11 @@ async function handler(req: NextRequest) {
       { [step]: true },
       { upsert: true, new: true },
     );
+
+    if (onboarding.branding && onboarding.domain && onboarding.analytics) {
+      logger.info("[onboarding] completed", session.user.id);
+      trackServer(session.user.id, "onboarding_completed");
+    }
 
     return NextResponse.json({ onboarding });
   }

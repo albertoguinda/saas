@@ -42,6 +42,8 @@ Todos los campos salvo `event` son opcionales.
 - `upgrade_click` – intento de mejora de plan
 - `signup_free` – registro exitoso de usuario
 - `wizard_completed` – finalización del proceso de creación
+- `onboarding_started` – inicio del flujo tras upgrade premium
+- `onboarding_completed` – todos los pasos marcados
 
 ## 🔍 Uso de marcas de tiempo y coordenadas
 

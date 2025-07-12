@@ -4,7 +4,10 @@ import { getServerSession } from "next-auth/next";
 
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
+import Onboarding from "@/lib/models/onboarding";
 import { authOptions } from "@/lib/auth";
+import { logger } from "@/lib/logger";
+import { trackServer } from "@/lib/track";
 
 export default async function handler(
   req: NextApiRequest,
@@ -41,6 +44,16 @@ export default async function handler(
       { plan },
       { new: true },
     );
+
+    if (user && plan === "premium") {
+      const existing = await Onboarding.findOne({ userId: user._id });
+
+      if (!existing) {
+        await Onboarding.create({ userId: user._id });
+        logger.info("[onboarding] started", user._id);
+        trackServer(user._id.toString(), "onboarding_started");
+      }
+    }
 
     if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
 

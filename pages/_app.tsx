@@ -8,6 +8,7 @@ import { ToastProvider, ToastViewport } from "@heroui/toast";
 import { useRouter } from "next/router";
 
 import { fontSans, fontMono } from "@/config/fonts";
+import OnboardingGate from "@/components/OnboardingGate";
 import "@/styles/globals.css";
 
 export const fonts = {
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           defaultTheme="system"
         >
           <ToastProvider placement="top-right">
+            <OnboardingGate />
             <Component {...pageProps} />
             <ToastViewport />
           </ToastProvider>
