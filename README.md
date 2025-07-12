@@ -31,10 +31,7 @@ Requiere **Node.js 18 LTS** y `npm` instalado.
 ```bash
 git clone https://github.com/albertoguinda/saas.git
 cd saas
-./scripts/setup.sh                     # instala dependencias y ejecuta lint y tests
-cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY, UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN
-# crea next-intl.config.ts si no existe (ver sección i18n)
-npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
+npm run setup                          # instala deps, copia .env.local y refresca la BBDD
 npm run dev
 ```
 
@@ -50,31 +47,31 @@ UPSTASH_REDIS_REST_TOKEN=local
 
 Si faltan estas variables en desarrollo, el proyecto usará mocks en memoria para MongoDB y Redis, evitando errores de arranque.
 
-TIP: si solo necesitas seedear de nuevo usa npm run seed.
+TIP: si solo necesitas seedear de nuevo usa `npm run seed`.
 
 ### 🧪 Ejecutar tests
 
 ```bash
-./scripts/setup.sh
+npm run setup
 ```
 
-El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` usando el **test runner** de Node.js 18+ (`node --test`).
+El script instala dependencias, crea `.env.local` si no existe, resetea la base de datos y lanza `npm run check` usando el **test runner** de Node.js 18+ (`node --test`).
 
-> **Importante:** reejecuta `./scripts/setup.sh` si fallan las pruebas por dependencias ausentes.
+> **Importante:** reejecuta `npm run setup` si fallan las pruebas por dependencias ausentes o cambios de BBDD.
 
 ### 🔍 Ejecutar lint
 
 ```bash
-./scripts/setup.sh
+npm run check
 ```
 
-El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
+Ejecuta lint, formato y tests en un solo paso.
 
 ### 🚀 Scripts de desarrollo
 
 ```bash
 npm run check  # lint, format y test
-npm run setup  # instala dependencias y ejecuta las pruebas
+npm run setup  # prepara entorno (deps, .env, DB) y ejecuta check
 ```
 
 ### 📦 Exportar proyecto
@@ -268,6 +265,6 @@ MIT © 2025 — Construyamos juntos el SaaS que nos gustaría usar 🚀
 
 ## ⚙️ Integración continua
 
-El repositorio cuenta con el workflow `.github/workflows/ci.yml` que valida cada pull request en Node.js 20 sobre Linux, macOS y Windows. El flujo instala dependencias con `npm ci`, ejecuta `npm run lint`, comprueba el formato con `npm run format` (fallando si se modifican archivos) y finalmente lanza `npm test`.
+El repositorio cuenta con el workflow `.github/workflows/ci.yml` que valida cada pull request en Node.js 20 sobre Linux, macOS y Windows. El flujo instala dependencias con `npm ci` y ejecuta `npm run check` (lint, formato y tests).
 
-De forma local se utilizan Husky y lint‑staged para correr los mismos comandos antes de cada commit, asegurando que el código pase lint y quede formateado tanto en local como en CI.
+De forma local Husky dispara `npm run check` y `lint‑staged` antes de cada commit, evitando errores manuales.

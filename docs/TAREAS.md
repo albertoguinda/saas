@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 16:30 UTC**
+\_Actualizado: **22-Jul-2025 10:00 UTC**
 
 ---
 
@@ -133,6 +133,7 @@
 - [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
 - [x] Script `npm run check:legal` para verificar textos legales
 - [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
+- [x] Mejora scripts de automatizacion y pre-commit (check + setup) — 22-Jul-2025 (d41148f)
 - [x] Plantilla de issue feedback UX/traducciones
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
