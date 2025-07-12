@@ -148,6 +148,14 @@ guarda la URL en MongoDB.
 En el dashboard puedes añadir tu dominio y comprobar el estado de validación.
 Se guardan en MongoDB con las fases **pending**, **validating** y **active**.
 
+### Configurar Stripe
+
+1. Crea producto y precio recurrente en tu cuenta de Stripe.
+2. Copia los IDs en `.env.local` como `STRIPE_PREMIUM_PRODUCT_ID` y `STRIPE_PREMIUM_PRICE_ID`.
+3. Define `STRIPE_SECRET_KEY` y `STRIPE_WEBHOOK_SECRET`.
+4. Ejecuta `stripe listen --forward-to localhost:3000/api/stripe/webhook` para probar en local.
+5. Usa el modo test de Stripe para simular pagos fallidos con tarjetas de prueba.
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.

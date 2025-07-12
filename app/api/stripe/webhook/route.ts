@@ -1,9 +1,12 @@
+import type Stripe from "stripe";
+
 import { NextRequest, NextResponse } from "next/server";
 
 import { stripe } from "@/lib/stripe";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
 import Onboarding from "@/lib/models/onboarding";
+import Payment from "@/lib/models/payment";
 import { logger } from "@/lib/logger";
 import { invalidateSite } from "@/lib/cache";
 import { trackServer } from "@/lib/track";
@@ -12,7 +15,7 @@ export async function POST(req: NextRequest) {
   const payload = await req.text();
   const signature = req.headers.get("stripe-signature") || "";
 
-  let event: any;
+  let event: Stripe.Event;
 
   try {
     event = stripe.webhooks.constructEvent(
@@ -24,14 +27,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Firma inválida" }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
-    const session = (event.data?.object || {}) as any;
-    const userId = session.metadata?.userId;
-    const email = session.customer_email;
+  try {
+    await dbConnect();
 
-    try {
-      if (userId || email) {
-        await dbConnect();
+    switch (event.type) {
+      case "checkout.session.completed": {
+        const session = event.data?.object as Stripe.Checkout.Session;
+        const userId = session.metadata?.userId;
+        const email = session.customer_email as string | undefined;
+
+        if (!userId && !email) break;
+
         const user = await User.findOneAndUpdate(
           userId ? { _id: userId } : { email },
           { plan: "premium" },
@@ -39,6 +45,14 @@ export async function POST(req: NextRequest) {
         );
 
         if (user) {
+          await Payment.create({
+            userId: user._id,
+            stripeId: session.id,
+            amount: session.amount_total || 0,
+            currency: session.currency || "usd",
+            status: session.payment_status || "succeeded",
+          });
+
           const { default: Site } = await import("@/lib/models/site");
           const sites = await Site.find({ userId: user._id });
 
@@ -52,10 +66,36 @@ export async function POST(req: NextRequest) {
             trackServer(user._id.toString(), "onboarding_started");
           }
         }
+
+        break;
       }
-    } catch (err) {
-      logger.error(err);
+      case "customer.subscription.updated": {
+        const sub = event.data?.object as Stripe.Subscription;
+
+        if (sub.status !== "active") {
+          await User.findOneAndUpdate(
+            { customerId: sub.customer },
+            { plan: "free" },
+          );
+        }
+
+        break;
+      }
+      case "customer.subscription.deleted": {
+        const sub = event.data?.object as Stripe.Subscription;
+
+        await User.findOneAndUpdate(
+          { customerId: sub.customer },
+          { plan: "free" },
+        );
+
+        break;
+      }
+      default:
+        break;
     }
+  } catch (err) {
+    logger.error(err);
   }
 
   return NextResponse.json({ received: true });

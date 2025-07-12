@@ -36,6 +36,12 @@ jest.mock("@/lib/models/site", () => ({
   __esModule: true,
   default: { find: (...args: unknown[]) => findSites(...args) },
 }));
+const paymentCreate = jest.fn();
+
+jest.mock("@/lib/models/payment", () => ({
+  __esModule: true,
+  default: { create: paymentCreate },
+}));
 jest.mock("@/lib/upstash", () => ({ redis: {} }));
 
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
@@ -98,6 +104,7 @@ test("updates user plan when session completed", async () => {
     { new: true },
   );
   expect(onboardingCreate).toHaveBeenCalled();
+  expect(paymentCreate).toHaveBeenCalled();
 });
 
 test("logs error when update fails", async () => {
