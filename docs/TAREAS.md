@@ -197,4 +197,10 @@
 
 ---
 
+### 💡 Tips de desarrollo local
+
+- Crea `next-intl.config.ts` en la raíz para que la i18n funcione.
+- Usa mocks automáticos si Mongo o Redis faltan.
+- Prueba landings añadiendo `?lang=es` al slug y ajustando el plan en los mocks.
+
 > **Recuerda:** Actualiza este archivo al cerrar una feature, añadir una nueva necesidad o mover tareas de fase. No dupliques; mueve y marca con `[x]` según corresponda.
