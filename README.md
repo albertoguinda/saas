@@ -90,10 +90,22 @@ descargar el contenido actual.
 ### 🗄️ Backups locales
 
 ```bash
-npm run backup
+npm run backup:local
 ```
 
-Ejecuta una copia básica de seguridad en `backup.json` para pruebas y CI.
+Genera `backup.json` para pruebas y CI.
+
+Los usuarios autenticados pueden usar:
+
+```bash
+curl -X POST /api/backup/create > backup.zip
+```
+
+Para restaurar:
+
+```bash
+curl -X POST -F file=@backup.zip /api/backup/restore
+```
 
 ### ⚡ Caché de sitios
 

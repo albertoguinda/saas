@@ -5,7 +5,12 @@ Los usuarios del plan PREMIUM pueden generar una copia de seguridad manualmente 
 ## Uso local
 
 ```bash
-npm run backup
+npm run backup:local
 ```
 
-Este comando crea `backup.json` con una exportación básica de la base de datos para pruebas.
+Genera `backup.json` con una exportación básica para pruebas.
+
+### Endpoints
+
+- `POST /api/backup/create` → descarga `backup.zip` con tus sitios y perfil.
+- `POST /api/backup/restore` → sube `backup.zip` o JSON para restaurar tu cuenta.
