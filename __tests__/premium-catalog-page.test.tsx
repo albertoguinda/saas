@@ -6,6 +6,14 @@ jest.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key.split(".").pop(),
 }));
 
+jest.mock("@/components/premium/maps/MapWidget", () => {
+  function Mock() {
+    return <div>map</div>;
+  }
+
+  return Mock;
+});
+
 jest.mock("next-auth/react", () => ({
   useSession: () => ({ data: { user: { plan: "free" } } }),
 }));

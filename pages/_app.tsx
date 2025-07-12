@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { fontSans, fontMono } from "@/config/fonts";
 import OnboardingGate from "@/components/OnboardingGate";
 import "@/styles/globals.css";
+import "leaflet/dist/leaflet.css";
 
 export const fonts = {
   sans: fontSans.style.fontFamily,

@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 
 import UpgradeBanner from "@/components/UpgradeBanner";
+import MapWidget from "@/components/premium/maps/MapWidget";
 
 interface Template {
   name: string;
@@ -55,6 +56,23 @@ export default function PremiumCatalogPage() {
           ))}
         </div>
       )}
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">BusAvanza Map</h2>
+        <MapWidget
+          markers={[
+            { position: [40.4168, -3.7038], label: "Madrid" },
+            { position: [41.3874, 2.1686], label: "Barcelona" },
+          ]}
+          routes={[
+            {
+              positions: [
+                [40.4168, -3.7038],
+                [41.3874, 2.1686],
+              ],
+            },
+          ]}
+        />
+      </div>
       {selected && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <Card className="p-6 w-full max-w-lg flex flex-col gap-4">

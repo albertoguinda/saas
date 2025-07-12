@@ -15,10 +15,11 @@ export default {
     ],
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(jose|next-auth|openid-client|next-intl|use-intl|@panva/hkdf|preact-render-to-string|preact)/)",
+    "/node_modules/(?!(jose|next-auth|openid-client|next-intl|use-intl|@panva/hkdf|preact-render-to-string|preact|react-leaflet|@react-leaflet/.*|react-leaflet-cluster|leaflet)/)",
   ],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: "<rootDir>/",
-  }),
+  moduleNameMapper: {
+    "\\.css$": "identity-obj-proxy",
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/" }),
+  },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };

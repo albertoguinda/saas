@@ -202,6 +202,28 @@ Accede a `/dashboard/premium-catalog` para descubrir los componentes de pago. El
 endpoint `/api/premium/templates` devuelve la lista de plantillas y en local usa
 mocks para no fallar.
 
+### Mapa interactivo BusAvanza
+
+El componente `MapWidget` permite renderizar rutas y marcadores en un mapa basado en Leaflet. Ejemplo rápido:
+
+```tsx
+import MapWidget from "@/components/premium/maps/MapWidget";
+
+<MapWidget
+  markers={[{ position: [40.4168, -3.7038], label: "Madrid" }]}
+  routes={[
+    {
+      positions: [
+        [40.4168, -3.7038],
+        [41.3874, 2.1686],
+      ],
+    },
+  ]}
+/>;
+```
+
+Configura `NEXT_PUBLIC_MAP_TOKEN` y `NEXT_PUBLIC_MAP_STYLE` si usas un proveedor como MapTiler.
+
 Para extender el catálogo edita `app/api/premium/templates/route.ts` y añade
 objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
 definen por URL; emplea tu CDN o un placeholder del estilo

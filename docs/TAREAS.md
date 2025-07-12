@@ -214,6 +214,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
+- [x] Mapa interactivo BusAvanza (Leaflet) — 12-Jul-2025
 
 #### 🧪 Retención, métricas y feedback
 

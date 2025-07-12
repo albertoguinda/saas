@@ -8,7 +8,16 @@ const nextConfig: NextConfig = {
   turbopack: {},
 
   images: {
-    domains: ["i.pravatar.cc"],
+    domains: [
+      "i.pravatar.cc",
+      "tile.openstreetmap.org",
+      "basemaps.cartocdn.com",
+    ],
+  },
+
+  env: {
+    NEXT_PUBLIC_MAP_TOKEN: process.env.NEXT_PUBLIC_MAP_TOKEN,
+    NEXT_PUBLIC_MAP_STYLE: process.env.NEXT_PUBLIC_MAP_STYLE,
   },
 
   // Puedes añadir rewrites/redirects aquí:
