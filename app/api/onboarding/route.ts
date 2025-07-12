@@ -29,17 +29,41 @@ async function handler(req: NextRequest) {
       return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
     }
 
-    const { step } = json as { step?: string };
+    const { step, completed } = json as {
+      step?: string;
+      completed?: boolean;
+    };
 
-    if (!step) {
+    if (!step && completed === undefined) {
       return NextResponse.json({ error: "Paso inválido" }, { status: 400 });
     }
 
-    const onboarding = await Onboarding.findOneAndUpdate(
+    const updates: Record<string, unknown> = {};
+
+    if (step) {
+      updates[step] = true;
+      updates.onboardingStep = step;
+    }
+
+    if (typeof completed === "boolean") {
+      updates.onboardingCompleted = completed;
+    }
+
+    let onboarding = await Onboarding.findOneAndUpdate(
       { userId: session.user.id },
-      { [step]: true },
+      updates,
       { upsert: true, new: true },
     );
+
+    if (
+      onboarding.branding &&
+      onboarding.domain &&
+      onboarding.analytics &&
+      !onboarding.onboardingCompleted
+    ) {
+      onboarding.onboardingCompleted = true;
+      onboarding = await onboarding.save();
+    }
 
     return NextResponse.json({ onboarding });
   }

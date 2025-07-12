@@ -54,3 +54,18 @@ test("PATCH marks step", async () => {
   expect(res.status).toBe(200);
   expect(findOneAndUpdate).toHaveBeenCalled();
 });
+
+test("PATCH marks completed", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: "1" } });
+  findOneAndUpdate.mockResolvedValue({ onboardingCompleted: true });
+
+  const req = {
+    method: "PATCH",
+    json: async () => ({ completed: true }),
+  } as unknown as NextRequest;
+
+  const res = await PATCH(req);
+
+  expect(res.status).toBe(200);
+  expect(findOneAndUpdate).toHaveBeenCalled();
+});

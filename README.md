@@ -119,6 +119,19 @@ Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
 
 Cada paso se marca como completado y se almacena en tu cuenta.
 
+```bash
+# Obtener progreso
+curl /api/onboarding
+
+# Marcar un paso
+curl -X PATCH -H "Content-Type: application/json" \
+  -d '{"step":"branding"}' /api/onboarding
+
+# Finalizar onboarding
+curl -X PATCH -H "Content-Type: application/json" \
+  -d '{"completed":true}' /api/onboarding
+```
+
 Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
 
 ### Conexión de dominio propio
