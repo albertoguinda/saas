@@ -1,3 +1,7 @@
+import { exec } from "node:child_process";
+import { readFile, unlink } from "node:fs/promises";
+import { promisify } from "node:util";
+
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 
@@ -20,8 +24,26 @@ async function handler(req: NextRequest) {
     return NextResponse.json({ error: "ID inválido" }, { status: 400 });
   }
 
-  // TODO: implement incremental static export and zip
-  return NextResponse.json({ ok: true });
+  const execAsync = promisify(exec);
+
+  try {
+    await execAsync("npm run export:zip");
+    const buffer = await readFile("out.zip");
+
+    await unlink("out.zip").catch(() => {});
+
+    return new Response(buffer, {
+      headers: {
+        "Content-Type": "application/zip",
+        "Content-Disposition": `attachment; filename=${siteId}.zip`,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console -- log error for debugging
+    console.error(e);
+
+    return NextResponse.json({ error: "Error generando ZIP" }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

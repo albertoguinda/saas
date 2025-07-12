@@ -14,6 +14,15 @@ jest.mock("next-auth/next", () => ({
   getServerSession: jest.fn().mockResolvedValue(null),
 }));
 
+jest.mock("node:child_process", () => ({
+  exec: jest.fn((_cmd: string, cb: (e: any) => void) => cb(null)),
+}));
+
+jest.mock("node:fs/promises", () => ({
+  readFile: jest.fn(async () => Buffer.from("a")),
+  unlink: jest.fn(async () => {}),
+}));
+
 jest.mock("@/lib/auth", () => ({ __esModule: true, authOptions: {} }));
 
 import { getServerSession } from "next-auth";
@@ -44,5 +53,4 @@ test("returns ok with siteId", async () => {
   const res = await POST(req);
 
   expect(res.status).toBe(200);
-  expect(res.data).toEqual({ ok: true });
 });
