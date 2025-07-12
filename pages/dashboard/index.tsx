@@ -21,7 +21,12 @@ export default function DashboardHome() {
   const projectLimit = 1;
   const trialEnds = session?.user?.trialEndsAt
     ? new Date(session.user.trialEndsAt)
-    : null;
+    : session?.user?.trialStart && session?.user?.trialDurationDays
+      ? new Date(
+          new Date(session.user.trialStart).getTime() +
+            session.user.trialDurationDays * 86400000,
+        )
+      : null;
   const trialActive = trialEnds && trialEnds > new Date();
 
   useEffect(() => {
@@ -40,7 +45,9 @@ export default function DashboardHome() {
         {session?.user?.plan && (
           <PlanBadge
             plan={session.user.plan}
+            trialDurationDays={session.user.trialDurationDays}
             trialEndsAt={session.user.trialEndsAt}
+            trialStart={session.user.trialStart}
           />
         )}
       </h1>

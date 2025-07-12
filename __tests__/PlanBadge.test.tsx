@@ -12,6 +12,8 @@ test("renders plan label", () => {
 });
 
 test("shows trial when active", () => {
-  render(<PlanBadge plan="free" trialEndsAt={new Date(Date.now() + 1000)} />);
+  render(
+    <PlanBadge plan="free" trialDurationDays={7} trialStart={new Date()} />,
+  );
   expect(screen.getByText("trial")).toBeInTheDocument();
 });

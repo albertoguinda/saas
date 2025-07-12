@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:16 UTC**
+\_Actualizado: **12-Jul-2025 20:47 UTC**
 
 ---
 
@@ -28,6 +28,7 @@
 | Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
 | Panel de analítica simple                 | ✅     | 2025-07-11 | 995e78e | albertoguinda |
 | Free trial y control de planes            | ✅     | 2025-07-11 | d30e710 | albertoguinda |
+| Refuerzo middleware free trial            | ✅     | 2025-07-12 | TBD     | albertoguinda |
 | FAQ y nuevos scripts docs                 | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
 | i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
 | Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |

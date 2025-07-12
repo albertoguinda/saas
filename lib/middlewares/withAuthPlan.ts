@@ -6,6 +6,9 @@ import { getServerSession } from "next-auth/next";
 
 import { logger } from "@/lib/logger";
 import { authOptions } from "@/lib/auth";
+import { TRIAL_DURATION_DAYS } from "@/config/constants";
+import en from "@/messages/en.json" assert { type: "json" };
+import es from "@/messages/es.json" assert { type: "json" };
 
 const PLANS_ORDER = {
   FREE: 0,
@@ -14,6 +17,24 @@ const PLANS_ORDER = {
 } as const;
 
 export type PlanName = keyof typeof PLANS_ORDER;
+
+const translations = { en, es } as const;
+
+function t(
+  locale: "en" | "es",
+  key: string,
+  vars?: Record<string, string | number>,
+) {
+  let str: string = (translations as any)[locale][key] || key;
+
+  if (vars) {
+    for (const k of Object.keys(vars)) {
+      str = str.replace(`{${k}}`, String(vars[k]));
+    }
+  }
+
+  return str;
+}
 
 function getLocale(req: NextApiRequest | NextRequest) {
   const headers: any = (req as any).headers;
@@ -26,10 +47,10 @@ function getLocale(req: NextApiRequest | NextRequest) {
 }
 
 function planError(req: NextApiRequest | NextRequest, plan: PlanName) {
-  const locale = getLocale(req);
+  const locale = getLocale(req) as "en" | "es";
 
   return {
-    error: locale === "en" ? `Plan ${plan} required` : `Plan ${plan} requerido`,
+    error: t(locale, "plan.required", { plan }),
   };
 }
 
@@ -50,20 +71,51 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
     }
 
     let plan = (session.user.plan || "free").toUpperCase() as PlanName;
+    let trialExpired = false;
 
-    if (plan === "FREE" && session.user.trialEndsAt) {
-      const trialEnds = new Date(session.user.trialEndsAt);
+    if (plan === "FREE") {
+      let trialEnds: Date | null = null;
 
-      if (trialEnds > new Date()) {
+      if (session.user.trialStart && session.user.trialDurationDays) {
+        trialEnds = new Date(
+          new Date(session.user.trialStart).getTime() +
+            session.user.trialDurationDays * 86400000,
+        );
+      } else if (session.user.trialEndsAt) {
+        trialEnds = new Date(session.user.trialEndsAt);
+      }
+
+      if (!session.user.trialStart && !session.user.trialEndsAt) {
+        try {
+          const { default: connect } = await import("@/lib/dbConnect");
+          const { default: User } = await import("@/lib/models/user");
+
+          await connect();
+          const start = new Date();
+
+          trialEnds = new Date(
+            start.getTime() + TRIAL_DURATION_DAYS * 86400000,
+          );
+          await User.findByIdAndUpdate(session.user.id, {
+            trialStart: start,
+            trialDurationDays: TRIAL_DURATION_DAYS,
+            trialEndsAt: trialEnds,
+          });
+          plan = "PRO";
+        } catch (err) {
+          logger.error(err);
+        }
+      } else if (trialEnds && trialEnds > new Date()) {
         plan = "PRO";
-      } else {
+      } else if (trialEnds) {
+        trialExpired = true;
         try {
           const { default: connect } = await import("@/lib/dbConnect");
           const { default: User } = await import("@/lib/models/user");
 
           await connect();
           await User.findByIdAndUpdate(session.user.id, {
-            $unset: { trialEndsAt: 1 },
+            $unset: { trialStart: 1, trialDurationDays: 1, trialEndsAt: 1 },
             plan: "free",
           });
         } catch (err) {
@@ -73,7 +125,13 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
     }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
-      return res.status(403).json(planError(req, requiredPlan));
+      const locale = getLocale(req) as "en" | "es";
+      const error =
+        trialExpired && requiredPlan !== "FREE"
+          ? { error: t(locale, "trial.expired") }
+          : planError(req, requiredPlan);
+
+      return res.status(403).json(error);
     }
 
     return handler(req, res);
@@ -91,20 +149,51 @@ export function withAuthPlanRoute(
       return NextResponse.redirect(new URL("/401", req.url));
     }
     let plan = (session.user.plan || "free").toUpperCase() as PlanName;
+    let trialExpired = false;
 
-    if (plan === "FREE" && session.user.trialEndsAt) {
-      const trialEnds = new Date(session.user.trialEndsAt);
+    if (plan === "FREE") {
+      let trialEnds: Date | null = null;
 
-      if (trialEnds > new Date()) {
+      if (session.user.trialStart && session.user.trialDurationDays) {
+        trialEnds = new Date(
+          new Date(session.user.trialStart).getTime() +
+            session.user.trialDurationDays * 86400000,
+        );
+      } else if (session.user.trialEndsAt) {
+        trialEnds = new Date(session.user.trialEndsAt);
+      }
+
+      if (!session.user.trialStart && !session.user.trialEndsAt) {
+        try {
+          const { default: connect } = await import("@/lib/dbConnect");
+          const { default: User } = await import("@/lib/models/user");
+
+          await connect();
+          const start = new Date();
+
+          trialEnds = new Date(
+            start.getTime() + TRIAL_DURATION_DAYS * 86400000,
+          );
+          await User.findByIdAndUpdate(session.user.id, {
+            trialStart: start,
+            trialDurationDays: TRIAL_DURATION_DAYS,
+            trialEndsAt: trialEnds,
+          });
+          plan = "PRO";
+        } catch (err) {
+          logger.error(err);
+        }
+      } else if (trialEnds && trialEnds > new Date()) {
         plan = "PRO";
-      } else {
+      } else if (trialEnds) {
+        trialExpired = true;
         try {
           const { default: connect } = await import("@/lib/dbConnect");
           const { default: User } = await import("@/lib/models/user");
 
           await connect();
           await User.findByIdAndUpdate(session.user.id, {
-            $unset: { trialEndsAt: 1 },
+            $unset: { trialStart: 1, trialDurationDays: 1, trialEndsAt: 1 },
             plan: "free",
           });
         } catch (err) {
@@ -114,7 +203,13 @@ export function withAuthPlanRoute(
     }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
-      return NextResponse.json(planError(req, requiredPlan), { status: 403 });
+      const locale = getLocale(req) as "en" | "es";
+      const error =
+        trialExpired && requiredPlan !== "FREE"
+          ? { error: t(locale, "trial.expired") }
+          : planError(req, requiredPlan);
+
+      return NextResponse.json(error, { status: 403 });
     }
 
     return handler(req);

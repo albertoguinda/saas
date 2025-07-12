@@ -132,6 +132,16 @@ Consulta la guía docs/deploy-free-plan.md
 | Vídeo (MUX)            | —    | —   | ✅      |
 | Analítica avanzada     | —    | —   | ✅      |
 
+### Control de plan y free trial
+
+El middleware `withAuthPlan` comprueba el plan del usuario en cada ruta premium.
+Si un usuario Free accede por primera vez, se inicia automáticamente una prueba
+gratuita de **7 días** (`TRIAL_DURATION_DAYS`). Durante ese periodo se permiten
+las funcionalidades PRO. Al expirar, se bloquea el acceso y se muestra el
+mensaje de `trial.expired` con enlace a `/pricing`.
+
+Ajusta la duración en `config/constants.ts` y los textos en `messages/*.json`.
+
 ### Onboarding guiado tras upgrade
 
 El onboarding se activa al confirmar el upgrade al plan **Premium** (webhook de Stripe o cambio manual). Si el usuario Premium no ha completado el proceso, se muestra automáticamente al acceder.

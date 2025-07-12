@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
 import User from "@/lib/models/user";
+import { TRIAL_DURATION_DAYS } from "@/config/constants";
 import { withValidationRoute } from "@/lib/middlewares/withValidation";
 import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
@@ -30,8 +31,19 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
     }
 
     // Crea y guarda el usuario (hash por middleware)
-    const trialEndsAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    const user = new User({ email, password, name, plan: "free", trialEndsAt });
+    const trialStart = new Date();
+    const trialEndsAt = new Date(
+      trialStart.getTime() + TRIAL_DURATION_DAYS * 24 * 60 * 60 * 1000,
+    );
+    const user = new User({
+      email,
+      password,
+      name,
+      plan: "free",
+      trialStart,
+      trialDurationDays: TRIAL_DURATION_DAYS,
+      trialEndsAt,
+    });
 
     await user.save();
 

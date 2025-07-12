@@ -56,7 +56,7 @@ test("calls handler when plan sufficient", async () => {
 
 test("allows trial users for PRO", async () => {
   (getServerSession as jest.Mock).mockResolvedValue({
-    user: { plan: "free", trialEndsAt: new Date(Date.now() + 1000) },
+    user: { plan: "free", trialStart: new Date(), trialDurationDays: 7 },
   });
   const handler = jest.fn(() => ({ status: 200 }));
   const wrapped = withAuthPlanRoute(handler, "PRO");

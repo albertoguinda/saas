@@ -33,9 +33,13 @@ test("redirects when unauthenticated", async () => {
   expect(handler).not.toHaveBeenCalled();
 });
 
-test("returns 403 when plan insufficient", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { plan: "free" } });
-  const handler = jest.fn();
+test("starts trial when plan insufficient", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { id: "1", plan: "free" },
+  });
+  const handler = jest.fn((_req, res: NextApiResponse) =>
+    res.status(200).json({ ok: true }),
+  );
   const json = jest.fn();
   const status = jest.fn(() => ({ json }));
   const middleware = require("@/lib/middlewares/withAuthPlan").withAuthPlan(
@@ -46,9 +50,12 @@ test("returns 403 when plan insufficient", async () => {
   const res = { status } as unknown as NextApiResponse;
 
   await middleware(req, res);
-  expect(status).toHaveBeenCalledWith(403);
-  expect(json).toHaveBeenCalledWith({ error: "Plan PRO requerido" });
-  expect(handler).not.toHaveBeenCalled();
+  const { default: User } = require("@/lib/models/user");
+
+  expect(User.findByIdAndUpdate).toHaveBeenCalled();
+  expect(handler).toHaveBeenCalled();
+  expect(status).toHaveBeenLastCalledWith(200);
+  expect(json).toHaveBeenCalledWith({ ok: true });
 });
 
 test("calls handler when plan sufficient", async () => {
@@ -71,9 +78,38 @@ test("calls handler when plan sufficient", async () => {
   expect(json).toHaveBeenCalledWith({ ok: true });
 });
 
+test("starts trial on first premium access", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { id: "1", plan: "free" },
+  });
+  const handler = jest.fn((_req, res: NextApiResponse) =>
+    res.status(200).json({ ok: true }),
+  );
+  const json = jest.fn();
+  const status = jest.fn(() => ({ json }));
+  const middleware = require("@/lib/middlewares/withAuthPlan").withAuthPlan(
+    handler,
+    "PRO",
+  );
+  const req = {} as NextApiRequest;
+  const res = { status } as unknown as NextApiResponse;
+
+  await middleware(req, res);
+  const { default: User } = require("@/lib/models/user");
+
+  expect(User.findByIdAndUpdate).toHaveBeenCalled();
+  expect(handler).toHaveBeenCalled();
+  expect(status).toHaveBeenLastCalledWith(200);
+  expect(json).toHaveBeenCalledWith({ ok: true });
+});
+
 test("allows trial users for PRO", async () => {
   (getServerSession as jest.Mock).mockResolvedValue({
-    user: { plan: "free", trialEndsAt: new Date(Date.now() + 1000) },
+    user: {
+      plan: "free",
+      trialStart: new Date(),
+      trialDurationDays: 7,
+    },
   });
   const handler = jest.fn((_req, res: NextApiResponse) =>
     res.status(200).json({ ok: true }),
@@ -95,7 +131,12 @@ test("allows trial users for PRO", async () => {
 
 test("downgrades when trial expired", async () => {
   (getServerSession as jest.Mock).mockResolvedValue({
-    user: { id: "1", plan: "free", trialEndsAt: new Date(Date.now() - 1000) },
+    user: {
+      id: "1",
+      plan: "free",
+      trialStart: new Date(Date.now() - 8 * 86400000),
+      trialDurationDays: 7,
+    },
   });
   const handler = jest.fn((_req, res: NextApiResponse) =>
     res.status(200).json({ ok: true }),
@@ -114,4 +155,33 @@ test("downgrades when trial expired", async () => {
 
   expect(User.findByIdAndUpdate).toHaveBeenCalled();
   expect(handler).toHaveBeenCalled();
+});
+
+test("blocks access when trial expired and plan required", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: {
+      id: "1",
+      plan: "free",
+      trialStart: new Date(Date.now() - 8 * 86400000),
+      trialDurationDays: 7,
+    },
+  });
+  const handler = jest.fn((_req, res: NextApiResponse) =>
+    res.status(200).json({ ok: true }),
+  );
+  const json = jest.fn();
+  const status = jest.fn(() => ({ json }));
+  const middleware = require("@/lib/middlewares/withAuthPlan").withAuthPlan(
+    handler,
+    "PRO",
+  );
+  const req = {} as NextApiRequest;
+  const res = { status } as unknown as NextApiResponse;
+
+  await middleware(req, res);
+  expect(status).toHaveBeenCalledWith(403);
+  expect(json).toHaveBeenCalledWith({
+    error: "Tu prueba gratuita ha finalizado",
+  });
+  expect(handler).not.toHaveBeenCalled();
 });
