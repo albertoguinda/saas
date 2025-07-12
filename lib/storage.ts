@@ -1,3 +1,6 @@
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
+
 import { v2 as cloudinary } from "cloudinary";
 import * as clamav from "clamav.js";
 
@@ -25,6 +28,18 @@ async function scanForMalware(buffer: Buffer) {
   });
 }
 
+async function saveLocal(buffer: Buffer, ext: string) {
+  const dir =
+    process.env.LOCAL_ASSETS_DIR || join(process.cwd(), "public", "uploads");
+
+  await fs.mkdir(dir, { recursive: true });
+  const name = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+  await fs.writeFile(join(dir, name), buffer);
+
+  return `/uploads/${name}`;
+}
+
 /**
  * Upload an avatar image to Cloudinary or S3.
  *
@@ -32,6 +47,10 @@ async function scanForMalware(buffer: Buffer) {
  * @returns URL of the stored image
  */
 export async function uploadAvatar(file: Blob): Promise<string> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+
+  await scanForMalware(buffer);
+
   if (
     process.env.CLOUDINARY_CLOUD_NAME &&
     process.env.CLOUDINARY_API_KEY &&
@@ -42,9 +61,6 @@ export async function uploadAvatar(file: Blob): Promise<string> {
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
     });
-    const buffer = await file.arrayBuffer();
-
-    await scanForMalware(Buffer.from(buffer));
     const url = await new Promise<string>((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         { resource_type: "image" },
@@ -54,7 +70,7 @@ export async function uploadAvatar(file: Blob): Promise<string> {
         },
       );
 
-      stream.end(Buffer.from(buffer));
+      stream.end(buffer);
     });
 
     return url;
@@ -75,21 +91,24 @@ export async function uploadAvatar(file: Blob): Promise<string> {
       },
     });
     const key = `avatars/${Date.now()}-${Math.random().toString(36).slice(2)}`;
-    const buffer = await file.arrayBuffer();
-
-    await scanForMalware(Buffer.from(buffer));
 
     await client.send(
       new PutObjectCommand({
         Bucket: process.env.S3_BUCKET!,
         Key: key,
-        Body: Buffer.from(buffer),
+        Body: buffer,
         ContentType: file.type,
         ACL: "public-read",
       }),
     );
 
     return `https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/${key}`;
+  }
+
+  if (process.env.NODE_ENV !== "production") {
+    const ext = file.type.split("/")[1] || "png";
+
+    return saveLocal(buffer, ext);
   }
 
   throw new Error("No storage provider configured");

@@ -5,7 +5,14 @@ import { Button } from "@heroui/button";
 import { Badge } from "@heroui/badge";
 import { Input } from "@heroui/input";
 import { Alert } from "@heroui/alert";
-import { Plus, Lock, Eye, Trash, Pencil } from "lucide-react";
+import {
+  Plus,
+  Lock,
+  Eye,
+  Trash,
+  Pencil,
+  Image as ImageIcon,
+} from "lucide-react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
@@ -249,6 +256,13 @@ export default function ProjectsPage() {
                 onClick={() => openEdit(project)}
               >
                 {t("projects.edit")}
+              </Button>
+              <Button
+                size="sm"
+                startContent={<ImageIcon />}
+                onClick={() => router.push(`/projects/${project._id}/branding`)}
+              >
+                {t("projects.branding")}
               </Button>
               <Button
                 size="sm"

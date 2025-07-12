@@ -55,8 +55,9 @@ export default function Landing({ site }: LandingProps) {
     return <div className="p-8 text-center">{common("notFound.desc")}</div>;
   }
   const template = site.structure?.template ?? "default";
-  const color = site.structure?.color ?? "indigo";
-  const font = site.structure?.font ?? "sans";
+  const color =
+    site.structure?.branding?.color ?? site.structure?.color ?? "indigo";
+  const font = site.structure?.branding?.font ?? site.structure?.font ?? "sans";
   const COLOR_CLASSES: Record<string, string> = {
     indigo: "text-indigo-600",
     emerald: "text-emerald-600",
