@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:48 UTC**
+\_Actualizado: **12-Jul-2025 21:51 UTC**
 
 ---
 
@@ -13,6 +13,7 @@
 | Gestión y conexión de dominios propios    | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
 | Automatizar scripts npm y Husky           | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
 | Catálogo Premium UI/UX                    | ✅     | 2025-07-12 | 923d201 | albertoguinda |
+| Integración BookingForm y scheduler       | ✅     | 2025-07-20 | TBD     | albertoguinda |
 | Conexión dominio propio                   | ✅     | 2025-07-12 | 5000830 | albertoguinda |
 | Backups automáticos y restauración 1 clic | ✅     | 2025-07-12 | e6a1d7e | albertoguinda |
 | Backup y restore                          | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
@@ -201,6 +202,7 @@
 
 - [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
+- [x] BookingForm y scheduler migrados a TS/React Hook Form — 20-Jul-2025
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
 #### 💳 Sistema de pagos y planes

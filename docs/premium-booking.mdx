@@ -1,0 +1,21 @@
+# BookingForm Premium
+
+Este formulario permite reservar citas y se integra con React Hook Form y Yup.
+
+```tsx
+import BookingForm from "@/components/premium/forms/BookingForm";
+
+function Demo() {
+  return (
+    <BookingForm
+      onSubmit={(d) => console.log(d)}
+      startTime="09:00"
+      endTime="18:00"
+      blockedSlots={["12:00"]}
+      pro
+    />
+  );
+}
+```
+
+La validación impide enviar campos vacíos y muestra errores debajo de cada input. Usa `useScheduler` para generar las horas disponibles.
