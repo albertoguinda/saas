@@ -171,5 +171,8 @@
   "domain.error": "No se pudo conectar el dominio",
   "domain.status.pending": "Pendiente",
   "domain.status.validating": "Verificando",
-  "domain.status.active": "Activo"
+  "domain.status.active": "Activo",
+  "catalog.title": "Catálogo Premium",
+  "catalog.preview": "Vista previa",
+  "catalog.loading": "Cargando plantillas..."
 }

@@ -173,6 +173,17 @@ para guiar al usuario.
 4. Ejecuta `stripe listen --forward-to localhost:3000/api/stripe/webhook` para probar en local.
 5. Usa el modo test de Stripe para simular pagos fallidos con tarjetas de prueba.
 
+### Catálogo Premium UI/UX
+
+Accede a `/dashboard/premium-catalog` para descubrir los componentes de pago. El
+endpoint `/api/premium/templates` devuelve la lista de plantillas y en local usa
+mocks para no fallar.
+
+Para extender el catálogo edita `app/api/premium/templates/route.ts` y añade
+objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
+definen por URL; emplea tu CDN o un placeholder del estilo
+`https://placehold.co/400x300?text=Premium+Template`.
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.
