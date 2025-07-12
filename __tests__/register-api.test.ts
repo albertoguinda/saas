@@ -41,6 +41,13 @@ jest.mock("@/lib/models/event", () => ({
   __esModule: true,
   default: { create: jest.fn() },
 }));
+jest.mock("@/lib/models/confirmationToken", () => ({
+  __esModule: true,
+  default: { create: jest.fn() },
+}));
+jest.mock("@/lib/emails", () => ({
+  sendWelcomeEmail: jest.fn(),
+}));
 
 import Event from "@/lib/models/event";
 
@@ -116,6 +123,11 @@ test("creates user when data valid", async () => {
     userId: "1",
     event: "trial_started",
   });
+  const { sendWelcomeEmail } = require("@/lib/emails");
+  const Token = require("@/lib/models/confirmationToken").default;
+
+  expect(Token.create).toHaveBeenCalled();
+  expect(sendWelcomeEmail).toHaveBeenCalled();
   expect(res.status).toBe(200);
 });
 

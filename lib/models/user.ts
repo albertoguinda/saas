@@ -15,6 +15,7 @@ export interface IUser extends Document {
   avatar?: string; // Emoji o URL del avatar
   plan: "free" | "pro" | "premium";
   trialEndsAt?: Date;
+  emailVerified: boolean;
   createdAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
@@ -33,6 +34,7 @@ const UserSchema = new Schema<IUser>({
   avatar: { type: String, default: "😀" }, // Por defecto: emoji sonriente
   plan: { type: String, enum: ["free", "pro", "premium"], default: "free" },
   trialEndsAt: { type: Date },
+  emailVerified: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
 });
 

@@ -244,6 +244,12 @@ Ejecuta `npm run i18n:check` para asegurar que no faltan mensajes.
 Next.js 15 • React 18 • TailwindCSS • HeroUI v2 • MongoDB Atlas (driver 5.9.2) • Auth.js • Stripe • Upstash Redis • Resend • tsx
 Detalle completo en docs/STACK.md.
 
+### Configurar Resend
+
+1. Crea una cuenta en [Resend](https://resend.com) y genera una API key.
+2. Añade `RESEND_API_KEY` en tu `.env`.
+3. Las plantillas se definen en `lib/emails.ts` y los envíos quedan registrados en `EmailLog`.
+
 > **Nota:** Atlas puede ejecutar servidor 6.x, pero mantenemos el driver 5.9.2 por dependencia de paquetes legacy.
 > Las APIs están protegidas por el middleware `withRateLimit` (Upstash Redis).
 > Ruta de métricas admin `/api/admin/stats` (solo `ADMIN_EMAIL`).

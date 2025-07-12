@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 18:06 UTC**
+\_Actualizado: **12-Jul-2025 20:16 UTC**
 
 ---
 
@@ -150,7 +150,7 @@
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Validación DNS (CNAME a la app) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025 (ef40270, @albertoguinda)
-- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (90ac47a, @albertoguinda)
+- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (d9c347b, @albertoguinda)
 
 #### 🔄 Mejora continua
 

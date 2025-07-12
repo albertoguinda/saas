@@ -10,6 +10,7 @@ import Payment from "@/lib/models/payment";
 import { logger } from "@/lib/logger";
 import { invalidateSite } from "@/lib/cache";
 import { trackServer } from "@/lib/track";
+import { sendPlanEmail } from "@/lib/emails";
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
@@ -65,6 +66,8 @@ export async function POST(req: NextRequest) {
             logger.info("[onboarding] started", user._id);
             trackServer(user._id.toString(), "onboarding_started");
           }
+
+          await sendPlanEmail(user._id.toString(), user.email, "premium");
         }
 
         break;
@@ -73,10 +76,15 @@ export async function POST(req: NextRequest) {
         const sub = event.data?.object as Stripe.Subscription;
 
         if (sub.status !== "active") {
-          await User.findOneAndUpdate(
+          const user = await User.findOneAndUpdate(
             { customerId: sub.customer },
             { plan: "free" },
+            { new: true },
           );
+
+          if (user) {
+            await sendPlanEmail(user._id.toString(), user.email, "free");
+          }
         }
 
         break;
@@ -84,10 +92,15 @@ export async function POST(req: NextRequest) {
       case "customer.subscription.deleted": {
         const sub = event.data?.object as Stripe.Subscription;
 
-        await User.findOneAndUpdate(
+        const user = await User.findOneAndUpdate(
           { customerId: sub.customer },
           { plan: "free" },
+          { new: true },
         );
+
+        if (user) {
+          await sendPlanEmail(user._id.toString(), user.email, "free");
+        }
 
         break;
       }

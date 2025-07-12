@@ -53,7 +53,7 @@ export default function RegisterPage() {
     }
 
     setSuccess(true);
-    notifySuccess(t("register.success"));
+    notifySuccess(t("register.checkEmail"));
     track("signup_free");
     setTimeout(() => {
       router.push("/auth/login");
@@ -73,7 +73,7 @@ export default function RegisterPage() {
         )}
         {success && (
           <Alert className="mb-2" color="success" role="alert">
-            {t("register.success")}
+            {t("register.checkEmail")}
           </Alert>
         )}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>

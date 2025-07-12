@@ -5,6 +5,7 @@ import User from "@/lib/models/user";
 import Site from "@/lib/models/site";
 import Backup from "@/lib/models/backup";
 import { logger } from "@/lib/logger";
+import { sendBackupEmail, sendRestoreEmail } from "@/lib/emails";
 
 export async function createBackup(
   userId: string,
@@ -37,6 +38,10 @@ export async function createBackup(
 
   logger.info(`[backup] created ${type} for ${userId}`);
 
+  if (type === "manual" && user?.email) {
+    sendBackupEmail(userId, user.email).catch(logger.error);
+  }
+
   return backup;
 }
 
@@ -61,6 +66,8 @@ export async function restoreBackup(userId: string, id: string) {
 
   if (!backup) return false;
 
+  const user = await User.findById(userId).lean();
+
   const zip = await JSZip.loadAsync(backup.data);
   const content = await zip.file("backup.json")?.async("string");
 
@@ -76,6 +83,10 @@ export async function restoreBackup(userId: string, id: string) {
   }
 
   logger.info(`[backup] restored for ${userId}`);
+
+  if (user?.email) {
+    sendRestoreEmail(userId, user.email).catch(logger.error);
+  }
 
   return true;
 }
