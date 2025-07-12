@@ -207,6 +207,8 @@ objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
 definen por URL; emplea tu CDN o un placeholder del estilo
 `https://placehold.co/400x300?text=Premium+Template`.
 
+- `Price` component for formatted currency display (`pages/demo/price`).
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.
