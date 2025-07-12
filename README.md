@@ -136,6 +136,13 @@ Cada paso se marca como completado y se almacena en tu cuenta. Se registran los 
 
 Si algo falla, revisa `/api/onboarding` y los logs del servidor. Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
 
+### Configurar almacenamiento de imágenes
+
+En desarrollo puedes usar un directorio local definido en `LOCAL_ASSETS_DIR`.
+Si se configuran las variables `CLOUDINARY_*` o `S3_*`, la subida se realiza al
+proveedor elegido. El endpoint `/api/sites/[id]/assets` gestiona la subida y
+guarda la URL en MongoDB.
+
 ### Conexión de dominio propio
 
 En el dashboard puedes añadir tu dominio y comprobar el estado de validación.

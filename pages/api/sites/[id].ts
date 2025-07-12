@@ -28,6 +28,22 @@ export default async function handler(
     return res.status(400).json({ error: "ID inválido" });
   }
 
+  // GET: Devuelve el proyecto
+  if (req.method === "GET") {
+    try {
+      const site = await Site.findOne({ _id: id, userId: session.user.id });
+
+      if (!site)
+        return res.status(404).json({ error: "Proyecto no encontrado" });
+
+      return res.status(200).json({ site });
+    } catch (err) {
+      logger.error(err);
+
+      return res.status(500).json({ error: "Error al cargar el proyecto" });
+    }
+  }
+
   // PATCH: Actualiza título y/o estructura
   if (req.method === "PATCH") {
     try {
@@ -84,7 +100,7 @@ export default async function handler(
   }
 
   // Otros métodos no permitidos
-  res.setHeader("Allow", ["PATCH", "DELETE"]);
+  res.setHeader("Allow", ["GET", "PATCH", "DELETE"]);
 
   return res.status(405).json({ error: "Método no soportado" });
 }

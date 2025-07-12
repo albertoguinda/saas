@@ -79,6 +79,7 @@
   "projects.delete": "Borrar",
   "projects.deleting": "Borrando...",
   "projects.deleteConfirm": "¿Seguro que quieres borrar este proyecto?",
+  "projects.branding": "Branding",
   "projects.loading": "Cargando proyectos...",
   "projects.empty": "Todavía no tienes proyectos.",
   "projects.first": "Crear mi primer proyecto",
@@ -158,5 +159,6 @@
   "branding.updated": "Branding actualizado",
   "branding.color": "Color principal",
   "branding.font": "Fuente",
-  "branding.save": "Guardar cambios"
+  "branding.save": "Guardar cambios",
+  "branding.remove": "Eliminar"
 }

@@ -119,6 +119,7 @@
 
 - [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025
 - [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025
+- [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
