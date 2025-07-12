@@ -119,6 +119,8 @@ Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
 
 Cada paso se marca como completado y se almacena en tu cuenta.
 
+Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
+
 ### Conexión de dominio propio
 
 En el dashboard puedes añadir tu dominio y comprobar el estado de validación.

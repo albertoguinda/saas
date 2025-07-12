@@ -149,5 +149,14 @@
   "wizard.ai": "Generate with AI",
   "wizard.ai.error": "AI error",
   "wizard.ai.success": "Text generated",
-  "projects.cacheCleared": "Site cache cleared"
+  "projects.cacheCleared": "Site cache cleared",
+  "branding.title": "Branding",
+  "branding.loadError": "Unable to load branding",
+  "branding.uploadError": "Upload error",
+  "branding.updateError": "Update error",
+  "branding.uploaded": "Image uploaded",
+  "branding.updated": "Branding updated",
+  "branding.color": "Primary color",
+  "branding.font": "Font",
+  "branding.save": "Save changes"
 }
