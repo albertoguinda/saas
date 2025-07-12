@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 21:48 UTC**
+\_Actualizado: **12-Jul-2025 23:27 UTC**
 
 ---
 
@@ -37,6 +37,7 @@
 | Localización core components              | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
 
 | AGV Dashboard premium | ✅ | 2025-07-12 | 536d794 | albertoguinda |
+| Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 2bd1384 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
