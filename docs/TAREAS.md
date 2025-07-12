@@ -117,8 +117,8 @@
 
 #### 🔐 Backend
 
-- [ ] Guardar estructura completa del sitio (branding, assets) en MongoDB
-- [ ] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) _(endpoint básico listo)_
+- [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025
+- [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
@@ -138,7 +138,7 @@
 
 #### 🧱 Generador de sitios (wizard)
 
-- [ ] Branding extendido (selector de color, fuentes, logo, favicon)
+- [x] Branding extendido (selector de color, fuentes, logo, favicon) — 14-Jul-2025
 
 #### 💳 Sistema de pagos y planes
 

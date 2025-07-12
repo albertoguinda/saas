@@ -29,10 +29,16 @@ export const POST = async (req: NextRequest) => {
   const file = form.get("file");
   const type = form.get("type") as string;
 
-  if (!(file instanceof Blob) || (type !== "logo" && type !== "favicon")) {
+  const validTypes = ["image/png", "image/jpeg", "image/svg+xml"];
+
+  if (
+    !(file instanceof Blob) ||
+    (type !== "logo" && type !== "favicon") ||
+    !validTypes.includes(file.type)
+  ) {
     return NextResponse.json({ error: "Archivo inválido" }, { status: 400 });
   }
-  if (file.size > 2 * 1024 * 1024) {
+  if (file.size > 1 * 1024 * 1024) {
     return NextResponse.json(
       { error: "Archivo demasiado grande" },
       { status: 400 },

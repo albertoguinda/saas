@@ -1,4 +1,29 @@
 import { v2 as cloudinary } from "cloudinary";
+import * as clamav from "clamav.js";
+
+async function scanForMalware(buffer: Buffer) {
+  if (!process.env.CLAMAV_HOST) return;
+  await new Promise<void>((resolve, reject) => {
+    clamav.ping(
+      Number(process.env.CLAMAV_PORT) || 3310,
+      process.env.CLAMAV_HOST!,
+      1000,
+      (err: unknown) => {
+        if (err) return resolve();
+        clamav.scanBuffer(
+          buffer,
+          Number(process.env.CLAMAV_PORT) || 3310,
+          process.env.CLAMAV_HOST!,
+          (err2, _file, malicious) => {
+            if (err2) return reject(err2);
+            if (malicious) return reject(new Error("Malware detected"));
+            resolve();
+          },
+        );
+      },
+    );
+  });
+}
 
 /**
  * Upload an avatar image to Cloudinary or S3.
@@ -18,6 +43,8 @@ export async function uploadAvatar(file: Blob): Promise<string> {
       api_secret: process.env.CLOUDINARY_API_SECRET,
     });
     const buffer = await file.arrayBuffer();
+
+    await scanForMalware(Buffer.from(buffer));
     const url = await new Promise<string>((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         { resource_type: "image" },
@@ -49,6 +76,8 @@ export async function uploadAvatar(file: Blob): Promise<string> {
     });
     const key = `avatars/${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const buffer = await file.arrayBuffer();
+
+    await scanForMalware(Buffer.from(buffer));
 
     await client.send(
       new PutObjectCommand({

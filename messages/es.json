@@ -149,5 +149,14 @@
   "wizard.ai": "Generar con IA",
   "wizard.ai.error": "Error con IA",
   "wizard.ai.success": "Texto generado",
-  "projects.cacheCleared": "Caché del sitio actualizada"
+  "projects.cacheCleared": "Caché del sitio actualizada",
+  "branding.title": "Branding",
+  "branding.loadError": "No se pudo cargar el branding",
+  "branding.uploadError": "Error al subir",
+  "branding.updateError": "Error al actualizar",
+  "branding.uploaded": "Imagen subida",
+  "branding.updated": "Branding actualizado",
+  "branding.color": "Color principal",
+  "branding.font": "Fuente",
+  "branding.save": "Guardar cambios"
 }
