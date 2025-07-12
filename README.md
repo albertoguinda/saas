@@ -119,6 +119,14 @@ Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
 
 Cada paso se marca como completado y se almacena en tu cuenta.
 
+El estado se guarda en la colección `Onboarding`:
+
+- `onboardingStep`: número de paso actual.
+- `onboardingCompleted`: bandera de finalización.
+
+Si el usuario es **premium** y aún no ha terminado, se muestra un banner para
+reanudar el proceso. Al concluir el último paso se oculta para siempre.
+
 ### Conexión de dominio propio
 
 En el dashboard puedes añadir tu dominio y comprobar el estado de validación.

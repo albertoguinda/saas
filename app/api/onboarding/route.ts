@@ -29,15 +29,30 @@ async function handler(req: NextRequest) {
       return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
     }
 
-    const { step } = json as { step?: string };
+    const { field, onboardingStep, completed } = json as {
+      field?: string;
+      onboardingStep?: number;
+      completed?: boolean;
+    };
 
-    if (!step) {
+    if (
+      !field &&
+      typeof onboardingStep !== "number" &&
+      completed === undefined
+    ) {
       return NextResponse.json({ error: "Paso inválido" }, { status: 400 });
     }
 
+    const update: Record<string, unknown> = {};
+
+    if (field) update[field] = true;
+    if (typeof onboardingStep === "number")
+      update.onboardingStep = onboardingStep;
+    if (typeof completed === "boolean") update.onboardingCompleted = completed;
+
     const onboarding = await Onboarding.findOneAndUpdate(
       { userId: session.user.id },
-      { [step]: true },
+      update,
       { upsert: true, new: true },
     );
 

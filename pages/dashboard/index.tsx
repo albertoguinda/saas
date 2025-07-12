@@ -9,6 +9,7 @@ import { LayoutDashboard, User, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import PlanBadge from "@/components/PlanBadge";
+import OnboardingBanner from "@/components/OnboardingBanner";
 import { track } from "@/lib/track";
 
 export default function DashboardHome() {
@@ -49,6 +50,7 @@ export default function DashboardHome() {
           {tTrial("active", { date: trialEnds!.toLocaleDateString() })}
         </Alert>
       )}
+      <OnboardingBanner />
       {!trialActive && trialEnds && (
         <Alert
           className="mb-4 flex items-center justify-between"

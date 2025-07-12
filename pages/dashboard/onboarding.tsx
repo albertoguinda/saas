@@ -17,22 +17,37 @@ export default function OnboardingPage() {
     domain: false,
     analytics: false,
   });
+  const [completed, setCompleted] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("/api/onboarding")
       .then((r) => r.json())
-      .then((d) => d.onboarding && setProgress(d.onboarding))
+      .then((d) => {
+        if (d.onboarding) {
+          setProgress({
+            branding: !!d.onboarding.branding,
+            domain: !!d.onboarding.domain,
+            analytics: !!d.onboarding.analytics,
+          });
+          setCompleted(!!d.onboarding.onboardingCompleted);
+        }
+      })
       .catch(() => setError(t("error")));
   }, []);
 
-  const complete = async (step: keyof Progress) => {
+  const complete = async (field: keyof Progress, nextStep: number) => {
     await fetch("/api/onboarding", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ step }),
+      body: JSON.stringify({
+        field,
+        onboardingStep: nextStep,
+        completed: nextStep > 3,
+      }),
     });
-    setProgress((p) => ({ ...p, [step]: true }));
+    setProgress((p) => ({ ...p, [field]: true }));
+    if (nextStep > 3) setCompleted(true);
   };
 
   return (
@@ -44,7 +59,7 @@ export default function OnboardingPage() {
           <input readOnly checked={progress.branding} type="checkbox" />
           <span>{t("stepBranding")}</span>
           {!progress.branding && (
-            <Button size="sm" onClick={() => complete("branding")}>
+            <Button size="sm" onClick={() => complete("branding", 2)}>
               {t("complete")}
             </Button>
           )}
@@ -53,7 +68,7 @@ export default function OnboardingPage() {
           <input readOnly checked={progress.domain} type="checkbox" />
           <span>{t("stepDomain")}</span>
           {!progress.domain && (
-            <Button size="sm" onClick={() => complete("domain")}>
+            <Button size="sm" onClick={() => complete("domain", 3)}>
               {t("complete")}
             </Button>
           )}
@@ -62,12 +77,17 @@ export default function OnboardingPage() {
           <input readOnly checked={progress.analytics} type="checkbox" />
           <span>{t("stepAnalytics")}</span>
           {!progress.analytics && (
-            <Button size="sm" onClick={() => complete("analytics")}>
+            <Button size="sm" onClick={() => complete("analytics", 4)}>
               {t("complete")}
             </Button>
           )}
         </div>
       </Card>
+      {completed && (
+        <Alert className="mt-4" color="success">
+          {t("finished")}
+        </Alert>
+      )}
     </div>
   );
 }

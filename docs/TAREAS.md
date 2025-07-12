@@ -153,6 +153,7 @@
 
 - [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
 - [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025
+- [x] Banner para reanudar onboarding si está incompleto — 14-Jul-2025
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 

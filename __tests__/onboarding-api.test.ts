@@ -40,17 +40,21 @@ test("GET requires auth", async () => {
   expect(res.status).toBe(401);
 });
 
-test("PATCH marks step", async () => {
+test("PATCH marks field and step", async () => {
   (getServerSession as jest.Mock).mockResolvedValue({ user: { id: "1" } });
-  findOneAndUpdate.mockResolvedValue({ branding: true });
+  findOneAndUpdate.mockResolvedValue({ branding: true, onboardingStep: 2 });
 
   const req = {
     method: "PATCH",
-    json: async () => ({ step: "branding" }),
+    json: async () => ({ field: "branding", onboardingStep: 2 }),
   } as unknown as NextRequest;
 
   const res = await PATCH(req);
 
   expect(res.status).toBe(200);
-  expect(findOneAndUpdate).toHaveBeenCalled();
+  expect(findOneAndUpdate).toHaveBeenCalledWith(
+    { userId: "1" },
+    { branding: true, onboardingStep: 2 },
+    { upsert: true, new: true },
+  );
 });
