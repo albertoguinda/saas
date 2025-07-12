@@ -24,7 +24,9 @@
     "prepare": "husky install",
     "lhci": "lhci autorun --collect.url=http://localhost:3000 --collect.numberOfRuns=1 --upload.target=temporary-public-storage",
     "ci:test": "start-server-and-test dev http://localhost:3000 npm run lhci",
-    "backup": "tsx scripts/backup.ts"
+    "backup": "tsx scripts/backup.ts",
+    "test:e2e": "playwright test",
+    "test:coverage": "COVERAGE=1 node --test jest-runner.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.842.0",
@@ -116,6 +118,7 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "5.6.3",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "@playwright/test": "^1.41.2"
   }
 }

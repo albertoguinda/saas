@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **11-Jul-2025 19:47 UTC**
+\_Actualizado: **11-Jul-2025 19:48 UTC**
 
 ---
 
@@ -81,6 +81,9 @@
 - [x] Script `i18n-check` para claves faltantes y sin uso — 11-Jul-2025
 - [x] Internacionalización global (navbar, modals, perfil) — 11-Jul-2025
 - [x] Feedback UX coherente y accesible — 11-Jul-2025
+- [x] Formulario de feedback tras completar onboarding — 11-Jul-2025
+- [x] Tests unitarios helpers onboarding y API feedback — 11-Jul-2025
+- [x] Test e2e flujo onboarding (Playwright) — 11-Jul-2025
 
 ---
 
@@ -188,7 +191,7 @@
 
 - [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
-- [ ] Captura de feedback post-creación o upgrade
+- [x] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
 - [ ] Sistema de fidelización/puntos con recompensas diarias
 - [ ] Insignias y logros visibles en el perfil del usuario
@@ -196,3 +199,5 @@
 ---
 
 > **Recuerda:** Actualiza este archivo al cerrar una feature, añadir una nueva necesidad o mover tareas de fase. No dupliques; mueve y marca con `[x]` según corresponda.
+
+Cobertura actual de tests: ~87% (`npm run test:coverage`).

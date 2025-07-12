@@ -20,5 +20,6 @@ export default {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
   }),
+  testPathIgnorePatterns: ["<rootDir>/e2e/"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };

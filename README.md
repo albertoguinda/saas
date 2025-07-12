@@ -47,6 +47,18 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
 El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` usando el **test runner** de Node.js 18+ (`node --test`).
 
+Para cobertura ejecuta:
+
+```bash
+npm run test:coverage
+```
+
+Y para tests end-to-end con Playwright:
+
+```bash
+npm run test:e2e
+```
+
 > **Importante:** reejecuta `./scripts/setup.sh` si fallan las pruebas por dependencias ausentes.
 
 ### 🔍 Ejecutar lint

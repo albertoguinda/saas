@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Card } from "@heroui/card";
-import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
+import { Button } from "@heroui/button";
+import { Card } from "@heroui/card";
 import { useTranslations } from "next-intl";
+
+import { isOnboardingComplete } from "@/lib/onboarding";
 
 interface Progress {
   branding: boolean;
@@ -33,6 +35,18 @@ export default function OnboardingPage() {
       body: JSON.stringify({ step }),
     });
     setProgress((p) => ({ ...p, [step]: true }));
+  };
+
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const sendFeedback = async () => {
+    await fetch("/api/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    setSent(true);
   };
 
   return (
@@ -68,6 +82,26 @@ export default function OnboardingPage() {
           )}
         </div>
       </Card>
+      {isOnboardingComplete(progress) && (
+        <Card className="p-6 mt-6 flex flex-col gap-3">
+          {sent ? (
+            <span>{t("feedbackThanks")}</span>
+          ) : (
+            <>
+              <h2 className="text-lg font-semibold">{t("feedbackTitle")}</h2>
+              <textarea
+                className="border rounded p-2"
+                placeholder={t("feedbackPlaceholder")}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <Button size="sm" onClick={sendFeedback}>
+                {t("feedbackSend")}
+              </Button>
+            </>
+          )}
+        </Card>
+      )}
     </div>
   );
 }
