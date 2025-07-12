@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:48 UTC**
+\_Actualizado: **12-Jul-2025 21:48 UTC**
 
 ---
 
@@ -34,6 +34,8 @@
 | i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
 | Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
 | Localización core components              | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
+
+| AGV Dashboard premium | ✅ | 2025-07-12 | 536d794 | albertoguinda |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -214,6 +216,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
+- [x] Integración AGV Dashboard premium — 12-Jul-2025 (536d794, @albertoguinda)
 
 #### 🧪 Retención, métricas y feedback
 
