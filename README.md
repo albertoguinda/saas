@@ -88,9 +88,10 @@ npm run setup  # prepara entorno (deps, .env, DB) y ejecuta check
 npm run export:zip
 ```
 
-Genera `out.zip` con la versión estática del sitio. En el dashboard cada
-proyecto incluye un botón **Exportar ZIP** que llama a la API `/api/export` para
-descargar el contenido actual.
+Genera `out.zip` con la versión estática del sitio. El endpoint `/api/export`
+ejecuta internamente `npm run export:zip` y devuelve el ZIP al instante. En el
+dashboard cada proyecto incluye un botón **Exportar ZIP** para descargar su
+contenido.
 
 ### 🗄️ Backups locales
 

@@ -13,7 +13,7 @@
 | Gestión y conexión de dominios propios    | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
 | Automatizar scripts npm y Husky           | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
 | Catálogo Premium UI/UX                    | ✅     | 2025-07-12 | 923d201 | albertoguinda |
-| Componente Price premium                  | ✅     | 2025-07-12 | a29427f     | agente        |
+| Componente Price premium                  | ✅     | 2025-07-12 | a29427f | agente        |
 | Conexión dominio propio                   | ✅     | 2025-07-12 | 5000830 | albertoguinda |
 | Backups automáticos y restauración 1 clic | ✅     | 2025-07-12 | e6a1d7e | albertoguinda |
 | Backup y restore                          | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
@@ -155,6 +155,7 @@
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Validación DNS (CNAME a la app) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025 (ef40270, @albertoguinda)
+- [x] Endpoint `/api/export` descarga ZIP estático — 24-Jul-2025
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (d9c347b, @albertoguinda)
 
 #### 🔄 Mejora continua
