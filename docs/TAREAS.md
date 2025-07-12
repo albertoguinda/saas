@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **11-Jul-2025 19:47 UTC**
+\_Actualizado: **18-Jul-2025 10:20 UTC**
 
 ---
 
@@ -153,6 +153,8 @@
 
 - [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
 - [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025
+- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025
+- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 

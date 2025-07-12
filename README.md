@@ -111,15 +111,17 @@ Consulta la guía docs/deploy-free-plan.md
 
 ### Onboarding guiado tras upgrade
 
-Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
+El onboarding se activa al confirmar el upgrade al plan **Premium** (webhook de Stripe o cambio manual). Si el usuario Premium no ha completado el proceso, se muestra automáticamente al acceder.
+
+Consta de tres pasos:
 
 1. **Personalizar branding** (logo, color y favicon).
 2. **Conectar dominio propio** (opcional).
 3. **Revisar analítica** de tu sitio.
 
-Cada paso se marca como completado y se almacena en tu cuenta.
+Cada paso se marca como completado y se almacena en tu cuenta. Se registran los eventos `onboarding_started` y `onboarding_completed`.
 
-Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
+Si algo falla, revisa `/api/onboarding` y los logs del servidor. Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
 
 ### Conexión de dominio propio
 
