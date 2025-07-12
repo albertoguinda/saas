@@ -154,13 +154,16 @@ guarda la URL en MongoDB.
 
 ### Conexión de dominio propio
 
-En el dashboard puedes añadir tu dominio y comprobar el estado de validación.
-El endpoint `/api/domain/connect` registra el dominio tras validar su CNAME
-contra `CNAME_DOMAIN`.
-Los dominios se almacenan con estado **pending**, **validating** o **active**
-para facilitar el troubleshooting.
-Si el CNAME no coincide o el dominio ya existe, se devuelve un error claro
-para guiar al usuario.
+Desde `/dashboard/domains` puedes registrar tu dominio y verificar que apunta a
+la plataforma. El endpoint `/api/domain` gestiona el alta, revalidación y
+eliminado.
+
+Define `CNAME_DOMAIN` y expón `NEXT_PUBLIC_CNAME_DOMAIN` en tu entorno para las
+instrucciones. Opcionalmente añade `NEXT_PUBLIC_A_RECORD_IP` si usas registros A.
+
+Los dominios se guardan con estado **pending** o **active** y puedes reintentar
+la verificación o borrarlos en cualquier momento. Si ya existe, el API devuelve
+un error claro para guiar al usuario.
 
 ### Configurar Stripe
 

@@ -172,6 +172,13 @@
   "domain.status.pending": "Pendiente",
   "domain.status.validating": "Verificando",
   "domain.status.active": "Activo",
+  "domain.verify": "Verificar de nuevo",
+  "domain.delete": "Eliminar dominio",
+  "domain.deleteConfirm": "¿Eliminar este dominio?",
+  "domain.provider": "Proveedor",
+  "domain.instructions.namecheap": "Crea un CNAME a {cname} o un registro A a {ip} en Namecheap.",
+  "domain.instructions.cloudflare": "Añade un CNAME a {cname} o un registro A a {ip} en Cloudflare.",
+  "domain.pageTitle": "Dominio personalizado",
   "catalog.title": "Catálogo Premium",
   "catalog.preview": "Vista previa",
   "catalog.loading": "Cargando plantillas..."

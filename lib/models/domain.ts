@@ -6,6 +6,7 @@ const { Schema, model, models } = mongoose;
 
 export interface IDomain extends Document {
   userId: string;
+  siteId?: string;
   name: string;
   status: "pending" | "validating" | "active";
   createdAt: Date;
@@ -15,6 +16,7 @@ export interface IDomain extends Document {
 const DomainSchema = new Schema<IDomain>(
   {
     userId: { type: String, required: true, index: true },
+    siteId: { type: String },
     name: { type: String, required: true, unique: true },
     status: {
       type: String,
