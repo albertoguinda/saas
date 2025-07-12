@@ -4,6 +4,8 @@ import { Button } from "@heroui/button";
 import { Alert } from "@heroui/alert";
 import { useTranslations } from "next-intl";
 
+import DomainWizard from "@/components/DomainWizard";
+
 interface Progress {
   branding: boolean;
   domain: boolean;
@@ -52,12 +54,10 @@ export default function OnboardingPage() {
         <div className="flex items-center gap-2">
           <input readOnly checked={progress.domain} type="checkbox" />
           <span>{t("stepDomain")}</span>
-          {!progress.domain && (
-            <Button size="sm" onClick={() => complete("domain")}>
-              {t("complete")}
-            </Button>
-          )}
         </div>
+        {!progress.domain && (
+          <DomainWizard onVerified={() => complete("domain")} />
+        )}
         <div className="flex items-center gap-2">
           <input readOnly checked={progress.analytics} type="checkbox" />
           <span>{t("stepAnalytics")}</span>

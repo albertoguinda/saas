@@ -4,6 +4,8 @@ import { Button } from "@heroui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+import DomainWizard from "@/components/DomainWizard";
+
 export default function SettingsPage() {
   const [darkMode, setDarkMode] = useState(false);
   const t = useTranslations();
@@ -20,6 +22,9 @@ export default function SettingsPage() {
           {t("settings.delete")}
         </Button>
       </Card>
+      <div className="mt-8">
+        <DomainWizard />
+      </div>
     </div>
   );
 }
