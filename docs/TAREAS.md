@@ -162,7 +162,7 @@
 #### 🔐 Backend
 
 - [x] Cache de sitios (Upstash Redis, TTL dinámico)
-- [x] Backups automáticos + restore 1 clic — 12-Jul-2025
+- [x] Backups automáticos + restore 1 clic (endpoints y UI) — 20-Jul-2025
 
 #### 🧱 Generador de sitios (wizard)
 
