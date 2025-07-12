@@ -114,14 +114,6 @@
 - [x] Internacionalización global (navbar, modals, perfil) — 11-Jul-2025
 - [x] Feedback UX coherente y accesible — 11-Jul-2025
 
----
-
-## 🚧 Tareas Pendientes por Fase
-
-### 🔓 FREE – Core público y experiencia
-
-#### 🔐 Backend
-
 - [x] Actualizar docs de Arquitectura — 04-Jul-2025
 - [x] Subida y gestión de avatar real — 05-Jul-2025
 - [x] Separar vistas en `/app/` (migración App Router)
@@ -130,25 +122,11 @@
 - [x] Demo efecto 3D CSS — 10-Jul-2025
 - [x] Añadir `inputmode` móvil — 05-Jul-2025
 - [x] Configurar alias `@` en ESLint y docs — 05-Jul-2025
-
-#### 🧱 Generador de sitios (wizard)
-
-#### 💳 Sistema de pagos y planes
-
-#### 🌟 Funcionalidades premium
-
-#### 🧪 Retención, métricas y feedback
-
 - [x] Mensajes de éxito / error contextualizados
 - [x] Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
 - [x] Subida de imágenes de branding (logo y favicon) — 11-Jul-2025
 - [x] Script `export:zip` documentado
 - [x] Secciones FAQ en README y CONTRIBUTING (3ba20f5, @albertoguinda)
-
-### 💼 PRO – Funcionalidades avanzadas
-
-#### 🔐 Backend
-
 - [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025 (9c96f87, @albertoguinda)
 - [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025 (9c96f87, @albertoguinda)
 - [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025 (9c96f87, @albertoguinda)
@@ -157,9 +135,6 @@
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025 (ef40270, @albertoguinda)
 - [x] Endpoint `/api/export` descarga ZIP estático — 24-Jul-2025
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (d9c347b, @albertoguinda)
-
-#### 🔄 Mejora continua
-
 - [x] i18n básico
 - [x] Cobertura i18n avanzada
 - [x] Export estático incremental — 11-Jul-2025
@@ -168,66 +143,50 @@
 - [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
 - [x] Mejora scripts de automatizacion y pre-commit (check + setup) — 22-Jul-2025 (20f9a4e (@albertoguinda))
 - [x] Plantilla de issue feedback UX/traducciones
+- [x] Branding extendido (selector de color, fuentes, logo, favicon) — 14-Jul-2025
+- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
+- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025 (d30e710, @albertoguinda)
+- [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
+- [x] Dashboard: historial y panel de pagos — 04-Jul-2025
+- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025 (995e78e, @albertoguinda)
+- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025 (ef40270, @albertoguinda)
+- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025 (84ff6c7, @albertoguinda)
+- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025 (84ff6c7, @albertoguinda)
+- [x] Cache de sitios (Upstash Redis, TTL dinámico) (cc5bd05, @albertoguinda)
+- [x] Backups automáticos + restore 1 clic (endpoints y UI) — 20-Jul-2025 (13abc51, @albertoguinda)
+- [x] Componente Price premium
+- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025 (23c4bbf, @albertoguinda)
+- [x] Integrar **DataFast** (IA) para generación de contenido (b127717, @albertoguinda)
+- [x] Generador de textos legales (cookies, privacy, T&C)
+- [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
+- [x] Integración AGV Dashboard premium — 12-Jul-2025 (536d794, @albertoguinda)
+
+---
+
+## 🚧 Tareas Pendientes por Fase
+
+### 💼 PRO – Funcionalidades avanzadas
+
+#### 🔄 Mejora continua
+
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
 - [ ] Configurar Renovate para dependencias (sugerida)
 - [ ] Tests E2E con Playwright (sugerida)
 
-#### 🧱 Generador de sitios (wizard)
-
-- [x] Branding extendido (selector de color, fuentes, logo, favicon) — 14-Jul-2025
-
-#### 💳 Sistema de pagos y planes
-
-- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
-- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025 (d30e710, @albertoguinda)
-- [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
-- [x] Dashboard: historial y panel de pagos — 04-Jul-2025
-
-#### 🌟 Funcionalidades premium
-
-#### 🧪 Retención, métricas y feedback
-
-- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025 (995e78e, @albertoguinda)
-- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025 (ef40270, @albertoguinda)
-- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025 (84ff6c7, @albertoguinda)
-- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025 (84ff6c7, @albertoguinda)
-
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
-
-#### 🔐 Backend
-
-- [x] Cache de sitios (Upstash Redis, TTL dinámico) (cc5bd05, @albertoguinda)
-- [x] Backups automáticos + restore 1 clic (endpoints y UI) — 20-Jul-2025 (13abc51, @albertoguinda)
-
-#### 🧱 Generador de sitios (wizard)
 
 - [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
-- [x] Componente Price premium
 
-#### 💳 Sistema de pagos y planes
-
-- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025 (23c4bbf, @albertoguinda)
-
-#### 🌟 Funcionalidades premium
-
-- [x] Integrar **DataFast** (IA) para generación de contenido (b127717, @albertoguinda)
 - [ ] Soporte prioritario (chat/email)
-- [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
-- [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
-- [x] Integración AGV Dashboard premium — 12-Jul-2025 (536d794, @albertoguinda)
-
-#### 🧪 Retención, métricas y feedback
 
 - [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
 
 ### 📊 ADMIN & Retención
-
-#### 🧪 Retención, métricas y feedback
 
 - [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
