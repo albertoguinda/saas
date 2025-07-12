@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
-import User from "@/lib/models/user";
 import { getSite, setSite } from "@/lib/cache";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
 import { logger } from "@/lib/logger";
@@ -51,10 +50,7 @@ export default async function PublicSite({
 
   if (!fromCache) {
     try {
-      const user = await User.findById(site.userId).lean();
-      const plan = user?.plan ?? "free";
-
-      await setSite(slug, JSON.stringify(site), plan);
+      await setSite(slug, JSON.stringify(site));
     } catch (err) {
       logger.warn("[cache] set failed", err);
     }

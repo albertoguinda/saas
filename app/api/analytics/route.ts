@@ -4,6 +4,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/lib/models/event";
+import { redis } from "@/lib/upstash";
+import { PANEL_CACHE_TTL } from "@/config/constants";
+import { logger } from "@/lib/logger";
 
 /**
  * Return analytics metrics for the authenticated user.
@@ -28,19 +31,19 @@ async function handler(req: NextRequest) {
         : now - 86400000,
   );
 
-  const redisAvailable =
-    process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN;
   let cached: { visits: number; upgrades: number; wizard: number } | null =
     null;
 
-  if (redisAvailable) {
-    const { Redis } = await import("@upstash/redis");
-    const redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL!,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-    });
+  try {
+    const res = await redis.get<string>(
+      `analytics:${session.user.id}:${period}`,
+    );
 
-    cached = await redis.get(`analytics:${session.user.id}:${period}`);
+    if (res) {
+      cached = JSON.parse(res);
+    }
+  } catch (err) {
+    logger.warn("[cache] analytics get failed", err);
   }
 
   if (!cached) {
@@ -65,14 +68,16 @@ async function handler(req: NextRequest) {
 
     cached = { visits, upgrades, wizard };
 
-    if (redisAvailable) {
-      const { Redis } = await import("@upstash/redis");
-      const redis = new Redis({
-        url: process.env.UPSTASH_REDIS_REST_URL!,
-        token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-      });
-
-      await redis.setex(`analytics:${session.user.id}:${period}`, 60, cached);
+    try {
+      await redis.set(
+        `analytics:${session.user.id}:${period}`,
+        JSON.stringify(cached),
+        {
+          ex: PANEL_CACHE_TTL,
+        },
+      );
+    } catch (err) {
+      logger.warn("[cache] analytics set failed", err);
     }
   }
 
