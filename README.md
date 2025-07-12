@@ -31,10 +31,9 @@ Requiere **Node.js 18 LTS** y `npm` instalado.
 ```bash
 git clone https://github.com/albertoguinda/saas.git
 cd saas
-./scripts/setup.sh                     # instala dependencias y ejecuta lint y tests
-cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY, UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN
-# crea next-intl.config.ts si no existe (ver sección i18n)
-npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
+npm run setup                          # instala dependencias, crea .env.local y seed inicial
+# rellena variables en .env.local si es necesario
+npm run check                          # lint, format y tests
 npm run dev
 ```
 
@@ -55,26 +54,24 @@ TIP: si solo necesitas seedear de nuevo usa npm run seed.
 ### 🧪 Ejecutar tests
 
 ```bash
-./scripts/setup.sh
+npm run check
 ```
 
-El script instala dependencias, ejecuta `npm run lint` y finalmente `npm test` usando el **test runner** de Node.js 18+ (`node --test`).
-
-> **Importante:** reejecuta `./scripts/setup.sh` si fallan las pruebas por dependencias ausentes.
+Ejecuta lint, formatea con Prettier y lanza todos los tests.
 
 ### 🔍 Ejecutar lint
 
 ```bash
-./scripts/setup.sh
+npm run lint
 ```
 
-El script ya incluye `npm run lint`, útil para verificar el proyecto rápidamente.
+Puedes lanzar solo el linter si necesitas una comprobación rápida.
 
 ### 🚀 Scripts de desarrollo
 
 ```bash
+npm run setup  # instala deps, copia .env.local y seed inicial
 npm run check  # lint, format y test
-npm run setup  # instala dependencias y ejecuta las pruebas
 ```
 
 ### 📦 Exportar proyecto
