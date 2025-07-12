@@ -172,7 +172,7 @@
 
 #### 💳 Sistema de pagos y planes
 
-- [ ] Integración Stripe completa (producto PREMIUM, webhooks, historial)
+- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025
 
 #### 🌟 Funcionalidades premium
 

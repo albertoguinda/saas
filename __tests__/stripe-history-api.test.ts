@@ -16,15 +16,19 @@ jest.mock("next-auth/next", () => ({
 }));
 
 jest.mock("@/lib/auth", () => ({ __esModule: true, authOptions: {} }));
-jest.mock("@/lib/stripe", () => ({
+jest.mock("@/lib/dbConnect", () => ({ __esModule: true, default: jest.fn() }));
+const paymentFind = jest.fn();
+
+jest.mock("@/lib/models/payment", () => ({
   __esModule: true,
-  stripe: { paymentIntents: { list: jest.fn() } },
+  default: {
+    find: (..._args: unknown[]) => ({ sort: () => ({ lean: paymentFind }) }),
+  },
 }));
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 
 import { getServerSession } from "next-auth/next";
 
-import { stripe } from "@/lib/stripe";
 import { GET } from "@/app/api/stripe/history/route";
 
 beforeEach(() => {
@@ -45,18 +49,18 @@ test("returns 403 for free plan", async () => {
 });
 
 test("returns payments for PRO", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { plan: "pro" } });
-  (stripe.paymentIntents.list as jest.Mock).mockResolvedValue({
-    data: [
-      {
-        id: "1",
-        amount: 1000,
-        currency: "eur",
-        status: "succeeded",
-        created: 1,
-      },
-    ],
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { id: "u1", plan: "pro" },
   });
+  paymentFind.mockResolvedValue([
+    {
+      stripeId: "1",
+      amount: 1000,
+      currency: "eur",
+      status: "succeeded",
+      createdAt: new Date(1000),
+    },
+  ]);
   const res = await GET({ url: "http://test" } as NextRequest);
 
   expect(res.status).toBe(200);
@@ -74,10 +78,10 @@ test("returns payments for PRO", async () => {
 });
 
 test("handles stripe error", async () => {
-  (getServerSession as jest.Mock).mockResolvedValue({ user: { plan: "pro" } });
-  (stripe.paymentIntents.list as jest.Mock).mockRejectedValue(
-    new Error("fail"),
-  );
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { id: "u1", plan: "pro" },
+  });
+  paymentFind.mockRejectedValue(new Error("fail"));
   const res = await GET({ url: "http://test" } as NextRequest);
 
   expect(res.status).toBe(500);
