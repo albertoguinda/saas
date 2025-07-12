@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 
+import { logger } from "@/lib/logger";
 import { authOptions } from "@/lib/auth";
 
 const PLANS_ORDER = {
@@ -13,6 +14,24 @@ const PLANS_ORDER = {
 } as const;
 
 export type PlanName = keyof typeof PLANS_ORDER;
+
+function getLocale(req: NextApiRequest | NextRequest) {
+  const headers: any = (req as any).headers;
+  const header =
+    typeof headers?.get === "function"
+      ? headers.get("accept-language")
+      : headers?.["accept-language"];
+
+  return (header || "").toString().toLowerCase().startsWith("en") ? "en" : "es";
+}
+
+function planError(req: NextApiRequest | NextRequest, plan: PlanName) {
+  const locale = getLocale(req);
+
+  return {
+    error: locale === "en" ? `Plan ${plan} required` : `Plan ${plan} requerido`,
+  };
+}
 
 /**
  * Higher-order handler to protect API routes based on user plan.
@@ -32,16 +51,29 @@ export function withAuthPlan(handler: NextApiHandler, requiredPlan: PlanName) {
 
     let plan = (session.user.plan || "free").toUpperCase() as PlanName;
 
-    if (
-      plan === "FREE" &&
-      session.user.trialEndsAt &&
-      new Date(session.user.trialEndsAt) > new Date()
-    ) {
-      plan = "PRO";
+    if (plan === "FREE" && session.user.trialEndsAt) {
+      const trialEnds = new Date(session.user.trialEndsAt);
+
+      if (trialEnds > new Date()) {
+        plan = "PRO";
+      } else {
+        try {
+          const { default: connect } = await import("@/lib/dbConnect");
+          const { default: User } = await import("@/lib/models/user");
+
+          await connect();
+          await User.findByIdAndUpdate(session.user.id, {
+            $unset: { trialEndsAt: 1 },
+            plan: "free",
+          });
+        } catch (err) {
+          logger.error(err);
+        }
+      }
     }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
-      return res.status(403).json({ error: `Plan ${requiredPlan} requerido` });
+      return res.status(403).json(planError(req, requiredPlan));
     }
 
     return handler(req, res);
@@ -60,19 +92,29 @@ export function withAuthPlanRoute(
     }
     let plan = (session.user.plan || "free").toUpperCase() as PlanName;
 
-    if (
-      plan === "FREE" &&
-      session.user.trialEndsAt &&
-      new Date(session.user.trialEndsAt) > new Date()
-    ) {
-      plan = "PRO";
+    if (plan === "FREE" && session.user.trialEndsAt) {
+      const trialEnds = new Date(session.user.trialEndsAt);
+
+      if (trialEnds > new Date()) {
+        plan = "PRO";
+      } else {
+        try {
+          const { default: connect } = await import("@/lib/dbConnect");
+          const { default: User } = await import("@/lib/models/user");
+
+          await connect();
+          await User.findByIdAndUpdate(session.user.id, {
+            $unset: { trialEndsAt: 1 },
+            plan: "free",
+          });
+        } catch (err) {
+          logger.error(err);
+        }
+      }
     }
 
     if (PLANS_ORDER[plan] < PLANS_ORDER[requiredPlan]) {
-      return NextResponse.json(
-        { error: `Plan ${requiredPlan} requerido` },
-        { status: 403 },
-      );
+      return NextResponse.json(planError(req, requiredPlan), { status: 403 });
     }
 
     return handler(req);

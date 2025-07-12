@@ -19,7 +19,7 @@ jest.mock("@/lib/auth", () => ({ __esModule: true, authOptions: {} }));
 
 import { getServerSession } from "next-auth/next";
 
-import { withAuthPlanRoute } from "@/lib/middlewares/withAuthPlan";
+const { withAuthPlanRoute } = require("@/lib/middlewares/withAuthPlan");
 
 beforeEach(() => {
   jest.clearAllMocks();

@@ -5,6 +5,12 @@ jest.mock("next-auth/next", () => ({
 }));
 
 jest.mock("@/lib/auth", () => ({ __esModule: true, authOptions: {} }));
+jest.mock("@/lib/dbConnect", () => jest.fn());
+jest.mock("@/lib/models/user", () => ({
+  __esModule: true,
+  default: { findByIdAndUpdate: jest.fn() },
+}));
+jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 
 import { getServerSession } from "next-auth/next";
 
@@ -85,4 +91,27 @@ test("allows trial users for PRO", async () => {
   expect(handler).toHaveBeenCalled();
   expect(status).toHaveBeenLastCalledWith(200);
   expect(json).toHaveBeenCalledWith({ ok: true });
+});
+
+test("downgrades when trial expired", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({
+    user: { id: "1", plan: "free", trialEndsAt: new Date(Date.now() - 1000) },
+  });
+  const handler = jest.fn((_req, res: NextApiResponse) =>
+    res.status(200).json({ ok: true }),
+  );
+  const json = jest.fn();
+  const status = jest.fn(() => ({ json }));
+  const middleware = require("@/lib/middlewares/withAuthPlan").withAuthPlan(
+    handler,
+    "FREE",
+  );
+  const req = {} as NextApiRequest;
+  const res = { status } as unknown as NextApiResponse;
+
+  await middleware(req, res);
+  const { default: User } = require("@/lib/models/user");
+
+  expect(User.findByIdAndUpdate).toHaveBeenCalled();
+  expect(handler).toHaveBeenCalled();
 });
