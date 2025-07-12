@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:48 UTC**
+\_Actualizado: **12-Jul-2025 21:50 UTC**
 
 ---
 
@@ -20,6 +20,7 @@
 | Gestión segura de imágenes de branding    | ✅     | 2025-07-12 | 413e60b | albertoguinda |
 | Mejora fallback i18n y landing            | ✅     | 2025-07-12 | 3f65f2f | albertoguinda |
 | Refuerzo trigger onboarding               | ✅     | 2025-07-12 | 84ff6c7 | albertoguinda |
+| Integración dashboard IoT                 | ✅     | 2025-07-12 | 4183da2 | codex         |
 | Almacenamiento seguro de imágenes         | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
 | Control de acceso a planes                | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
 | Cache avanzada con Upstash                | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
@@ -214,6 +215,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
+- [x] Sensor Dashboard IoT (MQTT + InfluxDB)
 
 #### 🧪 Retención, métricas y feedback
 

@@ -207,6 +207,12 @@ objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
 definen por URL; emplea tu CDN o un placeholder del estilo
 `https://placehold.co/400x300?text=Premium+Template`.
 
+### Sensor Dashboard (IoT)
+
+El componente `SensorPanel` visualiza datos de sensores en tiempo real o desde
+InfluxDB. Prueba `/demo/sensor` y configura `NEXT_PUBLIC_INFLUX_*` si deseas
+consultar tu instancia.
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.
