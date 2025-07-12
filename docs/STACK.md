@@ -92,5 +92,6 @@ Para la biblioteca de componentes de pago tomaremos como referencia estas librer
 - [Swiper](https://swiperjs.com/) – sliders responsivos
 - [PhotoSwipe](https://photoswipe.com/) – galerías de imágenes
 - [Atropos](https://atroposjs.com/) – efecto parallax
+- [Three.js](https://threejs.org/) – visor 3D BIM con VR
 - [canvas-confetti](https://www.kirilv.com/canvas-confetti/) – celebraciones
 - [Arctic](https://arctic.jackyz.xyz/) – transiciones y efectos 3D

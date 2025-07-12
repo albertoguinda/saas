@@ -6,6 +6,7 @@ interface Template {
   image: string;
   tags: string[];
   type: string;
+  model?: string;
 }
 
 const templates: Template[] = [
@@ -29,6 +30,14 @@ const templates: Template[] = [
     image: "https://placehold.co/400x300?text=Premium+Template",
     tags: ["blog"],
     type: "blog",
+  },
+  {
+    name: "BIM 3D Viewer",
+    description: "Interact with BIM models in 3D and VR",
+    image: "https://placehold.co/400x300?text=BIM+Viewer",
+    tags: ["3d", "bim"],
+    type: "viewer",
+    model: "",
   },
 ];
 

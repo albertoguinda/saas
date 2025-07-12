@@ -1,6 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 
 import PremiumCatalogPage from "@/pages/dashboard/premium-catalog";
+jest.mock("@/components/premium/3d/BIMViewer", () => ({
+  __esModule: true,
+  default: function MockViewer() {
+    return <div>viewer</div>;
+  },
+}));
 
 jest.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key.split(".").pop(),
@@ -19,6 +25,7 @@ global.fetch = jest.fn().mockResolvedValue({
         image: "url",
         tags: ["blog"],
         type: "blog",
+        model: "",
       },
     ],
   }),

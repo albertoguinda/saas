@@ -207,6 +207,17 @@ objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
 definen por URL; emplea tu CDN o un placeholder del estilo
 `https://placehold.co/400x300?text=Premium+Template`.
 
+### Visualizador 3D BIM
+
+Utiliza el componente `BIMViewer` para inspeccionar modelos GLTF/IFC en el
+catálogo premium. Soporta modo noche y un botón VR básico.
+
+```tsx
+import BIMViewer from "@/components/premium/3d/BIMViewer";
+
+<BIMViewer modelSrc="/model.glb" environment="dark" />;
+```
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.

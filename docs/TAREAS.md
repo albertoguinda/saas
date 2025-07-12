@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:48 UTC**
+\_Actualizado: **12-Jul-2025 21:50 UTC**
 
 ---
 
@@ -214,6 +214,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
+- [x] Visualizador 3D BIM con Three.js y VR — 12-Jul-2025 (TBD, @albertoguinda)
 
 #### 🧪 Retención, métricas y feedback
 
