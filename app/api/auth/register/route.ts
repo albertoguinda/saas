@@ -1,3 +1,5 @@
+import crypto from "node:crypto";
+
 import { NextRequest, NextResponse } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
@@ -7,6 +9,8 @@ import { withRateLimitRoute } from "@/lib/middlewares/rateLimit";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 import { logger } from "@/lib/logger";
 import Event from "@/lib/models/event";
+import ConfirmationToken from "@/lib/models/confirmationToken";
+import { sendWelcomeEmail } from "@/lib/emails";
 
 // POST /api/auth/register
 async function handler(request: NextRequest & { body: RegisterInput }) {
@@ -32,6 +36,14 @@ async function handler(request: NextRequest & { body: RegisterInput }) {
     await user.save();
 
     try {
+      const token = crypto.randomBytes(32).toString("hex");
+
+      await ConfirmationToken.create({
+        userId: user.id,
+        token,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      });
+      await sendWelcomeEmail(user.id, email, name, token);
       await Event.create({ userId: user.id, event: "signup_free" });
       await Event.create({ userId: user.id, event: "trial_started" });
     } catch (err) {

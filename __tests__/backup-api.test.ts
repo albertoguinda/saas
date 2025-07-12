@@ -51,6 +51,10 @@ jest.mock("@/lib/models/backup", () => ({
 }));
 
 jest.mock("@/lib/logger", () => ({ logger: { info: jest.fn() } }));
+jest.mock("@/lib/emails", () => ({
+  sendBackupEmail: jest.fn(),
+  sendRestoreEmail: jest.fn(),
+}));
 
 import { getServerSession } from "next-auth";
 

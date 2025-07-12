@@ -181,5 +181,6 @@
   "domain.pageTitle": "Custom Domain",
   "catalog.title": "Premium Catalog",
   "catalog.preview": "Preview",
-  "catalog.loading": "Loading templates..."
+  "catalog.loading": "Loading templates...",
+  "register.checkEmail": "Check your email to confirm your account."
 }

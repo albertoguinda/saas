@@ -46,6 +46,7 @@ jest.mock("@/lib/upstash", () => ({ redis: {} }));
 
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 jest.mock("@/lib/track", () => ({ trackServer: jest.fn() }));
+jest.mock("@/lib/emails", () => ({ sendPlanEmail: jest.fn() }));
 
 import { POST } from "@/app/api/stripe/webhook/route";
 

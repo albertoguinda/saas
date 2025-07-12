@@ -181,5 +181,6 @@
   "domain.pageTitle": "Dominio personalizado",
   "catalog.title": "Catálogo Premium",
   "catalog.preview": "Vista previa",
-  "catalog.loading": "Cargando plantillas..."
+  "catalog.loading": "Cargando plantillas...",
+  "register.checkEmail": "Revisa tu correo para confirmar la cuenta."
 }
