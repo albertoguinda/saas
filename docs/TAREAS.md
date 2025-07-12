@@ -10,12 +10,12 @@
 
 | Tarea                                     | Estado | Fecha      | Commit  | Autor         |
 | ----------------------------------------- | ------ | ---------- | ------- | ------------- |
-| Gestión y conexión de dominios propios    | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
+| Gestión y conexión de dominios propios    | ✅     | 2025-07-12 | 7447a8e | albertoguinda |
 | Automatizar scripts npm y Husky           | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
 | Catálogo Premium UI/UX                    | ✅     | 2025-07-12 | 923d201 | albertoguinda |
-| Componente Price premium                  | ✅     | 2025-07-12 | a29427f     | agente        |
+| Componente Price premium                  | ✅     | 2025-07-12 | 0d37d24 | agente        |
 | Conexión dominio propio                   | ✅     | 2025-07-12 | 5000830 | albertoguinda |
-| Backups automáticos y restauración 1 clic | ✅     | 2025-07-12 | e6a1d7e | albertoguinda |
+| Backups automáticos y restauración 1 clic | ✅     | 2025-07-12 | b22b0e8 | albertoguinda |
 | Backup y restore                          | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
 | Integración Stripe suscripciones          | ✅     | 2025-07-12 | 23c4bbf | albertoguinda |
 | Gestión segura de imágenes de branding    | ✅     | 2025-07-12 | 413e60b | albertoguinda |
@@ -24,19 +24,19 @@
 | Almacenamiento seguro de imágenes         | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
 | Control de acceso a planes                | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
 | Cache avanzada con Upstash                | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
-| Cache TTL y fallback robusto              | ✅     | 2025-07-12 | e863e3e | albertoguinda |
+| Cache TTL y fallback robusto              | ✅     | 2025-07-12 | 53b593d | albertoguinda |
 | Generación IA de contenido                | ✅     | 2025-07-11 | b127717 | albertoguinda |
 | API dominio y backups iniciales           | ✅     | 2025-07-11 | 90ac47a | albertoguinda |
 | Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
 | Panel de analítica simple                 | ✅     | 2025-07-11 | 995e78e | albertoguinda |
 | Free trial y control de planes            | ✅     | 2025-07-11 | d30e710 | albertoguinda |
-| Refuerzo middleware free trial            | ✅     | 2025-07-12 | TBD     | albertoguinda |
+| Refuerzo middleware free trial            | ✅     | 2025-07-12 | 29c3b44 | albertoguinda |
 | FAQ y nuevos scripts docs                 | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
 | i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
 | Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
 | Localización core components              | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
 
-| AGV Dashboard premium | ✅ | 2025-07-12 | 536d794 | albertoguinda |
+| AGV Dashboard premium | ✅ | 2025-07-12 | f3e70de | albertoguinda |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -155,7 +155,7 @@
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Validación DNS (CNAME a la app) — 12-Jul-2025 (5000830, @albertoguinda)
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025 (ef40270, @albertoguinda)
-- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (d9c347b, @albertoguinda)
+- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (f971507, @albertoguinda)
 
 #### 🔄 Mejora continua
 
@@ -218,7 +218,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
-- [x] Integración AGV Dashboard premium — 12-Jul-2025 (536d794, @albertoguinda)
+- [x] Integración AGV Dashboard premium — 12-Jul-2025 (f3e70de, @albertoguinda)
 
 #### 🧪 Retención, métricas y feedback
 
