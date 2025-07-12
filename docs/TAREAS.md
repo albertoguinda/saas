@@ -1,10 +1,35 @@
 # TAREAS.md
 
-\_Actualizado: **22-Jul-2025 10:00 UTC**
+\_Actualizado: **12-Jul-2025 18:06 UTC**
 
 ---
 
 ## ✅ Tareas Completadas
+
+## 📚 Historial últimos PRs
+
+| Tarea                                  | Estado | Fecha      | Commit  | Autor         |
+| -------------------------------------- | ------ | ---------- | ------- | ------------- |
+| Automatizar scripts npm y Husky        | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
+| Catálogo Premium UI/UX                 | ✅     | 2025-07-12 | 923d201 | albertoguinda |
+| Conexión dominio propio                | ✅     | 2025-07-12 | 5000830 | albertoguinda |
+| Backup y restore                       | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
+| Integración Stripe suscripciones       | ✅     | 2025-07-12 | 23c4bbf | albertoguinda |
+| Gestión segura de imágenes de branding | ✅     | 2025-07-12 | 413e60b | albertoguinda |
+| Mejora fallback i18n y landing         | ✅     | 2025-07-12 | 3f65f2f | albertoguinda |
+| Refuerzo trigger onboarding            | ✅     | 2025-07-12 | 84ff6c7 | albertoguinda |
+| Almacenamiento seguro de imágenes      | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
+| Control de acceso a planes             | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
+| Cache avanzada con Upstash             | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
+| Generación IA de contenido             | ✅     | 2025-07-11 | b127717 | albertoguinda |
+| API dominio y backups iniciales        | ✅     | 2025-07-11 | 90ac47a | albertoguinda |
+| Onboarding guiado tras upgrade         | ✅     | 2025-07-11 | ef40270 | albertoguinda |
+| Panel de analítica simple              | ✅     | 2025-07-11 | 995e78e | albertoguinda |
+| Free trial y control de planes         | ✅     | 2025-07-11 | d30e710 | albertoguinda |
+| FAQ y nuevos scripts docs              | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
+| i18n total y feedback UX               | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
+| Refuerzo i18n y UX                     | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
+| Localización core components           | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -111,19 +136,19 @@
 - [x] Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
 - [x] Subida de imágenes de branding (logo y favicon) — 11-Jul-2025
 - [x] Script `export:zip` documentado
-- [x] Secciones FAQ en README y CONTRIBUTING
+- [x] Secciones FAQ en README y CONTRIBUTING (3ba20f5, @albertoguinda)
 
 ### 💼 PRO – Funcionalidades avanzadas
 
 #### 🔐 Backend
 
-- [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025
-- [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025
-- [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025
-- [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
-- [x] Validación DNS (CNAME a la app) — 12-Jul-2025
-- [x] Exportación de sitios como HTML estático — 11-Jul-2025
-- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
+- [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025 (9c96f87, @albertoguinda)
+- [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025 (9c96f87, @albertoguinda)
+- [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025 (9c96f87, @albertoguinda)
+- [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025 (5000830, @albertoguinda)
+- [x] Validación DNS (CNAME a la app) — 12-Jul-2025 (5000830, @albertoguinda)
+- [x] Exportación de sitios como HTML estático — 11-Jul-2025 (ef40270, @albertoguinda)
+- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (90ac47a, @albertoguinda)
 
 #### 🔄 Mejora continua
 
@@ -133,11 +158,13 @@
 - [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
 - [x] Script `npm run check:legal` para verificar textos legales
 - [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
-- [x] Mejora scripts de automatizacion y pre-commit (check + setup) — 22-Jul-2025 (d41148f)
+- [x] Mejora scripts de automatizacion y pre-commit (check + setup) — 22-Jul-2025 (20f9a4e (@albertoguinda))
 - [x] Plantilla de issue feedback UX/traducciones
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
+- [ ] Configurar Renovate para dependencias (sugerida)
+- [ ] Tests E2E con Playwright (sugerida)
 
 #### 🧱 Generador de sitios (wizard)
 
@@ -146,7 +173,7 @@
 #### 💳 Sistema de pagos y planes
 
 - [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
-- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025
+- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025 (d30e710, @albertoguinda)
 - [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
 - [x] Dashboard: historial y panel de pagos — 04-Jul-2025
 
@@ -154,17 +181,17 @@
 
 #### 🧪 Retención, métricas y feedback
 
-- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
-- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025
-- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025
-- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025
+- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025 (995e78e, @albertoguinda)
+- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025 (ef40270, @albertoguinda)
+- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025 (84ff6c7, @albertoguinda)
+- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025 (84ff6c7, @albertoguinda)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
 #### 🔐 Backend
 
-- [x] Cache de sitios (Upstash Redis, TTL dinámico)
-- [x] Backups automáticos + restore 1 clic (endpoints y UI) — 20-Jul-2025
+- [x] Cache de sitios (Upstash Redis, TTL dinámico) (cc5bd05, @albertoguinda)
+- [x] Backups automáticos + restore 1 clic (endpoints y UI) — 20-Jul-2025 (13abc51, @albertoguinda)
 
 #### 🧱 Generador de sitios (wizard)
 
@@ -174,15 +201,15 @@
 
 #### 💳 Sistema de pagos y planes
 
-- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025
+- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025 (23c4bbf, @albertoguinda)
 
 #### 🌟 Funcionalidades premium
 
-- [x] Integrar **DataFast** (IA) para generación de contenido
+- [x] Integrar **DataFast** (IA) para generación de contenido (b127717, @albertoguinda)
 - [ ] Soporte prioritario (chat/email)
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
-- [x] Catálogo Premium UI/UX — 12-Jul-2025 (39bfe9a)
+- [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
 
 #### 🧪 Retención, métricas y feedback
 
