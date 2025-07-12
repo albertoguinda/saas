@@ -9,6 +9,7 @@ export interface IOnboarding extends Document {
   branding?: boolean;
   domain?: boolean;
   analytics?: boolean;
+  paused?: boolean;
 }
 
 const OnboardingSchema = new Schema<IOnboarding>({
@@ -16,6 +17,7 @@ const OnboardingSchema = new Schema<IOnboarding>({
   branding: { type: Boolean, default: false },
   domain: { type: Boolean, default: false },
   analytics: { type: Boolean, default: false },
+  paused: { type: Boolean, default: false },
 });
 
 export default models.Onboarding ||

@@ -54,3 +54,22 @@ test("PATCH marks step", async () => {
   expect(res.status).toBe(200);
   expect(findOneAndUpdate).toHaveBeenCalled();
 });
+
+test("PATCH pause toggles onboarding", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: "1" } });
+  findOneAndUpdate.mockResolvedValue({ paused: true });
+
+  const req = {
+    method: "PATCH",
+    json: async () => ({ step: "paused", value: true }),
+  } as unknown as NextRequest;
+
+  const res = await PATCH(req);
+
+  expect(res.status).toBe(200);
+  expect(findOneAndUpdate).toHaveBeenCalledWith(
+    { userId: "1" },
+    { paused: true },
+    expect.any(Object),
+  );
+});

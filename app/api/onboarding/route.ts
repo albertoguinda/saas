@@ -29,7 +29,7 @@ async function handler(req: NextRequest) {
       return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
     }
 
-    const { step } = json as { step?: string };
+    const { step, value } = json as { step?: string; value?: boolean };
 
     if (!step) {
       return NextResponse.json({ error: "Paso inválido" }, { status: 400 });
@@ -37,7 +37,7 @@ async function handler(req: NextRequest) {
 
     const onboarding = await Onboarding.findOneAndUpdate(
       { userId: session.user.id },
-      { [step]: true },
+      { [step]: typeof value === "boolean" ? value : true },
       { upsert: true, new: true },
     );
 

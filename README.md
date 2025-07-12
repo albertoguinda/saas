@@ -117,7 +117,9 @@ Tras mejorar tu plan se abre una pantalla de onboarding con tres pasos:
 2. **Conectar dominio propio** (opcional).
 3. **Revisar analítica** de tu sitio.
 
-Cada paso se marca como completado y se almacena en tu cuenta.
+El avance se muestra con un **Stepper** y se guarda en tu cuenta. Puedes
+**pausar o reanudar** en cualquier momento y la pantalla se oculta al completar
+los tres pasos.
 
 Consulta `docs/BRANDING.md` para detalles sobre la subida de imágenes y límites.
 
