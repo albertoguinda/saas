@@ -181,6 +181,7 @@
 - [ ] Soporte prioritario (chat/email)
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
+- [x] Catálogo Premium UI/UX — 12-Jul-2025 (39bfe9a)
 
 #### 🧪 Retención, métricas y feedback
 

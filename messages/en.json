@@ -171,5 +171,8 @@
   "domain.error": "Unable to connect domain",
   "domain.status.pending": "Pending",
   "domain.status.validating": "Validating",
-  "domain.status.active": "Active"
+  "domain.status.active": "Active",
+  "catalog.title": "Premium Catalog",
+  "catalog.preview": "Preview",
+  "catalog.loading": "Loading templates..."
 }
