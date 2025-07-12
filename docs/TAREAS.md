@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **18-Jul-2025 10:20 UTC**
+\_Actualizado: **12-Jul-2025 16:36 UTC**
 
 ---
 
@@ -117,52 +117,52 @@
 
 #### 🔐 Backend
 
-- [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025
-- [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025
-- [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025
-- [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
-- [x] Exportación de sitios como HTML estático — 11-Jul-2025
-- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
+- [x] Guardar estructura completa del sitio (branding, assets) en MongoDB — 14-Jul-2025 (commit 9c96f87)
+- [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025 (commit 9c96f87)
+- [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025 (commit 9c96f87)
+- [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025 (commit f8e2494)
+- [x] Exportación de sitios como HTML estático — 11-Jul-2025 (commit c14cf33)
+- [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (commit f8e2494)
 
 #### 🔄 Mejora continua
 
-- [x] i18n básico
-- [x] Cobertura i18n avanzada
-- [x] Export estático incremental — 11-Jul-2025
-- [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
-- [x] Script `npm run check:legal` para verificar textos legales
-- [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
-- [x] Plantilla de issue feedback UX/traducciones
+- [x] i18n básico (commit bbcfd1c)
+- [x] Cobertura i18n avanzada (commit 3ccba1b)
+- [x] Export estático incremental — 11-Jul-2025 (commit 70991c7)
+- [x] Script `npm run check` (lint + format + test) — 11-Jul-2025 (commit ce90aab)
+- [x] Script `npm run check:legal` para verificar textos legales (commit ce90aab)
+- [x] Script `npm run setup` para preparar entorno — 11-Jul-2025 (commit c14cf33)
+- [x] Plantilla de issue feedback UX/traducciones (commit c14cf33)
 - [ ] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
 
 #### 🧱 Generador de sitios (wizard)
 
-- [x] Branding extendido (selector de color, fuentes, logo, favicon) — 14-Jul-2025
+- [x] Branding extendido (selector de color, fuentes, logo, favicon) — 14-Jul-2025 (commit 9c96f87)
 
 #### 💳 Sistema de pagos y planes
 
-- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025
-- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025
-- [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025
-- [x] Dashboard: historial y panel de pagos — 04-Jul-2025
+- [x] Integrar Stripe (productos, subscripciones, webhooks) — 04-Jul-2025 (commit 5253612)
+- [x] Middleware de control de plan + free trial (7 días, opc.) — 13-Jul-2025 (commit d9fdc17)
+- [x] Middleware withAuthPlanRoute para rutas App Router — 04-Jul-2025 (commit 21b96d3)
+- [x] Dashboard: historial y panel de pagos — 04-Jul-2025 (commit c7581fa)
 
 #### 🌟 Funcionalidades premium
 
 #### 🧪 Retención, métricas y feedback
 
-- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025
-- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025
-- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 18-Jul-2025
-- [x] Logs `onboarding_started` y `onboarding_completed` — 18-Jul-2025
+- [x] Panel de analítica simple (visitas, actividad – Upstash opc., ver `docs/ANALYTICS.md`) — 11-Jul-2025 (commit c7581fa)
+- [x] Onboarding guiado tras upgrade: branding ➜ dominio ➜ analytics — 11-Jul-2025 (commit c14cf33)
+- [x] Trigger robusto de onboarding tras upgrade PREMIUM (webhook + dashboard) — 12-Jul-2025 (commit 7fdbeaf)
+- [x] Logs `onboarding_started` y `onboarding_completed` — 12-Jul-2025 (commit 7fdbeaf)
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
 #### 🔐 Backend
 
-- [x] Cache de sitios (Upstash Redis, TTL dinámico)
-- [x] Backups automáticos + restore 1 clic — 12-Jul-2025
+- [x] Cache de sitios (Upstash Redis, TTL dinámico) (commit 20b9adb)
+- [x] Backups automáticos + restore 1 clic — 11-Jul-2025 (commit f8e2494)
 
 #### 🧱 Generador de sitios (wizard)
 
@@ -172,13 +172,13 @@
 
 #### 💳 Sistema de pagos y planes
 
-- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 19-Jul-2025
+- [x] Integración Stripe completa (producto PREMIUM, webhooks, historial) — 12-Jul-2025 (commit 5253612)
 
 #### 🌟 Funcionalidades premium
 
-- [x] Integrar **DataFast** (IA) para generación de contenido
+- [x] Integrar **DataFast** (IA) para generación de contenido (commit ce90aab)
 - [ ] Soporte prioritario (chat/email)
-- [x] Generador de textos legales (cookies, privacy, T&C)
+- [x] Generador de textos legales (cookies, privacy, T&C) (commit ce90aab)
 - [ ] Banners visuales de upsell (dashboard)
 
 #### 🧪 Retención, métricas y feedback

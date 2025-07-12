@@ -122,6 +122,15 @@ Consulta la guía docs/deploy-free-plan.md
 | Vídeo (MUX)            | —    | —   | ✅      |
 | Analítica avanzada     | —    | —   | ✅      |
 
+### 🔥 Features recientes (Jul-2025)
+
+- Caché de sitios en Upstash Redis con TTL dinámico
+- Subida de imágenes segura (S3 / Cloudinary)
+- Dominio propio y backups automáticos
+- Analítica básica y flujo de onboarding
+- Integración Stripe completa con suscripciones
+- IA DataFast + textos legales
+
 ### Onboarding guiado tras upgrade
 
 El onboarding se activa al confirmar el upgrade al plan **Premium** (webhook de Stripe o cambio manual). Si el usuario Premium no ha completado el proceso, se muestra automáticamente al acceder.
