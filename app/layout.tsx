@@ -1,14 +1,16 @@
 // app/layout.tsx
-import "@/styles/globals.css";
 import type { ReactNode } from "react";
 
 import { ThemeProvider } from "next-themes";
 import { ToastProvider, ToastViewport } from "@heroui/toast";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { locales } from "@/i18n";
+import { logger } from "@/lib/logger";
+
+import "@/styles/globals.css";
 
 export const metadata = {
   title: "SaaS Web Builder",
@@ -24,7 +26,14 @@ export default async function RootLayout({
 
   if (!locales.includes(locale as any)) notFound();
 
-  const messages = await getMessages();
+  let messages;
+
+  try {
+    messages = await getMessages();
+  } catch {
+    logger.warn(`[i18n] Missing messages for ${locale}, falling back to en`);
+    messages = await getMessages({ locale: "en" });
+  }
 
   return (
     <html suppressHydrationWarning lang={locale}>

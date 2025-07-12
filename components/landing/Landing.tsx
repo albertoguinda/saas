@@ -2,10 +2,10 @@ import { Card } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { Check, Layout, ImageIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { title as titleStyle, subtitle } from "@/components/primitives";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
 
 const POSTS = [
   { title: "Primer post", desc: "Lorem ipsum dolor sit amet." },
@@ -49,6 +49,11 @@ const FEATURES = [
 
 export default function Landing({ site }: LandingProps) {
   const t = useTranslations("landing");
+  const common = useTranslations();
+
+  if (!site?.title) {
+    return <div className="p-8 text-center">{common("notFound.desc")}</div>;
+  }
   const template = site.structure?.template ?? "default";
   const color = site.structure?.color ?? "indigo";
   const font = site.structure?.font ?? "sans";

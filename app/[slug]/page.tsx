@@ -6,29 +6,59 @@ import Site from "@/lib/models/site";
 import User from "@/lib/models/user";
 import { getSite, setSite } from "@/lib/cache";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
+import { logger } from "@/lib/logger";
 
 export default async function PublicSite({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
 
-  const cached = await getSite(slug);
+  let site: SiteDoc | null = null;
+  let fromCache = false;
 
-  if (cached) {
-    return <Landing site={JSON.parse(cached) as SiteDoc} />;
+  try {
+    const cached = await getSite(slug);
+
+    if (cached) {
+      site = JSON.parse(cached) as SiteDoc;
+      fromCache = true;
+    }
+  } catch (err) {
+    logger.warn("[cache] error", err);
   }
 
-  await dbConnect();
-  const site = (await Site.findOne({ slug }).lean()) as SiteDoc | null;
+  if (!site) {
+    try {
+      await dbConnect();
+      site = (await Site.findOne({ slug }).lean()) as SiteDoc | null;
+    } catch (err) {
+      logger.warn("[db] connection failed", err);
+      if (process.env.NODE_ENV === "development") {
+        site = {
+          _id: "mock",
+          userId: "mock",
+          slug,
+          title: "Demo site",
+          structure: {},
+        };
+      }
+    }
+  }
 
-  if (!site) notFound();
+  if (!site || !site.title) notFound();
 
-  const user = await User.findById(site.userId).lean();
-  const plan = user?.plan || "free";
+  if (!fromCache) {
+    try {
+      const user = await User.findById(site.userId).lean();
+      const plan = user?.plan ?? "free";
 
-  await setSite(slug, JSON.stringify(site), plan);
+      await setSite(slug, JSON.stringify(site), plan);
+    } catch (err) {
+      logger.warn("[cache] set failed", err);
+    }
+  }
 
   return <Landing site={site} />;
 }

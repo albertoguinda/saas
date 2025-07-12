@@ -33,9 +33,22 @@ git clone https://github.com/albertoguinda/saas.git
 cd saas
 ./scripts/setup.sh                     # instala dependencias y ejecuta lint y tests
 cp .env.example .env.local             # rellena MONGODB_URI, NEXTAUTH_*, STRIPE_SECRET_KEY, UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN
+# crea next-intl.config.ts si no existe (ver sección i18n)
 npm run refresh-db                     # limpia y seed (BBDD) en un solo paso
 npm run dev
 ```
+
+Ejemplo básico de `.env.local` para desarrollo:
+
+```bash
+MONGODB_URI=mongodb://localhost:27017/saas
+NEXTAUTH_SECRET=dev
+STRIPE_SECRET_KEY=sk_test
+UPSTASH_REDIS_REST_URL=http://localhost:6379
+UPSTASH_REDIS_REST_TOKEN=local
+```
+
+Si faltan estas variables en desarrollo, el proyecto usará mocks en memoria para MongoDB y Redis, evitando errores de arranque.
 
 TIP: si solo necesitas seedear de nuevo usa npm run seed.
 
@@ -158,6 +171,19 @@ Uso de placeholders y plurales:
 t("dashboard.greeting", { name: "Ada" });
 t("projects.limit", { count: 2 });
 ```
+
+### Configuración de `next-intl`
+
+Crea `next-intl.config.ts` en la raíz con:
+
+```ts
+export default {
+  locales: ["en", "es"],
+  defaultLocale: "en",
+};
+```
+
+Si el archivo falta o no existen mensajes para el idioma solicitado, el servidor caerá al inglés y lo indicará en consola.
 
 🗺️ Roadmap & tareas
 Visión estratégica → docs/ROADMAP.md
