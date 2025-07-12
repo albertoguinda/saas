@@ -30,3 +30,8 @@ Se creó `lib/stripe.ts` y se planificó la integración completa (productos, su
 
 La API `/api/track` almacena eventos anónimos y registra hitos como `wizard_completed` y `upgrade_click`. `docs/ANALYTICS.md` detalla la información recogida y su uso para funnels y heatmaps.
 
+## ✅ Revisión julio-2025
+
+- Se comparó `INVENTARIO.md` con el estado real y se movieron las tareas implementadas a la sección **completadas** en `TAREAS.md`.
+- Se eliminaron duplicados y se priorizaron las tareas pendientes siguiendo `ROADMAP.md`.
+- El plan FREE no tiene tareas pendientes tras la limpieza.
