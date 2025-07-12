@@ -6,6 +6,7 @@ interface Template {
   image: string;
   tags: string[];
   type: string;
+  demo?: string;
 }
 
 const templates: Template[] = [
@@ -29,6 +30,14 @@ const templates: Template[] = [
     image: "https://placehold.co/400x300?text=Premium+Template",
     tags: ["blog"],
     type: "blog",
+  },
+  {
+    name: "Premium Chat",
+    description: "Real time support chat component",
+    image: "https://placehold.co/400x300?text=Chat",
+    tags: ["chat", "support"],
+    type: "component",
+    demo: "/demo/chat",
   },
 ];
 

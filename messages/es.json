@@ -183,5 +183,8 @@
   "catalog.title": "Catálogo Premium",
   "catalog.preview": "Vista previa",
   "catalog.loading": "Cargando plantillas...",
+  "chat.placeholder": "Escribe un mensaje",
+  "chat.send": "Enviar",
+  "chat.emoji": "Añadir emoji",
   "register.checkEmail": "Revisa tu correo para confirmar la cuenta."
 }

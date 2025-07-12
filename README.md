@@ -207,6 +207,10 @@ objetos con `name`, `description`, `image`, `tags` y `type`. Las imágenes se
 definen por URL; emplea tu CDN o un placeholder del estilo
 `https://placehold.co/400x300?text=Premium+Template`.
 
+### Chat en tiempo real (Premium)
+
+Prueba el nuevo componente de soporte desde `/demo/chat` o selecciona **Premium Chat** en el catálogo. Acepta archivos, emojis y respeta el tema activo.
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.

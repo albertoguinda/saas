@@ -183,5 +183,8 @@
   "catalog.title": "Premium Catalog",
   "catalog.preview": "Preview",
   "catalog.loading": "Loading templates...",
+  "chat.placeholder": "Type a message",
+  "chat.send": "Send",
+  "chat.emoji": "Add emoji",
   "register.checkEmail": "Check your email to confirm your account."
 }

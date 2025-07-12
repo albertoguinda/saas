@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:48 UTC**
+\_Actualizado: **12-Jul-2025 23:30 UTC**
 
 ---
 
@@ -29,7 +29,7 @@
 | Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
 | Panel de analítica simple                 | ✅     | 2025-07-11 | 995e78e | albertoguinda |
 | Free trial y control de planes            | ✅     | 2025-07-11 | d30e710 | albertoguinda |
-| Refuerzo middleware free trial            | ✅     | 2025-07-12 | TBD     | albertoguinda |
+| Refuerzo middleware free trial            | ✅     | 2025-07-12 | 29c3b44 | albertoguinda |
 | FAQ y nuevos scripts docs                 | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
 | i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
 | Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
@@ -210,7 +210,7 @@
 #### 🌟 Funcionalidades premium
 
 - [x] Integrar **DataFast** (IA) para generación de contenido (b127717, @albertoguinda)
-- [ ] Soporte prioritario (chat/email)
+- [x] Soporte prioritario (chat/email) — 12-Jul-2025 (eceb949, @albertoguinda)
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [ ] Banners visuales de upsell (dashboard)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))

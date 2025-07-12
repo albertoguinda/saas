@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 
 import UpgradeBanner from "@/components/UpgradeBanner";
+import ChatBox from "@/components/premium/chat/ChatBox";
 
 interface Template {
   name: string;
@@ -13,6 +14,7 @@ interface Template {
   image: string;
   tags: string[];
   type: string;
+  demo?: string;
 }
 
 export default function PremiumCatalogPage() {
@@ -58,11 +60,15 @@ export default function PremiumCatalogPage() {
       {selected && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <Card className="p-6 w-full max-w-lg flex flex-col gap-4">
-            <img
-              alt={selected.name}
-              className="w-full h-auto rounded"
-              src={selected.image}
-            />
+            {selected.demo === "/demo/chat" ? (
+              <ChatBox channel="demo" user={{ id: "1", name: "Ada" }} />
+            ) : (
+              <img
+                alt={selected.name}
+                className="w-full h-auto rounded"
+                src={selected.image}
+              />
+            )}
             <h3 className="text-xl font-semibold">{selected.name}</h3>
             <p className="text-sm text-default-500">{selected.description}</p>
             <Button onClick={() => setSelected(null)}>
