@@ -259,6 +259,7 @@ Si el archivo falta o no existen mensajes para el idioma solicitado, el servidor
 Visión estratégica → docs/ROADMAP.md
 
 Backlog por fases → docs/TAREAS.md
+Inventario premium → docs/INVENTARIO_PREMIUM.md
 
 ## 🎛️ Estado de i18n y feedback UX
 
