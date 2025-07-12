@@ -43,6 +43,7 @@ NEXTAUTH_SECRET=dev
 STRIPE_SECRET_KEY=sk_test
 UPSTASH_REDIS_REST_URL=http://localhost:6379
 UPSTASH_REDIS_REST_TOKEN=local
+BACKUP_RETENTION=5
 ```
 
 Si faltan estas variables en desarrollo, el proyecto usará mocks en memoria para MongoDB y Redis, evitando errores de arranque.
@@ -95,13 +96,13 @@ Genera `backup.json` para pruebas y CI.
 Los usuarios autenticados pueden usar:
 
 ```bash
-curl -X POST /api/backup/create > backup.zip
+curl -H "Accept: application/zip" -X POST /api/backup > backup.zip
 ```
 
 Para restaurar:
 
 ```bash
-curl -X POST -F file=@backup.zip /api/backup/restore
+curl -X POST -d '{"id":"ID_DEL_BACKUP"}' /api/restore
 ```
 
 ### ⚡ Caché de sitios

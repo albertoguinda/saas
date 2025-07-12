@@ -19,6 +19,15 @@ const updateOne = jest.fn();
 const findSites = jest.fn();
 const deleteMany = jest.fn();
 const insertMany = jest.fn();
+const backupCreate = jest.fn();
+const backupFind = jest.fn(() => ({
+  sort: jest.fn().mockReturnThis(),
+  skip: jest.fn().mockReturnThis(),
+  select: jest.fn().mockReturnValue([]),
+}));
+const backupFindOne = jest.fn();
+const backupDeleteMany = jest.fn();
+const backupCount = jest.fn();
 
 jest.mock("@/lib/models/user", () => ({
   __esModule: true,
@@ -30,16 +39,28 @@ jest.mock("@/lib/models/site", () => ({
   default: { find: findSites, deleteMany, insertMany },
 }));
 
+jest.mock("@/lib/models/backup", () => ({
+  __esModule: true,
+  default: {
+    create: backupCreate,
+    find: backupFind,
+    findOne: backupFindOne,
+    deleteMany: backupDeleteMany,
+    countDocuments: backupCount,
+  },
+}));
+
 jest.mock("@/lib/logger", () => ({ logger: { info: jest.fn() } }));
 
 import { getServerSession } from "next-auth";
 
-import { POST as create } from "@/app/api/backup/create/route";
-import { POST as restore } from "@/app/api/backup/restore/route";
+import { GET, POST as create } from "@/app/api/backup/route";
+import { POST as restore } from "@/app/api/restore/route";
 
 beforeEach(() => {
   jest.clearAllMocks();
   (getServerSession as jest.Mock).mockResolvedValue(null);
+  backupCreate.mockResolvedValue({ _id: "1", data: Buffer.from("a") });
 });
 
 test("create returns 401 when unauthenticated", async () => {
@@ -53,7 +74,18 @@ test("create returns zip", async () => {
   findById.mockReturnValue({ lean: () => ({ _id: "1" }) });
   findSites.mockReturnValue({ lean: () => [] });
 
-  const res = await create({} as NextRequest);
+  const res = await create({
+    headers: new Headers({ accept: "application/zip" }),
+    nextUrl: new URL("http://x"),
+  } as unknown as NextRequest);
+
+  expect(res.status).toBe(200);
+});
+
+test("list backups", async () => {
+  (getServerSession as jest.Mock).mockResolvedValue({ user: { id: "1" } });
+
+  const res = await GET();
 
   expect(res.status).toBe(200);
 });

@@ -8,6 +8,7 @@ import Site from "@/lib/models/site";
 import { authOptions } from "@/lib/auth";
 import { logger } from "@/lib/logger";
 import { invalidateSite } from "@/lib/cache";
+import { createBackup } from "@/lib/backups";
 
 export default async function handler(
   req: NextApiRequest,
@@ -72,6 +73,8 @@ export default async function handler(
 
       await invalidateSite(site.slug);
 
+      await createBackup(session.user.id, "auto");
+
       return res.status(200).json({ site });
     } catch (err) {
       logger.error(err);
@@ -90,6 +93,8 @@ export default async function handler(
       await site.deleteOne();
 
       await invalidateSite(site.slug);
+
+      await createBackup(session.user.id, "auto");
 
       return res.status(200).json({ ok: true, message: "Proyecto eliminado" });
     } catch (err) {

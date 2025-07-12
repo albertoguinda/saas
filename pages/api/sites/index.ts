@@ -9,6 +9,7 @@ import { authOptions } from "@/lib/auth";
 import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
 import { logger } from "@/lib/logger";
 import { FREE_PROJECT_LIMIT } from "@/config/constants";
+import { createBackup } from "@/lib/backups";
 
 // Solo autenticados pueden acceder a sus proyectos
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -78,6 +79,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         slug,
         structure: {},
       });
+
+      await createBackup(session.user.id, "auto");
 
       return res.status(201).json({ site });
     } catch (err) {
