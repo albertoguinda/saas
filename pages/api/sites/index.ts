@@ -10,6 +10,7 @@ import { withAuthPlan } from "@/lib/middlewares/withAuthPlan";
 import { logger } from "@/lib/logger";
 import { FREE_PROJECT_LIMIT } from "@/config/constants";
 import { createBackup } from "@/lib/backups";
+import { getUserSites, setUserSites, invalidateUserSites } from "@/lib/cache";
 
 // Solo autenticados pueden acceder a sus proyectos
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -33,9 +34,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return res.status(200).json({ exists: Boolean(exists) });
       }
 
+      const cached = await getUserSites(session.user.id);
+
+      if (cached) {
+        return res.status(200).json({ sites: JSON.parse(cached) });
+      }
+
       const sites = await Site.find({ userId: session.user.id }).sort({
         createdAt: -1,
       });
+
+      try {
+        await setUserSites(session.user.id, JSON.stringify(sites));
+      } catch (err) {
+        logger.warn("[cache] set user sites failed", err);
+      }
 
       return res.status(200).json({ sites });
     } catch (err) {
@@ -81,6 +94,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       });
 
       await createBackup(session.user.id, "auto");
+
+      try {
+        await invalidateUserSites(session.user.id);
+      } catch (err) {
+        logger.warn("[cache] invalidate user sites failed", err);
+      }
 
       return res.status(201).json({ site });
     } catch (err) {

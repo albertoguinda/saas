@@ -4,7 +4,14 @@ const del = jest.fn();
 
 jest.mock("@/lib/upstash", () => ({ redis: { get, set, del } }));
 
-import { getSite, setSite, invalidateSite } from "@/lib/cache";
+import {
+  getSite,
+  setSite,
+  invalidateSite,
+  getUserSites,
+  setUserSites,
+  invalidateUserSites,
+} from "@/lib/cache";
 
 beforeEach(() => {
   get.mockReset();
@@ -12,14 +19,9 @@ beforeEach(() => {
   del.mockReset();
 });
 
-test("setSite uses premium TTL", async () => {
-  await setSite("s", "{}", "premium");
-  expect(set).toHaveBeenCalledWith("site:s", "{}", { ex: 86400 });
-});
-
-test("setSite uses free TTL", async () => {
-  await setSite("s", "{}", "free");
-  expect(set).toHaveBeenCalledWith("site:s", "{}", { ex: 7200 });
+test("setSite uses constant TTL", async () => {
+  await setSite("s", "{}");
+  expect(set).toHaveBeenCalledWith("site:s", "{}", { ex: 3600 });
 });
 
 test("getSite calls redis.get", async () => {
@@ -33,4 +35,22 @@ test("getSite calls redis.get", async () => {
 test("invalidateSite calls redis.del", async () => {
   await invalidateSite("s");
   expect(del).toHaveBeenCalledWith("site:s");
+});
+
+test("setUserSites uses panel TTL", async () => {
+  await setUserSites("u", "[]");
+  expect(set).toHaveBeenCalledWith("user-sites:u", "[]", { ex: 600 });
+});
+
+test("getUserSites calls redis.get", async () => {
+  get.mockResolvedValue("[]");
+  const res = await getUserSites("u");
+
+  expect(get).toHaveBeenCalledWith("user-sites:u");
+  expect(res).toBe("[]");
+});
+
+test("invalidateUserSites calls redis.del", async () => {
+  await invalidateUserSites("u");
+  expect(del).toHaveBeenCalledWith("user-sites:u");
 });

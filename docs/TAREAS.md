@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 20:47 UTC**
+\_Actualizado: **12-Jul-2025 20:48 UTC**
 
 ---
 
@@ -23,6 +23,7 @@
 | Almacenamiento seguro de imágenes         | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
 | Control de acceso a planes                | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
 | Cache avanzada con Upstash                | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
+| Cache TTL y fallback robusto              | ✅     | 2025-07-12 | e863e3e | albertoguinda |
 | Generación IA de contenido                | ✅     | 2025-07-11 | b127717 | albertoguinda |
 | API dominio y backups iniciales           | ✅     | 2025-07-11 | 90ac47a | albertoguinda |
 | Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
@@ -236,5 +237,6 @@
 - Crea `next-intl.config.ts` en la raíz para que la i18n funcione.
 - Usa mocks automáticos si Mongo o Redis faltan.
 - Prueba landings añadiendo `?lang=es` al slug y ajustando el plan en los mocks.
+- Limpia la caché local con `curl -X POST /api/cache/invalidate -d '{"slug":"mi-sitio"}'`.
 
 > **Recuerda:** Actualiza este archivo al cerrar una feature, añadir una nueva necesidad o mover tareas de fase. No dupliques; mueve y marca con `[x]` según corresponda.

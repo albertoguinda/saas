@@ -46,6 +46,13 @@ UPSTASH_REDIS_REST_TOKEN=local
 BACKUP_RETENTION=5
 ```
 
+Configura una base gratuita en [Upstash](https://upstash.com/) y copia la URL y
+token REST en las variables anteriores. Si no se definen, se activará un mock en
+memoria.
+
+El TTL por defecto se puede ajustar editando `SITE_CACHE_TTL` y
+`PANEL_CACHE_TTL` en `config/constants.ts`.
+
 Si faltan estas variables en desarrollo, el proyecto usará mocks en memoria para MongoDB y Redis, evitando errores de arranque.
 
 TIP: si solo necesitas seedear de nuevo usa `npm run seed`.
@@ -105,10 +112,15 @@ Para restaurar:
 curl -X POST -d '{"id":"ID_DEL_BACKUP"}' /api/restore
 ```
 
-### ⚡ Caché de sitios
+### ⚡ Caché con Upstash Redis
 
-Cada sitio se guarda en **Upstash Redis** tras la primera carga. El TTL es de
-24h en plan Premium y 2h en planes Free/Pro. Para limpiar manualmente:
+Las páginas públicas y datos del panel se almacenan en **Upstash Redis** con TTL
+de 1h y 10&nbsp;min respectivamente. Si Redis no está disponible se recurre a
+MongoDB y se muestran logs de aviso. Para limpiar manualmente la caché de un
+sitio:
+
+- **Páginas públicas:** `/app/[slug]`
+- **Dashboard:** `/api/sites`, `/api/analytics`
 
 ```bash
 curl -X POST /api/cache/invalidate -d '{"slug":"mi-sitio"}'
