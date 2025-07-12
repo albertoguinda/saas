@@ -8,29 +8,30 @@
 
 ## 📚 Historial últimos PRs
 
-| Tarea                                  | Estado | Fecha      | Commit  | Autor         |
-| -------------------------------------- | ------ | ---------- | ------- | ------------- |
-| Gestión y conexión de dominios propios | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
-| Automatizar scripts npm y Husky        | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
-| Catálogo Premium UI/UX                 | ✅     | 2025-07-12 | 923d201 | albertoguinda |
-| Conexión dominio propio                | ✅     | 2025-07-12 | 5000830 | albertoguinda |
-| Backup y restore                       | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
-| Integración Stripe suscripciones       | ✅     | 2025-07-12 | 23c4bbf | albertoguinda |
-| Gestión segura de imágenes de branding | ✅     | 2025-07-12 | 413e60b | albertoguinda |
-| Mejora fallback i18n y landing         | ✅     | 2025-07-12 | 3f65f2f | albertoguinda |
-| Refuerzo trigger onboarding            | ✅     | 2025-07-12 | 84ff6c7 | albertoguinda |
-| Almacenamiento seguro de imágenes      | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
-| Control de acceso a planes             | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
-| Cache avanzada con Upstash             | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
-| Generación IA de contenido             | ✅     | 2025-07-11 | b127717 | albertoguinda |
-| API dominio y backups iniciales        | ✅     | 2025-07-11 | 90ac47a | albertoguinda |
-| Onboarding guiado tras upgrade         | ✅     | 2025-07-11 | ef40270 | albertoguinda |
-| Panel de analítica simple              | ✅     | 2025-07-11 | 995e78e | albertoguinda |
-| Free trial y control de planes         | ✅     | 2025-07-11 | d30e710 | albertoguinda |
-| FAQ y nuevos scripts docs              | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
-| i18n total y feedback UX               | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
-| Refuerzo i18n y UX                     | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
-| Localización core components           | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
+| Tarea                                     | Estado | Fecha      | Commit  | Autor         |
+| ----------------------------------------- | ------ | ---------- | ------- | ------------- |
+| Gestión y conexión de dominios propios    | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
+| Automatizar scripts npm y Husky           | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
+| Catálogo Premium UI/UX                    | ✅     | 2025-07-12 | 923d201 | albertoguinda |
+| Conexión dominio propio                   | ✅     | 2025-07-12 | 5000830 | albertoguinda |
+| Backups automáticos y restauración 1 clic | ✅     | 2025-07-12 | e6a1d7e | albertoguinda |
+| Backup y restore                          | ✅     | 2025-07-12 | 13abc51 | albertoguinda |
+| Integración Stripe suscripciones          | ✅     | 2025-07-12 | 23c4bbf | albertoguinda |
+| Gestión segura de imágenes de branding    | ✅     | 2025-07-12 | 413e60b | albertoguinda |
+| Mejora fallback i18n y landing            | ✅     | 2025-07-12 | 3f65f2f | albertoguinda |
+| Refuerzo trigger onboarding               | ✅     | 2025-07-12 | 84ff6c7 | albertoguinda |
+| Almacenamiento seguro de imágenes         | ✅     | 2025-07-12 | 9c5aaba | albertoguinda |
+| Control de acceso a planes                | ✅     | 2025-07-12 | 1e38a9c | albertoguinda |
+| Cache avanzada con Upstash                | ✅     | 2025-07-12 | cc5bd05 | albertoguinda |
+| Generación IA de contenido                | ✅     | 2025-07-11 | b127717 | albertoguinda |
+| API dominio y backups iniciales           | ✅     | 2025-07-11 | 90ac47a | albertoguinda |
+| Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
+| Panel de analítica simple                 | ✅     | 2025-07-11 | 995e78e | albertoguinda |
+| Free trial y control de planes            | ✅     | 2025-07-11 | d30e710 | albertoguinda |
+| FAQ y nuevos scripts docs                 | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
+| i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
+| Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
+| Localización core components              | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados

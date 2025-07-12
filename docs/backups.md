@@ -12,5 +12,6 @@ Genera `backup.json` con una exportación básica para pruebas.
 
 ### Endpoints
 
-- `POST /api/backup/create` → descarga `backup.zip` con tus sitios y perfil.
-- `POST /api/backup/restore` → sube `backup.zip` o JSON para restaurar tu cuenta.
+- `GET /api/backup` → lista tus backups.
+- `POST /api/backup` → genera copia (`Accept: application/zip` para descargarla).
+- `POST /api/restore` → restaura un backup por ID.
