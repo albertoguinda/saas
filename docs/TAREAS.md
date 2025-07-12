@@ -10,6 +10,7 @@
 
 | Tarea                                  | Estado | Fecha      | Commit  | Autor         |
 | -------------------------------------- | ------ | ---------- | ------- | ------------- |
+| Gestión y conexión de dominios propios | ✅     | 2025-07-12 | 9a5222c | albertoguinda |
 | Automatizar scripts npm y Husky        | ✅     | 2025-07-12 | 20f9a4e | albertoguinda |
 | Catálogo Premium UI/UX                 | ✅     | 2025-07-12 | 923d201 | albertoguinda |
 | Conexión dominio propio                | ✅     | 2025-07-12 | 5000830 | albertoguinda |

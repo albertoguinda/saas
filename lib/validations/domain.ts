@@ -8,6 +8,11 @@ export const domainSchema = z.object({
     .refine((v) => !/^https?:\/\//.test(v), {
       message: "Dominio inválido",
     }),
+  siteId: z.string().optional(),
+});
+
+export const verifySchema = z.object({
+  id: z.string().min(1, "ID requerido"),
 });
 
 export type DomainInput = z.infer<typeof domainSchema>;
