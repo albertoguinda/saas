@@ -5,6 +5,8 @@ import { Alert } from "@heroui/alert";
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
+import DomainWizard from "@/components/DomainWizard";
+
 export default function SettingsPage() {
   const [darkMode, setDarkMode] = useState(false);
   const [msg, setMsg] = useState("");
@@ -103,6 +105,9 @@ export default function SettingsPage() {
           </Alert>
         )}
       </Card>
+      <div className="mt-8">
+        <DomainWizard />
+      </div>
     </div>
   );
 }

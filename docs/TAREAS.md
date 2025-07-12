@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **18-Jul-2025 10:20 UTC**
+\_Actualizado: **12-Jul-2025 16:30 UTC**
 
 ---
 
@@ -121,6 +121,7 @@
 - [x] Subida y almacenamiento seguro de imágenes personalizadas (S3 / Cloudinary) — 14-Jul-2025
 - [x] Gestión de branding por sitio con mock local de uploads — 12-Jul-2025
 - [x] Conexión dominio propio (Namecheap / Cloudflare) — 12-Jul-2025
+- [x] Validación DNS (CNAME a la app) — 12-Jul-2025
 - [x] Exportación de sitios como HTML estático — 11-Jul-2025
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025
 

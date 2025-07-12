@@ -158,7 +158,12 @@ guarda la URL en MongoDB.
 ### Conexión de dominio propio
 
 En el dashboard puedes añadir tu dominio y comprobar el estado de validación.
-Se guardan en MongoDB con las fases **pending**, **validating** y **active**.
+El endpoint `/api/domain/connect` registra el dominio tras validar su CNAME
+contra `CNAME_DOMAIN`.
+Los dominios se almacenan con estado **pending**, **validating** o **active**
+para facilitar el troubleshooting.
+Si el CNAME no coincide o el dominio ya existe, se devuelve un error claro
+para guiar al usuario.
 
 ### Configurar Stripe
 

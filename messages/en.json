@@ -165,5 +165,11 @@
   "branding.color": "Primary color",
   "branding.font": "Font",
   "branding.save": "Save changes",
-  "branding.remove": "Remove"
+  "branding.remove": "Remove",
+  "domain.placeholder": "yourdomain.com",
+  "domain.connect": "Connect",
+  "domain.error": "Unable to connect domain",
+  "domain.status.pending": "Pending",
+  "domain.status.validating": "Validating",
+  "domain.status.active": "Active"
 }

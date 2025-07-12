@@ -165,5 +165,11 @@
   "branding.color": "Color principal",
   "branding.font": "Fuente",
   "branding.save": "Guardar cambios",
-  "branding.remove": "Eliminar"
+  "branding.remove": "Eliminar",
+  "domain.placeholder": "tudominio.com",
+  "domain.connect": "Conectar",
+  "domain.error": "No se pudo conectar el dominio",
+  "domain.status.pending": "Pendiente",
+  "domain.status.validating": "Verificando",
+  "domain.status.active": "Activo"
 }
