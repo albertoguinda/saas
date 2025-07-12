@@ -249,6 +249,7 @@ Detalle completo en docs/STACK.md.
 Lee docs/CONTRIBUTING.md.
 
 Abre issue/PR con descripción clara.
+Puedes usar la plantilla `docs/FEATURE_TEMPLATE.md` para describir nuevas features.
 
 Toda feature debe reflejarse en docs/TAREAS.md.
 Para aportar traducciones ejecuta `npm run translations:check` antes de abrir PR.
