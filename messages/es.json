@@ -154,6 +154,7 @@
   "demo.map": "Demo Mapa",
   "demo.chat": "Demo Chat",
   "demo.booking": "Demo Reserva",
+  "demo.scheduler": "Demo Scheduler",
   "notFound.title": "404 - Página no encontrada",
   "notFound.desc": "La página que buscas no existe.",
   "notFound.back": "Volver al inicio",
@@ -206,5 +207,7 @@
   "booking.nameRequired": "Nombre requerido",
   "booking.emailInvalid": "Email inv\u00e1lido",
   "booking.serviceRequired": "Selecciona un servicio",
-  "booking.dateRequired": "Fecha requerida"
+  "booking.dateRequired": "Fecha requerida",
+  "scheduler.title": "Horario",
+  "scheduler.reset": "Reiniciar"
 }
