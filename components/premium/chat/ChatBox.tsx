@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 
@@ -24,6 +25,8 @@ export default function ChatBox({
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [input, setInput] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
+  const { data: session } = useSession();
+  const isLoggedIn = Boolean(session?.user?.id);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,18 +52,22 @@ export default function ChatBox({
         ref={containerRef}
         className="flex-1 space-y-2 overflow-y-auto rounded-t-md border border-default-200 bg-white p-4 dark:border-default-600 dark:bg-neutral-900"
       >
-        {messages.map(({ id, text, sender }) => (
-          <div
-            key={id}
-            className={`max-w-xs rounded-md p-2 text-sm ${
-              sender === "user"
-                ? "ml-auto bg-primary-500 text-white"
-                : "bg-default-200 text-default-800 dark:bg-default-700 dark:text-default-100"
-            }`}
-          >
-            {text}
-          </div>
-        ))}
+        {isLoggedIn ? (
+          messages.map(({ id, text, sender }) => (
+            <div
+              key={id}
+              className={`max-w-xs rounded-md p-2 text-sm ${
+                sender === "user"
+                  ? "ml-auto bg-primary-500 text-white"
+                  : "bg-default-200 text-default-800 dark:bg-default-700 dark:text-default-100"
+              }`}
+            >
+              {text}
+            </div>
+          ))
+        ) : (
+          <p className="text-sm text-default-500">Log in to chat</p>
+        )}
       </div>
       <form
         className="flex items-end gap-2 rounded-b-md border-x border-b border-default-200 bg-white p-2 dark:border-default-600 dark:bg-neutral-900"
