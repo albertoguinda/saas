@@ -187,8 +187,8 @@
   "catalog.preview": "Vista previa",
   "catalog.loading": "Cargando plantillas...",
   "register.checkEmail": "Revisa tu correo para confirmar la cuenta.",
-  "chat.title": "Chat de soporte",
-  "chat.placeholder": "Escribe un mensaje",
+  "chat.title": "Chat de Soporte",
+  "chat.placeholder": "Escribe tu mensaje...",
   "chat.send": "Enviar",
-  "chat.empty": "Sin mensajes por ahora"
+  "chat.empty": "Aún sin mensajes"
 }

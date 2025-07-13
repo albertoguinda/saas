@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
+import { useTranslations } from "next-intl";
 
 export interface ChatMessage {
   id: number;
@@ -21,6 +22,7 @@ export default function ChatBox({
   onSend,
   className,
 }: ChatBoxProps) {
+  const t = useTranslations("chat");
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [input, setInput] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,18 +51,22 @@ export default function ChatBox({
         ref={containerRef}
         className="flex-1 space-y-2 overflow-y-auto rounded-t-md border border-default-200 bg-white p-4 dark:border-default-600 dark:bg-neutral-900"
       >
-        {messages.map(({ id, text, sender }) => (
-          <div
-            key={id}
-            className={`max-w-xs rounded-md p-2 text-sm ${
-              sender === "user"
-                ? "ml-auto bg-primary-500 text-white"
-                : "bg-default-200 text-default-800 dark:bg-default-700 dark:text-default-100"
-            }`}
-          >
-            {text}
-          </div>
-        ))}
+        {messages.length ? (
+          messages.map(({ id, text, sender }) => (
+            <div
+              key={id}
+              className={`max-w-xs rounded-md p-2 text-sm ${
+                sender === "user"
+                  ? "ml-auto bg-primary-500 text-white"
+                  : "bg-default-200 text-default-800 dark:bg-default-700 dark:text-default-100"
+              }`}
+            >
+              {text}
+            </div>
+          ))
+        ) : (
+          <p className="text-sm text-default-500">{t("empty")}</p>
+        )}
       </div>
       <form
         className="flex items-end gap-2 rounded-b-md border-x border-b border-default-200 bg-white p-2 dark:border-default-600 dark:bg-neutral-900"
@@ -68,12 +74,12 @@ export default function ChatBox({
       >
         <Input
           className="flex-1"
-          placeholder="Type a message"
+          placeholder={t("placeholder")}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <Button color="primary" type="submit">
-          Send
+          {t("send")}
         </Button>
       </form>
     </div>
