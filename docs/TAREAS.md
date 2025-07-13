@@ -30,14 +30,14 @@
 | Onboarding guiado tras upgrade            | ✅     | 2025-07-11 | ef40270 | albertoguinda |
 | Panel de analítica simple                 | ✅     | 2025-07-11 | 995e78e | albertoguinda |
 | Free trial y control de planes            | ✅     | 2025-07-11 | d30e710 | albertoguinda |
-| Refuerzo middleware free trial            | ✅     | 2025-07-12 | TBD     | albertoguinda |
+| Refuerzo middleware free trial            | ✅     | 2025-07-12 | fe6204e | albertoguinda |
 | FAQ y nuevos scripts docs                 | ✅     | 2025-07-11 | 3ba20f5 | albertoguinda |
 | i18n total y feedback UX                  | ✅     | 2025-07-11 | da97bf0 | albertoguinda |
 | Refuerzo i18n y UX                        | ✅     | 2025-07-11 | a79c9a5 | albertoguinda |
 | Localización core components              | ✅     | 2025-07-11 | 7e840ca | albertoguinda |
 
-| AGV Dashboard premium | ✅ | 2025-07-12 | 536d794 | albertoguinda |
-| Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 2bd1384 | agente |
+| AGV Dashboard premium | ✅ | 2025-07-12 | f3e70de | albertoguinda |
+| Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 89e7731 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -160,7 +160,7 @@
 - [x] Integrar **DataFast** (IA) para generación de contenido (b127717, @albertoguinda)
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
-- [x] Integración AGV Dashboard premium — 12-Jul-2025 (536d794, @albertoguinda)
+- [x] Integración AGV Dashboard premium — 12-Jul-2025 (f3e70de, @albertoguinda)
 
 ---
 
