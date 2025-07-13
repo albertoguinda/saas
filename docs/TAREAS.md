@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **12-Jul-2025 23:27 UTC**
+\_Actualizado: **13-Jul-2025 00:50 UTC**
 
 ---
 
@@ -38,6 +38,7 @@
 
 | AGV Dashboard premium | ✅ | 2025-07-12 | f3e70de | albertoguinda |
 | Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 89e7731 | agente |
+| MapWidget premium | ✅ | 2025-07-13 | 8f83d13 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -160,6 +161,7 @@
 - [x] Generador de textos legales (cookies, privacy, T&C)
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
 - [x] Integración AGV Dashboard premium — 12-Jul-2025 (f3e70de, @albertoguinda)
+- [x] MapWidget premium con clustering y modo nocturno — 13-Jul-2025 (8f83d13, @agente)
 
 ---
 
