@@ -211,7 +211,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - `Price` component for formatted currency display (`pages/demo/price`).
 - AGV dashboard demo for real-time monitoring (`/dashboard/agv-monitor`).
 - Map widget demo with clustering (`/demo/map-widget`).
-- Chat component for real-time support (`/demo/chat`).
+- ChatBox component to build chat interfaces (`/demo/chat`).
 
 ## 🌍 Internacionalización
 

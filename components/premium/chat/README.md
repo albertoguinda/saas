@@ -1,18 +1,44 @@
-# Premium Chat
+# Premium ChatBox
 
-Componente React para soporte en tiempo real mediante WebSockets.
+Reusable widget to build chat interfaces.
 
 ## Props
 
-- `wsUrl` (string): URL del WebSocket.
-- `user` (string): identificador del usuario emisor.
+- `initialMessages` (`ChatMessage[]`): preloaded conversation messages.
+- `onSend(text: string)`: callback invoked when the user submits a message.
+- `className` (`string`): extra wrapper classes.
 
-## Dependencias
+Each `ChatMessage` has `{ id: number, text: string, sender?: "user" | "bot" }`.
 
-- Hook `useWebSocket` interno para la comunicación.
-- Componentes `@heroui/input` y `@heroui/button` para la interfaz.
+## Dependencies
 
-## Ejemplo de uso
+- `@heroui/input` and `@heroui/button` for the input field and submit button.
+- The optional `Chat` variant uses the internal `useWebSocket` hook.
+
+## Variants
+
+### Chat
+
+Wraps `ChatBox` adding WebSocket support.
+
+Props:
+
+- `wsUrl` (`string`): WebSocket endpoint.
+- `user` (`string`): sender identifier.
+
+## Examples
+
+Basic usage:
+
+```tsx
+import ChatBox from "@/components/premium/chat/ChatBox";
+
+function Example() {
+  return <ChatBox onSend={(text) => console.log(text)} />;
+}
+```
+
+WebSocket variant:
 
 ```tsx
 import Chat from "@/components/premium/chat";
@@ -20,4 +46,4 @@ import Chat from "@/components/premium/chat";
 <Chat wsUrl="wss://example.com/chat" user="Ada" />;
 ```
 
-La página `/demo/chat` ofrece una demostración básica.
+A minimal demo is available at `/demo/chat`.
