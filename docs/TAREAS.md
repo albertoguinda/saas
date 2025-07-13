@@ -138,7 +138,6 @@
 - [x] Emails transaccionales (Resend) + confirmación de cuenta — 12-Jul-2025 (d9c347b, @albertoguinda)
 - [x] i18n básico
 - [x] Cobertura i18n avanzada
-- [x] Export estático incremental — 11-Jul-2025
 - [x] Script `npm run check` (lint + format + test) — 11-Jul-2025
 - [x] Script `npm run check:legal` para verificar textos legales
 - [x] Script `npm run setup` para preparar entorno — 11-Jul-2025
@@ -175,6 +174,8 @@
 - [ ] Fix Lighthouse en CI
 - [ ] Configurar Renovate para dependencias (sugerida)
 - [ ] Tests E2E con Playwright (sugerida)
+- [ ] Export estático incremental — ZIP incremental pendiente
+  > Nota: los ZIP de exportación incremental aún no se generan.
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
