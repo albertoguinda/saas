@@ -91,7 +91,7 @@ npm run export:zip
 Genera `out.zip` con la versión estática del sitio. El endpoint `/api/export`
 ejecuta internamente `npm run export:zip` y devuelve el ZIP al instante. En el
 dashboard cada proyecto incluye un botón **Exportar ZIP** para descargar su
-contenido.
+contenido. Este ZIP es un volcado completo del proyecto, no incremental.
 
 ### 🗄️ Backups locales
 
