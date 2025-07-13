@@ -70,6 +70,8 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - **IA DataFast**: generación de contenido asistido
 - Cache de sitios vía **Upstash Redis**
 - **MUX**: vídeo upload + player
+- AGV Dashboard premium
+- Componente **Price** premium
 - Textos legales automáticos (cookies, privacy, TOS)
 - Backups / restore 1 clic
 - Soporte prioritario in-app
