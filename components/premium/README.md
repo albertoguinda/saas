@@ -41,3 +41,21 @@ import MapWidget from "@/components/premium/MapWidget";
 ```
 
 ![Demo](../../public/mapwidget.png)
+
+## BookingForm
+
+Advanced booking form with validation and i18n.
+
+### Props
+
+- `services` (`Service[]`): options for the service select.
+- `onSubmit` (`(data: BookingInput) => Promise<void>`): called on successful submit.
+- `className` (`string`): optional wrapper class.
+
+### Example
+
+```tsx
+import { BookingForm } from "@/components/premium/forms";
+
+<BookingForm services={[{ id: "cut", name: "Hair Cut" }]} />;
+```
