@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 
+import useSocket from "@/lib/hooks/useSocket";
+
 export interface ChatMessage {
   id: number;
   text: string;
@@ -11,19 +13,31 @@ export interface ChatMessage {
 }
 
 export interface ChatBoxProps {
+  wsUrl?: string;
   initialMessages?: ChatMessage[];
-  onSend?: (text: string) => void;
+  onSendMessage?: (message: ChatMessage) => void;
+  onMessage?: (message: ChatMessage) => void;
   className?: string;
 }
 
 export default function ChatBox({
+  wsUrl,
   initialMessages = [],
-  onSend,
+  onSendMessage,
+  onMessage,
   className,
 }: ChatBoxProps) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [input, setInput] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { send } = useSocket<ChatMessage>({
+    url: wsUrl,
+    onMessage: (message) => {
+      setMessages((m) => [...m, message]);
+      onMessage?.(message);
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +47,8 @@ export default function ChatBox({
     const msg: ChatMessage = { id: Date.now(), text: value, sender: "user" };
 
     setMessages((m) => [...m, msg]);
-    onSend?.(value);
+    send(msg);
+    onSendMessage?.(msg);
     setInput("");
   };
 
