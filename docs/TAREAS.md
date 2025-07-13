@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **13-Jul-2025 00:50 UTC**
+\_Actualizado: **13-Jul-2025 09:29 UTC**
 
 ---
 
@@ -39,6 +39,7 @@
 | AGV Dashboard premium | ✅ | 2025-07-12 | f3e70de | albertoguinda |
 | Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 89e7731 | agente |
 | MapWidget premium | ✅ | 2025-07-13 | 8f83d13 | agente |
+| Chat premium (soporte) | ✅ | 2025-07-13 | 64a9bd2 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -185,7 +186,7 @@
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
-- [ ] Soporte prioritario (chat/email)
+- [x] Soporte prioritario (chat/email) — 13-Jul-2025 (64a9bd2, @agente)
 - [ ] Banners visuales de upsell (dashboard)
 
 - [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)

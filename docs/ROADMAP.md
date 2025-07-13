@@ -74,7 +74,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - Componente **Price** premium
 - Textos legales automáticos (cookies, privacy, TOS)
 - Backups / restore 1 clic
-- Soporte prioritario in-app
+- ✅ Chat Premium (soporte prioritario in-app) — 13-Jul-2025
 
 ---
 
