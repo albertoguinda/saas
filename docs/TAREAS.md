@@ -40,6 +40,7 @@
 | Inventario Premium Total desde ZIPs | ✅ | 2025-07-12 | 89e7731 | agente |
 | MapWidget premium | ✅ | 2025-07-13 | 8f83d13 | agente |
 | ChatBox premium | ✅ | 2025-07-13 | 35989a7 | albertoguinda |
+| ChatBox premium (fix tests) | ✅ | 2025-07-13 | 0e571db | agente |
 | Chat premium (soporte) | ✅ | 2025-07-13 | 64a9bd2 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
