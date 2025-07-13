@@ -24,12 +24,17 @@ describe("useSocket", () => {
     const closeMock = jest.fn();
 
     // @ts-ignore
-    global.WebSocket = jest.fn(() => ({
+    const socket = {
       send: sendMock,
       close: closeMock,
       readyState: WebSocket.OPEN,
       onmessage: null,
-    }));
+      onopen: null,
+      onclose: null,
+    };
+
+    // @ts-ignore
+    global.WebSocket = jest.fn(() => socket);
 
     const { result } = renderHook(() => useSocket({ url: "ws://localhost" }));
 
@@ -38,5 +43,39 @@ describe("useSocket", () => {
     });
 
     expect(sendMock).toHaveBeenCalledWith(JSON.stringify({ foo: "bar" }));
+  });
+
+  test("handles connect and disconnect events", () => {
+    const onConnect = jest.fn();
+    const onDisconnect = jest.fn();
+    const socket = {
+      send: jest.fn(),
+      close: jest.fn(),
+      readyState: WebSocket.OPEN,
+      onmessage: null,
+      onopen: null,
+      onclose: null,
+    };
+
+    // @ts-ignore
+    global.WebSocket = jest.fn(() => socket);
+
+    const { result } = renderHook(() =>
+      useSocket({ url: "ws://localhost", onConnect, onDisconnect }),
+    );
+
+    act(() => {
+      socket.onopen?.();
+    });
+
+    expect(onConnect).toHaveBeenCalled();
+    expect(result.current.connected).toBe(true);
+
+    act(() => {
+      socket.onclose?.({} as CloseEvent);
+    });
+
+    expect(onDisconnect).toHaveBeenCalled();
+    expect(result.current.connected).toBe(false);
   });
 });

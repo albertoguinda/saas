@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 export interface UseSocketOptions<T> {
   url?: string;
   onMessage?: (data: T) => void;
+  onConnect?: () => void;
+  onDisconnect?: (event: CloseEvent) => void;
   mockInterval?: number;
   mockGenerator?: () => T;
 }
@@ -10,10 +12,13 @@ export interface UseSocketOptions<T> {
 export default function useSocket<T = unknown>({
   url,
   onMessage,
+  onConnect,
+  onDisconnect,
   mockInterval = 1000,
   mockGenerator,
 }: UseSocketOptions<T>) {
   const [data, setData] = useState<T | null>(null);
+  const [connected, setConnected] = useState(false);
   const socketRef = useRef<WebSocket>();
 
   useEffect(() => {
@@ -21,6 +26,15 @@ export default function useSocket<T = unknown>({
       const socket = new WebSocket(url);
 
       socketRef.current = socket;
+      socket.onopen = () => {
+        setConnected(true);
+        onConnect?.();
+      };
+
+      socket.onclose = (event) => {
+        setConnected(false);
+        onDisconnect?.(event);
+      };
       socket.onmessage = (event) => {
         try {
           const parsed = JSON.parse(event.data);
@@ -49,7 +63,7 @@ export default function useSocket<T = unknown>({
     }
 
     return undefined;
-  }, [url, onMessage, mockGenerator, mockInterval]);
+  }, [url, onMessage, mockGenerator, mockInterval, onConnect, onDisconnect]);
 
   const send = (payload: unknown) => {
     if (socketRef.current?.readyState === WebSocket.OPEN) {
@@ -57,5 +71,5 @@ export default function useSocket<T = unknown>({
     }
   };
 
-  return { data, send };
+  return { data, send, connected };
 }
