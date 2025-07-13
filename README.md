@@ -212,6 +212,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - AGV dashboard demo for real-time monitoring (`/dashboard/agv-monitor`).
 - Map widget demo with clustering (`/demo/map-widget`).
 - ChatBox component to build chat interfaces (`/demo/chat`).
+- Booking form demo (`/demo/booking`).
 
 ## 🌍 Internacionalización
 

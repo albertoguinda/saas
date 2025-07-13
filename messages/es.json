@@ -153,6 +153,7 @@
   "demo.price": "Demo de Precio",
   "demo.map": "Demo Mapa",
   "demo.chat": "Demo Chat",
+  "demo.booking": "Demo Reserva",
   "notFound.title": "404 - Página no encontrada",
   "notFound.desc": "La página que buscas no existe.",
   "notFound.back": "Volver al inicio",
@@ -192,5 +193,18 @@
   "chat.send": "Enviar",
   "chat.empty": "Sin mensajes por ahora",
   "chat.loginPrompt": "Inicia sesi\u00f3n para chatear",
-  "chat.signIn": "Iniciar sesi\u00f3n"
+  "chat.signIn": "Iniciar sesi\u00f3n",
+  "booking.name": "Nombre",
+  "booking.email": "Email",
+  "booking.service": "Servicio",
+  "booking.servicePlaceholder": "Selecciona servicio",
+  "booking.date": "Fecha",
+  "booking.notes": "Notas",
+  "booking.submit": "Reservar",
+  "booking.success": "Reserva creada",
+  "booking.error": "Error al reservar",
+  "booking.nameRequired": "Nombre requerido",
+  "booking.emailInvalid": "Email inv\u00e1lido",
+  "booking.serviceRequired": "Selecciona un servicio",
+  "booking.dateRequired": "Fecha requerida"
 }

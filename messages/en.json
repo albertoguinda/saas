@@ -153,6 +153,7 @@
   "demo.price": "Price Demo",
   "demo.map": "Map Widget Demo",
   "demo.chat": "Chat Demo",
+  "demo.booking": "Booking Form Demo",
   "notFound.title": "404 - Page not found",
   "notFound.desc": "The page you are looking for does not exist.",
   "notFound.back": "Go back home",
@@ -192,5 +193,18 @@
   "chat.send": "Send",
   "chat.empty": "No messages yet",
   "chat.loginPrompt": "Please sign in to chat",
-  "chat.signIn": "Sign in"
+  "chat.signIn": "Sign in",
+  "booking.name": "Name",
+  "booking.email": "Email",
+  "booking.service": "Service",
+  "booking.servicePlaceholder": "Select service",
+  "booking.date": "Date",
+  "booking.notes": "Notes",
+  "booking.submit": "Book",
+  "booking.success": "Reservation confirmed",
+  "booking.error": "Booking error",
+  "booking.nameRequired": "Name required",
+  "booking.emailInvalid": "Invalid email",
+  "booking.serviceRequired": "Choose a service",
+  "booking.dateRequired": "Date required"
 }
