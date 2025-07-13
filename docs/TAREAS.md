@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **13-Jul-2025 11:00 UTC**
+\_Actualizado: **13-Jul-2025 12:00 UTC**
 
 ---
 
@@ -42,7 +42,8 @@
 | ChatBox premium | ✅ | 2025-07-13 | 35989a7 | albertoguinda |
 | ChatBox premium (fix tests) | ✅ | 2025-07-13 | 0e571db | agente |
 | Chat premium (soporte) | ✅ | 2025-07-13 | 64a9bd2 | agente |
-| Booking Form premium | ✅ | 2025-07-13 | TBD | agente |
+| Booking Form premium | ✅ | 2025-07-13 | ff491ac | agente |
+| Scheduler PRO | ✅ | 2025-07-13 | ff491ac | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -166,7 +167,8 @@
 - [x] Catálogo Premium UI/UX — 12-Jul-2025 (923d201 (@albertoguinda))
 - [x] Integración AGV Dashboard premium — 12-Jul-2025 (f3e70de, @albertoguinda)
 - [x] MapWidget premium con clustering y modo nocturno — 13-Jul-2025 (8f83d13, @agente)
-- [x] Booking Form premium — 13-Jul-2025 (TBD, @agente)
+- [x] Booking Form premium — 13-Jul-2025 (ff491ac, @agente)
+- [x] Scheduler PRO (hook y componente) — 13-Jul-2025 (ff491ac, @agente)
 
 ---
 

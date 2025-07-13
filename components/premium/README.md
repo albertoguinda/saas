@@ -59,3 +59,22 @@ import { BookingForm } from "@/components/premium/forms";
 
 <BookingForm services={[{ id: "cut", name: "Hair Cut" }]} />;
 ```
+
+## Scheduler
+
+Schedule management with selectable time slots and dark mode.
+
+### Props
+
+- `startTime` (`string`): start time in `HH:mm`.
+- `endTime` (`string`): end time in `HH:mm`.
+- `blockedSlots` (`string[]`): initial blocked slots.
+- `intervalMinutes` (`number`): slot interval (default `30`).
+
+### Example
+
+```tsx
+import { Scheduler } from "@/components/premium/schedulers";
+
+<Scheduler startTime="09:00" endTime="17:00" />;
+```
