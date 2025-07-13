@@ -1,4 +1,4 @@
-import { act, renderHook } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 
 import useSocket from "@/lib/hooks/useSocket";
 
@@ -19,11 +19,12 @@ describe("useSocket", () => {
     jest.useRealTimers();
   });
 
-  test("sends payload via WebSocket", () => {
+  test("sends payload via WebSocket", async () => {
     const sendMock = jest.fn();
     const closeMock = jest.fn();
 
     // @ts-ignore
+    const OriginalWS = WebSocket;
     const socket = {
       send: sendMock,
       close: closeMock,
@@ -35,14 +36,26 @@ describe("useSocket", () => {
 
     // @ts-ignore
     global.WebSocket = jest.fn(() => socket);
+    // @ts-ignore
+    global.WebSocket.OPEN = OriginalWS.OPEN;
 
     const { result } = renderHook(() => useSocket({ url: "ws://localhost" }));
+
+    await waitFor(() => expect(global.WebSocket).toHaveBeenCalled());
+
+    act(() => {
+      socket.onopen?.();
+    });
+
+    expect(result.current.connected).toBe(true);
 
     act(() => {
       result.current.send({ foo: "bar" });
     });
 
     expect(sendMock).toHaveBeenCalledWith(JSON.stringify({ foo: "bar" }));
+    // restore
+    global.WebSocket = OriginalWS;
   });
 
   test("handles connect and disconnect events", () => {

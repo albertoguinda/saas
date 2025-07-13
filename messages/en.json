@@ -190,5 +190,7 @@
   "chat.title": "Support chat",
   "chat.placeholder": "Type a message",
   "chat.send": "Send",
-  "chat.empty": "No messages yet"
+  "chat.empty": "No messages yet",
+  "chat.loginPrompt": "Please sign in to chat",
+  "chat.signIn": "Sign in"
 }

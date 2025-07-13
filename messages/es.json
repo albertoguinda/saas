@@ -190,5 +190,7 @@
   "chat.title": "Chat de soporte",
   "chat.placeholder": "Escribe un mensaje",
   "chat.send": "Enviar",
-  "chat.empty": "Sin mensajes por ahora"
+  "chat.empty": "Sin mensajes por ahora",
+  "chat.loginPrompt": "Inicia sesi\u00f3n para chatear",
+  "chat.signIn": "Iniciar sesi\u00f3n"
 }
