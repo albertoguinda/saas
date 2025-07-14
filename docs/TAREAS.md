@@ -50,6 +50,7 @@
 | BIM Viewer 3D premium (entornos) | ✅ | 2025-07-14 | 321b4ab | agente |
 | IoT Sensor Dashboard PRO | ✅ | 2025-07-13 | 5c8540a | agente |
 | IoT Sensor Dashboard premium | ✅ | 2025-07-14 | 688d66e | agente |
+| Landing Banner & Cards PRO | ✅ | 2025-07-14 | c95a77b | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -181,6 +182,7 @@
 - [x] BIM Viewer 3D premium (entornos) — 14-Jul-2025 (321b4ab, @agente)
 - [x] IoT Sensor Dashboard PRO — 13-Jul-2025 (5c8540a, @agente)
 - [x] IoT Sensor Dashboard premium — 14-Jul-2025 (688d66e, @agente)
+- [x] Landing Banner & Cards PRO — 14-Jul-2025 (c95a77b, @agente)
 
 ---
 
