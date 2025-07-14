@@ -11,7 +11,14 @@ export default function DemoBookingPage() {
       <section className="flex items-center justify-center py-20">
         <div className="w-full max-w-md">
           <h1 className="mb-4 text-xl font-semibold">{t("booking")}</h1>
-          <BookingForm services={[{ id: "cut", name: "Hair Cut" }]} />
+          <BookingForm
+            enableCoupons
+            services={[
+              { id: "cut", name: "Hair Cut", price: 20 },
+              { id: "color", name: "Color", price: 35 },
+            ]}
+            onSubmit={async () => {}}
+          />
         </div>
       </section>
     </DefaultLayout>

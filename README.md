@@ -212,9 +212,21 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - AGV dashboard demo for real-time monitoring (`/dashboard/agv-monitor`).
 - Map widget demo with clustering (`/demo/map-widget`).
 - ChatBox component to build chat interfaces (`/demo/chat`).
-- Booking form demo (`/demo/booking`).
+- Advanced booking form demo (`/demo/booking`).
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
 - IoT sensor panel demo (`/demo/iot-sensor`).
+
+Example usage:
+
+```tsx
+import { BookingForm } from "@/components/premium/forms";
+
+<BookingForm
+  services={[{ id: "cut", name: "Hair Cut", price: 20 }]}
+  enableCoupons
+  onSubmit={async (data) => console.log(data)}
+/>;
+```
 
 ## 🌍 Internacionalización
 
