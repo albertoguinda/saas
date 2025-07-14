@@ -215,7 +215,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - Advanced booking form demo (`/demo/booking`).
 - Scheduler demo for appointments (`/demo/scheduler`).
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
-- IoT sensor panel demo (`/demo/iot-sensor`).
+- IoT sensor panel demo (`/demo/sensor-panel`).
 
 Example usage:
 

@@ -18,11 +18,12 @@ import { useTranslations } from "next-intl";
 
 import useMockSensorData from "@/components/hooks/useMockSensorData";
 
-export type SensorType = "humidity" | "temp" | "light";
+export type SensorType = "humidity" | "temperature" | "light" | (string & {});
 export interface SensorPanelProps {
   sensorType: SensorType;
-  updateMode: "realtime" | "interval";
+  updateMode?: "poll" | "stream";
   unit?: string;
+  onData?: (data: number) => void;
   onAlert?: (value: number) => void;
   maxThreshold?: number;
   minThreshold?: number;
@@ -40,14 +41,15 @@ ChartJS.register(
 
 const ICONS = {
   humidity: Droplet,
-  temp: Thermometer,
+  temperature: Thermometer,
   light: Sun,
 };
 
 export default function SensorPanel({
   sensorType,
-  updateMode,
+  updateMode = "stream",
   unit = "",
+  onData,
   onAlert,
   maxThreshold,
   minThreshold,
@@ -62,13 +64,14 @@ export default function SensorPanel({
   useEffect(() => {
     if (value == null) return;
     setHistory((h) => [...h.slice(-19), value]);
+    onData?.(value);
     if (
       (maxThreshold && value > maxThreshold) ||
       (minThreshold && value < minThreshold)
     ) {
       onAlert?.(value);
     }
-  }, [value, maxThreshold, minThreshold, onAlert]);
+  }, [value, maxThreshold, minThreshold, onAlert, onData]);
 
   const Icon = ICONS[sensorType];
   const data = {

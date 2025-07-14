@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 export interface MockSensorOptions {
-  sensorType: "humidity" | "temp" | "light";
-  updateMode: "realtime" | "interval";
+  sensorType: "humidity" | "temperature" | "light" | (string & {});
+  updateMode?: "stream" | "poll";
   intervalMs?: number;
 }
 
 export default function useMockSensorData({
   sensorType,
-  updateMode,
-  intervalMs = 1000,
+  updateMode = "stream",
+  intervalMs,
 }: MockSensorOptions) {
   const [value, setValue] = useState<number | null>(null);
 
@@ -25,13 +25,10 @@ export default function useMockSensorData({
       }
     };
 
-    if (updateMode === "realtime") {
-      const id = setInterval(() => setValue(genValue()), intervalMs);
+    const ms = intervalMs ?? (updateMode === "poll" ? 5000 : 1000);
+    const id = setInterval(() => setValue(genValue()), ms);
 
-      return () => clearInterval(id);
-    }
-    // interval mode emits once
-    setValue(genValue());
+    return () => clearInterval(id);
   }, [sensorType, updateMode, intervalMs]);
 
   return { value };

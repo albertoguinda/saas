@@ -13,3 +13,4 @@ Componentes internos completados:
 
 - Scheduler premium (selección de horarios)
 - BIM Viewer 3D premium
+- IoT Sensor Panel premium
