@@ -11,7 +11,12 @@ export default function DemoSchedulerPage() {
       <section className="flex items-center justify-center py-20">
         <div className="w-full max-w-lg">
           <h1 className="mb-4 text-xl font-semibold">{t("scheduler")}</h1>
-          <Scheduler endTime="17:00" startTime="09:00" />
+          <Scheduler
+            blockedSlots={[{ start: "12:00", end: "13:00" }]}
+            endTime="17:00"
+            startTime="09:00"
+            onSelectSlot={() => {}}
+          />
         </div>
       </section>
     </DefaultLayout>

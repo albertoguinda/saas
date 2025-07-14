@@ -1,18 +1,24 @@
 import { useCallback, useMemo, useState } from "react";
 
+export interface BlockedSlot {
+  start: string;
+  end: string;
+}
+
 export interface UseSchedulerOptions {
   startTime: string;
   endTime: string;
-  blockedSlots?: string[];
-  intervalMinutes?: number;
+  blockedSlots?: BlockedSlot[];
+  interval?: number;
+  onSelectSlot?: (slot: string | null) => void;
 }
 
 export interface UseScheduler {
-  availableSlots: string[];
-  blockedSlots: string[];
+  slots: string[];
+  selectedSlot: string | null;
   isSlotBlocked: (slot: string) => boolean;
-  setBlockedSlot: (slot: string, blocked: boolean) => void;
-  resetScheduler: () => void;
+  selectSlot: (slot: string) => void;
+  reset: () => void;
 }
 
 function timeStringToMinutes(time: string) {
@@ -33,48 +39,62 @@ function minutesToTimeString(total: number) {
 export default function useScheduler({
   startTime,
   endTime,
-  blockedSlots: initialBlocked = [],
-  intervalMinutes = 30,
+  blockedSlots = [],
+  interval = 30,
+  onSelectSlot,
 }: UseSchedulerOptions): UseScheduler {
-  const [blockedSlots, setBlocked] = useState<string[]>(initialBlocked);
+  const [selectedSlot, setSelected] = useState<string | null>(null);
 
-  const availableSlots = useMemo(() => {
+  const slots = useMemo(() => {
     const start = timeStringToMinutes(startTime);
     const end = timeStringToMinutes(endTime);
-    const slots: string[] = [];
+    const list: string[] = [];
 
-    for (let t = start; t < end; t += intervalMinutes) {
-      slots.push(minutesToTimeString(t));
+    for (let t = start; t < end; t += interval) {
+      list.push(minutesToTimeString(t));
     }
 
-    return slots;
-  }, [startTime, endTime, intervalMinutes]);
+    return list;
+  }, [startTime, endTime, interval]);
 
   const isSlotBlocked = useCallback(
-    (slot: string) => blockedSlots.includes(slot),
+    (slot: string) => {
+      const minutes = timeStringToMinutes(slot);
+
+      return blockedSlots.some((b) => {
+        const start = timeStringToMinutes(b.start);
+        const end = timeStringToMinutes(b.end);
+
+        return minutes >= start && minutes < end;
+      });
+    },
     [blockedSlots],
   );
 
-  const setBlockedSlot = useCallback((slot: string, blocked: boolean) => {
-    setBlocked((prev) => {
-      if (blocked) {
-        return prev.includes(slot) ? prev : [...prev, slot];
-      }
+  const selectSlot = useCallback(
+    (slot: string) => {
+      if (isSlotBlocked(slot)) return;
+      setSelected((prev) => {
+        const next = prev === slot ? null : slot;
 
-      return prev.filter((s) => s !== slot);
-    });
-  }, []);
+        onSelectSlot?.(next);
 
-  const resetScheduler = useCallback(
-    () => setBlocked(initialBlocked),
-    [initialBlocked],
+        return next;
+      });
+    },
+    [isSlotBlocked, onSelectSlot],
   );
 
+  const reset = useCallback(() => {
+    setSelected(null);
+    onSelectSlot?.(null);
+  }, [onSelectSlot]);
+
   return {
-    availableSlots,
-    blockedSlots,
+    slots,
+    selectedSlot,
     isSlotBlocked,
-    setBlockedSlot,
-    resetScheduler,
+    selectSlot,
+    reset,
   };
 }

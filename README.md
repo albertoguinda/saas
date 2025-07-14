@@ -213,6 +213,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - Map widget demo with clustering (`/demo/map-widget`).
 - ChatBox component to build chat interfaces (`/demo/chat`).
 - Advanced booking form demo (`/demo/booking`).
+- Scheduler demo for appointments (`/demo/scheduler`).
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
 - IoT sensor panel demo (`/demo/iot-sensor`).
 
@@ -226,6 +227,12 @@ import { BookingForm } from "@/components/premium/forms";
   enableCoupons
   onSubmit={async (data) => console.log(data)}
 />;
+```
+
+```tsx
+import { Scheduler } from "@/components/premium/schedulers";
+
+<Scheduler startTime="09:00" endTime="17:00" />;
 ```
 
 ## 🌍 Internacionalización
