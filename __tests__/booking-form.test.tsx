@@ -64,7 +64,7 @@ test("successful submit", async () => {
   fireEvent.change(screen.getByLabelText("service"), {
     target: { value: "1" },
   });
-  fireEvent.change(screen.getByLabelText("date"), {
+  fireEvent.change(screen.getByLabelText(/date/i), {
     target: { value: "2025-07-13T10:00" },
   });
   fireEvent.click(screen.getByRole("button", { name: /submit/i }));
@@ -92,7 +92,7 @@ test("submit error", async () => {
   fireEvent.change(screen.getByLabelText("service"), {
     target: { value: "1" },
   });
-  fireEvent.change(screen.getByLabelText("date"), {
+  fireEvent.change(screen.getByLabelText(/date/i), {
     target: { value: "2025-07-13T10:00" },
   });
   fireEvent.click(screen.getByRole("button", { name: /submit/i }));

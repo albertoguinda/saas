@@ -88,17 +88,19 @@ Interactive 3D viewer for BIM models using Three.js.
 
 - `modelSrc` (`string`): URL of the model file.
 - `controls` (`boolean`): enable orbit controls (default `true`).
-- `environment` (`"day" | "night"`): lighting preset (default `"day"`).
+- `environment` (`"default" | "night" | "studio"`): lighting preset (default `"default"`).
 - `enableVR` (`boolean`): show VR entry button if supported.
 - `onLoad` (`() => void`): called when the model is loaded.
 - `onError` (`(error: Error) => void`): called on load error.
+
+> For IFC models copy `web-ifc.wasm` from `web-ifc-three` into your `public/` folder.
 
 ### Example
 
 ```tsx
 import { BIMViewer } from "@/components/premium/3d";
 
-<BIMViewer modelSrc="/models/house.glb" />;
+<BIMViewer modelSrc="/models/house.glb" environment="studio" />;
 ```
 
 ## SensorPanel

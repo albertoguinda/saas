@@ -12,3 +12,4 @@ Este documento recopila los componentes y recursos de alto valor localizados en 
 Componentes internos completados:
 
 - Scheduler premium (selección de horarios)
+- BIM Viewer 3D premium

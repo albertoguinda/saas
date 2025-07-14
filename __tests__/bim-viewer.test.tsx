@@ -1,11 +1,19 @@
 import { render, screen, waitFor } from "@testing-library/react";
+
 import BIMViewer from "@/components/premium/3d/BIMViewer";
 
-jest.mock("next-themes", () => ({ useTheme: () => ({ resolvedTheme: "light" }) }));
-jest.mock("next-intl", () => ({ useTranslations: () => (key: string) => key.split(".").pop() }));
+jest.mock("next-themes", () => ({
+  useTheme: () => ({ resolvedTheme: "light" }),
+}));
+jest.mock("next-intl", () => ({
+  useTranslations: () => (key: string) => key.split(".").pop(),
+}));
 
 jest.mock("three", () => ({
-  Scene: class { add() {} background: any = null; },
+  Scene: class {
+    add() {}
+    background: any = null;
+  },
   PerspectiveCamera: class {
     position = { set() {} };
   },
@@ -16,10 +24,16 @@ jest.mock("three", () => ({
     setPixelRatio() {}
     render() {}
     dispose() {}
-    setAnimationLoop(fn: any) { fn(); }
+    setAnimationLoop(fn: any) {
+      fn();
+    }
   },
   AmbientLight: class {},
-  DirectionalLight: class { constructor() { this.position = { set() {} }; } },
+  DirectionalLight: class {
+    constructor() {
+      this.position = { set() {} };
+    }
+  },
   Color: class {},
 }));
 
@@ -33,7 +47,9 @@ jest.mock("three/examples/jsm/controls/OrbitControls.js", () => ({
 
 jest.mock("three/examples/jsm/loaders/GLTFLoader.js", () => ({
   GLTFLoader: class {
-    load(_src: string, onLoad: (obj: any) => void) { onLoad({ scene: {} }); }
+    load(_src: string, onLoad: (obj: any) => void) {
+      onLoad({ scene: {} });
+    }
   },
 }));
 
@@ -41,13 +57,23 @@ jest.mock("three/examples/jsm/webxr/VRButton.js", () => ({
   VRButton: { createButton: () => document.createElement("button") },
 }));
 
+jest.mock("web-ifc-three/IFCLoader.js", () => ({
+  IFCLoader: class {
+    ifcManager = { setWasmPath() {} };
+    load(_src: string, onLoad: (obj: any) => void) {
+      onLoad({});
+    }
+  },
+}));
+
 test("renders container", () => {
-  render(<BIMViewer modelSrc="model.glb" />);
+  render(<BIMViewer environment="studio" modelSrc="model.glb" />);
   expect(screen.getByText("loading")).toBeInTheDocument();
 });
 
 test("calls onLoad", async () => {
   const onLoad = jest.fn();
+
   render(<BIMViewer modelSrc="model.glb" onLoad={onLoad} />);
   await waitFor(() => expect(onLoad).toHaveBeenCalled());
 });
@@ -57,4 +83,9 @@ test("shows VR button", async () => {
   navigator.xr = {};
   render(<BIMViewer enableVR modelSrc="model.glb" />);
   expect(await screen.findByRole("button", { name: "vr" })).toBeInTheDocument();
+});
+
+test("supports night environment", () => {
+  render(<BIMViewer environment="night" modelSrc="model.ifc" />);
+  expect(screen.getByText("loading")).toBeInTheDocument();
 });

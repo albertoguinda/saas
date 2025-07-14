@@ -1,5 +1,7 @@
 "use client";
 
+// TODO: support BCF issues and points of interest overlay
+
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
@@ -7,7 +9,7 @@ import { useTranslations } from "next-intl";
 export interface BIMViewerProps {
   modelSrc: string;
   controls?: boolean;
-  environment?: "day" | "night";
+  environment?: "default" | "night" | "studio";
   enableVR?: boolean;
   onLoad?: () => void;
   onError?: (error: Error) => void;
@@ -16,7 +18,7 @@ export interface BIMViewerProps {
 export default function BIMViewer({
   modelSrc,
   controls = true,
-  environment = "day",
+  environment = "default",
   enableVR = false,
   onLoad,
   onError,
@@ -37,17 +39,33 @@ export default function BIMViewer({
       const { GLTFLoader } = await import(
         "three/examples/jsm/loaders/GLTFLoader.js"
       );
+      const { IFCLoader } = await import("web-ifc-three/IFCLoader.js");
       const { VRButton } = await import("three/examples/jsm/webxr/VRButton.js");
 
       const width = containerRef.current?.clientWidth || 300;
       const height = containerRef.current?.clientHeight || 150;
       const scene = new THREE.Scene();
 
-      const dark = environment === "night" || resolvedTheme === "dark";
+      const preset = environment;
+      const night =
+        preset === "night" ||
+        (preset === "default" && resolvedTheme === "dark");
 
-      scene.background = new THREE.Color(dark ? 0x111111 : 0xffffff);
-      scene.add(new THREE.AmbientLight(0xffffff, dark ? 0.3 : 0.8));
-      const light = new THREE.DirectionalLight(0xffffff, dark ? 0.5 : 1);
+      let ambientIntensity = 0.8;
+      let dirIntensity = 1;
+
+      if (preset === "night") {
+        ambientIntensity = 0.3;
+        dirIntensity = 0.5;
+      }
+      if (preset === "studio") {
+        ambientIntensity = 1.2;
+        dirIntensity = 1.5;
+      }
+
+      scene.background = new THREE.Color(night ? 0x111111 : 0xffffff);
+      scene.add(new THREE.AmbientLight(0xffffff, ambientIntensity));
+      const light = new THREE.DirectionalLight(0xffffff, dirIntensity);
 
       light.position.set(10, 10, 10);
       scene.add(light);
@@ -73,17 +91,26 @@ export default function BIMViewer({
         controlsInst = new OrbitControls(camera, renderer.domElement);
       }
 
-      const loader = new GLTFLoader();
+      const isIfc = modelSrc.toLowerCase().endsWith(".ifc");
+      const loader = isIfc ? new IFCLoader() : new GLTFLoader();
+
+      if (isIfc) {
+        // Requires web-ifc.wasm placed in the public folder
+        loader.ifcManager?.setWasmPath("/");
+      }
 
       loader.load(
         modelSrc,
         (gltf) => {
-          scene.add(gltf.scene);
+          // For IFC models, gltf will be THREE.Mesh
+          const object = (gltf as any).scene ?? gltf;
+
+          scene.add(object);
           onLoad?.();
         },
         undefined,
         (err) => {
-          onError?.(err);
+          onError?.(err as Error);
         },
       );
 
@@ -119,7 +146,9 @@ export default function BIMViewer({
       <span className="sr-only">{t("loading")}</span>
       {enableVR && vrSupported && (
         <button
+          aria-label={t("vr")}
           className="absolute right-2 top-2 z-10 rounded bg-black/50 p-2 text-white"
+          title={t("vr")}
           type="button"
         >
           {t("vr")}
