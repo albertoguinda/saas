@@ -8,3 +8,7 @@ Este documento recopila los componentes y recursos de alto valor localizados en 
 | BimProyect-main   | repo | BimProyect.zip      | src/viewer                     | Three.js          | Visualizador BIM completo    | media             | premium/3d      | Integrar VR       |
 | plantscare-main   | repo | plantscare-main.zip | frontend/src/components        | Vue.js            | Panel IoT y sensores         | media             | premium/iot     | Refactor a React  |
 | peluqueriapp-main | repo | peluqueriapp.zip    | src/components/BookingForm.jsx | React             | Formulario de reservas       | media             | premium/forms   | Integrar pagos    |
+
+Componentes internos completados:
+
+- Scheduler premium (selección de horarios)

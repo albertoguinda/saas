@@ -68,8 +68,9 @@ Schedule management with selectable time slots and dark mode.
 
 - `startTime` (`string`): start time in `HH:mm`.
 - `endTime` (`string`): end time in `HH:mm`.
-- `blockedSlots` (`string[]`): initial blocked slots.
-- `intervalMinutes` (`number`): slot interval (default `30`).
+- `blockedSlots` (`Array<{ start: string; end: string }>`): blocked ranges.
+- `interval` (`number`): slot interval in minutes (default `30`).
+- `onSelectSlot` (`(slot: string | null) => void`): callback on selection.
 
 ### Example
 

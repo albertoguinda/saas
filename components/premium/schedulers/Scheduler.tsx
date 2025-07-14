@@ -12,7 +12,7 @@ import useScheduler, {
 export interface SchedulerProps extends UseSchedulerOptions {}
 
 export default function Scheduler(props: SchedulerProps) {
-  const { availableSlots, isSlotBlocked, setBlockedSlot, resetScheduler } =
+  const { slots, isSlotBlocked, selectSlot, selectedSlot, reset } =
     useScheduler(props);
   const t = useTranslations("scheduler");
 
@@ -20,24 +20,28 @@ export default function Scheduler(props: SchedulerProps) {
     <Card className="flex flex-col gap-4 p-4">
       <h2 className="text-xl font-semibold">{t("title")}</h2>
       <div className="grid grid-cols-4 gap-2">
-        {availableSlots.map((slot) => (
+        {slots.map((slot) => (
           <button
             key={slot}
-            aria-pressed={isSlotBlocked(slot)}
+            aria-pressed={selectedSlot === slot}
             className={clsx(
               "rounded-md p-2 text-sm",
               isSlotBlocked(slot)
-                ? "bg-red-500 text-white dark:bg-red-600"
-                : "bg-green-500 text-white dark:bg-green-600",
+                ? "cursor-not-allowed bg-gray-400 text-white dark:bg-gray-600"
+                : selectedSlot === slot
+                  ? "bg-blue-500 text-white dark:bg-blue-600"
+                  : "bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700",
             )}
+            disabled={isSlotBlocked(slot)}
+            title={isSlotBlocked(slot) ? t("unavailable") : undefined}
             type="button"
-            onClick={() => setBlockedSlot(slot, !isSlotBlocked(slot))}
+            onClick={() => selectSlot(slot)}
           >
             {slot}
           </button>
         ))}
       </div>
-      <Button size="sm" onClick={resetScheduler}>
+      <Button size="sm" onClick={reset}>
         {t("reset")}
       </Button>
     </Card>

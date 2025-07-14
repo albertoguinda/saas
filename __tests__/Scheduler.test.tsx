@@ -7,7 +7,7 @@ jest.mock("next-intl", () => ({
 }));
 
 test("renders slots and toggles", () => {
-  render(<Scheduler endTime="10:00" intervalMinutes={30} startTime="09:00" />);
+  render(<Scheduler endTime="10:00" interval={30} startTime="09:00" />);
   const button = screen.getByRole("button", { name: "09:00" });
 
   expect(button).toHaveAttribute("aria-pressed", "false");

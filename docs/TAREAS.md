@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **13-Jul-2025 12:00 UTC**
+\_Actualizado: **14-Jul-2025 09:34 UTC**
 
 ---
 
@@ -43,6 +43,7 @@
 | ChatBox premium (fix tests) | ✅ | 2025-07-13 | 0e571db | agente |
 | Chat premium (soporte) | ✅ | 2025-07-13 | 64a9bd2 | agente |
 | Booking Form premium | ✅ | 2025-07-13 | 485482c | agente |
+| Scheduler premium | ✅ | 2025-07-14 | 7590475 | agente |
 | Scheduler PRO | ✅ | 2025-07-13 | ff491ac | agente |
 | BIM Viewer 3D premium | ✅ | 2025-07-13 | 5557ee6 | agente |
 | IoT Sensor Dashboard PRO | ✅ | 2025-07-13 | 5c8540a | agente |
@@ -170,6 +171,7 @@
 - [x] Integración AGV Dashboard premium — 12-Jul-2025 (f3e70de, @albertoguinda)
 - [x] MapWidget premium con clustering y modo nocturno — 13-Jul-2025 (8f83d13, @agente)
 - [x] Booking Form premium — 13-Jul-2025 (485482c, @agente)
+- [x] Scheduler premium (selección de horarios) — 14-Jul-2025 (7590475, @agente)
 - [x] Scheduler PRO (hook y componente) — 13-Jul-2025 (ff491ac, @agente)
 - [x] BIM Viewer 3D premium — 13-Jul-2025 (5557ee6, @agente)
 - [x] IoT Sensor Dashboard PRO — 13-Jul-2025 (5c8540a, @agente)
