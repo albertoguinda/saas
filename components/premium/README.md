@@ -60,24 +60,23 @@ import { BookingForm } from "@/components/premium/forms";
 <BookingForm services={[{ id: "cut", name: "Hair Cut" }]} />;
 ```
 
-## Scheduler
+## SchedulerWidget
 
-Schedule management with selectable time slots and dark mode.
+Schedule management with selectable time slots and the ability to block them.
 
 ### Props
 
-- `startTime` (`string`): start time in `HH:mm`.
-- `endTime` (`string`): end time in `HH:mm`.
-- `blockedSlots` (`Array<{ start: string; end: string }>`): blocked ranges.
-- `interval` (`number`): slot interval in minutes (default `30`).
-- `onSelectSlot` (`(slot: string | null) => void`): callback on selection.
+- `startHour` (`string`): schedule start in `HH:mm`.
+- `endHour` (`string`): schedule end in `HH:mm`.
+- `initialBlocks` (`string[]`): initially blocked slots.
+- `onChange` (`(data: { selected: string | null; blocks: string[] }) => void`): fired on selection or blocking.
 
 ### Example
 
 ```tsx
-import { Scheduler } from "@/components/premium/schedulers";
+import { SchedulerWidget } from "@/components/premium/schedulers";
 
-<Scheduler startTime="09:00" endTime="17:00" />;
+<SchedulerWidget startHour="09:00" endHour="17:00" />;
 ```
 
 ## BIMViewer

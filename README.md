@@ -230,9 +230,9 @@ import { BookingForm } from "@/components/premium/forms";
 ```
 
 ```tsx
-import { Scheduler } from "@/components/premium/schedulers";
+import { SchedulerWidget } from "@/components/premium/schedulers";
 
-<Scheduler startTime="09:00" endTime="17:00" />;
+<SchedulerWidget startHour="09:00" endHour="17:00" />;
 ```
 
 ```tsx
