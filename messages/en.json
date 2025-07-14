@@ -213,5 +213,11 @@
   "demo.bim": "BIM Viewer Demo",
   "viewer.loading": "Loading model...",
   "viewer.error": "Failed to load model",
-  "viewer.vr": "Enter VR"
+  "viewer.vr": "Enter VR",
+  "demo.sensor": "Sensor Panel Demo",
+  "sensor.alert": "Alert",
+  "sensor.humidity": "Humidity",
+  "sensor.temp": "Temperature",
+  "sensor.light": "Light",
+  "sensor.loading": "Loading data..."
 }

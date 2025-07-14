@@ -99,3 +99,24 @@ import { BIMViewer } from "@/components/premium/3d";
 
 <BIMViewer modelSrc="/models/house.glb" />;
 ```
+
+## SensorPanel
+
+Real-time sensor chart supporting humidity, temperature and light.
+
+### Props
+
+- `sensorType` (`"humidity" | "temp" | "light"`): sensor data type.
+- `updateMode` (`"realtime" | "interval"`): update behavior.
+- `unit` (`string`): unit label.
+- `onAlert` (`(value: number) => void`): called when thresholds exceeded.
+- `maxThreshold` (`number`): optional max value for alerts.
+- `minThreshold` (`number`): optional min value for alerts.
+
+### Example
+
+```tsx
+import SensorPanel from "@/components/premium/iot/SensorPanel";
+
+<SensorPanel sensorType="temp" updateMode="realtime" unit="°C" />;
+```

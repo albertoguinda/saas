@@ -213,5 +213,11 @@
   "demo.bim": "Demo BIM Viewer",
   "viewer.loading": "Cargando modelo...",
   "viewer.error": "Error al cargar el modelo",
-  "viewer.vr": "Entrar en VR"
+  "viewer.vr": "Entrar en VR",
+  "demo.sensor": "Demo Panel Sensor",
+  "sensor.alert": "Alerta",
+  "sensor.humidity": "Humedad",
+  "sensor.temp": "Temperatura",
+  "sensor.light": "Luz",
+  "sensor.loading": "Cargando datos..."
 }

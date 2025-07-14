@@ -214,6 +214,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - ChatBox component to build chat interfaces (`/demo/chat`).
 - Booking form demo (`/demo/booking`).
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
+- IoT sensor panel demo (`/demo/iot-sensor`).
 
 ## 🌍 Internacionalización
 
