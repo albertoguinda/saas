@@ -11,7 +11,7 @@ export default function DemoBIMViewerPage() {
       <section className="flex items-center justify-center py-20">
         <div className="w-full max-w-xl">
           <h1 className="mb-4 text-xl font-semibold">{t("bim")}</h1>
-          <BIMViewer modelSrc="/models/demo.glb" />
+          <BIMViewer environment="night" modelSrc="/models/demo.glb" />
         </div>
       </section>
     </DefaultLayout>

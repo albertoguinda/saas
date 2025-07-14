@@ -235,6 +235,12 @@ import { Scheduler } from "@/components/premium/schedulers";
 <Scheduler startTime="09:00" endTime="17:00" />;
 ```
 
+```tsx
+import { BIMViewer } from "@/components/premium/3d";
+
+<BIMViewer modelSrc="/models/house.glb" environment="night" />;
+```
+
 ## 🌍 Internacionalización
 
 El proyecto usa **next-intl**. Las traducciones se ubican en `messages/<locale>.json`.
