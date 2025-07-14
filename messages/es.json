@@ -227,6 +227,7 @@
   "sensor.alert": "Alerta",
   "sensor.humidity": "Humedad",
   "sensor.temp": "Temperatura",
+  "sensor.temperature": "Temperatura",
   "sensor.light": "Luz",
   "sensor.loading": "Cargando datos..."
 }
