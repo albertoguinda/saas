@@ -208,6 +208,7 @@
   "booking.emailInvalid": "Invalid email",
   "booking.serviceRequired": "Choose a service",
   "booking.dateRequired": "Date required",
+  "booking.coupon": "Coupon",
   "scheduler.title": "Schedule",
   "scheduler.reset": "Reset",
   "demo.bim": "BIM Viewer Demo",

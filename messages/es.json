@@ -208,6 +208,7 @@
   "booking.emailInvalid": "Email inv\u00e1lido",
   "booking.serviceRequired": "Selecciona un servicio",
   "booking.dateRequired": "Fecha requerida",
+  "booking.coupon": "Cupón",
   "scheduler.title": "Horario",
   "scheduler.reset": "Reiniciar",
   "demo.bim": "Demo BIM Viewer",

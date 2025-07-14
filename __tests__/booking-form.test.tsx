@@ -14,14 +14,20 @@ jest.mock("@heroui/ripple", () => ({
 
 test("renders services", () => {
   render(
-    <BookingForm services={[{ id: "1", name: "Cut" }]} onSubmit={jest.fn()} />,
+    <BookingForm
+      services={[{ id: "1", name: "Cut", price: 10 }]}
+      onSubmit={jest.fn()}
+    />,
   );
-  expect(screen.getByText("Cut")).toBeInTheDocument();
+  expect(screen.getByText(/Cut/)).toBeInTheDocument();
 });
 
 test("shows validation errors", async () => {
   render(
-    <BookingForm services={[{ id: "1", name: "Cut" }]} onSubmit={jest.fn()} />,
+    <BookingForm
+      services={[{ id: "1", name: "Cut", price: 10 }]}
+      onSubmit={jest.fn()}
+    />,
   );
   fireEvent.click(screen.getByRole("button", { name: /submit/i }));
   await waitFor(() => {
@@ -29,11 +35,25 @@ test("shows validation errors", async () => {
   });
 });
 
+test("renders coupon field", () => {
+  render(
+    <BookingForm
+      enableCoupons
+      services={[{ id: "1", name: "Cut", price: 10 }]}
+      onSubmit={jest.fn()}
+    />,
+  );
+  expect(screen.getByLabelText("coupon")).toBeInTheDocument();
+});
+
 test("successful submit", async () => {
   const submit = jest.fn().mockResolvedValue(undefined);
 
   render(
-    <BookingForm services={[{ id: "1", name: "Cut" }]} onSubmit={submit} />,
+    <BookingForm
+      services={[{ id: "1", name: "Cut", price: 10 }]}
+      onSubmit={submit}
+    />,
   );
   fireEvent.change(screen.getByLabelText("name"), {
     target: { value: "Ada" },
@@ -58,7 +78,10 @@ test("submit error", async () => {
   const submit = jest.fn().mockRejectedValue(new Error("fail"));
 
   render(
-    <BookingForm services={[{ id: "1", name: "Cut" }]} onSubmit={submit} />,
+    <BookingForm
+      services={[{ id: "1", name: "Cut", price: 10 }]}
+      onSubmit={submit}
+    />,
   );
   fireEvent.change(screen.getByLabelText("name"), {
     target: { value: "Ada" },
