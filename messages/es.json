@@ -209,5 +209,9 @@
   "booking.serviceRequired": "Selecciona un servicio",
   "booking.dateRequired": "Fecha requerida",
   "scheduler.title": "Horario",
-  "scheduler.reset": "Reiniciar"
+  "scheduler.reset": "Reiniciar",
+  "demo.bim": "Demo BIM Viewer",
+  "viewer.loading": "Cargando modelo...",
+  "viewer.error": "Error al cargar el modelo",
+  "viewer.vr": "Entrar en VR"
 }

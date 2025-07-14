@@ -209,5 +209,9 @@
   "booking.serviceRequired": "Choose a service",
   "booking.dateRequired": "Date required",
   "scheduler.title": "Schedule",
-  "scheduler.reset": "Reset"
+  "scheduler.reset": "Reset",
+  "demo.bim": "BIM Viewer Demo",
+  "viewer.loading": "Loading model...",
+  "viewer.error": "Failed to load model",
+  "viewer.vr": "Enter VR"
 }

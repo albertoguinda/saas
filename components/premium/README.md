@@ -78,3 +78,24 @@ import { Scheduler } from "@/components/premium/schedulers";
 
 <Scheduler startTime="09:00" endTime="17:00" />;
 ```
+
+## BIMViewer
+
+Interactive 3D viewer for BIM models using Three.js.
+
+### Props
+
+- `modelSrc` (`string`): URL of the model file.
+- `controls` (`boolean`): enable orbit controls (default `true`).
+- `environment` (`"day" | "night"`): lighting preset (default `"day"`).
+- `enableVR` (`boolean`): show VR entry button if supported.
+- `onLoad` (`() => void`): called when the model is loaded.
+- `onError` (`(error: Error) => void`): called on load error.
+
+### Example
+
+```tsx
+import { BIMViewer } from "@/components/premium/3d";
+
+<BIMViewer modelSrc="/models/house.glb" />;
+```

@@ -44,6 +44,7 @@
 | Chat premium (soporte) | ✅ | 2025-07-13 | 64a9bd2 | agente |
 | Booking Form premium | ✅ | 2025-07-13 | ff491ac | agente |
 | Scheduler PRO | ✅ | 2025-07-13 | ff491ac | agente |
+| BIM Viewer 3D premium | ✅ | 2025-07-13 | 5557ee6 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -169,6 +170,7 @@
 - [x] MapWidget premium con clustering y modo nocturno — 13-Jul-2025 (8f83d13, @agente)
 - [x] Booking Form premium — 13-Jul-2025 (ff491ac, @agente)
 - [x] Scheduler PRO (hook y componente) — 13-Jul-2025 (ff491ac, @agente)
+- [x] BIM Viewer 3D premium — 13-Jul-2025 (5557ee6, @agente)
 
 ---
 
