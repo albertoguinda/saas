@@ -225,6 +225,7 @@
   "viewer.error": "Failed to load model",
   "viewer.vr": "Enter VR",
   "demo.sensor": "Sensor Panel Demo",
+  "demo.landing": "Landing Components Demo",
   "sensor.alert": "Alert",
   "sensor.humidity": "Humidity",
   "sensor.temp": "Temperature",

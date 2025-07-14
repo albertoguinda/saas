@@ -15,3 +15,4 @@ Componentes internos completados:
 - Turnos Teletrabajo Scheduler PRO
 - BIM Viewer 3D premium
 - IoT Sensor Panel premium
+- Landing Banner & Cards PRO

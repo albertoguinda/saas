@@ -225,6 +225,7 @@
   "viewer.error": "Error al cargar el modelo",
   "viewer.vr": "Entrar en VR",
   "demo.sensor": "Demo Panel Sensor",
+  "demo.landing": "Demo Landing",
   "sensor.alert": "Alerta",
   "sensor.humidity": "Humedad",
   "sensor.temp": "Temperatura",

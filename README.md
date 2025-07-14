@@ -216,6 +216,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - Scheduler demo for appointments (`/demo/scheduler`).
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
 - IoT sensor panel demo (`/demo/sensor-panel`).
+- Landing banner demo (`/demo/landing`).
 
 Example usage:
 
@@ -239,6 +240,14 @@ import { SchedulerWidget } from "@/components/premium/schedulers";
 import { BIMViewer } from "@/components/premium/3d";
 
 <BIMViewer modelSrc="/models/house.glb" environment="night" />;
+```
+
+```tsx
+import { Banner, Card } from "@/components/premium/ui";
+import { Star } from "lucide-react";
+
+<Banner title="Hello" subtitle="World" ctaText="Go" />;
+<Card icon={Star} title="Feature" desc="Amazing" />;
 ```
 
 ## 🌍 Internacionalización
