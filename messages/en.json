@@ -211,6 +211,7 @@
   "booking.coupon": "Coupon",
   "scheduler.title": "Schedule",
   "scheduler.reset": "Reset",
+  "scheduler.block": "Block",
   "scheduler.unavailable": "Unavailable",
   "scheduler.days.mon": "Mon",
   "scheduler.days.tue": "Tue",

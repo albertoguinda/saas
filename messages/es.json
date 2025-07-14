@@ -211,6 +211,7 @@
   "booking.coupon": "Cupón",
   "scheduler.title": "Horario",
   "scheduler.reset": "Reiniciar",
+  "scheduler.block": "Bloquear",
   "scheduler.unavailable": "No disponible",
   "scheduler.days.mon": "Lun",
   "scheduler.days.tue": "Mar",

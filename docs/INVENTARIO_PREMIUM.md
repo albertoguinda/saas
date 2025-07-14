@@ -12,5 +12,6 @@ Este documento recopila los componentes y recursos de alto valor localizados en 
 Componentes internos completados:
 
 - Scheduler premium (selección de horarios)
+- Turnos Teletrabajo Scheduler PRO
 - BIM Viewer 3D premium
 - IoT Sensor Panel premium

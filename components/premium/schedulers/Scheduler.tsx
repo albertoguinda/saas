@@ -12,7 +12,7 @@ import useScheduler, {
 export interface SchedulerProps extends UseSchedulerOptions {}
 
 export default function Scheduler(props: SchedulerProps) {
-  const { slots, isSlotBlocked, selectSlot, selectedSlot, reset } =
+  const { slots, isSlotBlocked, selectSlot, selectedSlot, resetSchedule } =
     useScheduler(props);
   const t = useTranslations("scheduler");
 
@@ -41,7 +41,7 @@ export default function Scheduler(props: SchedulerProps) {
           </button>
         ))}
       </div>
-      <Button size="sm" onClick={reset}>
+      <Button size="sm" onClick={resetSchedule}>
         {t("reset")}
       </Button>
     </Card>

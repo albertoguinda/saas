@@ -1,5 +1,7 @@
 export { default as Scheduler } from "./Scheduler";
 export type { SchedulerProps } from "./Scheduler";
+export { default as SchedulerWidget } from "./SchedulerWidget";
+export type { SchedulerWidgetProps } from "./SchedulerWidget";
 export { default as useScheduler } from "@/lib/premium/schedulers/useScheduler";
 export type {
   UseSchedulerOptions,
