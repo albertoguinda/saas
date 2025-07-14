@@ -45,6 +45,7 @@
 | Booking Form premium | ✅ | 2025-07-13 | ff491ac | agente |
 | Scheduler PRO | ✅ | 2025-07-13 | ff491ac | agente |
 | BIM Viewer 3D premium | ✅ | 2025-07-13 | 5557ee6 | agente |
+| IoT Sensor Dashboard PRO | ✅ | 2025-07-13 | 5c8540a | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -171,6 +172,7 @@
 - [x] Booking Form premium — 13-Jul-2025 (ff491ac, @agente)
 - [x] Scheduler PRO (hook y componente) — 13-Jul-2025 (ff491ac, @agente)
 - [x] BIM Viewer 3D premium — 13-Jul-2025 (5557ee6, @agente)
+- [x] IoT Sensor Dashboard PRO — 13-Jul-2025 (5c8540a, @agente)
 
 ---
 
