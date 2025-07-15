@@ -16,3 +16,4 @@ Componentes internos completados:
 - BIM Viewer 3D premium
 - IoT Sensor Panel premium
 - Landing Banner & Cards PRO
+- Sidebar/Drawer premium

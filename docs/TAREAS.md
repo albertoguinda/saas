@@ -51,6 +51,7 @@
 | IoT Sensor Dashboard PRO | ✅ | 2025-07-13 | 5c8540a | agente |
 | IoT Sensor Dashboard premium | ✅ | 2025-07-14 | 688d66e | agente |
 | Landing Banner & Cards PRO | ✅ | 2025-07-14 | c95a77b | agente |
+| Sidebar/Drawer premium | ✅ | 2025-07-14 | 08fca2d | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -183,6 +184,7 @@
 - [x] IoT Sensor Dashboard PRO — 13-Jul-2025 (5c8540a, @agente)
 - [x] IoT Sensor Dashboard premium — 14-Jul-2025 (688d66e, @agente)
 - [x] Landing Banner & Cards PRO — 14-Jul-2025 (c95a77b, @agente)
+- [x] Sidebar/Drawer premium — 14-Jul-2025 (08fca2d, @agente)
 
 ---
 

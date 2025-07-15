@@ -217,6 +217,7 @@ definen por URL; emplea tu CDN o un placeholder del estilo
 - BIM viewer demo for 3D models (`/demo/bim-viewer`).
 - IoT sensor panel demo (`/demo/sensor-panel`).
 - Landing banner demo (`/demo/landing`).
+- Sidebar demo (`/demo/sidebar`).
 
 Example usage:
 
@@ -248,6 +249,12 @@ import { Star } from "lucide-react";
 
 <Banner title="Hello" subtitle="World" ctaText="Go" />;
 <Card icon={Star} title="Feature" desc="Amazing" />;
+```
+
+```tsx
+import { Sidebar } from "@/components/premium/ui";
+
+<Sidebar isOpen={open} onClose={() => setOpen(false)} width={260} />;
 ```
 
 ## 🌍 Internacionalización
