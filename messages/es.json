@@ -226,6 +226,8 @@
   "viewer.vr": "Entrar en VR",
   "demo.sensor": "Demo Panel Sensor",
   "demo.landing": "Demo Landing",
+  "demo.sidebar": "Demo Sidebar",
+  "demo.open": "Abrir sidebar",
   "sensor.alert": "Alerta",
   "sensor.humidity": "Humedad",
   "sensor.temp": "Temperatura",
