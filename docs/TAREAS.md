@@ -194,7 +194,7 @@
 
 #### 🔄 Mejora continua
 
-- [ ] Integrar metaexplorer SEO
+- [x] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
 - [ ] Configurar Renovate para dependencias (sugerida)
