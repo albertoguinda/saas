@@ -9,13 +9,14 @@ import { notFound } from "next/navigation";
 
 import { locales } from "@/i18n";
 import { logger } from "@/lib/logger";
+import { generateMeta } from "@/lib/metaexplorer";
 
 import "@/styles/globals.css";
 
-export const metadata = {
+export const metadata = generateMeta({
   title: "SaaS Web Builder",
   description: "Genera tu web en 3 pasos",
-};
+});
 
 export default async function RootLayout({
   children,
