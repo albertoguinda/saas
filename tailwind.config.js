@@ -1,13 +1,14 @@
-import { heroui } from '@heroui/theme'
+import { heroui } from "@heroui/theme";
+import { withMaterialColors } from "tailwind-material-colors";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './layouts/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@heroui/**/*.{js,ts,jsx,tsx}',
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -19,6 +20,10 @@ const config = {
   },
   darkMode: "class",
   plugins: [heroui()],
-}
+};
 
-export default config;
+export default withMaterialColors(
+  config,
+  { primary: "#6750A4" },
+  { scheme: "expressive", extend: true },
+);
