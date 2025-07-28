@@ -2,10 +2,11 @@ import { FC, useState, useEffect } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
 import { useTheme } from "next-themes";
+import { Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
-import { useTranslations } from "next-intl";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -25,20 +26,16 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const { theme, setTheme } = useTheme();
 
   const onChange = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    if (theme === "light") setTheme("dark");
+    else if (theme === "dark") setTheme("expressive");
+    else setTheme("light");
   };
 
-  const {
-    Component,
-    slots,
-    isSelected,
-    getBaseProps,
-    getInputProps,
-    getWrapperProps,
-  } = useSwitch({
-    isSelected: theme === "light",
-    onChange,
-  });
+  const { Component, slots, getBaseProps, getInputProps, getWrapperProps } =
+    useSwitch({
+      isSelected: theme === "light",
+      onChange,
+    });
 
   useEffect(() => {
     setIsMounted(true);
@@ -47,9 +44,12 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   // Prevent Hydration Mismatch
   if (!isMounted) return <div className="w-6 h-6" />;
 
+  const next =
+    theme === "light" ? "dark" : theme === "dark" ? "expressive" : "light";
+
   return (
     <Component
-      aria-label={isSelected ? t("dark") : t("light")}
+      aria-label={t(`theme.${next}`)}
       {...getBaseProps({
         className: cn(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
@@ -80,8 +80,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {isSelected ? (
+        {theme === "light" ? (
           <MoonFilledIcon size={22} />
+        ) : theme === "dark" ? (
+          <Sparkles size={22} />
         ) : (
           <SunFilledIcon size={22} />
         )}

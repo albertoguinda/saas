@@ -22,7 +22,7 @@
     "setup": "sh scripts/setup.sh",
     "check:legal": "tsx scripts/check-legal.ts",
     "prepare": "husky install",
-    "lhci": "lhci autorun --collect.url=http://localhost:3000 --collect.numberOfRuns=1 --upload.target=temporary-public-storage",
+    "lhci": "lhci autorun --collect.url=http://localhost:3000 --collect.numberOfRuns=1 --collect.chromeFlags='--no-sandbox --headless' --upload.target=temporary-public-storage",
     "ci:test": "start-server-and-test dev http://localhost:3000 npm run lhci",
     "backup": "tsx scripts/backup.ts",
     "backup:local": "tsx scripts/backup.ts"

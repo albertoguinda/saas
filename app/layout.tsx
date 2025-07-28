@@ -12,6 +12,7 @@ import { logger } from "@/lib/logger";
 import { generateMeta } from "@/lib/metaexplorer";
 
 import "@/styles/globals.css";
+import "@/styles/material.css";
 
 export const metadata = generateMeta({
   title: "SaaS Web Builder",

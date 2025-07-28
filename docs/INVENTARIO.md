@@ -4,9 +4,9 @@ Listado generado para la operación "Sprint-Premium-Launch". Tareas recopiladas 
 
 | Tarea                                        | Tipo       | Pri | Puntos |
 | -------------------------------------------- | ---------- | --- | ------ |
-| Fix Lighthouse en CI                         | infra      | P1  | 2      |
-| Integrar MetaExplorer SEO                    | feature    | P2  | 3      |
-| Aplicar tema Material 3 Expressive           | premium-ui | P2  | 5      |
+| ~~Fix Lighthouse en CI~~                     | infra      | P1  | 2      |
+| ~~Integrar MetaExplorer SEO~~                | feature    | P2  | 3      |
+| ~~Aplicar tema Material 3 Expressive~~       | premium-ui | P2  | 5      |
 | Soporte vídeo vía MUX                        | feature    | P3  | 8      |
 | Librería de componentes premium              | premium-ui | P2  | 13     |
 | Evaluar Toastify/Swiper/etc para animaciones | premium-ui | P3  | 3      |
