@@ -83,7 +83,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 - ✅ Tracking inicial de eventos (`wizard_completed` y `upgrade_click`) en MongoDB — 03-Jul-2025
 - ✅ Avisos de upgrade en puntos de fricción / límites
 - ✅ Badge visual del plan activo (FREE / PRO / PREMIUM) — 03-Jul-2025
-- Captura de feedback y link a soporte
+- ✅ Captura de feedback y link a soporte — 28-Jul-2025
 - ✅ Script `i18n-check` para claves no usadas y faltantes — 11-Jul-2025
 - ✅ Internacionalización global y feedback UX consistente — 11-Jul-2025
 

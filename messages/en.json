@@ -245,5 +245,10 @@
   "admin.stats.users": "Users",
   "admin.stats.sites": "Sites",
   "admin.stats.events": "Events",
-  "admin.stats.error": "Unable to load stats"
+  "admin.stats.error": "Unable to load stats",
+  "feedback.title": "We'd love your feedback",
+  "feedback.label": "How was your experience?",
+  "feedback.submit": "Send feedback",
+  "feedback.success": "Thanks for your feedback!",
+  "feedback.error": "Unable to send feedback"
 }

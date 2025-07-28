@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **28-Jul-2025 22:17 UTC**
+\_Actualizado: **28-Jul-2025 22:31 UTC**
 
 ---
 
@@ -57,6 +57,7 @@
 | Tema Material 3 Expressive | ✅ | 2025-07-28 | 1ef27eb | agente |
 | Fix Lighthouse en CI | ✅ | 2025-07-28 | 1ef27eb | agente |
 | Panel admin de métricas | ✅ | 2025-07-28 | 77426c2 | agente |
+| Captura feedback post-creación | ✅ | 2025-07-28 | 4ce2bc0 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -224,7 +225,7 @@
 
 - [x] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
-- [ ] Captura de feedback post-creación o upgrade
+- [x] Captura de feedback post-creación o upgrade — 28-Jul-2025 (4ce2bc0, @agente)
 - [ ] Alertas visuales en puntos clave del funnel
 - [ ] Sistema de fidelización/puntos con recompensas diarias
 - [ ] Insignias y logros visibles en el perfil del usuario

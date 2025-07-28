@@ -245,5 +245,10 @@
   "admin.stats.users": "Usuarios",
   "admin.stats.sites": "Sitios",
   "admin.stats.events": "Eventos",
-  "admin.stats.error": "No se pudieron cargar las métricas"
+  "admin.stats.error": "No se pudieron cargar las métricas",
+  "feedback.title": "Queremos tu opinión",
+  "feedback.label": "¿Qué te pareció la experiencia?",
+  "feedback.submit": "Enviar feedback",
+  "feedback.success": "¡Gracias por tu feedback!",
+  "feedback.error": "No se pudo enviar el feedback"
 }
