@@ -33,12 +33,13 @@ export default async function handler(
   }
 
   try {
-    const { title, slug, template, color, font } = req.body as {
+    const { title, slug, template, color, font, video } = req.body as {
       title?: string;
       slug?: string;
       template?: string;
       color?: string;
       font?: string;
+      video?: string;
     };
 
     if (!title || typeof title !== "string" || !title.trim()) {
@@ -71,7 +72,7 @@ export default async function handler(
 
     site.title = title.trim();
     site.slug = slug;
-    site.structure = { template, color, font };
+    site.structure = { template, color, font, video };
     await site.save();
 
     try {
