@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { locales } from "@/i18n";
 import { logger } from "@/lib/logger";
 import { generateMeta } from "@/lib/metaexplorer";
+import PageViewTracker from "@/components/PageViewTracker";
 
 import "@/styles/globals.css";
 import "@/styles/material.css";
@@ -43,6 +44,7 @@ export default async function RootLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider enableSystem attribute="class" defaultTheme="system">
             <ToastProvider placement="top-right">
+              <PageViewTracker />
               {children}
               <ToastViewport />
             </ToastProvider>

@@ -67,6 +67,7 @@ export async function POST(req: NextRequest) {
             trackServer(user._id.toString(), "onboarding_started");
           }
 
+          trackServer(user._id.toString(), "upgrade_success");
           await sendPlanEmail(user._id.toString(), user.email, "premium");
         }
 

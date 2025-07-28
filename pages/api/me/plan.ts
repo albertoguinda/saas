@@ -53,6 +53,7 @@ export default async function handler(
         logger.info("[onboarding] started", user._id);
         trackServer(user._id.toString(), "onboarding_started");
       }
+      trackServer(user._id.toString(), "upgrade_success");
     }
 
     if (!user) return res.status(404).json({ error: "Usuario no encontrado" });

@@ -7,12 +7,17 @@
  * await track('wizard_completed');
  * ```
  */
-export async function track(event: string) {
+import type { EventInput } from "@/lib/validations/event";
+
+export async function track(
+  event: string,
+  data: Partial<Omit<EventInput, "event">> = {},
+) {
   try {
     await fetch("/api/track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event }),
+      body: JSON.stringify({ event, ...data }),
     });
   } catch {
     // ignore tracking errors
@@ -25,13 +30,17 @@ export async function track(event: string) {
  * @param userId - User identifier
  * @param event - Event name to record
  */
-export async function trackServer(userId: string, event: string) {
+export async function trackServer(
+  userId: string,
+  event: string,
+  data: Partial<Omit<EventInput, "event">> = {},
+) {
   try {
     const { default: dbConnect } = await import("@/lib/dbConnect");
     const { default: Event } = await import("@/lib/models/event");
 
     await dbConnect();
-    await Event.create({ userId, event });
+    await Event.create({ userId, event, ...data });
   } catch {
     // ignore tracking errors on server
   }
