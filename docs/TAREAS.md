@@ -54,6 +54,8 @@
 | Sidebar/Drawer premium | ✅ | 2025-07-14 | 08fca2d | agente |
 | Configurar Renovate dependencias | ✅ | 2025-07-28 | 9364e3b | agente |
 | Banners visuales de upsell (dashboard) | ✅ | 2025-07-28 | 82be56e | agente |
+| Tema Material 3 Expressive | ✅ | 2025-07-28 | 1ef27eb | agente |
+| Fix Lighthouse en CI | ✅ | 2025-07-28 | 1ef27eb | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -197,8 +199,8 @@
 #### 🔄 Mejora continua
 
 - [x] Integrar metaexplorer SEO
-- [ ] Tema Material 3 Expressive
-- [ ] Fix Lighthouse en CI
+- [x] Tema Material 3 Expressive — 28-Jul-2025 (1ef27eb, @agente)
+- [x] Fix Lighthouse en CI — 28-Jul-2025 (1ef27eb, @agente)
 - [x] Configurar Renovate para dependencias — 28-Jul-2025 (9364e3b, @agente)
 - [ ] Tests E2E con Playwright (sugerida)
 - [ ] Export estático incremental — ZIP incremental pendiente

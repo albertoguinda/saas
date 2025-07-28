@@ -1,0 +1,16 @@
+@tailwind base;
+
+@layer base {
+  .theme-expressive {
+    --background: #fffbfe;
+    --foreground: #1c1b1f;
+    --primary: #6750a4;
+    --primary-foreground: #ffffff;
+    --secondary: #625b71;
+    --secondary-foreground: #ffffff;
+    --accent: #7d5260;
+    --accent-foreground: #ffffff;
+    --muted: #e7e0ec;
+    --muted-foreground: #1c1b1f;
+  }
+}

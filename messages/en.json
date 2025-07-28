@@ -142,6 +142,7 @@
   "plan.required": "Plan {plan} required",
   "theme.dark": "Switch to dark mode",
   "theme.light": "Switch to light mode",
+  "theme.expressive": "Switch to expressive mode",
   "footer.powered": "Powered by",
   "landing.tagline": "Create your site in minutes with Next.js and HeroUI.",
   "landing.start": "Get started",
