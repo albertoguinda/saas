@@ -6,6 +6,7 @@ import { Link } from "@heroui/link";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/dbConnect";
 import Site from "@/lib/models/site";
+import FeedbackForm from "@/components/FeedbackForm";
 import Landing, { SiteDoc } from "@/components/landing/Landing";
 
 export default async function PreviewPage({
@@ -43,6 +44,7 @@ export default async function PreviewPage({
       </div>
       <div className="pt-12">
         <Landing site={plainSite} />
+        <FeedbackForm />
       </div>
     </div>
   );
