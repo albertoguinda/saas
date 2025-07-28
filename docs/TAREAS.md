@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **28-Jul-2025 21:11 UTC**
+\_Actualizado: **28-Jul-2025 21:39 UTC**
 
 ---
 
@@ -53,6 +53,7 @@
 | Landing Banner & Cards PRO | ✅ | 2025-07-14 | c95a77b | agente |
 | Sidebar/Drawer premium | ✅ | 2025-07-14 | 08fca2d | agente |
 | Configurar Renovate dependencias | ✅ | 2025-07-28 | 9364e3b | agente |
+| Banners visuales de upsell (dashboard) | ✅ | 2025-07-28 | 82be56e | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -212,7 +213,7 @@
 - [x] Componente ChatBox premium — 13-Jul-2025 (35989a7, @albertoguinda)
 
 - [x] Soporte prioritario (chat/email) — 13-Jul-2025 (64a9bd2, @agente)
-- [ ] Banners visuales de upsell (dashboard)
+- [x] Banners visuales de upsell (dashboard) — 28-Jul-2025 (82be56e, @agente)
 
 - [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
 
