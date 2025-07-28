@@ -240,5 +240,10 @@
   "sensor.loading": "Loading data...",
   "wizard.form.video": "Intro video",
   "wizard.video.upload": "Upload video",
-  "wizard.video.uploading": "Uploading..."
+  "wizard.video.uploading": "Uploading...",
+  "admin.stats.title": "Admin metrics",
+  "admin.stats.users": "Users",
+  "admin.stats.sites": "Sites",
+  "admin.stats.events": "Events",
+  "admin.stats.error": "Unable to load stats"
 }
