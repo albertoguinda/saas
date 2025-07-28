@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **28-Jul-2025 21:03 UTC**
+\_Actualizado: **28-Jul-2025 21:11 UTC**
 
 ---
 
@@ -52,6 +52,7 @@
 | IoT Sensor Dashboard premium | ✅ | 2025-07-14 | 688d66e | agente |
 | Landing Banner & Cards PRO | ✅ | 2025-07-14 | c95a77b | agente |
 | Sidebar/Drawer premium | ✅ | 2025-07-14 | 08fca2d | agente |
+| Configurar Renovate dependencias | ✅ | 2025-07-28 | 9364e3b | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -197,7 +198,7 @@
 - [x] Integrar metaexplorer SEO
 - [ ] Tema Material 3 Expressive
 - [ ] Fix Lighthouse en CI
-- [ ] Configurar Renovate para dependencias (sugerida)
+- [x] Configurar Renovate para dependencias — 28-Jul-2025 (9364e3b, @agente)
 - [ ] Tests E2E con Playwright (sugerida)
 - [ ] Export estático incremental — ZIP incremental pendiente
   > Nota: los ZIP de exportación incremental aún no se generan.
