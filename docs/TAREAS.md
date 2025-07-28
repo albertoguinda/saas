@@ -58,6 +58,7 @@
 | Fix Lighthouse en CI | ✅ | 2025-07-28 | 1ef27eb | agente |
 | Panel admin de métricas | ✅ | 2025-07-28 | 77426c2 | agente |
 | Captura feedback post-creación | ✅ | 2025-07-28 | 4ce2bc0 | agente |
+| Panel premium analítica | ✅ | 2025-07-29 | af9d136 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -219,7 +220,7 @@
 - [x] Soporte prioritario (chat/email) — 13-Jul-2025 (64a9bd2, @agente)
 - [x] Banners visuales de upsell (dashboard) — 28-Jul-2025 (82be56e, @agente)
 
-- [ ] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`)
+- [x] Panel premium de analítica (páginas vistas, retención, logs – ver `docs/ANALYTICS.md`) — 29-Jul-2025 (af9d136, @agente)
 
 ### 📊 ADMIN & Retención
 

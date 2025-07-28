@@ -250,5 +250,8 @@
   "feedback.label": "How was your experience?",
   "feedback.submit": "Send feedback",
   "feedback.success": "Thanks for your feedback!",
-  "feedback.error": "Unable to send feedback"
+  "feedback.error": "Unable to send feedback",
+  "analyticsPremium.title": "Advanced Analytics",
+  "analyticsPremium.pageViews": "Page views",
+  "analyticsPremium.logs": "Recent activity"
 }
