@@ -9,6 +9,7 @@ import { LayoutDashboard, User, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import PlanBadge from "@/components/PlanBadge";
+import UpsellBanner from "@/components/UpsellBanner";
 import { track } from "@/lib/track";
 
 export default function DashboardHome() {
@@ -56,6 +57,8 @@ export default function DashboardHome() {
           {tTrial("active", { date: trialEnds!.toLocaleDateString() })}
         </Alert>
       )}
+
+      {session?.user?.plan !== "premium" && <UpsellBanner className="mt-8" />}
       {!trialActive && trialEnds && (
         <Alert
           className="mb-4 flex items-center justify-between"
