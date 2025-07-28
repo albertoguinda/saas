@@ -224,7 +224,7 @@
 ### 📊 ADMIN & Retención
 
 - [x] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
-- [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
+- [x] Tracking avanzado: wizard, upgrades, feedback usuarios — 29-Jul-2025 (AGV)
 - [x] Captura de feedback post-creación o upgrade — 28-Jul-2025 (4ce2bc0, @agente)
 - [ ] Alertas visuales en puntos clave del funnel
 - [ ] Sistema de fidelización/puntos con recompensas diarias

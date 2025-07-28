@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,6 +21,10 @@ export default function WizardPage({
 }) {
   const router = useRouter();
   const t = useTranslations("wizard");
+
+  useEffect(() => {
+    track("wizard_started");
+  }, []);
   const schema = z.object({
     title: z.string().min(3, t("validation.title.min")),
     slug: z.string().regex(/^[a-z0-9-]+$/, t("validation.slug.pattern")),
