@@ -45,35 +45,34 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 
 ---
 
-## 4️⃣ Fase 4 — Pagos & planes (PRO / PREMIUM) (⬜ pendiente)
+## 4️⃣ Fase 4 — Pagos & planes (PRO / PREMIUM) (✅ completada)
 
-- Integrar **Stripe** (productos, subscripciones, webhooks)
-- Middleware de control de plan + free trial (7 días, opc.)
-- Dashboard: historial y panel de pagos
-
-- Vista de facturación e historial de pagos
-
----
-
-## 5️⃣ Fase 5 — Funcionalidades PRO (⬜ pendiente)
-
-- Branding personalizado (paleta, fuentes, favicon, meta)
-- Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
-- Conexión de dominio propio (Namecheap/Cloudflare)
-- Panel de métricas básicas (Upstash opc.)
-- Emails transaccionales (**Resend**)
+- ✅ Integrar **Stripe** (productos, subscripciones, webhooks)
+- ✅ Middleware de control de plan + free trial (7 días, opc.)
+- ✅ Dashboard: historial y panel de pagos
+- ✅ Vista de facturación e historial de pagos
 
 ---
 
-## 6️⃣ Fase 6 — Funcionalidades PREMIUM (⬜ pendiente)
+## 5️⃣ Fase 5 — Funcionalidades PRO (✅ completada)
 
-- **IA DataFast**: generación de contenido asistido
-- Cache de sitios vía **Upstash Redis**
-- **MUX**: vídeo upload + player
-- AGV Dashboard premium
-- Componente **Price** premium
-- Textos legales automáticos (cookies, privacy, TOS)
-- Backups / restore 1 clic
+- ✅ Branding personalizado (paleta, fuentes, favicon, meta)
+- ✅ Skeleton APIs branding/export/analytics/upload — 11-Jul-2025
+- ✅ Conexión de dominio propio (Namecheap/Cloudflare)
+- ✅ Panel de métricas básicas (Upstash opc.)
+- ✅ Emails transaccionales (**Resend**)
+
+---
+
+## 6️⃣ Fase 6 — Funcionalidades PREMIUM (✅ completada)
+
+- ✅ **IA DataFast**: generación de contenido asistido
+- ✅ Cache de sitios vía **Upstash Redis**
+- ✅ **MUX**: vídeo upload + player
+- ✅ AGV Dashboard premium
+- ✅ Componente **Price** premium
+- ✅ Textos legales automáticos (cookies, privacy, TOS)
+- ✅ Backups / restore 1 clic
 - ✅ Chat Premium (soporte prioritario in-app) — 13-Jul-2025
 - ✅ Componente **ChatBox** premium — 13-Jul-2025
 
@@ -82,7 +81,7 @@ Crear un SaaS de generación de sitios web **escalable** y **monetizable**, con 
 ## 7️⃣ Fase 7 — Validación, métricas & feedback (⬜ pendiente)
 
 - ✅ Tracking inicial de eventos (`wizard_completed` y `upgrade_click`) en MongoDB — 03-Jul-2025
-- Avisos de upgrade en puntos de fricción / límites
+- ✅ Avisos de upgrade en puntos de fricción / límites
 - ✅ Badge visual del plan activo (FREE / PRO / PREMIUM) — 03-Jul-2025
 - Captura de feedback y link a soporte
 - ✅ Script `i18n-check` para claves no usadas y faltantes — 11-Jul-2025

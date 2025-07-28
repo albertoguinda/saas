@@ -197,8 +197,8 @@
   "chat.placeholder": "Escribe un mensaje",
   "chat.send": "Enviar",
   "chat.empty": "Sin mensajes por ahora",
-  "chat.loginPrompt": "Inicia sesi\u00f3n para chatear",
-  "chat.signIn": "Iniciar sesi\u00f3n",
+  "chat.loginPrompt": "Inicia sesión para chatear",
+  "chat.signIn": "Iniciar sesión",
   "booking.name": "Nombre",
   "booking.email": "Email",
   "booking.service": "Servicio",
@@ -209,7 +209,7 @@
   "booking.success": "Reserva creada",
   "booking.error": "Error al reservar",
   "booking.nameRequired": "Nombre requerido",
-  "booking.emailInvalid": "Email inv\u00e1lido",
+  "booking.emailInvalid": "Email inválido",
   "booking.serviceRequired": "Selecciona un servicio",
   "booking.dateRequired": "Fecha requerida",
   "booking.coupon": "Cupón",
@@ -240,5 +240,10 @@
   "sensor.loading": "Cargando datos...",
   "wizard.form.video": "Vídeo de introducción",
   "wizard.video.upload": "Subir vídeo",
-  "wizard.video.uploading": "Subiendo..."
+  "wizard.video.uploading": "Subiendo...",
+  "admin.stats.title": "Métricas admin",
+  "admin.stats.users": "Usuarios",
+  "admin.stats.sites": "Sitios",
+  "admin.stats.events": "Eventos",
+  "admin.stats.error": "No se pudieron cargar las métricas"
 }

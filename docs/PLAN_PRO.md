@@ -26,27 +26,27 @@ Ofrecer funcionalidades avanzadas para usuarios que desean llevar su web al sigu
 
 ### 💾 Backend & almacenamiento
 
-- Persistir **estructura completa del sitio** en MongoDB (`pages`, `components`, `styles`).
-- Subida y almacenamiento seguro de **imágenes personalizadas** (S3 / Cloudinary). Usa las variables `CLOUDINARY_*` o `S3_*` definidas en `CODIGOBASE.md`.
-- Exportar sitios como **HTML estático** (descarga ZIP).
+- ✅ Persistir **estructura completa del sitio** en MongoDB (`pages`, `components`, `styles`).
+- ✅ Subida y almacenamiento seguro de **imágenes personalizadas** (S3 / Cloudinary). Usa las variables `CLOUDINARY_*` o `S3_*` definidas en `CODIGOBASE.md`.
+- ✅ Exportar sitios como **HTML estático** (descarga ZIP).
 
 ### 🎨 Personalización & branding
 
-- Selector de **paleta de colores** (UI con presets).
-- Cambiar **tipografía**, espaciados y estilos globales.
-- Branding propio: favicon, logo, títulos, meta-tags editables.
+- ✅ Selector de **paleta de colores** (UI con presets).
+- ✅ Cambiar **tipografía**, espaciados y estilos globales.
+- ✅ Branding propio: favicon, logo, títulos, meta-tags editables.
 
 ### 📧 Emails & comunicación
 
-- Integración con **Resend**: emails transaccionales / marketing.
-- (Opcional) **Confirmación de cuenta** por email al upgrade.
+- ✅ Integración con **Resend**: emails transaccionales / marketing.
+- ✅ (Opcional) **Confirmación de cuenta** por email al upgrade.
 
 ### 📊 Métricas & dominio
 
-- Analítica básica: visitas, páginas vistas, clicks (fetch Redis).
-- Conexión de **dominio propio** manual (Namecheap API).
-- Panel de estadísticas en dashboard (HeroUI charts).
-- Historial de pagos accesible en `/billing` (API `/api/stripe/history`).
+- ✅ Analítica básica: visitas, páginas vistas, clicks (fetch Redis).
+- ✅ Conexión de **dominio propio** manual (Namecheap API).
+- ✅ Panel de estadísticas en dashboard (HeroUI charts).
+- ✅ Historial de pagos accesible en `/billing` (API `/api/stripe/history`).
 
 ---
 

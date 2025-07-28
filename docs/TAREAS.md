@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **28-Jul-2025 21:39 UTC**
+\_Actualizado: **28-Jul-2025 22:17 UTC**
 
 ---
 
@@ -56,6 +56,7 @@
 | Banners visuales de upsell (dashboard) | ✅ | 2025-07-28 | 82be56e | agente |
 | Tema Material 3 Expressive | ✅ | 2025-07-28 | 1ef27eb | agente |
 | Fix Lighthouse en CI | ✅ | 2025-07-28 | 1ef27eb | agente |
+| Panel admin de métricas | ✅ | 2025-07-28 | 77426c2 | agente |
 
 - [x] Setup inicial (Next.js 15 + TS + estructura `/pages`)
 - [x] TailwindCSS + HeroUI configurados
@@ -221,7 +222,7 @@
 
 ### 📊 ADMIN & Retención
 
-- [ ] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
+- [x] Panel admin de métricas: nº registros, proyectos por usuario y actividad reciente
 - [ ] Tracking avanzado: wizard, upgrades, feedback usuarios (ver `docs/ANALYTICS.md`)
 - [ ] Captura de feedback post-creación o upgrade
 - [ ] Alertas visuales en puntos clave del funnel
