@@ -250,5 +250,8 @@
   "feedback.label": "¿Qué te pareció la experiencia?",
   "feedback.submit": "Enviar feedback",
   "feedback.success": "¡Gracias por tu feedback!",
-  "feedback.error": "No se pudo enviar el feedback"
+  "feedback.error": "No se pudo enviar el feedback",
+  "analyticsPremium.title": "Analítica avanzada",
+  "analyticsPremium.pageViews": "Vistas de página",
+  "analyticsPremium.logs": "Actividad reciente"
 }
