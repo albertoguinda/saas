@@ -233,5 +233,8 @@
   "sensor.temp": "Temperature",
   "sensor.temperature": "Temperature",
   "sensor.light": "Light",
-  "sensor.loading": "Loading data..."
+  "sensor.loading": "Loading data...",
+  "wizard.form.video": "Intro video",
+  "wizard.video.upload": "Upload video",
+  "wizard.video.uploading": "Uploading..."
 }

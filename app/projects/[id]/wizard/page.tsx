@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,6 +27,7 @@ export default function WizardPage({
     template: z.enum(["one-page", "blog"]),
     color: z.enum(["indigo", "emerald", "rose"]).default("indigo"),
     font: z.enum(["sans", "serif", "mono"]).default("sans"),
+    video: z.string().optional(),
   });
 
   type Schema = z.infer<typeof schema>;
@@ -45,12 +46,14 @@ export default function WizardPage({
       template: "one-page",
       color: "indigo",
       font: "sans",
+      video: "",
     },
   });
   const [loading, setLoading] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: Schema) => {
     setApiError("");
     // Verifica unicidad del slug
     try {
@@ -125,6 +128,32 @@ export default function WizardPage({
       notifyError(t("ai.error"));
     } finally {
       setAiLoading(false);
+    }
+  };
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+    setUploading(true);
+    try {
+      const form = new FormData();
+
+      form.append("file", file);
+      const res = await fetch("/api/videos", { method: "POST", body: form });
+      const json = await res.json();
+
+      if (!res.ok) {
+        notifyError(json.error || "Upload error");
+
+        return;
+      }
+      setValue("video", json.playbackId);
+      notifySuccess("Video uploaded");
+    } catch {
+      notifyError("Upload error");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -207,6 +236,21 @@ export default function WizardPage({
             </select>
             {errors.font && (
               <FormAlert color="danger">{errors.font.message}</FormAlert>
+            )}
+          </div>
+          <div>
+            <label className="mb-1 font-medium text-sm" htmlFor="video">
+              {t("form.video")}
+            </label>
+            <input
+              accept="video/*"
+              className="w-full"
+              id="video"
+              type="file"
+              onChange={handleUpload}
+            />
+            {uploading && (
+              <FormAlert color="warning">{t("video.uploading")}</FormAlert>
             )}
           </div>
           <Button className="w-full" isLoading={loading} type="submit">

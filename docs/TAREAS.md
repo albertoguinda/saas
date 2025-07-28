@@ -1,6 +1,6 @@
 # TAREAS.md
 
-\_Actualizado: **14-Jul-2025 09:51 UTC**
+\_Actualizado: **28-Jul-2025 21:03 UTC**
 
 ---
 
@@ -204,7 +204,7 @@
 
 ### 🚀 PREMIUM – IA, multimedia, retención y soporte
 
-- [ ] Soporte vídeo (upload a MUX, player embebido, selector en wizard)
+- [x] Soporte vídeo (upload a MUX, player embebido, selector en wizard) — 28-Jul-2025
 - [ ] Librería de componentes **premium** inspirada en HeroUI Plus, Tailwind UI, Shadcn UI, Flowbite y DaisyUI
 - [ ] Evaluar **Toastify**, **Swiper**, **PhotoSwipe**, **Atropos**, **canvas-confetti** y **Arctic** para animaciones y sliders
 
